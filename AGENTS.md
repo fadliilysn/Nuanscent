@@ -1,6 +1,6 @@
 # AGENTS.md
 
-# ScentMatch Local — Compact Project Context for Agents Code
+# Nuanscent — Compact Project Context for Agents Code
 
 > **Status:** Final baseline context for AI coding assistant  
 > **Purpose:** This file is intentionally concise. It gives Agents the project direction, locked decisions, and the correct docs to open only when needed.  
@@ -10,7 +10,7 @@
 
 # 1. What This Project Is
 
-**ScentMatch Local** is a web application that helps users discover **local Indonesian perfumes** based on:
+**Nuanscent** is a web application that helps users discover **local Indonesian perfumes** based on:
 - aroma preference,
 - occasion/use case,
 - budget,
@@ -71,7 +71,7 @@ These decisions are **final** unless the user explicitly changes them.
 
 Do not change this stack without explicit user instruction.
 
-- [x] **Backend:** Laravel REST API
+- [x] **Backend:** Laravel 12.x REST API
 - [x] **Database:** PostgreSQL
 - [x] **Frontend:** React + TypeScript + Vite
 - [x] **Styling:** Tailwind CSS
@@ -81,8 +81,8 @@ Do not change this stack without explicit user instruction.
 Recommended repository layout:
 
 ```text
-scentmatch-local/
-├── backend/                  # Laravel REST API + Filament
+Nuanscent/
+├── backend/                  # Laravel 12.x REST API + Filament
 ├── frontend/                 # React + TypeScript + Vite + Tailwind
 ├── docs/                     # Detailed specifications
 └── AGENTS.md                 # Compact AI context file

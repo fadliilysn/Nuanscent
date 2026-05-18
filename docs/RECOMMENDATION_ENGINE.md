@@ -1,6 +1,6 @@
 # RECOMMENDATION_ENGINE.md
 
-# ScentMatch Local — Recommendation Engine Specification
+# Nuanscent — Recommendation Engine Specification
 
 ## 1. Core Decision
 

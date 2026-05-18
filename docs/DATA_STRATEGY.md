@@ -1,6 +1,6 @@
 # DATA_STRATEGY.md
 
-# ScentMatch Local — Data Collection & Curation Strategy
+# Nuanscent — Data Collection & Curation Strategy
 
 ## 1. Core Principle
 

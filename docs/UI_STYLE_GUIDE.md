@@ -1,6 +1,6 @@
 # UI_STYLE_GUIDE.md
 
-# ScentMatch Local — Visual Design & UI Style Guide
+# Nuanscent — Visual Design & UI Style Guide
 
 ## 1. Locked Visual Direction
 

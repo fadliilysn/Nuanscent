@@ -1,10 +1,10 @@
 # PRD.md
 
-# ScentMatch Local — Product Requirements Document
+# Nuanscent — Product Requirements Document
 
 ## 1. Product Summary
 
-ScentMatch Local is a web application for recommending **local Indonesian perfumes** to users based on preferences that are easy to understand, especially for beginners.
+Nuanscent is a web application for recommending **local Indonesian perfumes** to users based on preferences that are easy to understand, especially for beginners.
 
 The product solves a common problem:
 - Many users want to buy perfume online.

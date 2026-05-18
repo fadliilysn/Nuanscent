@@ -1,6 +1,6 @@
 # IMPLEMENTATION_PLAN.md
 
-# ScentMatch Local — Phased Implementation & Token-Efficient AI Workflow
+# Nuanscent — Phased Implementation & Token-Efficient AI Workflow
 
 ## 1. Purpose
 

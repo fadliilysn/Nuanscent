@@ -1,6 +1,6 @@
 # TECHNICAL_SPEC.md
 
-# ScentMatch Local — Technical Specification
+# Nuanscent — Technical Specification
 
 ## 1. Architecture Overview
 
@@ -8,7 +8,7 @@ The application uses a separated frontend and backend inside one monorepo.
 
 ```text
 scentmatch-local/
-├── backend/                  # Laravel REST API + Filament Admin
+├── backend/                  # Laravel 12.x REST API + Filament Admin
 ├── frontend/                 # React + TypeScript + Vite + Tailwind
 ├── docs/
 └── AGENTS.md
@@ -16,7 +16,7 @@ scentmatch-local/
 
 ### Runtime Architecture
 ```text
-React Frontend  -> Laravel REST API -> PostgreSQL
+React Frontend  -> Laravel 12.x REST API -> PostgreSQL
                          |
                          └-> Filament Admin Panel
 ```
@@ -25,7 +25,7 @@ React Frontend  -> Laravel REST API -> PostgreSQL
 
 ## 2. Locked Tech Stack
 
-- Backend: **Laravel REST API**
+- Backend: **Laravel 12.x REST API**
 - Database: **PostgreSQL**
 - Frontend: **React + TypeScript + Vite**
 - Styling: **Tailwind CSS**
