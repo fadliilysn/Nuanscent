@@ -417,6 +417,7 @@ img {
 }
 
 .perfume-card__meta,
+.aroma-tag-list,
 .badge-list,
 .detail-hero__badges {
   display: flex;
@@ -471,6 +472,40 @@ img {
 
 .tag-badge--blue {
   background: var(--blue);
+}
+
+.aroma-tag-list {
+  align-items: flex-start;
+}
+
+.aroma-chip {
+  align-items: center;
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 7px;
+  box-shadow: 3px 3px 0 rgba(23, 19, 18, 0.18);
+  display: inline-flex;
+  font-size: 0.9rem;
+  font-weight: 900;
+  gap: 8px;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  padding: 8px 10px;
+}
+
+.aroma-chip::before {
+  background: var(--lavender);
+  border: 2px solid var(--line);
+  border-radius: 3px;
+  content: '';
+  flex: 0 0 auto;
+  height: 10px;
+  width: 10px;
+}
+
+.aroma-chip--polarizing::before {
+  background: var(--coral);
 }
 
 .pagination {
@@ -833,6 +868,10 @@ img {
   .badge-list {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .aroma-tag-list {
+    flex-direction: row;
   }
 
   .tag-badge {

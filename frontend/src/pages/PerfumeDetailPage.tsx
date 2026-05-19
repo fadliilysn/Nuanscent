@@ -14,7 +14,6 @@ const noteSections: Array<{ key: NotePosition; label: string }> = [
   { key: 'top', label: 'Top notes' },
   { key: 'middle', label: 'Middle notes' },
   { key: 'base', label: 'Base notes' },
-  { key: 'unspecified', label: 'Lainnya' },
 ]
 
 const groupNotes = (notes: Note[] = []) =>
@@ -65,6 +64,13 @@ export function PerfumeDetailPage({ slug, onNavigate }: PerfumeDetailPageProps) 
   }, [slug])
 
   const groupedNotes = useMemo(() => groupNotes(perfume?.notes), [perfume?.notes])
+  const visibleNoteSections = useMemo(
+    () =>
+      groupedNotes.unspecified.length > 0
+        ? [...noteSections, { key: 'unspecified' as const, label: 'Notes tanpa posisi' }]
+        : noteSections,
+    [groupedNotes],
+  )
   const hasSource =
     perfume?.source.name || perfume?.source.url || perfume?.source.last_verified_at
 
@@ -157,12 +163,15 @@ export function PerfumeDetailPage({ slug, onNavigate }: PerfumeDetailPageProps) 
 
         <article className="info-panel">
           <p className="eyebrow">Tag aroma</p>
-          <div className="badge-list">
+          <div className="aroma-tag-list" aria-label="Daftar tag aroma">
             {perfume.aroma_tags && perfume.aroma_tags.length > 0 ? (
               perfume.aroma_tags.map((tag) => (
-                <TagBadge key={tag.slug} tone={tag.is_polarizing ? 'coral' : 'lavender'}>
+                <span
+                  className={`aroma-chip ${tag.is_polarizing ? 'aroma-chip--polarizing' : ''}`}
+                  key={tag.slug}
+                >
                   {tag.name}
-                </TagBadge>
+                </span>
               ))
             ) : (
               <span className="muted-text">Tag aroma belum tersedia.</span>
@@ -188,7 +197,7 @@ export function PerfumeDetailPage({ slug, onNavigate }: PerfumeDetailPageProps) 
         <article className="info-panel info-panel--wide">
           <p className="eyebrow">Notes pyramid</p>
           <div className="notes-grid">
-            {noteSections.map((section) => (
+            {visibleNoteSections.map((section) => (
               <div className="note-column" key={section.key}>
                 <h2>{section.label}</h2>
                 {groupedNotes[section.key].length > 0 ? (
