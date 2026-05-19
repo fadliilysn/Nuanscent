@@ -51,7 +51,7 @@ export function CatalogFilters({
           <input
             type="search"
             value={filters.search ?? ''}
-            placeholder="Contoh: citrus, alpha, rose"
+            placeholder="Contoh: Farhampton, dll"
             onChange={(event) => updateFilter('search', event.target.value)}
           />
         </label>

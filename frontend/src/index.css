@@ -480,7 +480,7 @@ img {
 
 .aroma-chip {
   align-items: center;
-  background: #fff;
+  background: var(--chip-bg, #fff);
   border: 2px solid var(--line);
   border-radius: 7px;
   box-shadow: 3px 3px 0 rgba(23, 19, 18, 0.18);
@@ -495,7 +495,7 @@ img {
 }
 
 .aroma-chip::before {
-  background: var(--lavender);
+  background: var(--chip-dot, var(--lavender));
   border: 2px solid var(--line);
   border-radius: 3px;
   content: '';
@@ -504,8 +504,54 @@ img {
   width: 10px;
 }
 
-.aroma-chip--polarizing::before {
-  background: var(--coral);
+.aroma-chip--sunny {
+  --chip-bg: #fff1a8;
+  --chip-dot: #ffd84d;
+}
+
+.aroma-chip--blue {
+  --chip-bg: #d8f1ff;
+  --chip-dot: #8ed4ff;
+}
+
+.aroma-chip--green {
+  --chip-bg: #dff3cd;
+  --chip-dot: #93cf7a;
+}
+
+.aroma-chip--floral {
+  --chip-bg: #f3d5ff;
+  --chip-dot: #e5a6ff;
+}
+
+.aroma-chip--gourmand {
+  --chip-bg: #ffe1bd;
+  --chip-dot: #ffb66d;
+}
+
+.aroma-chip--earthy {
+  --chip-bg: #e8dcc0;
+  --chip-dot: #9fa36b;
+}
+
+.aroma-chip--amber {
+  --chip-bg: #ffd0aa;
+  --chip-dot: #f18654;
+}
+
+.aroma-chip--soft {
+  --chip-bg: #e8def8;
+  --chip-dot: #b8a5dc;
+}
+
+.aroma-chip--dark {
+  --chip-bg: #cfc6bb;
+  --chip-dot: #6d6258;
+}
+
+.aroma-chip--neutral {
+  --chip-bg: #fff;
+  --chip-dot: #c8c0b6;
 }
 
 .pagination {

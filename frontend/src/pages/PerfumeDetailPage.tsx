@@ -16,6 +16,40 @@ const noteSections: Array<{ key: NotePosition; label: string }> = [
   { key: 'base', label: 'Base notes' },
 ]
 
+const aromaTagToneBySlug: Record<string, string> = {
+  citrus: 'sunny',
+  fruity: 'sunny',
+  aquatic: 'blue',
+  clean: 'blue',
+  soapy: 'blue',
+  tea: 'green',
+  rose: 'floral',
+  jasmine: 'floral',
+  'white-floral': 'floral',
+  floral: 'floral',
+  vanilla: 'gourmand',
+  caramel: 'gourmand',
+  coffee: 'gourmand',
+  creamy: 'gourmand',
+  cedar: 'earthy',
+  sandalwood: 'earthy',
+  vetiver: 'earthy',
+  patchouli: 'earthy',
+  woody: 'earthy',
+  amber: 'amber',
+  spicy: 'amber',
+  saffron: 'amber',
+  musky: 'soft',
+  powdery: 'soft',
+  smoky: 'dark',
+  leathery: 'dark',
+  tobacco: 'dark',
+  oud: 'dark',
+}
+
+const aromaTagToneClass = (slug: string) =>
+  `aroma-chip--${aromaTagToneBySlug[slug] ?? 'neutral'}`
+
 const groupNotes = (notes: Note[] = []) =>
   notes.reduce<Record<NotePosition, Note[]>>(
     (groups, note) => {
@@ -167,7 +201,7 @@ export function PerfumeDetailPage({ slug, onNavigate }: PerfumeDetailPageProps) 
             {perfume.aroma_tags && perfume.aroma_tags.length > 0 ? (
               perfume.aroma_tags.map((tag) => (
                 <span
-                  className={`aroma-chip ${tag.is_polarizing ? 'aroma-chip--polarizing' : ''}`}
+                  className={`aroma-chip ${aromaTagToneClass(tag.slug)}`}
                   key={tag.slug}
                 >
                   {tag.name}
