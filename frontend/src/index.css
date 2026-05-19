@@ -735,6 +735,47 @@ img {
   overflow-wrap: anywhere;
 }
 
+.variant-list {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.variant-option {
+  align-items: center;
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 7px;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 12px;
+}
+
+.variant-option div {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.variant-option h2,
+.variant-option span,
+.variant-option strong {
+  overflow-wrap: anywhere;
+}
+
+.variant-option span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.variant-option strong {
+  font-size: 0.95rem;
+  text-align: right;
+}
+
 .notes-grid {
   display: grid;
   gap: 14px;
@@ -911,9 +952,14 @@ img {
   }
 
   .detail-hero__badges,
-  .badge-list {
+  .badge-list,
+  .variant-option {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .variant-option strong {
+    text-align: left;
   }
 
   .aroma-tag-list {

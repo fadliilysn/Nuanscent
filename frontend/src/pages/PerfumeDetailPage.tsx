@@ -107,6 +107,7 @@ export function PerfumeDetailPage({ slug, onNavigate }: PerfumeDetailPageProps) 
   )
   const hasSource =
     perfume?.source.name || perfume?.source.url || perfume?.source.last_verified_at
+  const hasVariants = Boolean(perfume?.variants && perfume.variants.length > 0)
 
   if (isLoading) {
     return (
@@ -188,12 +189,41 @@ export function PerfumeDetailPage({ slug, onNavigate }: PerfumeDetailPageProps) 
               <dt>Konsentrasi</dt>
               <dd>{formatOptional(perfume.concentration)}</dd>
             </div>
-            <div>
-              <dt>Volume</dt>
-              <dd>{formatVolume(perfume.volume_ml)}</dd>
-            </div>
+            {!hasVariants ? (
+              <div>
+                <dt>Volume</dt>
+                <dd>{formatVolume(perfume.volume_ml)}</dd>
+              </div>
+            ) : null}
           </dl>
         </article>
+
+        {hasVariants ? (
+          <article className="info-panel">
+            <p className="eyebrow">Pilihan ukuran</p>
+            <div className="variant-list">
+              {perfume.variants?.map((variant, index) => {
+                const title =
+                  variant.label ??
+                  (variant.volume_ml !== null
+                    ? formatVolume(variant.volume_ml)
+                    : `Varian ${index + 1}`)
+
+                return (
+                  <div className="variant-option" key={variant.id}>
+                    <div>
+                      <h2>{title}</h2>
+                      {variant.label && variant.volume_ml !== null ? (
+                        <span>{formatVolume(variant.volume_ml)}</span>
+                      ) : null}
+                    </div>
+                    <strong>{formatPriceRange(variant.price, variant.price)}</strong>
+                  </div>
+                )
+              })}
+            </div>
+          </article>
+        ) : null}
 
         <article className="info-panel">
           <p className="eyebrow">Tag aroma</p>

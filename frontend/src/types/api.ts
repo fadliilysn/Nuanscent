@@ -74,6 +74,13 @@ export type PerfumeSource = {
   last_verified_at: string | null
 }
 
+export type PerfumeVariant = {
+  id: number
+  label: string | null
+  volume_ml: number | null
+  price: number | null
+}
+
 export type Perfume = {
   id: number
   name: string
@@ -84,6 +91,7 @@ export type Perfume = {
   volume_ml: number | null
   price_min: number | null
   price_max: number | null
+  variants?: PerfumeVariant[]
   image_url: string | null
   marketed_gender: string | null
   intensity: string | null
