@@ -8,7 +8,7 @@ The application uses a separated frontend and backend inside one monorepo.
 
 ```text
 scentmatch-local/
-├── backend/                  # Laravel 12.x REST API + Filament Admin
+├── backend/                  # Laravel 12.x REST API + Filament 5.x Admin
 ├── frontend/                 # React + TypeScript + Vite + Tailwind
 ├── docs/
 └── AGENTS.md
@@ -18,7 +18,7 @@ scentmatch-local/
 ```text
 React Frontend  -> Laravel 12.x REST API -> PostgreSQL
                          |
-                         └-> Filament Admin Panel
+                         └-> Filament 5.x Admin Panel
 ```
 
 ---
@@ -29,7 +29,7 @@ React Frontend  -> Laravel 12.x REST API -> PostgreSQL
 - Database: **PostgreSQL**
 - Frontend: **React + TypeScript + Vite**
 - Styling: **Tailwind CSS**
-- Admin Panel: **Filament**
+- Admin Panel: **Filament 5.x**
 - API Style: **REST JSON**
 - Public user authentication: **not required for MVP**
 - Admin authentication: handled by Laravel/Filament.
@@ -68,13 +68,14 @@ npm run dev
 ### 4.1. Core Domains
 1. Brand
 2. Perfume
-3. Aroma Category
-4. Aroma Tag
-5. Notes
-6. Occasion / Usage
-7. Guide / Glossary
-8. Recommendation Engine
-9. Admin Management
+3. Perfume Variant
+4. Aroma Category
+5. Aroma Tag
+6. Notes
+7. Occasion / Usage
+8. Guide / Glossary
+9. Recommendation Engine
+10. Admin Management
 
 ### 4.2. Backend Design Principles
 - Keep controllers thin.
@@ -139,6 +140,20 @@ Use Filament Resources where possible instead of building unnecessary custom adm
 - `last_verified_at` nullable
 - `data_status` enum-like string: `draft`, `reviewed`, `published`
 - timestamps
+
+`price_min` and `price_max` are the perfume-level public price range used by catalog filtering and recommendation budget matching. When a perfume has records in `perfume_variants`, these fields are aggregate values recomputed from variant prices. When a perfume has no variants, they remain the legacy/fallback perfume-level price fields.
+
+`volume_ml` remains available as a legacy/fallback single-volume field while variants are introduced.
+
+### 6.2.1. `perfume_variants`
+- `id`
+- `perfume_id`
+- `label` nullable
+- `volume_ml` nullable
+- `price` nullable
+- timestamps
+
+Perfume variants represent purchasable options under a single perfume record, such as different bottle sizes. Variants must not create duplicate perfume catalog records or separate detail pages.
 
 ### 6.3. `aroma_categories`
 - `id`

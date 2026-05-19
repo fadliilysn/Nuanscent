@@ -75,14 +75,14 @@ Do not change this stack without explicit user instruction.
 - [x] **Database:** PostgreSQL
 - [x] **Frontend:** React + TypeScript + Vite
 - [x] **Styling:** Tailwind CSS
-- [x] **Admin panel:** Filament
+- [x] **Admin panel:** Filament 5.x
 - [x] **Repo style:** simple monorepo
 
 Recommended repository layout:
 
 ```text
 Nuanscent/
-├── backend/                  # Laravel 12.x REST API + Filament
+├── backend/                  # Laravel 12.x REST API + Filament 5.x
 ├── frontend/                 # React + TypeScript + Vite + Tailwind
 ├── docs/                     # Detailed specifications
 └── AGENTS.md                 # Compact AI context file
