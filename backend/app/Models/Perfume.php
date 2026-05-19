@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Perfume extends Model
 {
@@ -59,5 +60,33 @@ class Perfume extends Model
     public function occasions(): BelongsToMany
     {
         return $this->belongsToMany(Occasion::class, 'perfume_occasion');
+    }
+
+    public function variants(): HasMany
+    {
+        return $this->hasMany(PerfumeVariant::class);
+    }
+
+    public function refreshPriceRangeFromVariants(bool $clearWhenNoVariants = false): void
+    {
+        if (! $this->variants()->exists()) {
+            if ($clearWhenNoVariants) {
+                $this->forceFill([
+                    'price_min' => null,
+                    'price_max' => null,
+                ])->saveQuietly();
+            }
+
+            return;
+        }
+
+        $prices = $this->variants()
+            ->whereNotNull('price')
+            ->pluck('price');
+
+        $this->forceFill([
+            'price_min' => $prices->min(),
+            'price_max' => $prices->max(),
+        ])->saveQuietly();
     }
 }

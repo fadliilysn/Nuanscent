@@ -72,12 +72,14 @@ class PerfumeForm
                             ->minValue(1),
                         TextInput::make('price_min')
                             ->label('Harga minimum')
+                            ->helperText('Akan diperbarui otomatis dari varian jika varian produk diisi.')
                             ->numeric()
                             ->integer()
                             ->minValue(0)
                             ->prefix('Rp'),
                         TextInput::make('price_max')
                             ->label('Harga maksimum')
+                            ->helperText('Akan diperbarui otomatis dari varian jika varian produk diisi.')
                             ->numeric()
                             ->integer()
                             ->minValue(0)
@@ -94,6 +96,34 @@ class PerfumeForm
                             ->maxLength(255),
                     ])
                     ->columns(2),
+                Section::make('Varian Produk')
+                    ->description('Gunakan untuk pilihan ukuran atau harga pembelian dalam satu parfum yang sama.')
+                    ->schema([
+                        Repeater::make('variants')
+                            ->label('Varian produk')
+                            ->relationship('variants')
+                            ->schema([
+                                TextInput::make('label')
+                                    ->label('Label')
+                                    ->placeholder('Contoh: Travel size')
+                                    ->maxLength(255),
+                                TextInput::make('volume_ml')
+                                    ->label('Volume (ml)')
+                                    ->numeric()
+                                    ->integer()
+                                    ->minValue(1),
+                                TextInput::make('price')
+                                    ->label('Harga')
+                                    ->numeric()
+                                    ->integer()
+                                    ->minValue(0)
+                                    ->prefix('Rp'),
+                            ])
+                            ->columns(3)
+                            ->addActionLabel('Tambah varian')
+                            ->reorderable(false)
+                            ->columnSpanFull(),
+                    ]),
                 Section::make('Tag, Kegunaan, dan Note')
                     ->schema([
                         MultiSelect::make('aromaTags')

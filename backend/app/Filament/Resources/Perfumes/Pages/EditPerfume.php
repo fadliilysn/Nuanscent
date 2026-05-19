@@ -49,6 +49,7 @@ class EditPerfume extends EditRecord
     protected function afterSave(): void
     {
         $this->syncNoteAssignments();
+        $this->getRecord()->refreshPriceRangeFromVariants();
     }
 
     private function syncNoteAssignments(): void

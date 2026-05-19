@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Note;
 use App\Models\Occasion;
 use App\Models\Perfume;
+use App\Models\PerfumeVariant;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -70,6 +71,18 @@ class PublicApiTest extends TestCase
         $perfume->aromaTags()->attach($tag);
         $perfume->occasions()->attach($occasion);
         $perfume->notes()->attach($note, ['position' => 'top']);
+        PerfumeVariant::create([
+            'perfume_id' => $perfume->id,
+            'label' => 'Botol 50 ml',
+            'volume_ml' => 50,
+            'price' => 299000,
+        ]);
+        PerfumeVariant::create([
+            'perfume_id' => $perfume->id,
+            'label' => 'Botol 100 ml',
+            'volume_ml' => 100,
+            'price' => 449000,
+        ]);
 
         $draft = Perfume::create([
             'brand_id' => $brand->id,
@@ -82,10 +95,53 @@ class PublicApiTest extends TestCase
         $this->getJson('/api/perfumes/'.$perfume->slug)
             ->assertOk()
             ->assertJsonPath('data.official_description', 'Deskripsi resmi dari sumber.')
+            ->assertJsonPath('data.price_min', 299000)
+            ->assertJsonPath('data.price_max', 449000)
+            ->assertJsonPath('data.variants.0.label', 'Botol 50 ml')
+            ->assertJsonPath('data.variants.1.volume_ml', 100)
             ->assertJsonPath('data.notes.0.position', 'top')
             ->assertJsonPath('data.source.last_verified_at', '2026-05-18');
 
         $this->getJson('/api/perfumes/'.$draft->slug)->assertNotFound();
+    }
+
+    public function test_variant_prices_refresh_parent_range_and_catalog_filters_use_aggregate_prices(): void
+    {
+        [$brand, $category] = $this->createReferenceData();
+
+        $perfume = Perfume::create([
+            'brand_id' => $brand->id,
+            'name' => 'Variant Price',
+            'slug' => 'variant-price',
+            'price_min' => 999000,
+            'price_max' => 999000,
+            'main_aroma_category_id' => $category->id,
+            'data_status' => 'published',
+        ]);
+
+        PerfumeVariant::create([
+            'perfume_id' => $perfume->id,
+            'volume_ml' => 50,
+            'price' => 299000,
+        ]);
+        PerfumeVariant::create([
+            'perfume_id' => $perfume->id,
+            'volume_ml' => 100,
+            'price' => 449000,
+        ]);
+
+        $perfume->refresh();
+
+        $this->assertSame(299000, $perfume->price_min);
+        $this->assertSame(449000, $perfume->price_max);
+
+        $this->getJson('/api/perfumes?price_max=300000')
+            ->assertOk()
+            ->assertJsonFragment(['slug' => 'variant-price']);
+
+        $this->getJson('/api/perfumes?price_max=250000')
+            ->assertOk()
+            ->assertJsonMissing(['slug' => 'variant-price']);
     }
 
     public function test_brand_detail_and_reference_endpoints_return_public_data(): void

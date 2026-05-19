@@ -25,7 +25,7 @@ class PerfumeController extends Controller
     {
         abort_unless($perfume->data_status === 'published', 404);
 
-        $perfume->load(['brand', 'mainAromaCategory', 'aromaTags', 'occasions', 'notes']);
+        $perfume->load(['brand', 'mainAromaCategory', 'aromaTags', 'occasions', 'notes', 'variants']);
 
         return new PerfumeResource($perfume);
     }

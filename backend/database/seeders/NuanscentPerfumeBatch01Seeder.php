@@ -70,6 +70,13 @@ class NuanscentPerfumeBatch01Seeder extends Seeder
                 );
 
                 $this->syncNotes($perfume, $perfumeData['notes'] ?? []);
+
+                if (array_key_exists('variants', $perfumeData)) {
+                    $this->syncVariants($perfume, $perfumeData['variants'] ?? []);
+                    $perfume->refreshPriceRangeFromVariants(clearWhenNoVariants: true);
+                } else {
+                    $perfume->refreshPriceRangeFromVariants();
+                }
             }
         });
     }
@@ -191,6 +198,22 @@ class NuanscentPerfumeBatch01Seeder extends Seeder
 
             $perfume->notes()->attach($note->id, [
                 'position' => $noteData['position'] ?? 'unspecified',
+            ]);
+        }
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $variants
+     */
+    private function syncVariants(Perfume $perfume, array $variants): void
+    {
+        $perfume->variants()->delete();
+
+        foreach ($variants as $variantData) {
+            $perfume->variants()->create([
+                'label' => $variantData['label'] ?? null,
+                'volume_ml' => $variantData['volume_ml'] ?? null,
+                'price' => $variantData['price'] ?? null,
             ]);
         }
     }

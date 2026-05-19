@@ -7,6 +7,7 @@ use App\Models\AromaTag;
 use App\Models\Brand;
 use App\Models\Occasion;
 use App\Models\Perfume;
+use App\Models\PerfumeVariant;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -190,6 +191,42 @@ class RecommendationApiTest extends TestCase
         ]))
             ->assertOk()
             ->assertJsonPath('recommendations.0.slug', 'budget-flexible')
+            ->assertJsonFragment(['Masuk dalam rentang budget yang dipilih.']);
+    }
+
+    public function test_recommendation_budget_uses_aggregate_prices_from_variants(): void
+    {
+        [$brand, $fresh, , $citrus, , $office] = $this->createReferenceData();
+
+        $perfume = Perfume::create([
+            'brand_id' => $brand->id,
+            'name' => 'Variant Budget',
+            'slug' => 'variant-budget',
+            'price_min' => 999000,
+            'price_max' => 999000,
+            'intensity' => 'soft',
+            'main_aroma_category_id' => $fresh->id,
+            'data_status' => 'published',
+        ]);
+        $perfume->aromaTags()->attach($citrus);
+        $perfume->occasions()->attach($office);
+        PerfumeVariant::create([
+            'perfume_id' => $perfume->id,
+            'volume_ml' => 50,
+            'price' => 299000,
+        ]);
+        PerfumeVariant::create([
+            'perfume_id' => $perfume->id,
+            'volume_ml' => 100,
+            'price' => 449000,
+        ]);
+
+        $this->postJson('/api/recommendations', $this->validPayload([
+            'price_min' => null,
+            'price_max' => 300000,
+        ]))
+            ->assertOk()
+            ->assertJsonPath('recommendations.0.slug', 'variant-budget')
             ->assertJsonFragment(['Masuk dalam rentang budget yang dipilih.']);
     }
 

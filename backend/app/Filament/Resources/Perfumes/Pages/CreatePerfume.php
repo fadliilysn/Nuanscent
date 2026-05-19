@@ -24,6 +24,7 @@ class CreatePerfume extends CreateRecord
     protected function afterCreate(): void
     {
         $this->syncNoteAssignments();
+        $this->record->refreshPriceRangeFromVariants();
     }
 
     private function syncNoteAssignments(): void

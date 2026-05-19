@@ -22,6 +22,7 @@ class PerfumeResource extends JsonResource
             'volume_ml' => $this->volume_ml,
             'price_min' => $this->price_min,
             'price_max' => $this->price_max,
+            'variants' => PerfumeVariantResource::collection($this->whenLoaded('variants')),
             'image_url' => $this->image_url,
             'marketed_gender' => $this->marketed_gender,
             'intensity' => $this->intensity,
