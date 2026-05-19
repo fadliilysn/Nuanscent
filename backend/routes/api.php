@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\PerfumeController;
+use App\Http\Controllers\Api\RecommendationController;
 use App\Http\Controllers\Api\ReferenceDataController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,3 +15,5 @@ Route::get('perfumes/{perfume:slug}', [PerfumeController::class, 'show']);
 Route::get('aroma-categories', [ReferenceDataController::class, 'aromaCategories']);
 Route::get('aroma-tags', [ReferenceDataController::class, 'aromaTags']);
 Route::get('occasions', [ReferenceDataController::class, 'occasions']);
+
+Route::post('recommendations', [RecommendationController::class, 'store']);
