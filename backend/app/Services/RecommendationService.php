@@ -137,7 +137,7 @@ class RecommendationService
 
             if ($supportingTags->isNotEmpty()) {
                 $score += min(self::AROMA_TAG_POINTS, $supportingTags->count() * 5);
-                $reasons[] = 'Tag aroma mendukung preferensimu: '.$supportingTags->pluck('name')->join(', ').'.';
+                $reasons[] = $this->supportingTagReason($supportingTags, $preferredCategory);
             }
         }
 
@@ -346,6 +346,42 @@ class RecommendationService
     }
 
     /**
+     * @param  SupportCollection<int, mixed>  $tags
+     */
+    private function supportingTagReason(SupportCollection $tags, string $categorySlug): string
+    {
+        $nuances = $this->formatIndonesianList(
+            $tags
+                ->pluck('name')
+                ->map(fn (string $name): string => mb_strtolower($name))
+                ->all(),
+        );
+
+        return "Nuansa {$nuances} pada parfum ini selaras dengan karakter {$this->categoryNameForSlug($categorySlug)} yang kamu pilih.";
+    }
+
+    /**
+     * @param  array<int, string>  $items
+     */
+    private function formatIndonesianList(array $items): string
+    {
+        $items = array_values($items);
+
+        if (count($items) <= 1) {
+            return $items[0] ?? '';
+        }
+
+        $lastItem = array_pop($items);
+
+        return implode(', ', $items).' dan '.$lastItem;
+    }
+
+    private function categoryNameForSlug(string $slug): string
+    {
+        return $this->categoryNameMap()[$slug] ?? $slug;
+    }
+
+    /**
      * @return array<string, array<int, string>>
      */
     private function categoryTagMap(): array
@@ -357,6 +393,21 @@ class RecommendationService
             'woody-earthy' => ['woody', 'earthy', 'cedar', 'sandalwood', 'vetiver', 'patchouli'],
             'warm-amber-spicy' => ['warm', 'amber', 'spicy', 'saffron'],
             'musky-powdery-soft' => ['musky', 'powdery', 'soft'],
+        ];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private function categoryNameMap(): array
+    {
+        return [
+            'fresh-clean' => 'Fresh / Clean',
+            'sweet-gourmand' => 'Sweet / Gourmand',
+            'floral' => 'Floral',
+            'woody-earthy' => 'Woody / Earthy',
+            'warm-amber-spicy' => 'Warm / Amber / Spicy',
+            'musky-powdery-soft' => 'Musky / Powdery / Soft',
         ];
     }
 

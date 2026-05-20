@@ -138,6 +138,55 @@ class RecommendationApiTest extends TestCase
             ->assertJsonCount(2, 'recommendations.0.blind_buy_caution.reasons');
     }
 
+    public function test_supporting_aroma_tag_reasons_describe_nuance_for_selected_category(): void
+    {
+        [$brand, $fresh, , $citrus, , $office] = $this->createReferenceData();
+        $aquatic = AromaTag::create([
+            'name' => 'Aquatic',
+            'slug' => 'aquatic',
+        ]);
+
+        $singleNuance = Perfume::create([
+            'brand_id' => $brand->id,
+            'name' => 'Single Nuance',
+            'slug' => 'single-nuance',
+            'price_min' => 150000,
+            'price_max' => 200000,
+            'intensity' => 'soft',
+            'main_aroma_category_id' => $fresh->id,
+            'data_status' => 'published',
+        ]);
+        $singleNuance->aromaTags()->attach($citrus);
+        $singleNuance->occasions()->attach($office);
+
+        $multipleNuances = Perfume::create([
+            'brand_id' => $brand->id,
+            'name' => 'Multiple Nuances',
+            'slug' => 'multiple-nuances',
+            'price_min' => 150000,
+            'price_max' => 200000,
+            'intensity' => 'soft',
+            'main_aroma_category_id' => $fresh->id,
+            'data_status' => 'published',
+        ]);
+        $multipleNuances->aromaTags()->attach([$citrus->id, $aquatic->id]);
+        $multipleNuances->occasions()->attach($office);
+
+        $response = $this->postJson('/api/recommendations', $this->validPayload())
+            ->assertOk();
+
+        $recommendations = collect($response->json('recommendations'));
+
+        $this->assertContains(
+            'Nuansa citrus pada parfum ini selaras dengan karakter Fresh / Clean yang kamu pilih.',
+            $recommendations->firstWhere('slug', 'single-nuance')['matched_reasons'],
+        );
+        $this->assertContains(
+            'Nuansa citrus dan aquatic pada parfum ini selaras dengan karakter Fresh / Clean yang kamu pilih.',
+            $recommendations->firstWhere('slug', 'multiple-nuances')['matched_reasons'],
+        );
+    }
+
     public function test_recommendation_validation_rejects_invalid_inputs(): void
     {
         $this->createReferenceData();
