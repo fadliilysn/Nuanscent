@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { EmptyBlock } from './components/StateBlock'
 import { PerfumeCatalogPage } from './pages/PerfumeCatalogPage'
 import { PerfumeDetailPage } from './pages/PerfumeDetailPage'
+import { RecommendationQuizPage } from './pages/RecommendationQuizPage'
 
 type AppLocation = {
   pathname: string
@@ -12,6 +13,24 @@ const readLocation = (): AppLocation => ({
   pathname: window.location.pathname,
   search: window.location.search,
 })
+
+const safeReturnTo = (locationSearch: string) => {
+  const returnTo = new URLSearchParams(locationSearch).get('returnTo')
+
+  if (!returnTo) {
+    return null
+  }
+
+  if (
+    returnTo === '/parfum' ||
+    returnTo.startsWith('/parfum?') ||
+    returnTo === '/quiz?view=results'
+  ) {
+    return returnTo
+  }
+
+  return null
+}
 
 function App() {
   const [location, setLocation] = useState<AppLocation>(readLocation)
@@ -49,6 +68,26 @@ function App() {
             <small>Katalog parfum lokal</small>
           </span>
         </a>
+        <nav className="site-nav" aria-label="Navigasi utama">
+          <a
+            href="/quiz"
+            onClick={(event) => {
+              event.preventDefault()
+              navigate('/quiz')
+            }}
+          >
+            Quiz
+          </a>
+          <a
+            href="/parfum"
+            onClick={(event) => {
+              event.preventDefault()
+              navigate('/parfum')
+            }}
+          >
+            Katalog
+          </a>
+        </nav>
       </header>
 
       {location.pathname === '/' || location.pathname === '/parfum' ? (
@@ -57,10 +96,16 @@ function App() {
           locationSearch={location.search}
           onNavigate={navigate}
         />
+      ) : location.pathname === '/quiz' ? (
+        <RecommendationQuizPage
+          locationSearch={location.search}
+          onNavigate={navigate}
+        />
       ) : detailMatch ? (
         <PerfumeDetailPage
           key={detailMatch[1]}
           slug={decodeURIComponent(detailMatch[1])}
+          returnTo={safeReturnTo(location.search)}
           onNavigate={navigate}
         />
       ) : (

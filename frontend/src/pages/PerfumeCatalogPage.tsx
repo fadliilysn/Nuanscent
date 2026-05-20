@@ -136,6 +136,8 @@ export function PerfumeCatalogPage({
     onNavigate(`/parfum${query ? `?${query}` : ''}`)
   }
 
+  const catalogReturnTo = `/parfum${locationSearch}`
+
   return (
     <main className="page">
       <section className="catalog-hero">
@@ -186,6 +188,7 @@ export function PerfumeCatalogPage({
                   <PerfumeCard
                     key={perfume.slug}
                     perfume={perfume}
+                    detailReturnTo={catalogReturnTo}
                     onNavigate={onNavigate}
                   />
                 ))}

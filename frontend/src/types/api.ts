@@ -114,3 +114,61 @@ export type CatalogFilters = {
   page?: string
   per_page?: string
 }
+
+export type IntensityPreference = 'soft' | 'medium' | 'strong' | 'no_preference'
+
+export type BlindBuyComfort = 'safe' | 'flexible' | 'adventurous'
+
+export type MarketedGenderPreference =
+  | 'no_preference'
+  | 'unisex'
+  | 'pria'
+  | 'wanita'
+  | 'maskulin'
+  | 'feminin'
+  | 'male'
+  | 'female'
+
+export type RecommendationRequestPayload = {
+  occasion: string
+  aroma_preference: string
+  price_min: number | null
+  price_max: number | null
+  intensity_preference: IntensityPreference
+  avoided_tags: string[]
+  blind_buy_comfort: BlindBuyComfort
+  marketed_gender_preference: MarketedGenderPreference
+}
+
+export type BlindBuyCautionLabel =
+  | 'Cenderung Aman'
+  | 'Perlu Pertimbangan'
+  | 'Sebaiknya Coba Sample Dulu'
+  | 'Data Belum Cukup'
+
+export type BlindBuyCaution = {
+  label: BlindBuyCautionLabel
+  reasons: string[]
+}
+
+export type Recommendation = {
+  id: number
+  slug: string
+  name: string
+  image_url: string | null
+  price_min: number | null
+  price_max: number | null
+  brand: Pick<Brand, 'id' | 'name' | 'slug'> | null
+  main_aroma_category: Pick<AromaCategory, 'id' | 'name' | 'slug'> | null
+  match_score: number
+  match_percentage: number
+  matched_reasons: string[]
+  blind_buy_caution: BlindBuyCaution
+  aroma_tags: Array<Pick<AromaTag, 'id' | 'name' | 'slug' | 'is_polarizing'>>
+  occasions: Array<Pick<Occasion, 'id' | 'name' | 'slug'>>
+  data_limitations: string[]
+}
+
+export type RecommendationResponse = {
+  recommendations: Recommendation[]
+}

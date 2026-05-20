@@ -8,6 +8,8 @@ import type {
   Occasion,
   PaginatedApiCollection,
   Perfume,
+  RecommendationRequestPayload,
+  RecommendationResponse,
 } from '../types/api'
 
 const API_BASE_URL = (
@@ -40,6 +42,42 @@ const fetchJson = async <T>(path: string): Promise<T> => {
   return response.json() as Promise<T>
 }
 
+const postJson = async <TResponse, TPayload>(
+  path: string,
+  payload: TPayload,
+): Promise<TResponse> => {
+  const response = await fetch(`${API_BASE_URL}${path}`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+
+  if (!response.ok) {
+    let message = `Permintaan API gagal dengan status ${response.status}.`
+
+    try {
+      const errorBody = (await response.json()) as {
+        message?: string
+        errors?: Record<string, string[]>
+      }
+      const firstValidationMessage = errorBody.errors
+        ? Object.values(errorBody.errors).flat()[0]
+        : null
+
+      message = firstValidationMessage ?? errorBody.message ?? message
+    } catch {
+      // Keep the generic message when the API does not return JSON.
+    }
+
+    throw new Error(message)
+  }
+
+  return response.json() as Promise<TResponse>
+}
+
 export const api = {
   getPerfumes(filters: CatalogFilters) {
     const query = buildQuery(filters)
@@ -62,5 +100,11 @@ export const api = {
   },
   getOccasions() {
     return fetchJson<ApiCollection<Occasion>>('/occasions')
+  },
+  getRecommendations(payload: RecommendationRequestPayload) {
+    return postJson<RecommendationResponse, RecommendationRequestPayload>(
+      '/recommendations',
+      payload,
+    )
   },
 }

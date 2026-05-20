@@ -7,6 +7,7 @@ import type { Note, NotePosition, Perfume } from '../types/api'
 
 type PerfumeDetailPageProps = {
   slug: string
+  returnTo?: string | null
   onNavigate: (to: string) => void
 }
 
@@ -66,7 +67,11 @@ const groupNotes = (notes: Note[] = []) =>
     },
   )
 
-export function PerfumeDetailPage({ slug, onNavigate }: PerfumeDetailPageProps) {
+export function PerfumeDetailPage({
+  slug,
+  returnTo,
+  onNavigate,
+}: PerfumeDetailPageProps) {
   const [perfume, setPerfume] = useState<Perfume | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -108,6 +113,10 @@ export function PerfumeDetailPage({ slug, onNavigate }: PerfumeDetailPageProps) 
   const hasSource =
     perfume?.source.name || perfume?.source.url || perfume?.source.last_verified_at
   const hasVariants = Boolean(perfume?.variants && perfume.variants.length > 0)
+  const backTarget = returnTo ?? '/parfum'
+  const backLabel = returnTo?.startsWith('/quiz')
+    ? 'Kembali ke hasil rekomendasi'
+    : 'Kembali ke katalog'
 
   if (isLoading) {
     return (
@@ -123,8 +132,8 @@ export function PerfumeDetailPage({ slug, onNavigate }: PerfumeDetailPageProps) 
         <ErrorBlock
           title="Detail belum tersedia"
           message={error ?? 'Parfum ini belum bisa ditampilkan.'}
-          actionLabel="Kembali ke katalog"
-          onAction={() => onNavigate('/parfum')}
+          actionLabel={backLabel}
+          onAction={() => onNavigate(backTarget)}
         />
       </main>
     )
@@ -132,8 +141,8 @@ export function PerfumeDetailPage({ slug, onNavigate }: PerfumeDetailPageProps) 
 
   return (
     <main className="page detail-page">
-      <button className="back-link" type="button" onClick={() => onNavigate('/parfum')}>
-        Kembali ke katalog
+      <button className="back-link" type="button" onClick={() => onNavigate(backTarget)}>
+        {backLabel}
       </button>
 
       <section className="detail-hero">

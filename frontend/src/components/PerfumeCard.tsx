@@ -4,18 +4,27 @@ import { TagBadge } from './TagBadge'
 
 type PerfumeCardProps = {
   perfume: Perfume
+  detailReturnTo?: string
   onNavigate: (to: string) => void
 }
 
-export function PerfumeCard({ perfume, onNavigate }: PerfumeCardProps) {
+export function PerfumeCard({
+  perfume,
+  detailReturnTo,
+  onNavigate,
+}: PerfumeCardProps) {
+  const detailPath = detailReturnTo
+    ? `/parfum/${perfume.slug}?returnTo=${encodeURIComponent(detailReturnTo)}`
+    : `/parfum/${perfume.slug}`
+
   return (
     <article className="perfume-card">
       <a
         className="perfume-card__media"
-        href={`/parfum/${perfume.slug}`}
+        href={detailPath}
         onClick={(event) => {
           event.preventDefault()
-          onNavigate(`/parfum/${perfume.slug}`)
+          onNavigate(detailPath)
         }}
         aria-label={`Lihat detail ${perfume.name}`}
       >
@@ -35,10 +44,10 @@ export function PerfumeCard({ perfume, onNavigate }: PerfumeCardProps) {
           <p className="eyebrow">{perfume.brand?.name ?? 'Brand belum tersedia'}</p>
           <h2>
             <a
-              href={`/parfum/${perfume.slug}`}
+              href={detailPath}
               onClick={(event) => {
                 event.preventDefault()
-                onNavigate(`/parfum/${perfume.slug}`)
+                onNavigate(detailPath)
               }}
             >
               {perfume.name}
