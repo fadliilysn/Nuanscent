@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
 import { EmptyBlock } from './components/StateBlock'
+import { BrandDetailPage } from './pages/BrandDetailPage'
+import { BrandListPage } from './pages/BrandListPage'
+import { GuideDetailPage } from './pages/GuideDetailPage'
+import { GuideListPage } from './pages/GuideListPage'
 import { HomePage } from './pages/HomePage'
 import { PerfumeCatalogPage } from './pages/PerfumeCatalogPage'
 import { PerfumeDetailPage } from './pages/PerfumeDetailPage'
@@ -25,6 +29,10 @@ const safeReturnTo = (locationSearch: string) => {
   if (
     returnTo === '/parfum' ||
     returnTo.startsWith('/parfum?') ||
+    returnTo === '/brands' ||
+    returnTo.startsWith('/brands/') ||
+    returnTo === '/merek' ||
+    returnTo.startsWith('/merek/') ||
     returnTo === '/quiz?view=results'
   ) {
     return returnTo
@@ -51,6 +59,10 @@ function App() {
   }, [])
 
   const detailMatch = location.pathname.match(/^\/parfum\/([^/]+)$/)
+  const brandDetailMatch = location.pathname.match(/^\/brands\/([^/]+)$/)
+  const legacyBrandDetailMatch = location.pathname.match(/^\/merek\/([^/]+)$/)
+  const brandDetailSlug = brandDetailMatch?.[1] ?? legacyBrandDetailMatch?.[1]
+  const guideDetailMatch = location.pathname.match(/^\/guides\/([^/]+)$/)
 
   return (
     <div className="app-shell">
@@ -80,6 +92,15 @@ function App() {
             Quiz
           </a>
           <a
+            href="/brands"
+            onClick={(event) => {
+              event.preventDefault()
+              navigate('/brands')
+            }}
+          >
+            Merek
+          </a>
+          <a
             href="/parfum"
             onClick={(event) => {
               event.preventDefault()
@@ -93,10 +114,26 @@ function App() {
 
       {location.pathname === '/' ? (
         <HomePage onNavigate={navigate} />
+      ) : location.pathname === '/guides' ? (
+        <GuideListPage onNavigate={navigate} />
+      ) : guideDetailMatch ? (
+        <GuideDetailPage
+          key={guideDetailMatch[1]}
+          slug={decodeURIComponent(guideDetailMatch[1])}
+          onNavigate={navigate}
+        />
       ) : location.pathname === '/parfum' ? (
         <PerfumeCatalogPage
           key={location.search}
           locationSearch={location.search}
+          onNavigate={navigate}
+        />
+      ) : location.pathname === '/brands' || location.pathname === '/merek' ? (
+        <BrandListPage onNavigate={navigate} />
+      ) : brandDetailSlug ? (
+        <BrandDetailPage
+          key={brandDetailSlug}
+          slug={decodeURIComponent(brandDetailSlug)}
           onNavigate={navigate}
         />
       ) : location.pathname === '/quiz' ? (

@@ -5,6 +5,7 @@ import type {
   AromaTag,
   Brand,
   CatalogFilters,
+  Guide,
   Occasion,
   PaginatedApiCollection,
   Perfume,
@@ -91,6 +92,15 @@ export const api = {
   },
   getBrands() {
     return fetchJson<ApiCollection<Brand>>('/brands')
+  },
+  getBrand(slug: string) {
+    return fetchJson<ApiResource<Brand>>(`/brands/${encodeURIComponent(slug)}`)
+  },
+  getGuides() {
+    return fetchJson<ApiCollection<Guide>>('/guides')
+  },
+  getGuide(slug: string) {
+    return fetchJson<ApiResource<Guide>>(`/guides/${encodeURIComponent(slug)}`)
   },
   getAromaCategories() {
     return fetchJson<ApiCollection<AromaCategory>>('/aroma-categories')

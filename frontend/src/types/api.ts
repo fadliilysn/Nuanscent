@@ -57,6 +57,16 @@ export type Occasion = {
   description: string | null
 }
 
+export type Guide = {
+  id: number
+  title: string
+  slug: string
+  summary: string | null
+  status?: string
+  published_at: string | null
+  body?: string
+}
+
 export type NotePosition = 'top' | 'middle' | 'base' | 'unspecified'
 
 export type Note = {

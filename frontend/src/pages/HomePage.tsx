@@ -1,6 +1,5 @@
 import { useEffect, useState, type MouseEvent } from 'react'
 import { PerfumeCard } from '../components/PerfumeCard'
-import { TagBadge } from '../components/TagBadge'
 import { api } from '../lib/api'
 import type { AromaCategory, Brand, Perfume } from '../types/api'
 
@@ -128,14 +127,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <p>Masuk ke katalog dan filter parfum berdasarkan brand, aroma, dan harga.</p>
             </div>
           </a>
-          <div className="home-choice-card">
+          <a
+            className="home-choice-card"
+            href="/guides"
+            onClick={(event) => preventAndNavigate(event, '/guides', onNavigate)}
+          >
             <span>03</span>
             <div>
               <h3>Mau belajar istilah parfum?</h3>
-              <p>Panduan aroma, notes, dan blind-buy akan disiapkan setelah MVP inti.</p>
+              <p>Baca panduan aroma, notes, dan tips blind-buy untuk pemula.</p>
             </div>
-            <TagBadge tone="neutral">Segera hadir</TagBadge>
-          </div>
+          </a>
         </div>
       </section>
 
@@ -143,8 +145,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <SectionHeader
           eyebrow="Brand lokal"
           title="Mulai dari brand yang sudah ada di katalog."
-          actionLabel="Lihat semua parfum"
-          actionHref="/parfum"
+          actionLabel="Lihat semua merek"
+          actionHref="/brands"
           onNavigate={onNavigate}
         />
         {isLoading ? (
@@ -153,7 +155,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <div className="home-brand-grid">
             {homeData.brands.map((brand) => {
               const perfumeCount = brand.perfumes_count ?? brand.perfumes?.length
-              const brandPath = `/parfum?brand=${encodeURIComponent(brand.slug)}`
+              const brandPath = `/brands/${encodeURIComponent(brand.slug)}`
 
               return (
                 <a

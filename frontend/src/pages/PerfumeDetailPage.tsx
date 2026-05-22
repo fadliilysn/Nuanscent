@@ -116,7 +116,9 @@ export function PerfumeDetailPage({
   const backTarget = returnTo ?? '/parfum'
   const backLabel = returnTo?.startsWith('/quiz')
     ? 'Kembali ke hasil rekomendasi'
-    : 'Kembali ke katalog'
+    : returnTo?.startsWith('/brands') || returnTo?.startsWith('/merek')
+      ? 'Kembali ke halaman merek'
+      : 'Kembali ke katalog'
 
   if (isLoading) {
     return (
