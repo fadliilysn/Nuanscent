@@ -24,7 +24,7 @@ class AromaTagsTable
                     ->label('Slug')
                     ->searchable()
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 IconColumn::make('is_polarizing')
                     ->label('Polarizing')
                     ->boolean()
@@ -43,6 +43,7 @@ class AromaTagsTable
                     ->falseLabel('Tidak polarizing')
                     ->placeholder('Semua tag'),
             ])
+            ->defaultSort('name')
             ->recordActions([
                 EditAction::make()
                     ->label('Ubah'),

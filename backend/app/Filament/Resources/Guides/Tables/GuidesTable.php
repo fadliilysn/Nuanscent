@@ -23,7 +23,7 @@ class GuidesTable
                     ->label('Slug')
                     ->searchable()
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('status')
                     ->label('Status')
                     ->badge()
@@ -56,6 +56,7 @@ class GuidesTable
                         'published' => 'Terbit',
                     ]),
             ])
+            ->defaultSort('published_at', 'desc')
             ->recordActions([
                 EditAction::make()
                     ->label('Ubah'),

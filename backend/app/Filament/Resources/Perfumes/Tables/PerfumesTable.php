@@ -76,6 +76,7 @@ class PerfumesTable
                     ->searchable()
                     ->preload(),
             ])
+            ->defaultSort('name')
             ->recordActions([
                 EditAction::make()
                     ->label('Ubah'),

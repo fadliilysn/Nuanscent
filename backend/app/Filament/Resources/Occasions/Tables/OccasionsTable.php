@@ -22,7 +22,7 @@ class OccasionsTable
                     ->label('Slug')
                     ->searchable()
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('description')
                     ->label('Deskripsi')
                     ->searchable()
@@ -32,6 +32,7 @@ class OccasionsTable
             ->filters([
                 //
             ])
+            ->defaultSort('name')
             ->recordActions([
                 EditAction::make()
                     ->label('Ubah'),

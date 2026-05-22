@@ -23,7 +23,7 @@ class NotesTable
                     ->label('Slug')
                     ->searchable()
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('note_family')
                     ->label('Keluarga note')
                     ->searchable()
@@ -44,6 +44,7 @@ class NotesTable
                         ->pluck('note_family', 'note_family')
                         ->all()),
             ])
+            ->defaultSort('name')
             ->recordActions([
                 EditAction::make()
                     ->label('Ubah'),

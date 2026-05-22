@@ -41,6 +41,7 @@ class BrandsTable
             ->filters([
                 //
             ])
+            ->defaultSort('name')
             ->recordActions([
                 EditAction::make()
                     ->label('Ubah'),

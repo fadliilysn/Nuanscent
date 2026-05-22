@@ -10,13 +10,22 @@ class CreatePerfume extends CreateRecord
 {
     protected static string $resource = PerfumeResource::class;
 
+    private const NOTE_FIELDS_BY_POSITION = [
+        'top' => 'top_note_ids',
+        'middle' => 'middle_note_ids',
+        'base' => 'base_note_ids',
+        'unspecified' => 'unspecified_note_ids',
+    ];
+
     protected array $noteAssignments = [];
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $this->noteAssignments = $this->normalizeNoteAssignments($data['note_assignments'] ?? []);
+        $this->noteAssignments = $this->normalizeGroupedNoteAssignments($data);
 
-        unset($data['note_assignments']);
+        foreach (self::NOTE_FIELDS_BY_POSITION as $field) {
+            unset($data[$field]);
+        }
 
         return $data;
     }
@@ -49,27 +58,21 @@ class CreatePerfume extends CreateRecord
         );
     }
 
-    private function normalizeNoteAssignments(array $assignments): array
+    private function normalizeGroupedNoteAssignments(array $data): array
     {
         $normalized = [];
 
-        foreach ($assignments as $assignment) {
-            if (blank($assignment['note_id'] ?? null)) {
-                continue;
+        foreach (self::NOTE_FIELDS_BY_POSITION as $position => $field) {
+            $noteIds = array_unique(array_filter((array) ($data[$field] ?? [])));
+
+            foreach ($noteIds as $noteId) {
+                $key = $noteId . ':' . $position;
+
+                $normalized[$key] = [
+                    'note_id' => (int) $noteId,
+                    'position' => $position,
+                ];
             }
-
-            $position = $assignment['position'] ?? 'unspecified';
-
-            if (! in_array($position, ['top', 'middle', 'base', 'unspecified'], true)) {
-                $position = 'unspecified';
-            }
-
-            $key = $assignment['note_id'] . ':' . $position;
-
-            $normalized[$key] = [
-                'note_id' => (int) $assignment['note_id'],
-                'position' => $position,
-            ];
         }
 
         return array_values($normalized);
