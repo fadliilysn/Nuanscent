@@ -46,6 +46,53 @@ const queryFromFilters = (filters: CatalogFilterValues, page = '1') => {
   return params.toString()
 }
 
+type PaginationItem = number | 'ellipsis'
+
+const buildPaginationItems = (
+  currentPage: number,
+  lastPage: number,
+): PaginationItem[] => {
+  if (lastPage <= 7) {
+    return Array.from({ length: lastPage }, (_, index) => index + 1)
+  }
+
+  const pages = new Set([1, lastPage, currentPage])
+
+  if (currentPage > 1) {
+    pages.add(currentPage - 1)
+  }
+
+  if (currentPage < lastPage) {
+    pages.add(currentPage + 1)
+  }
+
+  if (currentPage <= 3) {
+    pages.add(2)
+    pages.add(3)
+    pages.add(4)
+  }
+
+  if (currentPage >= lastPage - 2) {
+    pages.add(lastPage - 3)
+    pages.add(lastPage - 2)
+    pages.add(lastPage - 1)
+  }
+
+  const sortedPages = [...pages]
+    .filter((page) => page >= 1 && page <= lastPage)
+    .sort((first, second) => first - second)
+
+  return sortedPages.flatMap((page, index) => {
+    const previousPage = sortedPages[index - 1]
+
+    if (previousPage && page - previousPage > 1) {
+      return ['ellipsis' as const, page]
+    }
+
+    return [page]
+  })
+}
+
 export function PerfumeCatalogPage({
   locationSearch,
   onNavigate,
@@ -137,16 +184,19 @@ export function PerfumeCatalogPage({
   }
 
   const catalogReturnTo = `/parfum${locationSearch}`
+  const paginationItems = catalog
+    ? buildPaginationItems(catalog.meta.current_page, catalog.meta.last_page)
+    : []
 
   return (
-    <main className="page">
+    <main className="page page--catalog">
       <section className="catalog-hero">
         <div>
           <p className="eyebrow">Katalog parfum lokal</p>
-          <h1>Temukan parfum yang lebih mudah dipahami.</h1>
+          <h1>Jelajahi parfum lokal.</h1>
           <p>
-            Jelajahi parfum lokal Indonesia dengan filter aroma, occasion, brand,
-            dan rentang harga. Data hanya menampilkan parfum yang sudah dipublish.
+            Gunakan filter aroma, occasion, brand, dan harga untuk mempersempit
+            pilihan parfum yang sudah dipublish.
           </p>
         </div>
         <div className="catalog-hero__note">
@@ -202,7 +252,32 @@ export function PerfumeCatalogPage({
                 >
                   Sebelumnya
                 </button>
-                <span>
+                <div className="pagination__pages" aria-label="Nomor halaman">
+                  {paginationItems.map((item, index) =>
+                    item === 'ellipsis' ? (
+                      <span
+                        className="pagination__ellipsis"
+                        key={`ellipsis-${index}`}
+                        aria-hidden="true"
+                      >
+                        ...
+                      </span>
+                    ) : (
+                      <button
+                        className={`pagination__page ${item === catalog.meta.current_page ? 'pagination__page--current' : ''}`}
+                        type="button"
+                        key={item}
+                        aria-current={
+                          item === catalog.meta.current_page ? 'page' : undefined
+                        }
+                        onClick={() => goToPage(item)}
+                      >
+                        {item}
+                      </button>
+                    ),
+                  )}
+                </div>
+                <span className="pagination__status">
                   Halaman {catalog.meta.current_page} dari {catalog.meta.last_page}
                 </span>
                 <button

@@ -59,7 +59,14 @@ export function RecommendationCard({
       <div className="recommendation-card__body">
         <div className="recommendation-card__header">
           <div>
-            <p className="eyebrow">Rekomendasi #{rank}</p>
+            <div className="recommendation-card__rank-line">
+              <p className="eyebrow">Rekomendasi #{rank}</p>
+              {isTopPick ? (
+                <span className="recommendation-card__top-badge">
+                  Rekomendasi terbaik
+                </span>
+              ) : null}
+            </div>
             <h2>{recommendation.name}</h2>
             <p className="recommendation-card__brand">
               {recommendation.brand?.name ?? 'Brand belum tersedia'}
@@ -79,6 +86,14 @@ export function RecommendationCard({
           ) : null}
           <span>{formatPriceRange(recommendation.price_min, recommendation.price_max)}</span>
         </div>
+
+        <button
+          className="button button--primary recommendation-card__cta"
+          type="button"
+          onClick={() => onNavigate(detailPath)}
+        >
+          Lihat detail parfum
+        </button>
 
         <details className="recommendation-card__details">
           <summary>Lihat alasan rekomendasi</summary>
@@ -106,14 +121,6 @@ export function RecommendationCard({
             ) : null}
           </div>
         </details>
-
-        <button
-          className="button button--primary recommendation-card__cta"
-          type="button"
-          onClick={() => onNavigate(detailPath)}
-        >
-          Lihat detail parfum
-        </button>
       </div>
     </article>
   )

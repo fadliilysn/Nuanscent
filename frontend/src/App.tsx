@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { EmptyBlock } from './components/StateBlock'
+import { HomePage } from './pages/HomePage'
 import { PerfumeCatalogPage } from './pages/PerfumeCatalogPage'
 import { PerfumeDetailPage } from './pages/PerfumeDetailPage'
 import { RecommendationQuizPage } from './pages/RecommendationQuizPage'
@@ -56,10 +57,10 @@ function App() {
       <header className="site-header">
         <a
           className="brand-mark"
-          href="/parfum"
+          href="/"
           onClick={(event) => {
             event.preventDefault()
-            navigate('/parfum')
+            navigate('/')
           }}
         >
           <span className="brand-mark__stamp">N</span>
@@ -90,7 +91,9 @@ function App() {
         </nav>
       </header>
 
-      {location.pathname === '/' || location.pathname === '/parfum' ? (
+      {location.pathname === '/' ? (
+        <HomePage onNavigate={navigate} />
+      ) : location.pathname === '/parfum' ? (
         <PerfumeCatalogPage
           key={location.search}
           locationSearch={location.search}

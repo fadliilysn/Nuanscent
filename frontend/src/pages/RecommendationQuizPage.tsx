@@ -205,6 +205,7 @@ const choiceClass = (isSelected: boolean) =>
 type StoredQuizResults = {
   quizState: QuizState
   recommendations: Recommendation[]
+  viewMode?: 'results' | 'editing'
 }
 
 const readStoredResults = (): StoredQuizResults | null => {
@@ -225,15 +226,28 @@ const writeStoredResults = (value: StoredQuizResults) => {
   }
 }
 
+const clearStoredResults = () => {
+  try {
+    window.sessionStorage.removeItem(quizStorageKey)
+  } catch {
+    // The quiz can still reset in memory when sessionStorage is unavailable.
+  }
+}
+
 export function RecommendationQuizPage({
   locationSearch,
   onNavigate,
 }: RecommendationQuizPageProps) {
   const shouldRestoreResults =
     new URLSearchParams(locationSearch).get('view') === 'results'
-  const restoredResults = shouldRestoreResults ? readStoredResults() : null
+  const storedResults = readStoredResults()
+  const restoredResults =
+    storedResults &&
+    (shouldRestoreResults || storedResults.viewMode === 'results')
+      ? storedResults
+      : null
   const [quizState, setQuizState] = useState<QuizState>(
-    restoredResults?.quizState ?? initialQuizState,
+    restoredResults?.quizState ?? storedResults?.quizState ?? initialQuizState,
   )
   const [currentStep, setCurrentStep] = useState(0)
   const [occasions, setOccasions] = useState<Occasion[]>([])
@@ -357,6 +371,7 @@ export function RecommendationQuizPage({
         writeStoredResults({
           quizState,
           recommendations: response.recommendations,
+          viewMode: 'results',
         })
         window.scrollTo({ top: 0, behavior: 'smooth' })
       })
@@ -375,6 +390,22 @@ export function RecommendationQuizPage({
     setHasSubmitted(false)
     setCurrentStep(0)
     setError(null)
+    writeStoredResults({
+      quizState,
+      recommendations,
+      viewMode: 'editing',
+    })
+    onNavigate('/quiz')
+  }
+
+  const resetQuiz = () => {
+    clearStoredResults()
+    setQuizState(initialQuizState)
+    setRecommendations([])
+    setHasSubmitted(false)
+    setCurrentStep(0)
+    setError(null)
+    onNavigate('/quiz')
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -415,9 +446,14 @@ export function RecommendationQuizPage({
               dan kenyamanan blind buy. Ini panduan, bukan jaminan pasti cocok.
             </p>
           </div>
-          <button className="button button--secondary" type="button" onClick={editPreferences}>
-            Ubah Preferensi
-          </button>
+          <div className="quiz-result-actions">
+            <button className="button button--secondary" type="button" onClick={editPreferences}>
+              Ubah Preferensi
+            </button>
+            <button className="button button--ghost" type="button" onClick={resetQuiz}>
+              Mulai ulang quiz
+            </button>
+          </div>
         </section>
 
         {recommendations.length > 0 ? (
