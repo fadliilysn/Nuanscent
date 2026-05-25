@@ -10,6 +10,7 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -28,20 +29,20 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->brandName('Nuanscent Admin')
-            ->brandLogo(new HtmlString('
-                <div style="display:flex;align-items:center;gap:.65rem;">
-                    <span style="display:inline-flex;height:2.25rem;width:2.25rem;align-items:center;justify-content:center;border-radius:.7rem;background:#f2b84b;color:#1f1a14;font-weight:800;">N</span>
-                    <span style="display:flex;flex-direction:column;line-height:1.05;">
-                        <span style="font-size:1.05rem;font-weight:800;color:#1f1a14;">Nuanscent</span>
-                        <span style="font-size:.72rem;font-weight:600;color:#786452;">Admin Panel</span>
-                    </span>
-                </div>
-            '))
-            ->brandLogoHeight('2.5rem')
+            ->brandLogo($this->brandLogo())
+            ->darkModeBrandLogo($this->brandLogo())
+            ->brandLogoHeight('2.75rem')
+            ->favicon(asset('images/logo-nuanscent.png'))
             ->colors([
                 'primary' => Color::Amber,
                 'gray' => Color::Stone,
             ])
+            ->renderHook(
+                PanelsRenderHook::HEAD_END,
+                fn (): HtmlString => new HtmlString(
+                    '<link rel="stylesheet" href="' . asset('css/nuanscent-admin.css') . '">',
+                ),
+            )
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
@@ -62,5 +63,20 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
+    }
+
+    private function brandLogo(): HtmlString
+    {
+        $logoUrl = asset('images/logo-nuanscent.png');
+
+        return new HtmlString(<<<HTML
+            <div class="nuanscent-admin-logo">
+                <img class="nuanscent-admin-logo__image" src="{$logoUrl}" alt="Nuanscent" loading="eager">
+                <span class="nuanscent-admin-logo__text">
+                    <span class="nuanscent-admin-logo__name">Nuanscent</span>
+                    <span class="nuanscent-admin-logo__label">Admin Panel</span>
+                </span>
+            </div>
+        HTML);
     }
 }

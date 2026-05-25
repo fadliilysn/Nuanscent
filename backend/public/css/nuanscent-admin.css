@@ -1,0 +1,289 @@
+:root {
+    --nu-admin-bg: #f8f3ea;
+    --nu-admin-surface: #fffdf8;
+    --nu-admin-surface-soft: #fff8eb;
+    --nu-admin-line: rgba(70, 55, 38, 0.18);
+    --nu-admin-line-strong: rgba(70, 55, 38, 0.28);
+    --nu-admin-text: #1f1a14;
+    --nu-admin-muted: #6f6257;
+    --nu-admin-amber: #d97706;
+    --nu-admin-amber-soft: #fff1c2;
+    --nu-admin-shadow: 0 12px 34px rgba(70, 55, 38, 0.08);
+}
+
+html {
+    background: var(--nu-admin-bg);
+}
+
+body.fi-body,
+.fi-main-ctn,
+.fi-layout {
+    background: var(--nu-admin-bg);
+}
+
+.fi-simple-layout {
+    background:
+        radial-gradient(circle at 18% 8%, rgba(217, 119, 6, 0.1), transparent 18rem),
+        var(--nu-admin-bg);
+}
+
+.fi-simple-main {
+    background: transparent;
+}
+
+.fi-sidebar {
+    background: var(--nu-admin-surface);
+    border-right: 1px solid var(--nu-admin-line-strong);
+    box-shadow: 8px 0 24px rgba(70, 55, 38, 0.04);
+}
+
+.fi-sidebar-header {
+    background: var(--nu-admin-surface);
+    border-bottom: 1px solid var(--nu-admin-line);
+}
+
+.fi-topbar {
+    background: rgba(255, 253, 248, 0.94);
+    border-bottom: 1px solid var(--nu-admin-line);
+    backdrop-filter: blur(14px);
+}
+
+.fi-logo,
+.fi-sidebar-header,
+.fi-topbar {
+    letter-spacing: 0;
+}
+
+.fi-sidebar-group-label {
+    color: var(--nu-admin-muted);
+    font-weight: 750;
+}
+
+.fi-sidebar-item.fi-active > .fi-sidebar-item-btn,
+.fi-sidebar-item.fi-sidebar-item-has-active-child-items > .fi-sidebar-item-btn,
+.fi-topbar-item.fi-active > .fi-topbar-item-btn {
+    background: var(--nu-admin-amber-soft);
+    color: #6b3d04;
+    box-shadow: inset 3px 0 0 var(--nu-admin-amber);
+}
+
+.fi-sidebar-item.fi-active .fi-sidebar-item-icon,
+.fi-sidebar-item.fi-sidebar-item-has-active-child-items .fi-sidebar-item-icon,
+.fi-topbar-item.fi-active .fi-topbar-item-icon {
+    color: var(--nu-admin-amber);
+}
+
+.fi-section,
+.fi-wi-widget .fi-section,
+.fi-simple-main > .fi-section {
+    background: var(--nu-admin-surface);
+    border-color: var(--nu-admin-line);
+    box-shadow: var(--nu-admin-shadow);
+}
+
+.fi-btn-color-primary {
+    box-shadow: 0 7px 18px rgba(217, 119, 6, 0.16);
+}
+
+.nuanscent-admin-logo {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.72rem;
+    min-width: 0;
+}
+
+.nuanscent-admin-logo__image {
+    background: #ffffff;
+    border: 1px solid rgba(70, 55, 38, 0.16);
+    border-radius: 0.8rem;
+    box-shadow: 0 5px 14px rgba(70, 55, 38, 0.12);
+    display: block;
+    height: 2.55rem;
+    object-fit: contain;
+    padding: 0.18rem;
+    width: 2.55rem;
+}
+
+.nuanscent-admin-logo__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.08;
+    min-width: 0;
+}
+
+.nuanscent-admin-logo__name {
+    color: var(--nu-admin-text);
+    font-size: 1.08rem;
+    font-weight: 850;
+}
+
+.nuanscent-admin-logo__label {
+    color: var(--nu-admin-muted);
+    font-size: 0.72rem;
+    font-weight: 750;
+}
+
+.nuanscent-dashboard-card {
+    background: var(--nu-admin-surface);
+    border: 1px solid var(--nu-admin-line);
+    border-radius: 1rem;
+    box-shadow: var(--nu-admin-shadow);
+    overflow: hidden;
+    padding: 1.25rem;
+}
+
+.nuanscent-dashboard-card__header {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.nuanscent-dashboard-card__eyebrow {
+    color: #b45309;
+    font-size: 0.78rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.4rem;
+    text-transform: uppercase;
+}
+
+.nuanscent-dashboard-card h2 {
+    color: var(--nu-admin-text);
+    font-size: 1.45rem;
+    font-weight: 850;
+    line-height: 1.15;
+    margin: 0;
+}
+
+.nuanscent-dashboard-card p {
+    color: var(--nu-admin-muted);
+    font-size: 0.95rem;
+    line-height: 1.58;
+    margin: 0.55rem 0 0;
+}
+
+.nuanscent-dashboard-card__badge {
+    align-items: center;
+    background: var(--nu-admin-surface-soft);
+    border: 1px solid var(--nu-admin-line);
+    border-radius: 999px;
+    color: #7c4a05;
+    display: inline-flex;
+    font-size: 0.8rem;
+    font-weight: 850;
+    padding: 0.45rem 0.75rem;
+}
+
+.nuanscent-dashboard-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.dark {
+    --nu-admin-bg: #0f1115;
+    --nu-admin-surface: #181b21;
+    --nu-admin-surface-soft: #20242c;
+    --nu-admin-line: rgba(232, 219, 201, 0.13);
+    --nu-admin-line-strong: rgba(232, 219, 201, 0.2);
+    --nu-admin-text: #f8f3ea;
+    --nu-admin-muted: #c9bdae;
+    --nu-admin-amber: #f3b23c;
+    --nu-admin-amber-soft: rgba(243, 178, 60, 0.14);
+    --nu-admin-shadow: 0 16px 38px rgba(0, 0, 0, 0.26);
+}
+
+.dark body.fi-body,
+.dark .fi-main-ctn,
+.dark .fi-layout {
+    background: var(--nu-admin-bg);
+}
+
+.dark .fi-simple-layout {
+    background:
+        radial-gradient(circle at 18% 8%, rgba(243, 178, 60, 0.1), transparent 18rem),
+        var(--nu-admin-bg);
+}
+
+.dark .fi-sidebar {
+    background: #15181e;
+    border-right-color: var(--nu-admin-line-strong);
+    box-shadow: 8px 0 28px rgba(0, 0, 0, 0.24);
+}
+
+.dark .fi-sidebar-header {
+    background: #15181e;
+    border-bottom-color: var(--nu-admin-line-strong);
+}
+
+.dark .fi-topbar {
+    background: rgba(18, 20, 25, 0.94);
+    border-bottom-color: var(--nu-admin-line-strong);
+}
+
+.dark .fi-sidebar-group-label {
+    color: #a99f91;
+}
+
+.dark .fi-sidebar-item.fi-active > .fi-sidebar-item-btn,
+.dark .fi-sidebar-item.fi-sidebar-item-has-active-child-items > .fi-sidebar-item-btn,
+.dark .fi-topbar-item.fi-active > .fi-topbar-item-btn {
+    background: var(--nu-admin-amber-soft);
+    color: #ffe8b5;
+    box-shadow: inset 3px 0 0 var(--nu-admin-amber);
+}
+
+.dark .fi-sidebar-item.fi-active .fi-sidebar-item-icon,
+.dark .fi-sidebar-item.fi-sidebar-item-has-active-child-items .fi-sidebar-item-icon,
+.dark .fi-topbar-item.fi-active .fi-topbar-item-icon {
+    color: var(--nu-admin-amber);
+}
+
+.dark .fi-section,
+.dark .fi-wi-widget .fi-section,
+.dark .fi-simple-main > .fi-section {
+    background: var(--nu-admin-surface);
+    border-color: var(--nu-admin-line);
+    box-shadow: var(--nu-admin-shadow);
+}
+
+.dark .nuanscent-admin-logo__image {
+    background: #f8f3ea;
+    border-color: rgba(243, 178, 60, 0.26);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.28);
+}
+
+.dark .nuanscent-admin-logo__name {
+    color: var(--nu-admin-text);
+}
+
+.dark .nuanscent-admin-logo__label {
+    color: var(--nu-admin-muted);
+}
+
+.dark .nuanscent-dashboard-card {
+    background: var(--nu-admin-surface);
+    border-color: var(--nu-admin-line);
+    box-shadow: var(--nu-admin-shadow);
+}
+
+.dark .nuanscent-dashboard-card__eyebrow {
+    color: var(--nu-admin-amber);
+}
+
+.dark .nuanscent-dashboard-card h2 {
+    color: var(--nu-admin-text);
+}
+
+.dark .nuanscent-dashboard-card p {
+    color: var(--nu-admin-muted);
+}
+
+.dark .nuanscent-dashboard-card__badge {
+    background: var(--nu-admin-surface-soft);
+    border-color: var(--nu-admin-line-strong);
+    color: #ffe2a2;
+}
