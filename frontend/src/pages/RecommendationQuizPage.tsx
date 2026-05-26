@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { QuizProgress } from '../components/QuizProgress'
-import { RecommendationCard } from '../components/RecommendationCard'
+import {
+  RecommendationCard,
+  RecommendationReasonModal,
+} from '../components/RecommendationCard'
 import { EmptyBlock, ErrorBlock } from '../components/StateBlock'
 import { api } from '../lib/api'
 import type {
@@ -256,6 +259,7 @@ export function RecommendationQuizPage({
   const [recommendations, setRecommendations] = useState<Recommendation[]>(
     restoredResults?.recommendations ?? [],
   )
+  const [reasonModalSlug, setReasonModalSlug] = useState<string | null>(null)
   const [hasSubmitted, setHasSubmitted] = useState(Boolean(restoredResults))
   const [isLoadingReferences, setIsLoadingReferences] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -298,6 +302,10 @@ export function RecommendationQuizPage({
     () => budgetChoices.find((choice) => choice.value === quizState.budget),
     [quizState.budget],
   )
+  const modalRecommendation =
+    recommendations.find(
+      (recommendation) => recommendation.slug === reasonModalSlug,
+    ) ?? null
 
   const validateStep = (step: number): string | null => {
     if (step === 0 && !quizState.occasion) {
@@ -367,6 +375,7 @@ export function RecommendationQuizPage({
       .getRecommendations(buildPayload(quizState))
       .then((response) => {
         setRecommendations(response.recommendations)
+        setReasonModalSlug(null)
         setHasSubmitted(true)
         writeStoredResults({
           quizState,
@@ -402,6 +411,7 @@ export function RecommendationQuizPage({
     clearStoredResults()
     setQuizState(initialQuizState)
     setRecommendations([])
+    setReasonModalSlug(null)
     setHasSubmitted(false)
     setCurrentStep(0)
     setError(null)
@@ -457,17 +467,30 @@ export function RecommendationQuizPage({
         </section>
 
         {recommendations.length > 0 ? (
-          <section className="recommendation-list" aria-label="Daftar rekomendasi parfum">
-            {recommendations.map((recommendation, index) => (
-              <RecommendationCard
-                key={recommendation.slug}
-                recommendation={recommendation}
-                rank={index + 1}
+          <>
+            <section className="recommendation-list" aria-label="Daftar rekomendasi parfum">
+              {recommendations.map((recommendation, index) => (
+                <RecommendationCard
+                  key={recommendation.slug}
+                  recommendation={recommendation}
+                  rank={index + 1}
+                  detailReturnTo="/quiz?view=results"
+                  isSelected={modalRecommendation?.slug === recommendation.slug}
+                  onSelect={() => setReasonModalSlug(recommendation.slug)}
+                  onNavigate={onNavigate}
+                />
+              ))}
+            </section>
+
+            {modalRecommendation ? (
+              <RecommendationReasonModal
+                recommendation={modalRecommendation}
                 detailReturnTo="/quiz?view=results"
+                onClose={() => setReasonModalSlug(null)}
                 onNavigate={onNavigate}
               />
-            ))}
-          </section>
+            ) : null}
+          </>
         ) : (
           <EmptyBlock
             title="Belum ada rekomendasi yang cukup cocok"

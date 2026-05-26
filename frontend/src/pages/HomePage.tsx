@@ -160,7 +160,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
         ) : homeData.brands.length > 0 ? (
           <div className="home-brand-grid">
             {homeData.brands.map((brand) => {
-              const perfumeCount = brand.perfumes_count ?? brand.perfumes?.length
               const brandPath = `/brands/${encodeURIComponent(brand.slug)}`
 
               return (

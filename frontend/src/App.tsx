@@ -22,6 +22,31 @@ const navItems = [
   { label: 'Panduan', href: '/guides' },
 ]
 
+const isNavItemActive = (pathname: string, href: string) => {
+  if (href === '/') {
+    return pathname === '/'
+  }
+
+  if (href === '/parfum') {
+    return pathname === '/parfum' || pathname.startsWith('/parfum/')
+  }
+
+  if (href === '/brands') {
+    return (
+      pathname === '/brands' ||
+      pathname.startsWith('/brands/') ||
+      pathname === '/merek' ||
+      pathname.startsWith('/merek/')
+    )
+  }
+
+  if (href === '/guides') {
+    return pathname === '/guides' || pathname.startsWith('/guides/')
+  }
+
+  return pathname === href
+}
+
 const readLocation = (): AppLocation => ({
   pathname: window.location.pathname,
   search: window.location.search,
@@ -124,6 +149,12 @@ function App() {
             <a
               href={item.href}
               key={item.href}
+              className={
+                isNavItemActive(location.pathname, item.href) ? 'site-nav__link--active' : ''
+              }
+              aria-current={
+                isNavItemActive(location.pathname, item.href) ? 'page' : undefined
+              }
               onClick={(event) => {
                 event.preventDefault()
                 navigate(item.href)

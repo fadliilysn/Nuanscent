@@ -34,6 +34,32 @@ const formatPublishedDate = (publishedAt: string | null) => {
   }).format(date)
 }
 
+const getGuideTopic = (guide: Pick<Guide, 'slug' | 'title'>) => {
+  const text = `${guide.slug} ${guide.title}`.toLowerCase()
+
+  if (text.includes('blind')) {
+    return { label: 'Blind buy', marker: 'Checklist', tone: 'caution' }
+  }
+
+  if (text.includes('notes') || text.includes('pyramid') || text.includes('piramida')) {
+    return { label: 'Notes', marker: 'Layer', tone: 'layer' }
+  }
+
+  if (text.includes('aroma') || text.includes('family') || text.includes('keluarga')) {
+    return { label: 'Aroma', marker: 'Palette', tone: 'aroma' }
+  }
+
+  if (text.includes('konsentrasi') || text.includes('edp') || text.includes('edt')) {
+    return { label: 'Konsentrasi', marker: 'Bottle', tone: 'intensity' }
+  }
+
+  if (text.includes('occasion') || text.includes('pakai') || text.includes('acara')) {
+    return { label: 'Occasion', marker: 'Moment', tone: 'occasion' }
+  }
+
+  return { label: 'Pemula', marker: 'Start', tone: 'beginner' }
+}
+
 export function GuideListPage({ onNavigate }: GuideListPageProps) {
   const [guides, setGuides] = useState<Guide[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -82,27 +108,36 @@ export function GuideListPage({ onNavigate }: GuideListPageProps) {
         <ErrorBlock title="Panduan belum tersedia" message={error} />
       ) : guides.length > 0 ? (
         <section className="guide-list" aria-label="Daftar panduan parfum">
-          {guides.map((guide) => {
+          {guides.map((guide, index) => {
             const guidePath = `/guides/${guide.slug}`
             const publishedDate = formatPublishedDate(guide.published_at)
+            const topic = getGuideTopic(guide)
 
             return (
               <article className="guide-list-item" key={guide.slug}>
-                <div>
-                  {publishedDate ? <p className="guide-meta">{publishedDate}</p> : null}
+                <div className={`guide-list-item__visual guide-topic--${topic.tone}`}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <strong>{topic.marker}</strong>
+                </div>
+                <div className="guide-list-item__content">
+                  <div className="guide-list-item__meta">
+                    <span>{topic.label}</span>
+                    <span>Cocok untuk pemula</span>
+                  </div>
                   <h2>{guide.title}</h2>
                   <p>
                     {guide.summary ??
                       'Ringkasan panduan belum tersedia. Buka artikel untuk membaca isi lengkapnya.'}
                   </p>
+                  {publishedDate ? <p className="guide-meta">{publishedDate}</p> : null}
+                  <a
+                    className="button button--primary"
+                    href={guidePath}
+                    onClick={(event) => preventAndNavigate(event, guidePath, onNavigate)}
+                  >
+                    Baca panduan
+                  </a>
                 </div>
-                <a
-                  className="button button--primary"
-                  href={guidePath}
-                  onClick={(event) => preventAndNavigate(event, guidePath, onNavigate)}
-                >
-                  Baca panduan
-                </a>
               </article>
             )
           })}

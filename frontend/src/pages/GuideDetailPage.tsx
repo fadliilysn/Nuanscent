@@ -32,6 +32,32 @@ const splitBodyIntoParagraphs = (body?: string) =>
     .map((paragraph) => paragraph.trim())
     .filter(Boolean)
 
+const getGuideTopic = (guide: Pick<Guide, 'slug' | 'title'>) => {
+  const text = `${guide.slug} ${guide.title}`.toLowerCase()
+
+  if (text.includes('blind')) {
+    return { label: 'Blind buy', marker: 'Checklist', tone: 'caution' }
+  }
+
+  if (text.includes('notes') || text.includes('pyramid') || text.includes('piramida')) {
+    return { label: 'Notes', marker: 'Layer', tone: 'layer' }
+  }
+
+  if (text.includes('aroma') || text.includes('family') || text.includes('keluarga')) {
+    return { label: 'Aroma', marker: 'Palette', tone: 'aroma' }
+  }
+
+  if (text.includes('konsentrasi') || text.includes('edp') || text.includes('edt')) {
+    return { label: 'Konsentrasi', marker: 'Bottle', tone: 'intensity' }
+  }
+
+  if (text.includes('occasion') || text.includes('pakai') || text.includes('acara')) {
+    return { label: 'Occasion', marker: 'Moment', tone: 'occasion' }
+  }
+
+  return { label: 'Pemula', marker: 'Start', tone: 'beginner' }
+}
+
 export function GuideDetailPage({ slug, onNavigate }: GuideDetailPageProps) {
   const [guide, setGuide] = useState<Guide | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -65,6 +91,9 @@ export function GuideDetailPage({ slug, onNavigate }: GuideDetailPageProps) {
 
   const publishedDate = formatPublishedDate(guide?.published_at ?? null)
   const bodyParagraphs = useMemo(() => splitBodyIntoParagraphs(guide?.body), [guide?.body])
+  const quickSummary =
+    guide?.summary ?? bodyParagraphs[0] ?? 'Isi ringkas panduan belum tersedia.'
+  const topic = guide ? getGuideTopic(guide) : null
 
   if (isLoading) {
     return (
@@ -95,20 +124,76 @@ export function GuideDetailPage({ slug, onNavigate }: GuideDetailPageProps) {
 
       <article className="guide-article">
         <header className="guide-article__header">
-          <p className="eyebrow">Artikel parfum</p>
-          <h1>{guide.title}</h1>
-          {guide.summary ? <p className="guide-article__summary">{guide.summary}</p> : null}
-          {publishedDate ? <p className="guide-meta">Dipublikasikan {publishedDate}</p> : null}
+          <div className={`guide-detail-topic guide-topic--${topic?.tone ?? 'beginner'}`}>
+            <span>{topic?.marker ?? 'Start'}</span>
+            <strong>{topic?.label ?? 'Panduan'}</strong>
+          </div>
+          <div>
+            <p className="eyebrow">Artikel parfum</p>
+            <h1>{guide.title}</h1>
+            {guide.summary ? <p className="guide-article__summary">{guide.summary}</p> : null}
+            {publishedDate ? <p className="guide-meta">Dipublikasikan {publishedDate}</p> : null}
+          </div>
         </header>
+
+        <section className="guide-quick-summary">
+          <p className="eyebrow">Ringkasan cepat</p>
+          <p>{quickSummary}</p>
+        </section>
 
         <div className="guide-article__body">
           {bodyParagraphs.length > 0 ? (
-            bodyParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)
+            bodyParagraphs.map((paragraph, index) => (
+              <FragmentedParagraph
+                key={`guide-paragraph-${index}`}
+                paragraph={paragraph}
+                index={index}
+              />
+            ))
           ) : (
             <p>Isi panduan belum tersedia.</p>
           )}
         </div>
+
+        <section className="guide-next-step">
+          <div>
+            <p className="eyebrow">Baca panduan lainnya</p>
+            <h2>Lanjut eksplorasi dengan topik lain.</h2>
+            <p>
+              Kembali ke daftar panduan untuk membaca istilah dan tips parfum lain
+              dengan urutan yang lebih santai.
+            </p>
+          </div>
+          <button
+            className="button button--secondary"
+            type="button"
+            onClick={() => onNavigate('/guides')}
+          >
+            Kembali ke panduan
+          </button>
+        </section>
       </article>
     </main>
   )
+}
+
+function FragmentedParagraph({
+  paragraph,
+  index,
+}: {
+  paragraph: string
+  index: number
+}) {
+  const shouldHighlight = index > 0 && (index + 1) % 4 === 0
+
+  if (shouldHighlight) {
+    return (
+      <aside className="guide-article-callout">
+        <span>Catatan</span>
+        <p>{paragraph}</p>
+      </aside>
+    )
+  }
+
+  return <p>{paragraph}</p>
 }
