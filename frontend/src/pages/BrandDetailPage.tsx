@@ -71,9 +71,9 @@ export function BrandDetailPage({ slug, onNavigate }: BrandDetailPageProps) {
     return (
       <main className="page page--compact">
         <ErrorBlock
-          title="Merek belum tersedia"
+          title="Brand belum tersedia"
           message={error ?? 'Brand ini belum bisa ditampilkan.'}
-          actionLabel="Kembali ke daftar merek"
+          actionLabel="Kembali ke semua brands"
           onAction={() => onNavigate('/brands')}
         />
       </main>
@@ -86,14 +86,17 @@ export function BrandDetailPage({ slug, onNavigate }: BrandDetailPageProps) {
   return (
     <main className="page brand-page">
       <button className="back-link" type="button" onClick={() => onNavigate('/brands')}>
-        Kembali ke daftar merek
+        Kembali ke semua brands
       </button>
 
       <section className="brand-detail-hero">
-        <div>
-          <p className="eyebrow">Profil merek</p>
-          <h1>{brand.name}</h1>
-          <p>{brand.description ?? 'Deskripsi brand belum tersedia dari sumber data.'}</p>
+        <div className="brand-detail-profile">
+          <BrandLogo brand={brand} />
+          <div>
+            <p className="eyebrow">Profil brand</p>
+            <h1>{brand.name}</h1>
+            <p>{brand.description ?? 'Deskripsi brand belum tersedia dari sumber data.'}</p>
+          </div>
         </div>
         <aside className="brand-detail-summary">
           <strong>{formatPerfumeCount(brand, perfumes)}</strong>
@@ -112,14 +115,14 @@ export function BrandDetailPage({ slug, onNavigate }: BrandDetailPageProps) {
           href={catalogPath}
           onClick={(event) => preventAndNavigate(event, catalogPath, onNavigate)}
         >
-          Lihat di katalog lengkap
+          Lihat parfum brand ini di katalog
         </a>
         <a
           className="button button--ghost"
           href="/brands"
           onClick={(event) => preventAndNavigate(event, '/brands', onNavigate)}
         >
-          Semua merek
+          Kembali ke semua brands
         </a>
       </div>
 
@@ -152,5 +155,17 @@ export function BrandDetailPage({ slug, onNavigate }: BrandDetailPageProps) {
         )}
       </section>
     </main>
+  )
+}
+
+function BrandLogo({ brand }: { brand: Brand }) {
+  return (
+    <div className="brand-logo brand-logo--detail" aria-hidden="true">
+      {brand.logo_url ? (
+        <img src={brand.logo_url} alt="" loading="lazy" />
+      ) : (
+        <span>{brand.name.slice(0, 1).toUpperCase()}</span>
+      )}
+    </div>
   )
 }

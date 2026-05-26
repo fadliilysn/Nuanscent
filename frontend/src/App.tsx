@@ -14,6 +14,14 @@ type AppLocation = {
   search: string
 }
 
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Quiz', href: '/quiz' },
+  { label: 'Katalog', href: '/parfum' },
+  { label: 'Brands', href: '/brands' },
+  { label: 'Panduan', href: '/guides' },
+]
+
 const readLocation = (): AppLocation => ({
   pathname: window.location.pathname,
   search: window.location.search,
@@ -43,15 +51,20 @@ const safeReturnTo = (locationSearch: string) => {
 
 function App() {
   const [location, setLocation] = useState<AppLocation>(readLocation)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const navigate = (to: string) => {
     window.history.pushState({}, '', to)
     setLocation(readLocation())
+    setIsMobileMenuOpen(false)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   useEffect(() => {
-    const handlePopState = () => setLocation(readLocation())
+    const handlePopState = () => {
+      setLocation(readLocation())
+      setIsMobileMenuOpen(false)
+    }
 
     window.addEventListener('popstate', handlePopState)
 
@@ -67,48 +80,58 @@ function App() {
   return (
     <div className="app-shell">
       <header className="site-header">
-        <a
-          className="brand-mark"
-          href="/"
-          onClick={(event) => {
-            event.preventDefault()
-            navigate('/')
-          }}
+        <div className="site-header__bar">
+          <a
+            className="brand-mark"
+            href="/"
+            onClick={(event) => {
+              event.preventDefault()
+              navigate('/')
+            }}
+          >
+            <span className="brand-mark__logo-wrap">
+              <img
+                className="brand-mark__logo"
+                src="/images/logo-nuanscent.png"
+                alt=""
+                aria-hidden="true"
+              />
+            </span>
+            <span>
+              <strong>Nuanscent</strong>
+              <small>Katalog parfum lokal</small>
+            </span>
+          </a>
+          <button
+            className="menu-toggle"
+            type="button"
+            aria-label={isMobileMenuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="site-nav"
+            onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <nav
+          className={`site-nav ${isMobileMenuOpen ? 'site-nav--open' : ''}`}
+          id="site-nav"
+          aria-label="Navigasi utama"
         >
-          <span className="brand-mark__stamp">N</span>
-          <span>
-            <strong>Nuanscent</strong>
-            <small>Katalog parfum lokal</small>
-          </span>
-        </a>
-        <nav className="site-nav" aria-label="Navigasi utama">
-          <a
-            href="/quiz"
-            onClick={(event) => {
-              event.preventDefault()
-              navigate('/quiz')
-            }}
-          >
-            Quiz
-          </a>
-          <a
-            href="/brands"
-            onClick={(event) => {
-              event.preventDefault()
-              navigate('/brands')
-            }}
-          >
-            Merek
-          </a>
-          <a
-            href="/parfum"
-            onClick={(event) => {
-              event.preventDefault()
-              navigate('/parfum')
-            }}
-          >
-            Katalog
-          </a>
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              key={item.href}
+              onClick={(event) => {
+                event.preventDefault()
+                navigate(item.href)
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
       </header>
 

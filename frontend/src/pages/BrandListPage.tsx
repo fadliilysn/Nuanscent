@@ -56,7 +56,7 @@ export function BrandListPage({ onNavigate }: BrandListPageProps) {
   return (
     <main className="page brand-page">
       <section className="brand-hero">
-        <p className="eyebrow">Merek parfum lokal</p>
+        <p className="eyebrow">Brands parfum lokal</p>
         <h1>Kenali brand sebelum memilih parfumnya.</h1>
         <p>
           Jelajahi brand lokal yang sudah masuk katalog Nuanscent, lalu masuk ke
@@ -76,6 +76,7 @@ export function BrandListPage({ onNavigate }: BrandListPageProps) {
 
             return (
               <article className="brand-list-item" key={brand.slug}>
+                <BrandLogo brand={brand} />
                 <div className="brand-list-item__main">
                   <div>
                     <h2>{brand.name}</h2>
@@ -92,14 +93,14 @@ export function BrandListPage({ onNavigate }: BrandListPageProps) {
                     href={detailPath}
                     onClick={(event) => preventAndNavigate(event, detailPath, onNavigate)}
                   >
-                    Lihat merek
+                    Lihat brand
                   </a>
                   <a
                     className="button button--ghost"
                     href={catalogPath}
                     onClick={(event) => preventAndNavigate(event, catalogPath, onNavigate)}
                   >
-                    Buka di katalog
+                    Lihat parfum brand ini
                   </a>
                 </div>
               </article>
@@ -108,10 +109,22 @@ export function BrandListPage({ onNavigate }: BrandListPageProps) {
         </section>
       ) : (
         <EmptyBlock
-          title="Belum ada merek"
+          title="Belum ada brand"
           message="Belum ada brand published yang bisa ditampilkan saat ini."
         />
       )}
     </main>
+  )
+}
+
+function BrandLogo({ brand }: { brand: Brand }) {
+  return (
+    <div className="brand-logo brand-logo--list" aria-hidden="true">
+      {brand.logo_url ? (
+        <img src={brand.logo_url} alt="" loading="lazy" />
+      ) : (
+        <span>{brand.name.slice(0, 1).toUpperCase()}</span>
+      )}
+    </div>
   )
 }

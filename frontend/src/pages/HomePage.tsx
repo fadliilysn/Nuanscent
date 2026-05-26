@@ -74,7 +74,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
     <main className="page home-page">
       <section className="home-hero">
         <div className="home-hero__content">
-          <p className="eyebrow">Nuanscent</p>
+          <div className="home-hero__brand">
+            <img src="/images/logo-nuanscent.png" alt="" aria-hidden="true" />
+            <div>
+              <strong>Nuanscent</strong>
+              <span>Katalog parfum lokal</span>
+            </div>
+          </div>
           <h1>Temukan parfum lokal tanpa harus menebak-nebak.</h1>
           <p>
             Nuanscent membantu kamu memilih parfum lokal Indonesia lewat quiz
@@ -164,12 +170,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   key={brand.slug}
                   onClick={(event) => preventAndNavigate(event, brandPath, onNavigate)}
                 >
-                  <h3>{brand.name}</h3>
-                  <strong>
-                    {typeof perfumeCount === 'number'
-                      ? `${perfumeCount} parfum`
-                      : 'Lihat koleksi'}
-                  </strong>
+                  <BrandLogo brand={brand} />
+                  <div>
+                    <h3>{brand.name}</h3>
+                  </div>
                 </a>
               )
             })}
@@ -273,4 +277,16 @@ function SectionHeader({
 
 function InlineState({ message }: { message: string }) {
   return <p className="home-inline-state">{message}</p>
+}
+
+function BrandLogo({ brand }: { brand: Brand }) {
+  return (
+    <span className="brand-logo" aria-hidden="true">
+      {brand.logo_url ? (
+        <img src={brand.logo_url} alt="" loading="lazy" />
+      ) : (
+        <span>{brand.name.slice(0, 1).toUpperCase()}</span>
+      )}
+    </span>
+  )
 }
