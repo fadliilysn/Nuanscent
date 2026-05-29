@@ -32,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogo($this->brandLogo())
             ->darkModeBrandLogo($this->brandLogo())
             ->brandLogoHeight('2.75rem')
-            ->favicon(asset('images/logo-nuanscent.png'))
+            ->favicon(asset('images/logo-nuanscent-admin.png'))
             ->colors([
                 'primary' => Color::Amber,
                 'gray' => Color::Stone,
@@ -67,7 +67,7 @@ class AdminPanelProvider extends PanelProvider
 
     private function brandLogo(): HtmlString
     {
-        $logoUrl = asset('images/logo-nuanscent.png');
+        $logoUrl = asset('images/logo-nuanscent-admin.png');
 
         return new HtmlString(<<<HTML
             <div class="nuanscent-admin-logo">

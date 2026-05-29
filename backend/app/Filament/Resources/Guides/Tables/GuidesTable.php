@@ -56,6 +56,8 @@ class GuidesTable
                         'published' => 'Terbit',
                     ]),
             ])
+            ->paginated([10, 25, 50])
+            ->defaultPaginationPageOption(10)
             ->defaultSort('published_at', 'desc')
             ->recordActions([
                 EditAction::make()

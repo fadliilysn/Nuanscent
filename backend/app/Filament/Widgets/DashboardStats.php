@@ -14,7 +14,7 @@ class DashboardStats extends StatsOverviewWidget
 {
     protected ?string $heading = 'Ringkasan Data';
 
-    protected ?string $description = 'Pantau isi utama admin Nuanscent secara cepat.';
+    protected ?string $description = 'Gambaran cepat isi katalog, referensi, dan konten.';
 
     protected int|array|null $columns = [
         'default' => 1,
@@ -26,32 +26,32 @@ class DashboardStats extends StatsOverviewWidget
     {
         return [
             Stat::make('Total merek', Brand::query()->count())
-                ->description('Merek lokal yang sudah masuk admin')
+                ->description('Brand lokal terdata')
                 ->descriptionColor('gray')
                 ->icon(Heroicon::OutlinedBuildingStorefront)
                 ->color('primary'),
             Stat::make('Total parfum', Perfume::query()->count())
-                ->description('Seluruh parfum yang tercatat')
+                ->description('Semua parfum di admin')
                 ->descriptionColor('gray')
                 ->icon(Heroicon::OutlinedSparkles)
-                ->color('info'),
+                ->color('primary'),
             Stat::make('Parfum draft', Perfume::query()->where('data_status', 'draft')->count())
-                ->description('Masih perlu dilengkapi atau ditinjau')
+                ->description('Perlu dilengkapi')
                 ->descriptionColor('gray')
                 ->icon(Heroicon::OutlinedDocumentText)
                 ->color('gray'),
             Stat::make('Parfum published', Perfume::query()->where('data_status', 'published')->count())
-                ->description('Siap digunakan untuk katalog publik')
+                ->description('Tampil di publik')
                 ->descriptionColor('gray')
                 ->icon(Heroicon::OutlinedCheckCircle)
                 ->color('success'),
             Stat::make('Total note parfum', Note::query()->count())
-                ->description('Referensi note untuk input parfum')
+                ->description('Referensi notes')
                 ->descriptionColor('gray')
                 ->icon(Heroicon::OutlinedTag)
                 ->color('warning'),
             Stat::make('Total panduan', Guide::query()->count())
-                ->description('Konten edukasi dan glossary')
+                ->description('Artikel edukasi')
                 ->descriptionColor('gray')
                 ->icon(Heroicon::OutlinedBookOpen)
                 ->color('primary'),

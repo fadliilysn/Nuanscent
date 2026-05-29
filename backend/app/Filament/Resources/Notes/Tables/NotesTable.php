@@ -44,6 +44,8 @@ class NotesTable
                         ->pluck('note_family', 'note_family')
                         ->all()),
             ])
+            ->paginated([10, 25, 50])
+            ->defaultPaginationPageOption(10)
             ->defaultSort('name')
             ->recordActions([
                 EditAction::make()

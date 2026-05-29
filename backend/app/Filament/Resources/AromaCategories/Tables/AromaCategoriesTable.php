@@ -32,6 +32,8 @@ class AromaCategoriesTable
             ->filters([
                 //
             ])
+            ->paginated([10, 25, 50])
+            ->defaultPaginationPageOption(10)
             ->defaultSort('name')
             ->recordActions([
                 EditAction::make()

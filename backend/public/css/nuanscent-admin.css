@@ -183,6 +183,104 @@ body.fi-body,
     margin-top: 1.25rem;
 }
 
+.fi-wi-stats-overview {
+    --nu-stat-surface: rgba(255, 253, 248, 0.98);
+    --nu-stat-surface-soft: rgba(255, 248, 235, 0.94);
+    --nu-stat-icon-bg: rgba(217, 119, 6, 0.12);
+    --nu-stat-icon-line: rgba(217, 119, 6, 0.2);
+}
+
+.fi-wi-stats-overview .fi-section {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.fi-wi-stats-overview .fi-section-content {
+    padding-top: 1rem;
+}
+
+.fi-wi-stats-overview .fi-wi-stats-overview-stat {
+    background:
+        linear-gradient(180deg, var(--nu-stat-surface), var(--nu-stat-surface-soft));
+    border: 1px solid var(--nu-admin-line);
+    border-radius: 1rem;
+    box-shadow: 0 12px 28px rgba(70, 55, 38, 0.08);
+    min-height: 8.25rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.fi-wi-stats-overview .fi-wi-stats-overview-stat::before {
+    background: linear-gradient(90deg, rgba(217, 119, 6, 0.48), rgba(217, 119, 6, 0.08));
+    content: "";
+    height: 3px;
+    inset: 0 0 auto;
+    position: absolute;
+}
+
+.fi-wi-stats-overview .fi-wi-stats-overview-stat-content {
+    align-content: space-between;
+    display: grid;
+    gap: 0.8rem;
+    height: 100%;
+    padding: 1.05rem 1.1rem 1rem;
+}
+
+.fi-wi-stats-overview .fi-wi-stats-overview-stat-label-ctn {
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.fi-wi-stats-overview .fi-wi-stats-overview-stat-label-ctn svg {
+    background: var(--nu-stat-icon-bg);
+    border: 1px solid var(--nu-stat-icon-line);
+    border-radius: 0.75rem;
+    color: var(--nu-admin-amber);
+    flex: 0 0 auto;
+    height: 2.15rem;
+    padding: 0.42rem;
+    width: 2.15rem;
+}
+
+.fi-wi-stats-overview .fi-wi-stats-overview-stat-label {
+    color: var(--nu-admin-muted);
+    font-size: 0.78rem;
+    font-weight: 850;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.fi-wi-stats-overview .fi-wi-stats-overview-stat-value {
+    color: var(--nu-admin-text);
+    font-size: clamp(1.85rem, 4vw, 2.35rem);
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.fi-wi-stats-overview .fi-wi-stats-overview-stat-description {
+    color: var(--nu-admin-muted) !important;
+    font-size: 0.84rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+@media (max-width: 640px) {
+    .fi-wi-stats-overview .fi-section-content {
+        padding-top: 0.75rem;
+    }
+
+    .fi-wi-stats-overview .fi-wi-stats-overview-stat {
+        min-height: 7.5rem;
+    }
+
+    .fi-wi-stats-overview .fi-wi-stats-overview-stat-content {
+        padding: 0.95rem;
+    }
+}
+
 .dark {
     --nu-admin-bg: #0f1115;
     --nu-admin-surface: #181b21;
@@ -286,4 +384,41 @@ body.fi-body,
     background: var(--nu-admin-surface-soft);
     border-color: var(--nu-admin-line-strong);
     color: #ffe2a2;
+}
+
+.dark .fi-wi-stats-overview {
+    --nu-stat-surface: rgba(28, 31, 38, 0.98);
+    --nu-stat-surface-soft: rgba(23, 26, 32, 0.98);
+    --nu-stat-icon-bg: rgba(243, 178, 60, 0.13);
+    --nu-stat-icon-line: rgba(243, 178, 60, 0.24);
+}
+
+.dark .fi-wi-stats-overview .fi-section {
+    background: transparent;
+    box-shadow: none;
+}
+
+.dark .fi-wi-stats-overview .fi-wi-stats-overview-stat {
+    border-color: var(--nu-admin-line-strong);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+
+.dark .fi-wi-stats-overview .fi-wi-stats-overview-stat::before {
+    background: linear-gradient(90deg, rgba(243, 178, 60, 0.62), rgba(243, 178, 60, 0.12));
+}
+
+.dark .fi-wi-stats-overview .fi-wi-stats-overview-stat-label-ctn svg {
+    color: var(--nu-admin-amber);
+}
+
+.dark .fi-wi-stats-overview .fi-wi-stats-overview-stat-label {
+    color: #d8cdbc;
+}
+
+.dark .fi-wi-stats-overview .fi-wi-stats-overview-stat-value {
+    color: #fff8ea;
+}
+
+.dark .fi-wi-stats-overview .fi-wi-stats-overview-stat-description {
+    color: #c9bdae !important;
 }
