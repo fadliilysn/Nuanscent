@@ -243,18 +243,23 @@ export function PerfumeDetailPage({
             <p className="eyebrow">Pilihan ukuran</p>
             <div className="variant-list">
               {perfume.variants?.map((variant, index) => {
+                const volumeLabel =
+                  variant.volume_ml !== null ? formatVolume(variant.volume_ml) : null
                 const title =
                   variant.label ??
-                  (variant.volume_ml !== null
-                    ? formatVolume(variant.volume_ml)
-                    : `Varian ${index + 1}`)
+                  volumeLabel ??
+                  `Varian ${index + 1}`
+                const shouldShowVolume =
+                  variant.label !== null &&
+                  volumeLabel !== null &&
+                  variant.label.trim().toLowerCase() !== volumeLabel.toLowerCase()
 
                 return (
                   <div className="variant-option" key={variant.id}>
                     <div>
                       <h2>{title}</h2>
-                      {variant.label && variant.volume_ml !== null ? (
-                        <span>{formatVolume(variant.volume_ml)}</span>
+                      {shouldShowVolume ? (
+                        <span>{volumeLabel}</span>
                       ) : null}
                     </div>
                     <strong className={variant.price === null ? 'muted-text' : undefined}>
