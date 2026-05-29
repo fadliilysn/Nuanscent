@@ -162,7 +162,7 @@ export function PerfumeCatalogPage({
       })
       .catch(() => {
         if (isMounted) {
-          setError('Data filter belum bisa dimuat. Pastikan API Laravel aktif.')
+          setError('Pilihan filter belum bisa dimuat. Coba muat ulang halaman.')
         }
       })
 
@@ -200,7 +200,7 @@ export function PerfumeCatalogPage({
       })
       .catch(() => {
         if (isMounted && !cachedResponse) {
-          setError('Katalog parfum belum bisa dimuat. Cek koneksi ke API.')
+          setError('Katalog parfum belum bisa dimuat. Coba muat ulang halaman atau kembali beberapa saat lagi.')
         }
       })
       .finally(() => {
@@ -276,8 +276,8 @@ export function PerfumeCatalogPage({
           <p className="eyebrow">Katalog parfum lokal</p>
           <h1>Jelajahi parfum lokal.</h1>
           <p>
-            Gunakan filter aroma, occasion, brand, dan harga untuk mempersempit
-            pilihan parfum yang sudah dipublish.
+            Gunakan filter aroma, kebutuhan, brand, dan harga untuk mempersempit
+            pilihan parfum yang bisa kamu jelajahi.
           </p>
         </div>
         <div className="catalog-hero__note">
@@ -373,9 +373,9 @@ export function PerfumeCatalogPage({
             </>
           ) : (
             <EmptyBlock
-              title="Belum ada parfum yang cocok"
-              message="Coba ubah filter, atau pastikan ada data parfum dengan status published di backend."
-              actionLabel="Reset filter"
+              title="Belum ketemu parfum yang sesuai"
+              message="Coba longgarkan filter atau gunakan kata kunci yang lebih umum."
+              actionLabel="Atur ulang filter"
               onAction={resetFilters}
             />
           )}

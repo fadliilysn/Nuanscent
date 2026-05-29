@@ -9,8 +9,8 @@ export function LoadingBlock() {
   return (
     <section className="state-block" aria-live="polite">
       <span className="state-block__marker"></span>
-      <h2>Sedang memuat katalog</h2>
-      <p>Nuanscent sedang mengambil data parfum dari API.</p>
+      <h2>Sedang memuat pilihan parfum</h2>
+      <p>Kami sedang menyiapkan pilihan yang paling pas untuk kamu lihat.</p>
     </section>
   )
 }

@@ -41,7 +41,7 @@ export function BrandListPage({ onNavigate }: BrandListPageProps) {
       })
       .catch(() => {
         if (isMounted && !hadCachedBrands) {
-          setError('Daftar merek belum bisa dimuat. Pastikan API Laravel aktif.')
+          setError('Daftar brand belum bisa dimuat. Coba muat ulang halaman.')
         }
       })
       .finally(() => {
@@ -84,7 +84,7 @@ export function BrandListPage({ onNavigate }: BrandListPageProps) {
                     <h2>{brand.name}</h2>
                     <p>
                       {brand.description ??
-                        'Deskripsi brand belum tersedia, tetapi koleksi parfumnya bisa dilihat di katalog.'}
+                        'Deskripsi brand belum tersedia, tapi koleksi parfumnya tetap bisa kamu lihat di katalog.'}
                     </p>
                   </div>
                   <span>{formatPerfumeCount(brand)}</span>
@@ -112,7 +112,7 @@ export function BrandListPage({ onNavigate }: BrandListPageProps) {
       ) : (
         <EmptyBlock
           title="Belum ada brand"
-          message="Belum ada brand published yang bisa ditampilkan saat ini."
+          message="Brand belum bisa ditampilkan saat ini. Coba kembali beberapa saat lagi."
         />
       )}
     </main>

@@ -20,6 +20,14 @@ const cautionToneClass = (label: BlindBuyCautionLabel) =>
     'Data Belum Cukup': 'caution-badge--limited',
   })[label]
 
+const cautionDisplayLabel = (label: BlindBuyCautionLabel) =>
+  ({
+    'Cenderung Aman': 'Cenderung aman',
+    'Perlu Pertimbangan': 'Perlu pertimbangan',
+    'Sebaiknya Coba Sample Dulu': 'Sebaiknya coba sample dulu',
+    'Data Belum Cukup': 'Informasi masih terbatas',
+  })[label]
+
 function ReasonList({ items }: { items: string[] }) {
   return (
     <ul className="reason-list">
@@ -31,7 +39,11 @@ function ReasonList({ items }: { items: string[] }) {
 }
 
 function CautionBadge({ label }: { label: BlindBuyCautionLabel }) {
-  return <span className={`caution-badge ${cautionToneClass(label)}`}>{label}</span>
+  return (
+    <span className={`caution-badge ${cautionToneClass(label)}`}>
+      {cautionDisplayLabel(label)}
+    </span>
+  )
 }
 
 export function RecommendationCard({
@@ -71,7 +83,7 @@ export function RecommendationCard({
               <p className="eyebrow">Rekomendasi #{rank}</p>
               {isTopPick ? (
                 <span className="recommendation-card__top-badge">
-                  Rekomendasi terbaik
+                  Paling mendekati
                 </span>
               ) : null}
             </div>
@@ -197,7 +209,7 @@ export function RecommendationReasonModal({
 
           <section className="recommendation-card__section recommendation-card__section--caution">
             <div className="recommendation-card__section-title">
-              <h3>Panduan blind buy</h3>
+              <h3>Pertimbangan blind buy</h3>
               <CautionBadge label={recommendation.blind_buy_caution.label} />
             </div>
             <ReasonList items={recommendation.blind_buy_caution.reasons} />
@@ -205,7 +217,7 @@ export function RecommendationReasonModal({
 
           {recommendation.data_limitations.length > 0 ? (
             <section className="recommendation-card__section recommendation-card__section--limited">
-              <h3>Catatan data</h3>
+              <h3>Catatan tambahan</h3>
               <ReasonList items={recommendation.data_limitations} />
             </section>
           ) : null}

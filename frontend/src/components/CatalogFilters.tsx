@@ -49,7 +49,7 @@ export function CatalogFilters({
             <h2>Persempit pilihan</h2>
           </div>
           <button className="button button--ghost" type="button" onClick={onReset}>
-            Reset
+            Atur ulang
           </button>
         </div>
 
@@ -109,12 +109,12 @@ export function CatalogFilters({
         </label>
 
         <label className="field">
-          <span>Occasion</span>
+          <span>Cocok untuk</span>
           <select
             value={filters.occasion ?? ''}
             onChange={(event) => updateFilter('occasion', event.target.value)}
           >
-            <option value="">Semua occasion</option>
+            <option value="">Semua kebutuhan</option>
             {occasions.map((occasion) => (
               <option key={occasion.slug} value={occasion.slug}>
                 {occasion.name}
@@ -150,7 +150,7 @@ export function CatalogFilters({
         </label>
 
         <div className="filter-panel__footer">
-          <p>Filter diterapkan otomatis saat pilihan berubah.</p>
+          <p>Filter otomatis diperbarui saat pilihan berubah.</p>
         </div>
       </form>
     </details>

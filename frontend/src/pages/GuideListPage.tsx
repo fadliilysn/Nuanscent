@@ -54,7 +54,7 @@ const getGuideTopic = (guide: Pick<Guide, 'slug' | 'title'>) => {
   }
 
   if (text.includes('occasion') || text.includes('pakai') || text.includes('acara')) {
-    return { label: 'Occasion', marker: 'Moment', tone: 'occasion' }
+    return { label: 'Kebutuhan', marker: 'Moment', tone: 'occasion' }
   }
 
   return { label: 'Pemula', marker: 'Start', tone: 'beginner' }
@@ -79,7 +79,7 @@ export function GuideListPage({ onNavigate }: GuideListPageProps) {
       })
       .catch(() => {
         if (isMounted && !hadCachedGuides) {
-          setError('Panduan belum bisa dimuat. Pastikan API Laravel aktif.')
+          setError('Panduan belum bisa dimuat. Coba muat ulang halaman.')
         }
       })
       .finally(() => {
@@ -147,7 +147,7 @@ export function GuideListPage({ onNavigate }: GuideListPageProps) {
       ) : (
         <EmptyBlock
           title="Belum ada panduan"
-          message="Belum ada panduan published yang bisa ditampilkan saat ini."
+          message="Panduan belum bisa ditampilkan saat ini. Coba kembali beberapa saat lagi."
         />
       )}
     </main>

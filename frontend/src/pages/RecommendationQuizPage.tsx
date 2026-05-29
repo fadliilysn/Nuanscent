@@ -108,7 +108,7 @@ const intensityChoices: Array<Choice<IntensityPreference>> = [
   {
     value: 'no_preference',
     label: 'Tidak masalah',
-    helper: 'Biarkan sistem menilai dari data lain.',
+    helper: 'Nuanscent akan memakai jawaban lain untuk mencari kandidat.',
   },
   {
     value: 'soft',
@@ -306,7 +306,7 @@ export function RecommendationQuizPage({
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(
     shouldRestoreResults && !restoredResults
-      ? 'Hasil rekomendasi sebelumnya belum tersedia di sesi ini. Silakan isi quiz lagi.'
+      ? 'Hasil rekomendasi sebelumnya belum tersimpan di sesi ini. Silakan isi quiz lagi.'
       : null,
   )
 
@@ -325,7 +325,7 @@ export function RecommendationQuizPage({
       })
       .catch(() => {
         if (isMounted) {
-          setError('Data pilihan quiz belum bisa dimuat. Pastikan API Laravel aktif.')
+          setError('Pilihan quiz belum bisa dimuat. Coba muat ulang halaman.')
         }
       })
       .finally(() => {
@@ -489,8 +489,8 @@ export function RecommendationQuizPage({
       <main className="page page--compact">
         <section className="state-block" aria-live="polite">
           <span className="state-block__marker"></span>
-          <h2>Sedang menyiapkan quiz</h2>
-          <p>Nuanscent sedang mengambil pilihan aroma, occasion, dan tag dari API.</p>
+          <h2>Menyiapkan quiz parfum</h2>
+          <p>Kami sedang menyiapkan pilihan aroma dan kebutuhan parfum untukmu.</p>
         </section>
       </main>
     )
@@ -517,13 +517,13 @@ export function RecommendationQuizPage({
             <p className="eyebrow">Hasil rekomendasi</p>
             <h1>Parfum yang paling mendekati preferensimu.</h1>
             <p>
-              Urutan ini dihitung dari kecocokan aroma, occasion, budget, intensitas,
-              dan kenyamanan blind buy. Ini panduan, bukan jaminan pasti cocok.
+              Urutan ini dihitung dari kecocokan aroma, kebutuhan, budget, intensitas,
+              dan kenyamanan blind buy. Gunakan sebagai pertimbangan, bukan jaminan pasti cocok.
             </p>
           </div>
           <div className="quiz-result-actions">
             <button className="button button--secondary" type="button" onClick={editPreferences}>
-              Ubah Preferensi
+              Ubah preferensi
             </button>
             <button className="button button--ghost" type="button" onClick={resetQuiz}>
               Mulai ulang quiz
@@ -560,7 +560,7 @@ export function RecommendationQuizPage({
           <EmptyBlock
             title="Belum ada rekomendasi yang cukup cocok"
             message="Coba longgarkan budget, pilih aroma yang lebih umum, atau kurangi aroma yang ingin dihindari."
-            actionLabel="Ulangi Quiz"
+            actionLabel="Ulangi quiz"
             onAction={editPreferences}
           />
         )}
@@ -592,7 +592,7 @@ export function RecommendationQuizPage({
         {currentStep === 0 ? (
           <QuizStep
             title="Parfum ini paling sering dipakai untuk situasi apa?"
-            description="Occasion membantu sistem menilai apakah karakter parfum cocok untuk ruang kerja, harian, date, atau suasana yang lebih formal."
+            description="Kebutuhan pemakaian membantu Nuanscent menilai apakah karakter parfum cocok untuk kerja, harian, date, atau suasana yang lebih formal."
           >
             <div className="quiz-choice-grid">
               {occasions.map((occasion) => (
@@ -661,7 +661,7 @@ export function RecommendationQuizPage({
         {currentStep === 3 ? (
           <QuizStep
             title="Seberapa kuat aromanya yang kamu mau?"
-            description="Kalau belum yakin, pilih tidak ada preferensi. Sistem tidak akan memaksa skor intensitas saat datanya belum tersedia."
+            description="Kalau belum yakin, pilih tidak ada preferensi. Nuanscent akan tetap memakai jawaban lain untuk mencari kandidat."
           >
             <div className="quiz-choice-grid">
               {intensityChoices.map((choice) => (
@@ -725,7 +725,7 @@ export function RecommendationQuizPage({
                   onClick={() => toggleAvoidedTag(tag.slug)}
                 >
                   <strong>{tag.name}</strong>
-                  <span>{tag.description ?? 'Hindari jika karakter ini biasanya kurang nyaman buatmu.'}</span>
+                  <span>{tag.description ?? 'Pilih jika karakter ini biasanya kurang nyaman buatmu.'}</span>
                 </button>
               ))}
             </div>
@@ -779,7 +779,7 @@ export function RecommendationQuizPage({
               disabled={isSubmitting}
               onClick={submitQuiz}
             >
-              {isSubmitting ? 'Mencari rekomendasi...' : 'Lihat Rekomendasi'}
+              {isSubmitting ? 'Mencari rekomendasi...' : 'Lihat rekomendasi'}
             </button>
           )}
         </div>

@@ -52,7 +52,7 @@ const getGuideTopic = (guide: Pick<Guide, 'slug' | 'title'>) => {
   }
 
   if (text.includes('occasion') || text.includes('pakai') || text.includes('acara')) {
-    return { label: 'Occasion', marker: 'Moment', tone: 'occasion' }
+    return { label: 'Kebutuhan', marker: 'Moment', tone: 'occasion' }
   }
 
   return { label: 'Pemula', marker: 'Start', tone: 'beginner' }
@@ -93,7 +93,7 @@ export function GuideDetailPage({ slug, onNavigate }: GuideDetailPageProps) {
       })
       .catch(() => {
         if (isMounted && !cachedResponse) {
-          setError('Panduan ini belum tersedia atau belum dipublikasikan.')
+          setError('Panduan ini belum bisa ditampilkan saat ini.')
         }
       })
       .finally(() => {
@@ -150,7 +150,7 @@ export function GuideDetailPage({ slug, onNavigate }: GuideDetailPageProps) {
             <p className="eyebrow">Artikel parfum</p>
             <h1>{guide.title}</h1>
             {guide.summary ? <p className="guide-article__summary">{guide.summary}</p> : null}
-            {publishedDate ? <p className="guide-meta">Dipublikasikan {publishedDate}</p> : null}
+            {publishedDate ? <p className="guide-meta">Terbit {publishedDate}</p> : null}
           </div>
         </header>
 

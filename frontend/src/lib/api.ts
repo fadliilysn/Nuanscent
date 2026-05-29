@@ -89,7 +89,7 @@ const fetchJson = async <T>(
     },
   }).then((response) => {
     if (!response.ok) {
-      throw new Error(`Permintaan API gagal dengan status ${response.status}.`)
+      throw new Error('Permintaan belum berhasil. Coba lagi sebentar.')
     }
 
     return response.json() as Promise<T>
@@ -133,7 +133,7 @@ const postJson = async <TResponse, TPayload>(
   })
 
   if (!response.ok) {
-    let message = `Permintaan API gagal dengan status ${response.status}.`
+    let message = 'Permintaan belum berhasil. Coba lagi sebentar.'
 
     try {
       const errorBody = (await response.json()) as {
@@ -146,7 +146,7 @@ const postJson = async <TResponse, TPayload>(
 
       message = firstValidationMessage ?? errorBody.message ?? message
     } catch {
-      // Keep the generic message when the API does not return JSON.
+      // Keep the generic message when the response does not return JSON.
     }
 
     throw new Error(message)

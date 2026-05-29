@@ -40,7 +40,7 @@ const noteSections: NoteSection[] = [
 const unspecifiedNoteSection: NoteSection = {
   key: 'unspecified',
   label: 'Notes lainnya',
-  helper: 'Notes tambahan yang belum memiliki posisi pyramid jelas.',
+  helper: 'Notes tambahan yang belum punya posisi khusus di susunan aroma.',
 }
 
 const aromaTagToneBySlug: Record<string, string> = {
@@ -137,7 +137,7 @@ export function PerfumeDetailPage({
       })
       .catch(() => {
         if (isMounted && !cachedResponse) {
-          setError('Detail parfum tidak ditemukan atau belum dipublish.')
+          setError('Detail parfum tidak ditemukan atau belum bisa ditampilkan.')
         }
       })
       .finally(() => {
@@ -164,7 +164,7 @@ export function PerfumeDetailPage({
   const backLabel = returnTo?.startsWith('/quiz')
     ? 'Kembali ke hasil rekomendasi'
     : returnTo?.startsWith('/brands') || returnTo?.startsWith('/brands')
-      ? 'Kembali ke halaman brands'
+      ? 'Kembali ke brand'
       : 'Kembali ke katalog'
 
   if (isLoading) {
@@ -233,7 +233,7 @@ export function PerfumeDetailPage({
           <p className="eyebrow">Deskripsi resmi</p>
           <p>
             {perfume.official_description ??
-              'Deskripsi resmi belum tersedia dari sumber data.'}
+              'Deskripsi resmi belum tersedia.'}
           </p>
         </article>
 
@@ -310,7 +310,7 @@ export function PerfumeDetailPage({
         </article>
 
         <article className="info-panel">
-          <p className="eyebrow">Occasion</p>
+          <p className="eyebrow">Cocok untuk</p>
           <div className="badge-list">
             {perfume.occasions && perfume.occasions.length > 0 ? (
               perfume.occasions.map((occasion) => (
@@ -319,7 +319,7 @@ export function PerfumeDetailPage({
                 </TagBadge>
               ))
             ) : (
-              <span className="muted-text">Occasion belum tersedia.</span>
+              <span className="muted-text">Kegunaan belum tersedia.</span>
             )}
           </div>
         </article>
@@ -350,7 +350,7 @@ export function PerfumeDetailPage({
                           </span>
                         ))
                       ) : (
-                        <span className="note-chip note-chip--empty">Belum ada data.</span>
+                        <span className="note-chip note-chip--empty">Belum tersedia.</span>
                       )}
                     </div>
                   </div>
@@ -383,7 +383,7 @@ export function PerfumeDetailPage({
 
         {hasSource ? (
           <article className="info-panel info-panel--source">
-            <p className="eyebrow">Sumber data</p>
+            <p className="eyebrow">Sumber informasi</p>
             <p>
               {perfume.source.url ? (
                 <a href={perfume.source.url} target="_blank" rel="noreferrer">
@@ -402,8 +402,8 @@ export function PerfumeDetailPage({
 
       {!perfume ? (
         <EmptyBlock
-          title="Data kosong"
-          message="Parfum ini belum memiliki data publik yang bisa ditampilkan."
+          title="Detail belum lengkap"
+          message="Detail parfum ini belum bisa ditampilkan saat ini."
         />
       ) : null}
     </main>

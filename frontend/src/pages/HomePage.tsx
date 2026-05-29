@@ -118,14 +118,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
               href="/quiz"
               onClick={(event) => preventAndNavigate(event, '/quiz', onNavigate)}
             >
-              Mulai Quiz
+              Mulai quiz
             </a>
             <a
               className="button button--secondary"
               href="/parfum"
               onClick={(event) => preventAndNavigate(event, '/parfum', onNavigate)}
             >
-              Jelajahi Katalog
+              Jelajahi katalog
             </a>
           </div>
         </div>
@@ -204,7 +204,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             })}
           </div>
         ) : (
-          <InlineState message="Brand belum tersedia atau API sedang tidak bisa diakses." />
+          <InlineState message="Brand belum bisa ditampilkan saat ini. Coba lagi sebentar." />
         )}
       </section>
 
@@ -233,7 +233,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             })}
           </div>
         ) : (
-          <InlineState message="Kategori aroma belum tersedia atau API sedang tidak bisa diakses." />
+          <InlineState message="Kategori aroma belum bisa ditampilkan saat ini. Coba lagi sebentar." />
         )}
       </section>
 
@@ -246,7 +246,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           onNavigate={onNavigate}
         />
         {hasLoadError ? (
-          <InlineState message="Sebagian data homepage belum bisa dimuat. Katalog tetap bisa dibuka lewat tombol di atas." />
+          <InlineState message="Sebagian isi halaman belum bisa dimuat. Kamu tetap bisa membuka katalog lewat tombol di atas." />
         ) : null}
         {isLoading ? (
           <InlineState message="Sedang memuat preview parfum." />

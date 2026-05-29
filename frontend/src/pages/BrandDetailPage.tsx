@@ -66,7 +66,7 @@ export function BrandDetailPage({ slug, onNavigate }: BrandDetailPageProps) {
       })
       .catch(() => {
         if (isMounted && !cachedResponse) {
-          setError('Detail brand belum bisa dimuat atau belum tersedia.')
+          setError('Detail brand belum bisa dimuat. Coba kembali beberapa saat lagi.')
         }
       })
       .finally(() => {
@@ -116,7 +116,7 @@ export function BrandDetailPage({ slug, onNavigate }: BrandDetailPageProps) {
           <div>
             <p className="eyebrow">Profil brand</p>
             <h1>{brand.name}</h1>
-            <p>{brand.description ?? 'Deskripsi brand belum tersedia dari sumber data.'}</p>
+            <p>{brand.description ?? 'Deskripsi brand belum tersedia.'}</p>
           </div>
         </div>
         <aside className="brand-detail-summary">
@@ -168,8 +168,8 @@ export function BrandDetailPage({ slug, onNavigate }: BrandDetailPageProps) {
           </div>
         ) : (
           <EmptyBlock
-            title="Belum ada parfum published"
-            message="Brand ini belum memiliki parfum published di katalog publik."
+            title="Belum ada parfum dari brand ini"
+            message="Koleksi parfum brand ini belum bisa ditampilkan saat ini."
             actionLabel="Buka katalog"
             onAction={() => onNavigate('/parfum')}
           />
