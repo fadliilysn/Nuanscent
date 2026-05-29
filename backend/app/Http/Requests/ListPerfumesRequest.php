@@ -16,7 +16,8 @@ class ListPerfumesRequest extends FormRequest
      */
     public function rules(): array
     {
-        $priceMaxRules = ['nullable', 'integer', 'min:0'];
+        $priceRules = ['nullable', 'integer', 'min:0', 'max:100000000'];
+        $priceMaxRules = $priceRules;
 
         if ($this->filled('price_min')) {
             $priceMaxRules[] = 'gte:price_min';
@@ -28,8 +29,9 @@ class ListPerfumesRequest extends FormRequest
             'aroma_category' => ['nullable', 'string', 'max:120'],
             'aroma_tag' => ['nullable', 'string', 'max:120'],
             'occasion' => ['nullable', 'string', 'max:120'],
-            'price_min' => ['nullable', 'integer', 'min:0'],
+            'price_min' => $priceRules,
             'price_max' => $priceMaxRules,
+            'page' => ['nullable', 'integer', 'min:1', 'max:1000'],
             'per_page' => ['nullable', 'integer', 'min:1', 'max:50'],
         ];
     }

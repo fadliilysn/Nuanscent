@@ -40,7 +40,8 @@ class RecommendationRequest extends FormRequest
      */
     public function rules(): array
     {
-        $priceMaxRules = ['nullable', 'integer', 'min:0'];
+        $priceRules = ['nullable', 'integer', 'min:0', 'max:100000000'];
+        $priceMaxRules = $priceRules;
 
         if ($this->filled('price_min')) {
             $priceMaxRules[] = 'gte:price_min';
@@ -48,14 +49,14 @@ class RecommendationRequest extends FormRequest
 
         return [
             'occasion' => ['required', 'string', Rule::exists('occasions', 'slug')],
-            'aroma_preference' => ['nullable', 'string', Rule::in(AromaCategoryCatalog::acceptedSlugs()), 'required_without:aroma_preferences'],
+            'aroma_preference' => ['nullable', 'string', 'max:120', Rule::in(AromaCategoryCatalog::acceptedSlugs()), 'required_without:aroma_preferences'],
             'aroma_preferences' => ['nullable', 'array', 'min:1', 'max:3', 'required_without:aroma_preference'],
-            'aroma_preferences.*' => ['string', Rule::in(AromaCategoryCatalog::acceptedSlugs())],
-            'price_min' => ['nullable', 'integer', 'min:0'],
+            'aroma_preferences.*' => ['string', 'max:120', Rule::in(AromaCategoryCatalog::acceptedSlugs())],
+            'price_min' => $priceRules,
             'price_max' => $priceMaxRules,
             'intensity_preference' => ['nullable', 'string', Rule::in(['soft', 'medium', 'strong', 'no_preference'])],
-            'avoided_tags' => ['nullable', 'array'],
-            'avoided_tags.*' => ['string', 'distinct', Rule::exists('aroma_tags', 'slug')],
+            'avoided_tags' => ['nullable', 'array', 'max:20'],
+            'avoided_tags.*' => ['string', 'max:120', 'distinct', Rule::exists('aroma_tags', 'slug')],
             'blind_buy_comfort' => ['required', 'string', Rule::in(['safe', 'flexible', 'adventurous'])],
             'marketed_gender_preference' => [
                 'nullable',
