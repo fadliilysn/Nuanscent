@@ -33,6 +33,7 @@ export function PerfumeCard({
             src={perfume.image_url}
             alt={`Botol parfum ${perfume.name}`}
             loading="lazy"
+            decoding="async"
           />
         ) : (
           <span>{perfume.name.slice(0, 1).toUpperCase()}</span>

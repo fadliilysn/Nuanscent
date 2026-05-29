@@ -19,6 +19,15 @@ const initialHomeData: HomeData = {
   perfumes: [],
 }
 
+const readCachedHomeData = (): HomeData => ({
+  brands: api.getCachedBrands()?.data ?? [],
+  aromaCategories: api.getCachedAromaCategories()?.data ?? [],
+  perfumes: api.getCachedPerfumes({ per_page: '6' })?.data ?? [],
+})
+
+const hasCompleteHomeCache = (data: HomeData) =>
+  data.brands.length > 0 && data.aromaCategories.length > 0 && data.perfumes.length > 0
+
 const preventAndNavigate = (
   event: MouseEvent<HTMLAnchorElement>,
   to: string,
@@ -29,12 +38,16 @@ const preventAndNavigate = (
 }
 
 export function HomePage({ onNavigate }: HomePageProps) {
-  const [homeData, setHomeData] = useState<HomeData>(initialHomeData)
-  const [isLoading, setIsLoading] = useState(true)
+  const cachedHomeData = readCachedHomeData()
+  const [homeData, setHomeData] = useState<HomeData>(
+    hasCompleteHomeCache(cachedHomeData) ? cachedHomeData : initialHomeData,
+  )
+  const [isLoading, setIsLoading] = useState(!hasCompleteHomeCache(cachedHomeData))
   const [hasLoadError, setHasLoadError] = useState(false)
 
   useEffect(() => {
     let isMounted = true
+    const cachedData = readCachedHomeData()
 
     Promise.allSettled([
       api.getBrands(),
@@ -47,10 +60,18 @@ export function HomePage({ onNavigate }: HomePageProps) {
         }
 
         setHomeData({
-          brands: brandResult.status === 'fulfilled' ? brandResult.value.data : [],
+          brands:
+            brandResult.status === 'fulfilled'
+              ? brandResult.value.data
+              : cachedData.brands,
           aromaCategories:
-            categoryResult.status === 'fulfilled' ? categoryResult.value.data : [],
-          perfumes: perfumeResult.status === 'fulfilled' ? perfumeResult.value.data : [],
+            categoryResult.status === 'fulfilled'
+              ? categoryResult.value.data
+              : cachedData.aromaCategories,
+          perfumes:
+            perfumeResult.status === 'fulfilled'
+              ? perfumeResult.value.data
+              : cachedData.perfumes,
         })
 
         setHasLoadError(
@@ -75,7 +96,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="home-hero">
         <div className="home-hero__content">
           <div className="home-hero__brand">
-            <img src="/images/logo-nuanscent.png" alt="" aria-hidden="true" />
+            <img
+              src="/images/logo-nuanscent.png"
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+            />
             <div>
               <strong>Nuanscent</strong>
               <span>Katalog parfum lokal</span>
@@ -151,7 +177,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <SectionHeader
           eyebrow="Brand lokal"
           title="Mulai dari brand yang sudah ada di katalog."
-          actionLabel="Lihat semua merek"
+          actionLabel="Lihat semua brands"
           actionHref="/brands"
           onNavigate={onNavigate}
         />
@@ -282,7 +308,7 @@ function BrandLogo({ brand }: { brand: Brand }) {
   return (
     <span className="brand-logo" aria-hidden="true">
       {brand.logo_url ? (
-        <img src={brand.logo_url} alt="" loading="lazy" />
+        <img src={brand.logo_url} alt="" loading="lazy" decoding="async" />
       ) : (
         <span>{brand.name.slice(0, 1).toUpperCase()}</span>
       )}

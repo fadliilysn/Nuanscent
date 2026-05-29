@@ -25,13 +25,33 @@ const formatPerfumeCount = (brand: Brand, perfumes: Perfume[]) => {
 }
 
 export function BrandDetailPage({ slug, onNavigate }: BrandDetailPageProps) {
-  const [brand, setBrand] = useState<Brand | null>(null)
-  const [perfumes, setPerfumes] = useState<Perfume[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const cachedBrand = api.getCachedBrand(slug)
+  const [brand, setBrand] = useState<Brand | null>(cachedBrand?.data ?? null)
+  const [perfumes, setPerfumes] = useState<Perfume[]>(
+    cachedBrand?.data.perfumes ?? [],
+  )
+  const [isLoading, setIsLoading] = useState(!cachedBrand)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     let isMounted = true
+    const cachedResponse = api.getCachedBrand(slug)
+
+    Promise.resolve().then(() => {
+      if (!isMounted) {
+        return
+      }
+
+      if (cachedResponse) {
+        setBrand(cachedResponse.data)
+        setPerfumes(cachedResponse.data.perfumes ?? [])
+        setIsLoading(false)
+      } else {
+        setIsLoading(true)
+      }
+
+      setError(null)
+    })
 
     api
       .getBrand(slug)
@@ -42,10 +62,11 @@ export function BrandDetailPage({ slug, onNavigate }: BrandDetailPageProps) {
 
         setBrand(brandResponse.data)
         setPerfumes(brandResponse.data.perfumes ?? [])
+        setError(null)
       })
       .catch(() => {
-        if (isMounted) {
-          setError('Detail merek belum bisa dimuat atau belum tersedia.')
+        if (isMounted && !cachedResponse) {
+          setError('Detail brand belum bisa dimuat atau belum tersedia.')
         }
       })
       .finally(() => {
@@ -162,7 +183,7 @@ function BrandLogo({ brand }: { brand: Brand }) {
   return (
     <div className="brand-logo brand-logo--detail" aria-hidden="true">
       {brand.logo_url ? (
-        <img src={brand.logo_url} alt="" loading="lazy" />
+        <img src={brand.logo_url} alt="" loading="lazy" decoding="async" />
       ) : (
         <span>{brand.name.slice(0, 1).toUpperCase()}</span>
       )}

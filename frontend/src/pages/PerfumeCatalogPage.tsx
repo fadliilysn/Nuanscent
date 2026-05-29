@@ -18,6 +18,23 @@ type PerfumeCatalogPageProps = {
   onNavigate: (to: string) => void
 }
 
+const autoApplyFilterKeys = [
+  'search',
+  'brand',
+  'aroma_category',
+  'aroma_tag',
+  'occasion',
+  'price_min',
+  'price_max',
+] as const satisfies Array<keyof CatalogFilterValues>
+
+const debouncedFilterKeys = new Set<keyof CatalogFilterValues>([
+  'search',
+  'price_min',
+  'price_max',
+])
+const priceFilterKeys = new Set<keyof CatalogFilterValues>(['price_min', 'price_max'])
+
 const filtersFromSearch = (locationSearch: string): CatalogFilterValues => {
   const params = new URLSearchParams(locationSearch)
 
@@ -45,6 +62,14 @@ const queryFromFilters = (filters: CatalogFilterValues, page = '1') => {
 
   return params.toString()
 }
+
+const changedAutoApplyKeys = (
+  filters: CatalogFilterValues,
+  activeFilters: CatalogFilterValues,
+) =>
+  autoApplyFilterKeys.filter(
+    (key) => (filters[key] ?? '') !== (activeFilters[key] ?? ''),
+  )
 
 type PaginationItem = number | 'ellipsis'
 
@@ -97,17 +122,23 @@ export function PerfumeCatalogPage({
   locationSearch,
   onNavigate,
 }: PerfumeCatalogPageProps) {
-  const [filters, setFilters] = useState<CatalogFilterValues>(
-    filtersFromSearch(locationSearch),
-  )
+  const initialFilters = filtersFromSearch(locationSearch)
+  const cachedCatalog = api.getCachedPerfumes(initialFilters)
+  const cachedBrands = api.getCachedBrands()
+  const cachedAromaCategories = api.getCachedAromaCategories()
+  const cachedAromaTags = api.getCachedAromaTags()
+  const cachedOccasions = api.getCachedOccasions()
+  const [filters, setFilters] = useState<CatalogFilterValues>(initialFilters)
   const [catalog, setCatalog] = useState<PaginatedApiCollection<Perfume> | null>(
-    null,
+    cachedCatalog,
   )
-  const [brands, setBrands] = useState<Brand[]>([])
-  const [aromaCategories, setAromaCategories] = useState<AromaCategory[]>([])
-  const [aromaTags, setAromaTags] = useState<AromaTag[]>([])
-  const [occasions, setOccasions] = useState<Occasion[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [brands, setBrands] = useState<Brand[]>(cachedBrands?.data ?? [])
+  const [aromaCategories, setAromaCategories] = useState<AromaCategory[]>(
+    cachedAromaCategories?.data ?? [],
+  )
+  const [aromaTags, setAromaTags] = useState<AromaTag[]>(cachedAromaTags?.data ?? [])
+  const [occasions, setOccasions] = useState<Occasion[]>(cachedOccasions?.data ?? [])
+  const [isLoading, setIsLoading] = useState(!cachedCatalog)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -143,16 +174,32 @@ export function PerfumeCatalogPage({
   useEffect(() => {
     let isMounted = true
     const activeFilters = filtersFromSearch(locationSearch)
+    const cachedResponse = api.getCachedPerfumes(activeFilters)
+
+    Promise.resolve().then(() => {
+      if (!isMounted) {
+        return
+      }
+
+      setFilters(activeFilters)
+      setIsLoading(!cachedResponse)
+      setError(null)
+
+      if (cachedResponse) {
+        setCatalog(cachedResponse)
+      }
+    })
 
     api
       .getPerfumes(activeFilters)
       .then((response) => {
         if (isMounted) {
           setCatalog(response)
+          setError(null)
         }
       })
       .catch(() => {
-        if (isMounted) {
+        if (isMounted && !cachedResponse) {
           setError('Katalog parfum belum bisa dimuat. Cek koneksi ke API.')
         }
       })
@@ -166,6 +213,40 @@ export function PerfumeCatalogPage({
       isMounted = false
     }
   }, [locationSearch])
+
+  useEffect(() => {
+    const activeFilters = filtersFromSearch(locationSearch)
+    const changedKeys = changedAutoApplyKeys(filters, activeFilters)
+
+    if (changedKeys.length === 0) {
+      return
+    }
+
+    const query = queryFromFilters(
+      {
+        ...activeFilters,
+        ...Object.fromEntries(
+          autoApplyFilterKeys.map((key) => [key, filters[key] ?? '']),
+        ),
+      },
+      '1',
+    )
+    const target = `/parfum${query ? `?${query}` : ''}`
+    const shouldDebounce = changedKeys.some((key) => debouncedFilterKeys.has(key))
+    const debounceDelay = changedKeys.some((key) => priceFilterKeys.has(key))
+      ? 1300
+      : 450
+    const applyFilters = () => onNavigate(target)
+
+    if (!shouldDebounce) {
+      applyFilters()
+      return
+    }
+
+    const timeoutId = window.setTimeout(applyFilters, debounceDelay)
+
+    return () => window.clearTimeout(timeoutId)
+  }, [filters, locationSearch, onNavigate])
 
   const submitFilters = () => {
     const query = queryFromFilters(filters, '1')

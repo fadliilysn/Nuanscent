@@ -17,6 +17,22 @@ const API_BASE_URL = (
   import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000/api'
 ).replace(/\/$/, '')
 
+const minute = 60 * 1000
+const ttl = {
+  reference: 10 * minute,
+  guides: 10 * minute,
+  detail: 5 * minute,
+  catalog: 2 * minute,
+}
+
+type CacheEntry<T> = {
+  data?: T
+  expiresAt: number
+  promise?: Promise<T>
+}
+
+const getCache = new Map<string, CacheEntry<unknown>>()
+
 const buildQuery = (filters: CatalogFilters) => {
   const params = new URLSearchParams()
 
@@ -29,18 +45,78 @@ const buildQuery = (filters: CatalogFilters) => {
   return params.toString()
 }
 
-const fetchJson = async <T>(path: string): Promise<T> => {
-  const response = await fetch(`${API_BASE_URL}${path}`, {
+const cacheKeyFor = (path: string) => `${API_BASE_URL}${path}`
+
+const readCachedJson = <T>(path: string): T | null => {
+  const entry = getCache.get(cacheKeyFor(path)) as CacheEntry<T> | undefined
+
+  if (!entry || entry.data === undefined || entry.expiresAt <= Date.now()) {
+    return null
+  }
+
+  return entry.data
+}
+
+const fetchJson = async <T>(
+  path: string,
+  options: { ttlMs?: number; bypassCache?: boolean } = {},
+): Promise<T> => {
+  const cacheKey = cacheKeyFor(path)
+  const ttlMs = options.ttlMs ?? 0
+  const cachedEntry = getCache.get(cacheKey) as CacheEntry<T> | undefined
+
+  if (
+    ttlMs > 0 &&
+    !options.bypassCache &&
+    cachedEntry?.data !== undefined &&
+    cachedEntry.expiresAt > Date.now()
+  ) {
+    return cachedEntry.data
+  }
+
+  if (
+    ttlMs > 0 &&
+    !options.bypassCache &&
+    cachedEntry?.promise &&
+    cachedEntry.expiresAt > Date.now()
+  ) {
+    return cachedEntry.promise
+  }
+
+  const promise = fetch(`${API_BASE_URL}${path}`, {
     headers: {
       Accept: 'application/json',
     },
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error(`Permintaan API gagal dengan status ${response.status}.`)
+    }
+
+    return response.json() as Promise<T>
   })
 
-  if (!response.ok) {
-    throw new Error(`Permintaan API gagal dengan status ${response.status}.`)
+  if (ttlMs > 0) {
+    getCache.set(cacheKey, {
+      expiresAt: Date.now() + ttlMs,
+      promise,
+    })
+
+    try {
+      const data = await promise
+
+      getCache.set(cacheKey, {
+        data,
+        expiresAt: Date.now() + ttlMs,
+      })
+
+      return data
+    } catch (error) {
+      getCache.delete(cacheKey)
+      throw error
+    }
   }
 
-  return response.json() as Promise<T>
+  return promise
 }
 
 const postJson = async <TResponse, TPayload>(
@@ -85,31 +161,71 @@ export const api = {
 
     return fetchJson<PaginatedApiCollection<Perfume>>(
       `/perfumes${query ? `?${query}` : ''}`,
+      { ttlMs: ttl.catalog },
+    )
+  },
+  getCachedPerfumes(filters: CatalogFilters) {
+    const query = buildQuery(filters)
+
+    return readCachedJson<PaginatedApiCollection<Perfume>>(
+      `/perfumes${query ? `?${query}` : ''}`,
     )
   },
   getPerfume(slug: string) {
-    return fetchJson<ApiResource<Perfume>>(`/perfumes/${encodeURIComponent(slug)}`)
+    return fetchJson<ApiResource<Perfume>>(`/perfumes/${encodeURIComponent(slug)}`, {
+      ttlMs: ttl.detail,
+    })
+  },
+  getCachedPerfume(slug: string) {
+    return readCachedJson<ApiResource<Perfume>>(`/perfumes/${encodeURIComponent(slug)}`)
   },
   getBrands() {
-    return fetchJson<ApiCollection<Brand>>('/brands')
+    return fetchJson<ApiCollection<Brand>>('/brands', { ttlMs: ttl.reference })
+  },
+  getCachedBrands() {
+    return readCachedJson<ApiCollection<Brand>>('/brands')
   },
   getBrand(slug: string) {
-    return fetchJson<ApiResource<Brand>>(`/brands/${encodeURIComponent(slug)}`)
+    return fetchJson<ApiResource<Brand>>(`/brands/${encodeURIComponent(slug)}`, {
+      ttlMs: ttl.detail,
+    })
+  },
+  getCachedBrand(slug: string) {
+    return readCachedJson<ApiResource<Brand>>(`/brands/${encodeURIComponent(slug)}`)
   },
   getGuides() {
-    return fetchJson<ApiCollection<Guide>>('/guides')
+    return fetchJson<ApiCollection<Guide>>('/guides', { ttlMs: ttl.guides })
+  },
+  getCachedGuides() {
+    return readCachedJson<ApiCollection<Guide>>('/guides')
   },
   getGuide(slug: string) {
-    return fetchJson<ApiResource<Guide>>(`/guides/${encodeURIComponent(slug)}`)
+    return fetchJson<ApiResource<Guide>>(`/guides/${encodeURIComponent(slug)}`, {
+      ttlMs: ttl.guides,
+    })
+  },
+  getCachedGuide(slug: string) {
+    return readCachedJson<ApiResource<Guide>>(`/guides/${encodeURIComponent(slug)}`)
   },
   getAromaCategories() {
-    return fetchJson<ApiCollection<AromaCategory>>('/aroma-categories')
+    return fetchJson<ApiCollection<AromaCategory>>('/aroma-categories', {
+      ttlMs: ttl.reference,
+    })
+  },
+  getCachedAromaCategories() {
+    return readCachedJson<ApiCollection<AromaCategory>>('/aroma-categories')
   },
   getAromaTags() {
-    return fetchJson<ApiCollection<AromaTag>>('/aroma-tags')
+    return fetchJson<ApiCollection<AromaTag>>('/aroma-tags', { ttlMs: ttl.reference })
+  },
+  getCachedAromaTags() {
+    return readCachedJson<ApiCollection<AromaTag>>('/aroma-tags')
   },
   getOccasions() {
-    return fetchJson<ApiCollection<Occasion>>('/occasions')
+    return fetchJson<ApiCollection<Occasion>>('/occasions', { ttlMs: ttl.reference })
+  },
+  getCachedOccasions() {
+    return readCachedJson<ApiCollection<Occasion>>('/occasions')
   },
   getRecommendations(payload: RecommendationRequestPayload) {
     return postJson<RecommendationResponse, RecommendationRequestPayload>(

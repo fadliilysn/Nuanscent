@@ -61,12 +61,14 @@ const getGuideTopic = (guide: Pick<Guide, 'slug' | 'title'>) => {
 }
 
 export function GuideListPage({ onNavigate }: GuideListPageProps) {
-  const [guides, setGuides] = useState<Guide[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const cachedGuides = api.getCachedGuides()
+  const [guides, setGuides] = useState<Guide[]>(cachedGuides?.data ?? [])
+  const [isLoading, setIsLoading] = useState(!cachedGuides)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     let isMounted = true
+    const hadCachedGuides = Boolean(api.getCachedGuides())
 
     api
       .getGuides()
@@ -76,7 +78,7 @@ export function GuideListPage({ onNavigate }: GuideListPageProps) {
         }
       })
       .catch(() => {
-        if (isMounted) {
+        if (isMounted && !hadCachedGuides) {
           setError('Panduan belum bisa dimuat. Pastikan API Laravel aktif.')
         }
       })

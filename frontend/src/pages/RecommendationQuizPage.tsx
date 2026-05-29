@@ -280,19 +280,29 @@ export function RecommendationQuizPage({
     (shouldRestoreResults || storedResults.viewMode === 'results')
       ? storedResults
       : null
+  const cachedOccasions = api.getCachedOccasions()
+  const cachedAromaCategories = api.getCachedAromaCategories()
+  const cachedAromaTags = api.getCachedAromaTags()
+  const hasCachedReferences = Boolean(
+    cachedOccasions && cachedAromaCategories && cachedAromaTags,
+  )
   const [quizState, setQuizState] = useState<QuizState>(
     normalizeQuizState(restoredResults?.quizState ?? storedResults?.quizState),
   )
   const [currentStep, setCurrentStep] = useState(0)
-  const [occasions, setOccasions] = useState<Occasion[]>([])
-  const [aromaCategories, setAromaCategories] = useState<AromaCategory[]>([])
-  const [aromaTags, setAromaTags] = useState<AromaTag[]>([])
+  const [occasions, setOccasions] = useState<Occasion[]>(
+    cachedOccasions?.data ?? [],
+  )
+  const [aromaCategories, setAromaCategories] = useState<AromaCategory[]>(
+    cachedAromaCategories?.data ?? [],
+  )
+  const [aromaTags, setAromaTags] = useState<AromaTag[]>(cachedAromaTags?.data ?? [])
   const [recommendations, setRecommendations] = useState<Recommendation[]>(
     restoredResults?.recommendations ?? [],
   )
   const [reasonModalSlug, setReasonModalSlug] = useState<string | null>(null)
   const [hasSubmitted, setHasSubmitted] = useState(Boolean(restoredResults))
-  const [isLoadingReferences, setIsLoadingReferences] = useState(true)
+  const [isLoadingReferences, setIsLoadingReferences] = useState(!hasCachedReferences)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(
     shouldRestoreResults && !restoredResults

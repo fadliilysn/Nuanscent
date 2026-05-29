@@ -59,22 +59,40 @@ const getGuideTopic = (guide: Pick<Guide, 'slug' | 'title'>) => {
 }
 
 export function GuideDetailPage({ slug, onNavigate }: GuideDetailPageProps) {
-  const [guide, setGuide] = useState<Guide | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const cachedGuide = api.getCachedGuide(slug)
+  const [guide, setGuide] = useState<Guide | null>(cachedGuide?.data ?? null)
+  const [isLoading, setIsLoading] = useState(!cachedGuide)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     let isMounted = true
+    const cachedResponse = api.getCachedGuide(slug)
+
+    Promise.resolve().then(() => {
+      if (!isMounted) {
+        return
+      }
+
+      if (cachedResponse) {
+        setGuide(cachedResponse.data)
+        setIsLoading(false)
+      } else {
+        setIsLoading(true)
+      }
+
+      setError(null)
+    })
 
     api
       .getGuide(slug)
       .then((response) => {
         if (isMounted) {
           setGuide(response.data)
+          setError(null)
         }
       })
       .catch(() => {
-        if (isMounted) {
+        if (isMounted && !cachedResponse) {
           setError('Panduan ini belum tersedia atau belum dipublikasikan.')
         }
       })

@@ -1,4 +1,4 @@
-import type { FormEvent } from 'react'
+import type { FormEvent, KeyboardEvent } from 'react'
 import type { AromaCategory, AromaTag, Brand, CatalogFilters, Occasion } from '../types/api'
 
 type CatalogFiltersProps = {
@@ -29,6 +29,13 @@ export function CatalogFilters({
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     onSubmit()
+  }
+
+  const handlePriceKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      onSubmit()
+    }
   }
 
   return (
@@ -124,6 +131,8 @@ export function CatalogFilters({
             value={filters.price_min ?? ''}
             placeholder="100000"
             onChange={(event) => updateFilter('price_min', event.target.value)}
+            onBlur={onSubmit}
+            onKeyDown={handlePriceKeyDown}
           />
         </label>
 
@@ -135,12 +144,14 @@ export function CatalogFilters({
             value={filters.price_max ?? ''}
             placeholder="300000"
             onChange={(event) => updateFilter('price_max', event.target.value)}
+            onBlur={onSubmit}
+            onKeyDown={handlePriceKeyDown}
           />
         </label>
 
-        <button className="button button--primary filter-panel__submit" type="submit">
-          Terapkan filter
-        </button>
+        <div className="filter-panel__footer">
+          <p>Filter diterapkan otomatis saat pilihan berubah.</p>
+        </div>
       </form>
     </details>
   )

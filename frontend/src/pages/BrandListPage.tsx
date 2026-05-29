@@ -23,12 +23,14 @@ const formatPerfumeCount = (brand: Brand) => {
 }
 
 export function BrandListPage({ onNavigate }: BrandListPageProps) {
-  const [brands, setBrands] = useState<Brand[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const cachedBrands = api.getCachedBrands()
+  const [brands, setBrands] = useState<Brand[]>(cachedBrands?.data ?? [])
+  const [isLoading, setIsLoading] = useState(!cachedBrands)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     let isMounted = true
+    const hadCachedBrands = Boolean(api.getCachedBrands())
 
     api
       .getBrands()
@@ -38,7 +40,7 @@ export function BrandListPage({ onNavigate }: BrandListPageProps) {
         }
       })
       .catch(() => {
-        if (isMounted) {
+        if (isMounted && !hadCachedBrands) {
           setError('Daftar merek belum bisa dimuat. Pastikan API Laravel aktif.')
         }
       })
@@ -121,7 +123,7 @@ function BrandLogo({ brand }: { brand: Brand }) {
   return (
     <div className="brand-logo brand-logo--list" aria-hidden="true">
       {brand.logo_url ? (
-        <img src={brand.logo_url} alt="" loading="lazy" />
+        <img src={brand.logo_url} alt="" loading="lazy" decoding="async" />
       ) : (
         <span>{brand.name.slice(0, 1).toUpperCase()}</span>
       )}

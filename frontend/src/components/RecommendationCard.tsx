@@ -57,6 +57,7 @@ export function RecommendationCard({
             src={recommendation.image_url}
             alt={`Botol parfum ${recommendation.name}`}
             loading="lazy"
+            decoding="async"
           />
         ) : (
           <span>{recommendation.name.slice(0, 1).toUpperCase()}</span>

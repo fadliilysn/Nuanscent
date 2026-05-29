@@ -103,22 +103,40 @@ export function PerfumeDetailPage({
   returnTo,
   onNavigate,
 }: PerfumeDetailPageProps) {
-  const [perfume, setPerfume] = useState<Perfume | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const cachedPerfume = api.getCachedPerfume(slug)
+  const [perfume, setPerfume] = useState<Perfume | null>(cachedPerfume?.data ?? null)
+  const [isLoading, setIsLoading] = useState(!cachedPerfume)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     let isMounted = true
+    const cachedResponse = api.getCachedPerfume(slug)
+
+    Promise.resolve().then(() => {
+      if (!isMounted) {
+        return
+      }
+
+      if (cachedResponse) {
+        setPerfume(cachedResponse.data)
+        setIsLoading(false)
+      } else {
+        setIsLoading(true)
+      }
+
+      setError(null)
+    })
 
     api
       .getPerfume(slug)
       .then((response) => {
         if (isMounted) {
           setPerfume(response.data)
+          setError(null)
         }
       })
       .catch(() => {
-        if (isMounted) {
+        if (isMounted && !cachedResponse) {
           setError('Detail parfum tidak ditemukan atau belum dipublish.')
         }
       })
@@ -145,8 +163,8 @@ export function PerfumeDetailPage({
   const backTarget = returnTo ?? '/parfum'
   const backLabel = returnTo?.startsWith('/quiz')
     ? 'Kembali ke hasil rekomendasi'
-    : returnTo?.startsWith('/brands') || returnTo?.startsWith('/merek')
-      ? 'Kembali ke halaman merek'
+    : returnTo?.startsWith('/brands') || returnTo?.startsWith('/brands')
+      ? 'Kembali ke halaman brands'
       : 'Kembali ke katalog'
 
   if (isLoading) {
@@ -183,6 +201,7 @@ export function PerfumeDetailPage({
               src={perfume.image_url}
               alt={`Botol parfum ${perfume.name}`}
               loading="lazy"
+              decoding="async"
             />
           ) : (
             <span>{perfume.name.slice(0, 1).toUpperCase()}</span>
