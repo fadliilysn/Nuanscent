@@ -1034,7 +1034,7 @@ img {
 }
 
 .detail-page {
-  gap: 22px;
+  gap: 24px;
 }
 
 .back-link {
@@ -1103,16 +1103,21 @@ img {
 
 .detail-grid {
   display: grid;
-  gap: 18px;
+  gap: 20px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   min-width: 0;
 }
 
 .info-panel {
+  align-content: start;
   display: grid;
-  gap: 14px;
+  gap: 16px;
   min-width: 0;
-  padding: 22px;
+  padding: clamp(18px, 3vw, 24px);
+}
+
+.info-panel > .eyebrow {
+  margin-bottom: -2px;
 }
 
 .info-panel--wide {
@@ -1141,16 +1146,23 @@ img {
 
 .detail-list {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   margin: 0;
   min-width: 0;
 }
 
 .detail-list div {
-  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(33, 28, 24, 0.11);
+  border-radius: var(--radius);
   display: grid;
-  gap: 4px;
-  padding-bottom: 10px;
+  gap: 5px;
+  min-width: 0;
+  padding: 12px;
+}
+
+.detail-list--metrics {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .detail-list dt {
@@ -1161,7 +1173,8 @@ img {
 }
 
 .detail-list dd {
-  font-weight: 800;
+  font-weight: 850;
+  line-height: 1.25;
   margin: 0;
   overflow-wrap: anywhere;
 }
@@ -1174,14 +1187,24 @@ img {
 
 .variant-option {
   align-items: center;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(33, 28, 24, 0.12);
   border-radius: var(--radius);
   display: flex;
   gap: 12px;
   justify-content: space-between;
   min-width: 0;
   padding: 12px;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.variant-option:hover {
+  background: rgba(255, 253, 248, 0.94);
+  border-color: rgba(33, 28, 24, 0.2);
+  box-shadow: 0 8px 18px rgba(72, 53, 34, 0.07);
 }
 
 .variant-option div {
@@ -1196,6 +1219,12 @@ img {
   overflow-wrap: anywhere;
 }
 
+.variant-option h2 {
+  font-size: 1rem;
+  line-height: 1.15;
+  margin: 0;
+}
+
 .variant-option span {
   color: var(--muted);
   font-size: 0.9rem;
@@ -1204,13 +1233,17 @@ img {
 
 .variant-option strong {
   font-size: 0.95rem;
+  line-height: 1.25;
   text-align: right;
 }
 
 .aroma-chip {
   align-items: center;
   background: var(--chip-bg, var(--surface));
+  border-color: rgba(33, 28, 24, 0.13);
+  border-radius: 999px;
   gap: 8px;
+  padding: 7px 10px;
 }
 
 .aroma-chip::before {
@@ -1220,6 +1253,12 @@ img {
   flex: 0 0 auto;
   height: 9px;
   width: 9px;
+}
+
+.badge-list .tag-badge {
+  border-color: rgba(33, 28, 24, 0.13);
+  border-radius: 999px;
+  padding: 7px 10px;
 }
 
 .aroma-chip--sunny {
@@ -1272,47 +1311,137 @@ img {
   --chip-dot: #c8c0b6;
 }
 
-.notes-grid {
+.notes-pyramid {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.notes-pyramid__levels {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-width: 0;
+  position: relative;
+}
+
+.notes-pyramid__levels::before {
+  background: linear-gradient(90deg, var(--amber), var(--coral), #9b7658);
+  border-radius: 999px;
+  content: '';
+  height: 3px;
+  left: 12%;
+  opacity: 0.3;
+  position: absolute;
+  right: 12%;
+  top: 27px;
+}
+
+.note-layer {
+  --note-layer-bg: var(--surface);
+  --note-layer-dot: var(--amber);
+  align-content: start;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.46), transparent 62%),
+    var(--note-layer-bg);
+  border: 1px solid rgba(33, 28, 24, 0.13);
+  border-radius: var(--radius-lg);
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
   min-width: 0;
+  padding: 16px;
+  position: relative;
+  z-index: 1;
 }
 
-.note-column {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  min-width: 0;
-  padding: 14px;
+.note-layer--top {
+  --note-layer-bg: #fff4cf;
+  --note-layer-dot: var(--amber);
 }
 
-.note-column h2 {
-  margin-bottom: 10px;
+.note-layer--middle {
+  --note-layer-bg: #fff0ea;
+  --note-layer-dot: var(--coral);
 }
 
-.note-column ul {
+.note-layer--base {
+  --note-layer-bg: #f4eadb;
+  --note-layer-dot: #9b7658;
+}
+
+.note-layer--unspecified {
+  --note-layer-bg: #f4f1eb;
+  --note-layer-dot: #9c927d;
+}
+
+.note-layer__header {
+  align-items: start;
   display: grid;
   gap: 10px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.note-column li {
-  display: grid;
-  gap: 2px;
+  grid-template-columns: auto minmax(0, 1fr);
   min-width: 0;
 }
 
-.note-column strong,
-.note-column span {
+.note-layer__header > span {
+  background: var(--note-layer-dot);
+  border: 3px solid rgba(255, 253, 248, 0.82);
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(33, 28, 24, 0.12);
+  height: 18px;
+  margin-top: 2px;
+  width: 18px;
+}
+
+.note-layer h2 {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.1;
+  margin: 0 0 4px;
+}
+
+.note-layer p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.note-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+.note-chip {
+  background: rgba(255, 253, 248, 0.76);
+  border: 1px solid rgba(33, 28, 24, 0.12);
+  border-radius: 999px;
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  padding: 8px 11px;
+}
+
+.note-chip--empty {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.note-chip strong,
+.note-chip small {
   overflow-wrap: anywhere;
 }
 
-.note-column span {
+.note-chip strong {
+  font-size: 0.92rem;
+  line-height: 1.15;
+}
+
+.note-chip small {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
 }
 
 .quiz-page {
@@ -2156,8 +2285,17 @@ img {
     min-height: 0;
   }
 
-  .notes-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .notes-pyramid__levels {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .notes-pyramid__levels::before {
+    bottom: 12%;
+    height: auto;
+    left: 24px;
+    right: auto;
+    top: 24px;
+    width: 3px;
   }
 
   .recommendation-list {
@@ -2331,8 +2469,7 @@ img {
   }
 
   .perfume-grid,
-  .recommendation-list,
-  .notes-grid {
+  .recommendation-list {
     grid-template-columns: minmax(0, 1fr);
   }
 

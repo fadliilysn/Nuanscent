@@ -11,11 +11,37 @@ type PerfumeDetailPageProps = {
   onNavigate: (to: string) => void
 }
 
-const noteSections: Array<{ key: NotePosition; label: string }> = [
-  { key: 'top', label: 'Top notes' },
-  { key: 'middle', label: 'Middle notes' },
-  { key: 'base', label: 'Base notes' },
+type NoteGroupKey = NotePosition
+
+type NoteSection = {
+  key: NoteGroupKey
+  label: string
+  helper: string
+}
+
+const noteSections: NoteSection[] = [
+  {
+    key: 'top',
+    label: 'Top Notes',
+    helper: 'Kesan pertama saat parfum baru disemprot.',
+  },
+  {
+    key: 'middle',
+    label: 'Middle Notes',
+    helper: 'Karakter utama setelah aroma pembuka mulai mereda.',
+  },
+  {
+    key: 'base',
+    label: 'Base Notes',
+    helper: 'Fondasi aroma yang terasa paling lama.',
+  },
 ]
+
+const unspecifiedNoteSection: NoteSection = {
+  key: 'unspecified',
+  label: 'Notes lainnya',
+  helper: 'Notes tambahan yang belum memiliki posisi pyramid jelas.',
+}
 
 const aromaTagToneBySlug: Record<string, string> = {
   citrus: 'sunny',
@@ -51,10 +77,15 @@ const aromaTagToneBySlug: Record<string, string> = {
 const aromaTagToneClass = (slug: string) =>
   `aroma-chip--${aromaTagToneBySlug[slug] ?? 'neutral'}`
 
+const normalizeNotePosition = (position?: string | null): NoteGroupKey =>
+  position === 'top' || position === 'middle' || position === 'base'
+    ? position
+    : 'unspecified'
+
 const groupNotes = (notes: Note[] = []) =>
-  notes.reduce<Record<NotePosition, Note[]>>(
+  notes.reduce<Record<NoteGroupKey, Note[]>>(
     (groups, note) => {
-      const position = note.position ?? 'unspecified'
+      const position = normalizeNotePosition(note.position)
       groups[position].push(note)
 
       return groups
@@ -103,13 +134,11 @@ export function PerfumeDetailPage({
   }, [slug])
 
   const groupedNotes = useMemo(() => groupNotes(perfume?.notes), [perfume?.notes])
-  const visibleNoteSections = useMemo(
-    () =>
-      groupedNotes.unspecified.length > 0
-        ? [...noteSections, { key: 'unspecified' as const, label: 'Notes tanpa posisi' }]
-        : noteSections,
+  const hasNotes = useMemo(
+    () => Object.values(groupedNotes).some((notes) => notes.length > 0),
     [groupedNotes],
   )
+  const hasUnspecifiedNotes = groupedNotes.unspecified.length > 0
   const hasSource =
     perfume?.source.name || perfume?.source.url || perfume?.source.last_verified_at
   const hasVariants = Boolean(perfume?.variants && perfume.variants.length > 0)
@@ -191,7 +220,7 @@ export function PerfumeDetailPage({
 
         <article className="info-panel">
           <p className="eyebrow">Detail produk</p>
-          <dl className="detail-list">
+          <dl className="detail-list detail-list--metrics">
             <div>
               <dt>Harga</dt>
               <dd>{formatPriceRange(perfume.price_min, perfume.price_max)}</dd>
@@ -228,7 +257,9 @@ export function PerfumeDetailPage({
                         <span>{formatVolume(variant.volume_ml)}</span>
                       ) : null}
                     </div>
-                    <strong>{formatPriceRange(variant.price, variant.price)}</strong>
+                    <strong className={variant.price === null ? 'muted-text' : undefined}>
+                      {formatPriceRange(variant.price, variant.price)}
+                    </strong>
                   </div>
                 )
               })}
@@ -271,25 +302,59 @@ export function PerfumeDetailPage({
 
         <article className="info-panel info-panel--wide">
           <p className="eyebrow">Notes pyramid</p>
-          <div className="notes-grid">
-            {visibleNoteSections.map((section) => (
-              <div className="note-column" key={section.key}>
-                <h2>{section.label}</h2>
-                {groupedNotes[section.key].length > 0 ? (
-                  <ul>
-                    {groupedNotes[section.key].map((note) => (
-                      <li key={`${section.key}-${note.slug}`}>
-                        <strong>{note.name}</strong>
-                        {note.description_simple ? <span>{note.description_simple}</span> : null}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="muted-text">Belum ada data.</p>
-                )}
+          {hasNotes ? (
+            <div className="notes-pyramid" aria-label="Notes pyramid parfum">
+              <div className="notes-pyramid__levels">
+                {noteSections.map((section) => (
+                  <div
+                    className={`note-layer note-layer--${section.key}`}
+                    key={section.key}
+                  >
+                    <div className="note-layer__header">
+                      <span aria-hidden="true"></span>
+                      <div>
+                        <h2>{section.label}</h2>
+                        <p>{section.helper}</p>
+                      </div>
+                    </div>
+                    <div className="note-chip-list">
+                      {groupedNotes[section.key].length > 0 ? (
+                        groupedNotes[section.key].map((note) => (
+                          <span className="note-chip" key={`${section.key}-${note.slug}`}>
+                            <strong>{note.name}</strong>
+                            {note.description_simple ? <small>{note.description_simple}</small> : null}
+                          </span>
+                        ))
+                      ) : (
+                        <span className="note-chip note-chip--empty">Belum ada data.</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+              {hasUnspecifiedNotes ? (
+                <div className="note-layer note-layer--unspecified">
+                  <div className="note-layer__header">
+                    <span aria-hidden="true"></span>
+                    <div>
+                      <h2>{unspecifiedNoteSection.label}</h2>
+                      <p>{unspecifiedNoteSection.helper}</p>
+                    </div>
+                  </div>
+                  <div className="note-chip-list">
+                    {groupedNotes.unspecified.map((note) => (
+                      <span className="note-chip" key={`unspecified-${note.slug}`}>
+                        <strong>{note.name}</strong>
+                        {note.description_simple ? <small>{note.description_simple}</small> : null}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          ) : (
+            <p className="muted-text">Notes belum tersedia.</p>
+          )}
         </article>
 
         {hasSource ? (

@@ -32,7 +32,7 @@ type BudgetKey =
 
 type QuizState = {
   occasion: string
-  aromaPreference: string
+  aromaPreferences: string[]
   budget: BudgetKey
   intensityPreference: IntensityPreference
   avoidedTags: string[]
@@ -51,7 +51,7 @@ const quizStorageKey = 'nuanscent.latestRecommendationResults'
 
 const initialQuizState: QuizState = {
   occasion: '',
-  aromaPreference: '',
+  aromaPreferences: [],
   budget: 'flexible',
   intensityPreference: 'no_preference',
   avoidedTags: [],
@@ -169,12 +169,19 @@ const blindBuyChoices: Array<Choice<BlindBuyComfort>> = [
 ]
 
 const categoryHelpers: Record<string, string> = {
-  'fresh-clean': 'Segar, bersih, ringan, sering terasa mudah dipakai harian.',
-  'sweet-gourmand': 'Manis, creamy, vanilla, atau dessert-like yang terasa nyaman.',
+  fresh: 'Segar, ringan, sering terasa citrus, aquatic, atau mudah dipakai harian.',
+  clean: 'Bersih, rapi, sabun, laundry, atau baru selesai mandi.',
+  sweet: 'Manis umum, nyaman, dan tidak selalu dessert-like.',
+  gourmand: 'Dessert-like, vanilla, caramel, kopi, atau creamy.',
   floral: 'Bunga, lembut, rapi, bisa terasa feminin atau clean tergantung komposisi.',
-  'woody-earthy': 'Kayu, earthy, dewasa, biasanya terasa lebih grounded.',
-  'warm-amber-spicy': 'Hangat, amber, spicy, cocok kalau ingin kesan lebih bold.',
-  'musky-powdery-soft': 'Lembut, musky, powdery, biasanya terasa dekat dan calming.',
+  woody: 'Kayu, cedar, sandalwood, kering, dan terasa lebih rapi.',
+  earthy: 'Membumi, tanah, moss, akar, vetiver, atau patchouli.',
+  warm: 'Hangat, nyaman, lembut menyelimuti.',
+  amber: 'Amber, resinous, sedikit manis hangat, dan terasa glowing.',
+  spicy: 'Rempah, saffron, pepper, atau bumbu hangat.',
+  musky: 'Musk, skin-like, dekat, dan bersih di kulit.',
+  powdery: 'Bedak, lembut kering, halus, dan rapi.',
+  soft: 'Lembut, nyaman, kalem, dan cenderung low-risk.',
 }
 
 const occasionHelpers: Record<string, string> = {
@@ -192,7 +199,7 @@ const buildPayload = (state: QuizState): RecommendationRequestPayload => {
 
   return {
     occasion: state.occasion,
-    aroma_preference: state.aromaPreference,
+    aroma_preferences: state.aromaPreferences,
     price_min: budget?.priceMin ?? null,
     price_max: budget?.priceMax ?? null,
     intensity_preference: state.intensityPreference,
@@ -206,9 +213,33 @@ const choiceClass = (isSelected: boolean) =>
   `quiz-choice ${isSelected ? 'quiz-choice--selected' : ''}`
 
 type StoredQuizResults = {
-  quizState: QuizState
+  quizState: StoredQuizState
   recommendations: Recommendation[]
   viewMode?: 'results' | 'editing'
+}
+
+type StoredQuizState = Omit<QuizState, 'aromaPreferences'> & {
+  aromaPreference?: string
+  aromaPreferences?: string[]
+}
+
+const normalizeQuizState = (state?: StoredQuizState | null): QuizState => {
+  if (!state) {
+    return initialQuizState
+  }
+
+  const { aromaPreference, aromaPreferences: storedAromaPreferences, ...rest } = state
+  const aromaPreferences = Array.isArray(storedAromaPreferences)
+    ? storedAromaPreferences
+    : aromaPreference
+      ? [aromaPreference]
+      : []
+
+  return {
+    ...initialQuizState,
+    ...rest,
+    aromaPreferences: Array.from(new Set(aromaPreferences)).slice(0, 3),
+  }
 }
 
 const readStoredResults = (): StoredQuizResults | null => {
@@ -250,7 +281,7 @@ export function RecommendationQuizPage({
       ? storedResults
       : null
   const [quizState, setQuizState] = useState<QuizState>(
-    restoredResults?.quizState ?? storedResults?.quizState ?? initialQuizState,
+    normalizeQuizState(restoredResults?.quizState ?? storedResults?.quizState),
   )
   const [currentStep, setCurrentStep] = useState(0)
   const [occasions, setOccasions] = useState<Occasion[]>([])
@@ -312,8 +343,12 @@ export function RecommendationQuizPage({
       return 'Pilih dulu situasi pemakaian yang paling dekat.'
     }
 
-    if (step === 1 && !quizState.aromaPreference) {
-      return 'Pilih dulu karakter aroma yang paling kamu cari.'
+    if (step === 1 && quizState.aromaPreferences.length === 0) {
+      return 'Pilih dulu 1 sampai 3 aroma yang paling mendekati seleramu.'
+    }
+
+    if (step === 1 && quizState.aromaPreferences.length > 3) {
+      return 'Maksimal pilih 3 kategori aroma agar rekomendasi tetap fokus.'
     }
 
     if (
@@ -357,6 +392,26 @@ export function RecommendationQuizPage({
         ? state.avoidedTags.filter((item) => item !== slug)
         : [...state.avoidedTags, slug],
     }))
+  }
+
+  const toggleAromaPreference = (slug: string) => {
+    const isSelected = quizState.aromaPreferences.includes(slug)
+
+    if (!isSelected && quizState.aromaPreferences.length >= 3) {
+      setError('Maksimal pilih 3 kategori aroma agar rekomendasi tetap fokus.')
+
+      return
+    }
+
+    setError(null)
+    setQuizState((state) => {
+      return {
+        ...state,
+        aromaPreferences: state.aromaPreferences.includes(slug)
+          ? state.aromaPreferences.filter((item) => item !== slug)
+          : [...state.aromaPreferences, slug],
+      }
+    })
   }
 
   const submitQuiz = () => {
@@ -549,20 +604,17 @@ export function RecommendationQuizPage({
         ) : null}
 
         {currentStep === 1 ? (
-          <QuizStep
+        <QuizStep
             title="Aroma seperti apa yang kamu cari?"
-            description="Pilih gambaran besar dulu. Tag dan notes parfum akan dipakai sistem untuk memperhalus kecocokan."
+            description="Pilih 1 sampai 3 aroma yang paling mendekati seleramu."
           >
             <div className="quiz-choice-grid quiz-choice-grid--two">
               {aromaCategories.map((category) => (
                 <button
-                  className={choiceClass(quizState.aromaPreference === category.slug)}
+                  className={choiceClass(quizState.aromaPreferences.includes(category.slug))}
                   type="button"
                   key={category.slug}
-                  onClick={() => {
-                    setError(null)
-                    setQuizState((state) => ({ ...state, aromaPreference: category.slug }))
-                  }}
+                  onClick={() => toggleAromaPreference(category.slug)}
                 >
                   <strong>{category.name}</strong>
                   <span>{categoryHelpers[category.slug] ?? category.description}</span>

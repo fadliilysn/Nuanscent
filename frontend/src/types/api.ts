@@ -141,7 +141,8 @@ export type MarketedGenderPreference =
 
 export type RecommendationRequestPayload = {
   occasion: string
-  aroma_preference: string
+  aroma_preference?: string
+  aroma_preferences?: string[]
   price_min: number | null
   price_max: number | null
   intensity_preference: IntensityPreference
