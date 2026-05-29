@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Perfumes\Schemas;
 
 use App\Models\Note;
+use App\Support\AromaCategoryCatalog;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\MultiSelect;
 use Filament\Forms\Components\Repeater;
@@ -57,7 +58,11 @@ class PerfumeForm
                                         Select::make('main_aroma_category_id')
                                             ->label('Kategori aroma utama')
                                             ->helperText('Kategori utama membantu katalog dan rekomendasi memberi konteks aroma.')
-                                            ->relationship('mainAromaCategory', 'name')
+                                            ->relationship(
+                                                'mainAromaCategory',
+                                                'name',
+                                                fn ($query) => $query->whereIn('slug', AromaCategoryCatalog::publicSlugs()),
+                                            )
                                             ->searchable()
                                             ->preload(),
                                         Select::make('data_status')

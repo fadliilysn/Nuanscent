@@ -52,6 +52,10 @@ class PublicApiTest extends TestCase
             ->assertJsonPath('data.0.brand.slug', 'test-brand')
             ->assertJsonPath('data.0.main_aroma_category.slug', 'fresh')
             ->assertJsonPath('meta.per_page', 12);
+
+        $this->getJson('/api/perfumes?aroma_category=fresh-clean')
+            ->assertOk()
+            ->assertJsonPath('data.0.slug', 'catalog-perfume');
     }
 
     public function test_perfume_detail_exposes_relationships_and_rejects_drafts(): void
@@ -176,7 +180,13 @@ class PublicApiTest extends TestCase
             ->assertJsonPath('data.perfumes.0.slug', 'published-count')
             ->assertJsonMissing(['slug' => 'draft-count']);
 
+        AromaCategory::create([
+            'name' => 'Fresh / Clean',
+            'slug' => 'fresh-clean',
+        ]);
+
         $this->getJson('/api/aroma-categories')->assertOk()->assertJsonPath('data.0.slug', $category->slug);
+        $this->getJson('/api/aroma-categories')->assertOk()->assertJsonMissing(['slug' => 'fresh-clean']);
         $this->getJson('/api/aroma-tags')->assertOk()->assertJsonFragment(['slug' => $tag->slug]);
         $this->getJson('/api/occasions')->assertOk()->assertJsonFragment(['slug' => $occasion->slug]);
     }

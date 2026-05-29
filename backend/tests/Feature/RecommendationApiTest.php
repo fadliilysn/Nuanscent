@@ -178,13 +178,101 @@ class RecommendationApiTest extends TestCase
         $recommendations = collect($response->json('recommendations'));
 
         $this->assertContains(
-            'Nuansa citrus pada parfum ini selaras dengan karakter Fresh / Clean yang kamu pilih.',
+            'Tag aroma mendukung preferensimu: citrus.',
             $recommendations->firstWhere('slug', 'single-nuance')['matched_reasons'],
         );
         $this->assertContains(
-            'Nuansa citrus dan aquatic pada parfum ini selaras dengan karakter Fresh / Clean yang kamu pilih.',
+            'Tag aroma mendukung preferensimu: citrus dan aquatic.',
             $recommendations->firstWhere('slug', 'multiple-nuances')['matched_reasons'],
         );
+    }
+
+    public function test_aroma_preferences_array_matches_any_selected_category(): void
+    {
+        [$brand, , $woody, , , $office] = $this->createReferenceData();
+        $cedar = AromaTag::create([
+            'name' => 'Cedar',
+            'slug' => 'cedar',
+        ]);
+
+        $perfume = Perfume::create([
+            'brand_id' => $brand->id,
+            'name' => 'Woody Multi Match',
+            'slug' => 'woody-multi-match',
+            'price_min' => 150000,
+            'price_max' => 200000,
+            'intensity' => 'soft',
+            'main_aroma_category_id' => $woody->id,
+            'data_status' => 'published',
+        ]);
+        $perfume->aromaTags()->attach($cedar);
+        $perfume->occasions()->attach($office);
+
+        $this->postJson('/api/recommendations', $this->validPayload([
+            'aroma_preference' => null,
+            'aroma_preferences' => ['fresh', 'woody'],
+        ]))
+            ->assertOk()
+            ->assertJsonPath('recommendations.0.slug', 'woody-multi-match')
+            ->assertJsonFragment(['Sesuai dengan preferensi aroma Woody.'])
+            ->assertJsonFragment(['Tag aroma mendukung preferensimu: cedar.']);
+    }
+
+    public function test_legacy_aroma_preference_alias_is_still_accepted(): void
+    {
+        [$brand, $fresh, , $citrus, , $office] = $this->createReferenceData();
+
+        $perfume = Perfume::create([
+            'brand_id' => $brand->id,
+            'name' => 'Fresh Alias Match',
+            'slug' => 'fresh-alias-match',
+            'price_min' => 150000,
+            'price_max' => 200000,
+            'intensity' => 'soft',
+            'main_aroma_category_id' => $fresh->id,
+            'data_status' => 'published',
+        ]);
+        $perfume->aromaTags()->attach($citrus);
+        $perfume->occasions()->attach($office);
+
+        $this->postJson('/api/recommendations', $this->validPayload([
+            'aroma_preference' => 'fresh-clean',
+        ]))
+            ->assertOk()
+            ->assertJsonPath('recommendations.0.slug', 'fresh-alias-match');
+    }
+
+    public function test_aroma_preferences_validation_rules(): void
+    {
+        $this->createReferenceData();
+
+        $missingPayload = $this->validPayload(['aroma_preference' => null]);
+        unset($missingPayload['aroma_preferences']);
+
+        $this->postJson('/api/recommendations', $missingPayload)
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors(['aroma_preference', 'aroma_preferences']);
+
+        $this->postJson('/api/recommendations', $this->validPayload([
+            'aroma_preference' => null,
+            'aroma_preferences' => [],
+        ]))
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors(['aroma_preferences']);
+
+        $this->postJson('/api/recommendations', $this->validPayload([
+            'aroma_preference' => null,
+            'aroma_preferences' => ['fresh', 'clean', 'woody', 'amber'],
+        ]))
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors(['aroma_preferences']);
+
+        $this->postJson('/api/recommendations', $this->validPayload([
+            'aroma_preference' => null,
+            'aroma_preferences' => ['tidak-ada'],
+        ]))
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors(['aroma_preferences.0']);
     }
 
     public function test_recommendation_validation_rejects_invalid_inputs(): void
@@ -193,7 +281,7 @@ class RecommendationApiTest extends TestCase
 
         $this->postJson('/api/recommendations', [
             'occasion' => 'tidak-ada',
-            'aroma_preference' => 'fresh-clean',
+            'aroma_preference' => 'fresh',
             'price_min' => 300000,
             'price_max' => 100000,
             'intensity_preference' => 'loud',
@@ -287,7 +375,7 @@ class RecommendationApiTest extends TestCase
     {
         return array_merge([
             'occasion' => 'office-work',
-            'aroma_preference' => 'fresh-clean',
+            'aroma_preference' => 'fresh',
             'price_min' => 100000,
             'price_max' => 250000,
             'intensity_preference' => 'soft',
@@ -307,12 +395,12 @@ class RecommendationApiTest extends TestCase
             'slug' => 'test-brand',
         ]);
         $fresh = AromaCategory::create([
-            'name' => 'Fresh / Clean',
-            'slug' => 'fresh-clean',
+            'name' => 'Fresh',
+            'slug' => 'fresh',
         ]);
         $woody = AromaCategory::create([
-            'name' => 'Woody / Earthy',
-            'slug' => 'woody-earthy',
+            'name' => 'Woody',
+            'slug' => 'woody',
         ]);
         $citrus = AromaTag::create([
             'name' => 'Citrus',

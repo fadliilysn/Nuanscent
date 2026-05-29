@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Perfume;
+use App\Support\AromaCategoryCatalog;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Collection as SupportCollection;
 
@@ -116,16 +117,21 @@ class RecommendationService
         $denominator = 0;
         $reasons = [];
         $limitations = [];
-        $preferredCategory = (string) $preferences['aroma_preference'];
+        $preferredCategories = $this->normalizedAromaPreferences($preferences);
+        $acceptedCategorySlugs = collect($preferredCategories)
+            ->flatMap(fn (string $category): array => AromaCategoryCatalog::filterSlugs($category))
+            ->unique()
+            ->values()
+            ->all();
 
         if ($perfume->mainAromaCategory === null) {
             $limitations[] = 'Kategori aroma utama produk belum tersedia.';
         } else {
             $denominator += self::AROMA_CATEGORY_POINTS;
 
-            if ($perfume->mainAromaCategory->slug === $preferredCategory) {
+            if (in_array($perfume->mainAromaCategory->slug, $acceptedCategorySlugs, true)) {
                 $score += self::AROMA_CATEGORY_POINTS;
-                $reasons[] = "Sesuai dengan preferensi aroma {$perfume->mainAromaCategory->name}.";
+                $reasons[] = $this->mainAromaReason($perfume->mainAromaCategory->slug, $preferredCategories);
             }
         }
 
@@ -133,11 +139,11 @@ class RecommendationService
             $limitations[] = 'Tag aroma produk belum tersedia.';
         } else {
             $denominator += self::AROMA_TAG_POINTS;
-            $supportingTags = $this->supportingTagsForCategory($preferredCategory, $perfume->aromaTags);
+            $supportingTags = $this->supportingTagsForCategories($preferredCategories, $perfume->aromaTags);
 
             if ($supportingTags->isNotEmpty()) {
                 $score += min(self::AROMA_TAG_POINTS, $supportingTags->count() * 5);
-                $reasons[] = $this->supportingTagReason($supportingTags, $preferredCategory);
+                $reasons[] = $this->supportingTagReason($supportingTags);
             }
         }
 
@@ -333,22 +339,46 @@ class RecommendationService
     }
 
     /**
+     * @param  array<string, mixed>  $preferences
+     * @return array<int, string>
+     */
+    private function normalizedAromaPreferences(array $preferences): array
+    {
+        $rawPreferences = $preferences['aroma_preferences'] ?? [$preferences['aroma_preference'] ?? null];
+
+        return collect(is_array($rawPreferences) ? $rawPreferences : [$rawPreferences])
+            ->filter(fn ($slug): bool => is_string($slug) && trim($slug) !== '')
+            ->map(fn (string $slug): string => trim($slug))
+            ->unique()
+            ->take(3)
+            ->values()
+            ->all();
+    }
+
+    /**
+     * @param  array<int, string>  $preferredCategories
      * @param  SupportCollection<int, mixed>  $tags
      * @return SupportCollection<int, mixed>
      */
-    private function supportingTagsForCategory(string $categorySlug, SupportCollection $tags): SupportCollection
+    private function supportingTagsForCategories(array $preferredCategories, SupportCollection $tags): SupportCollection
     {
-        $supportingSlugs = $this->categoryTagMap()[$categorySlug] ?? [];
+        $supportingSlugs = collect($preferredCategories)
+            ->flatMap(fn (string $categorySlug): array => AromaCategoryCatalog::tagMap()[$categorySlug] ?? [])
+            ->merge($preferredCategories)
+            ->unique()
+            ->values()
+            ->all();
 
         return $tags
-            ->filter(fn ($tag): bool => in_array($tag->slug, $supportingSlugs, true) || $tag->slug === $categorySlug)
+            ->filter(fn ($tag): bool => in_array($tag->slug, $supportingSlugs, true))
+            ->unique('slug')
             ->values();
     }
 
     /**
      * @param  SupportCollection<int, mixed>  $tags
      */
-    private function supportingTagReason(SupportCollection $tags, string $categorySlug): string
+    private function supportingTagReason(SupportCollection $tags): string
     {
         $nuances = $this->formatIndonesianList(
             $tags
@@ -357,7 +387,32 @@ class RecommendationService
                 ->all(),
         );
 
-        return "Nuansa {$nuances} pada parfum ini selaras dengan karakter {$this->categoryNameForSlug($categorySlug)} yang kamu pilih.";
+        return "Tag aroma mendukung preferensimu: {$nuances}.";
+    }
+
+    /**
+     * @param  array<int, string>  $preferredCategories
+     */
+    private function mainAromaReason(string $perfumeCategorySlug, array $preferredCategories): string
+    {
+        $matchedPreferences = collect($preferredCategories)
+            ->filter(fn (string $categorySlug): bool => in_array(
+                $perfumeCategorySlug,
+                AromaCategoryCatalog::filterSlugs($categorySlug),
+                true,
+            ))
+            ->map(fn (string $categorySlug): string => $this->categoryNameForSlug($categorySlug))
+            ->unique()
+            ->values()
+            ->all();
+
+        $aromaNames = $this->formatIndonesianList(
+            $matchedPreferences !== []
+                ? $matchedPreferences
+                : [$this->categoryNameForSlug($perfumeCategorySlug)],
+        );
+
+        return "Sesuai dengan preferensi aroma {$aromaNames}.";
     }
 
     /**
@@ -378,37 +433,7 @@ class RecommendationService
 
     private function categoryNameForSlug(string $slug): string
     {
-        return $this->categoryNameMap()[$slug] ?? $slug;
-    }
-
-    /**
-     * @return array<string, array<int, string>>
-     */
-    private function categoryTagMap(): array
-    {
-        return [
-            'fresh-clean' => ['citrus', 'fresh', 'aquatic', 'clean', 'soapy'],
-            'sweet-gourmand' => ['sweet', 'gourmand', 'vanilla', 'caramel', 'coffee', 'tea', 'creamy', 'fruity'],
-            'floral' => ['floral', 'rose', 'jasmine', 'white-floral'],
-            'woody-earthy' => ['woody', 'earthy', 'cedar', 'sandalwood', 'vetiver', 'patchouli'],
-            'warm-amber-spicy' => ['warm', 'amber', 'spicy', 'saffron'],
-            'musky-powdery-soft' => ['musky', 'powdery', 'soft'],
-        ];
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    private function categoryNameMap(): array
-    {
-        return [
-            'fresh-clean' => 'Fresh / Clean',
-            'sweet-gourmand' => 'Sweet / Gourmand',
-            'floral' => 'Floral',
-            'woody-earthy' => 'Woody / Earthy',
-            'warm-amber-spicy' => 'Warm / Amber / Spicy',
-            'musky-powdery-soft' => 'Musky / Powdery / Soft',
-        ];
+        return AromaCategoryCatalog::displayName($slug);
     }
 
     /**

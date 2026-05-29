@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             OccasionSeeder::class,
             AromaTagSeeder::class,
             NoteSeeder::class,
+            RemapPerfumeAromaCategoriesSeeder::class,
         ]);
     }
 }

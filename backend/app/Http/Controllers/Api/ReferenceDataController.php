@@ -9,13 +9,21 @@ use App\Http\Resources\OccasionResource;
 use App\Models\AromaCategory;
 use App\Models\AromaTag;
 use App\Models\Occasion;
+use App\Support\AromaCategoryCatalog;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ReferenceDataController extends Controller
 {
     public function aromaCategories(): AnonymousResourceCollection
     {
-        return AromaCategoryResource::collection(AromaCategory::query()->orderBy('id')->get());
+        $orderedSlugs = AromaCategoryCatalog::publicSlugs();
+        $categories = AromaCategory::query()
+            ->whereIn('slug', $orderedSlugs)
+            ->get()
+            ->sortBy(fn (AromaCategory $category): int => array_search($category->slug, $orderedSlugs, true))
+            ->values();
+
+        return AromaCategoryResource::collection($categories);
     }
 
     public function aromaTags(): AnonymousResourceCollection

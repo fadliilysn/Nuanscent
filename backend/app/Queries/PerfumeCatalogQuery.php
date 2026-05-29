@@ -3,6 +3,7 @@
 namespace App\Queries;
 
 use App\Models\Perfume;
+use App\Support\AromaCategoryCatalog;
 use Illuminate\Database\Eloquent\Builder;
 
 class PerfumeCatalogQuery
@@ -22,7 +23,7 @@ class PerfumeCatalogQuery
             ->when($filters['brand'] ?? null, fn (Builder $query, string $brand): Builder => $query
                 ->whereHas('brand', fn (Builder $brandQuery) => $brandQuery->where('slug', $brand)))
             ->when($filters['aroma_category'] ?? null, fn (Builder $query, string $category): Builder => $query
-                ->whereHas('mainAromaCategory', fn (Builder $categoryQuery) => $categoryQuery->where('slug', $category)))
+                ->whereHas('mainAromaCategory', fn (Builder $categoryQuery) => $categoryQuery->whereIn('slug', AromaCategoryCatalog::filterSlugs($category))))
             ->when($filters['aroma_tag'] ?? null, fn (Builder $query, string $tag): Builder => $query
                 ->whereHas('aromaTags', fn (Builder $tagQuery) => $tagQuery->where('slug', $tag)))
             ->when($filters['occasion'] ?? null, fn (Builder $query, string $occasion): Builder => $query

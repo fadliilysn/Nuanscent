@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Note;
 use App\Models\Occasion;
 use App\Models\Perfume;
+use App\Support\AromaCategoryCatalog;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -64,7 +65,7 @@ class NuanscentPerfumeBatch02Seeder extends Seeder
                         'image_url' => $perfumeData['image_url'] ?? null,
                         'marketed_gender' => $perfumeData['marketed_gender'] ?? null,
                         'intensity' => $perfumeData['intensity'] ?? null,
-                        'main_aroma_category_id' => $categories[$perfumeData['main_aroma_category_slug']]->id,
+                        'main_aroma_category_id' => $categories[$this->categorySlugFor($perfumeData)]->id,
                         'source_url' => $perfumeData['source_url'] ?? null,
                         'source_name' => $perfumeData['source_name'] ?? null,
                         'last_verified_at' => $perfumeData['last_verified_at'] ?? null,
@@ -131,7 +132,11 @@ class NuanscentPerfumeBatch02Seeder extends Seeder
     private function validateMasterReferences(): void
     {
         $missingCategories = $this->missingSlugs(
-            $this->collectPerfumeValues('main_aroma_category_slug'),
+            collect($this->payload['perfumes'])
+                ->map(fn (array $perfume): string => $this->categorySlugFor($perfume))
+                ->unique()
+                ->values()
+                ->all(),
             AromaCategory::query()->pluck('slug')->all(),
         );
         $missingTags = $this->missingSlugs(
@@ -276,6 +281,17 @@ class NuanscentPerfumeBatch02Seeder extends Seeder
             ->unique()
             ->values()
             ->all();
+    }
+
+    /**
+     * @param  array<string, mixed>  $perfumeData
+     */
+    private function categorySlugFor(array $perfumeData): string
+    {
+        return AromaCategoryCatalog::resolvePrimarySlug(
+            (string) $perfumeData['main_aroma_category_slug'],
+            $perfumeData['aroma_tag_slugs'] ?? [],
+        );
     }
 
     /**
