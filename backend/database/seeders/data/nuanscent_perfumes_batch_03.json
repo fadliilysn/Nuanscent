@@ -1,0 +1,3175 @@
+{
+  "meta": {
+    "dataset_name": "Nuanscent Perfume Batch 03",
+    "version": "2.0.0",
+    "generated_at": "2026-05-29",
+    "purpose": "Batch gabungan dari dataset Batch 03 dan Batch 04 dengan main_aroma_category_slug yang sudah disesuaikan ke aroma category tunggal Phase 12.",
+    "source_batches": [
+      "Nuanscent Perfume Batch 03 v1.0.0",
+      "Nuanscent Perfume Batch 04 v1.0.0"
+    ],
+    "notes": [
+      "File ini menggabungkan data parfum dari batch 03 dan batch 04 agar cukup diimpor sebagai satu Batch 03 baru.",
+      "Field main_aroma_category_slug sudah diubah dari slug gabungan lama ke slug aroma category tunggal Phase 12.",
+      "Slug lama fresh-clean, sweet-gourmand, woody-earthy, warm-amber-spicy, dan musky-powdery-soft tidak digunakan lagi pada file ini.",
+      "Brand tidak dibuat ulang karena brand terkait sudah tersedia dari batch sebelumnya.",
+      "Harga dan image_url dipertahankan sesuai data sumber; null tidak ditebak."
+    ],
+    "category_mapping_rules": {
+      "fresh-clean": "fresh by default, clean if clean/soapy/laundry tag exists",
+      "sweet-gourmand": "gourmand if gourmand-detail tags exist, otherwise sweet",
+      "woody-earthy": "earthy if patchouli/vetiver/moss/earthy tag exists, otherwise woody",
+      "warm-amber-spicy": "spicy if spicy/saffron/spice tags exist, amber if amber-like tags exist, otherwise warm",
+      "musky-powdery-soft": "powdery if powdery tag exists, soft if soft/clean-like tag exists, otherwise musky"
+    },
+    "counts": {
+      "perfumes": 44,
+      "brands": 0
+    }
+  },
+  "brands": [],
+  "perfumes": [
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Black Edition Woody",
+      "slug": "morris-black-edition-woody",
+      "short_description": "Woody spicy maskulin dengan bergamot, lavender, pepper, nutmeg, patchouli, amber, vetiver, musk, dan tonka bean.",
+      "official_description": "Black Edition Woody menghadirkan karakter woody spicy yang hangat dan maskulin, dengan dominasi kayu, patchouli, nutmeg spicy, dan amber manis.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "earthy",
+      "aroma_tag_slugs": [
+        "citrus",
+        "spicy",
+        "patchouli",
+        "amber",
+        "vetiver",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "office",
+        "formal",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Lavender",
+          "position": "top"
+        },
+        {
+          "name": "Pepper",
+          "position": "top"
+        },
+        {
+          "name": "Nutmeg",
+          "position": "top"
+        },
+        {
+          "name": "Patchouli",
+          "position": "middle"
+        },
+        {
+          "name": "Amber",
+          "position": "middle"
+        },
+        {
+          "name": "Dry Apple",
+          "position": "middle"
+        },
+        {
+          "name": "Vetiver",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "base"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-black-edition-woody-100-ml/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Black Edition Aquatic",
+      "slug": "morris-black-edition-aquatic",
+      "short_description": "Fresh citrus aquatic dengan bergamot, mint, peppercorn, geranium, patchouli, oud wood, dan dry amber.",
+      "official_description": "Black Edition Aquatic membawa kesegaran mint, citrus, dan bergamot dengan watery vibe, lalu ditutup woody-oud yang lebih dalam.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "citrus",
+        "aquatic",
+        "patchouli",
+        "oud",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Mint",
+          "position": "top"
+        },
+        {
+          "name": "Peppercorn",
+          "position": "top"
+        },
+        {
+          "name": "Geranium",
+          "position": "middle"
+        },
+        {
+          "name": "Patchouli",
+          "position": "middle"
+        },
+        {
+          "name": "Oud Wood",
+          "position": "base"
+        },
+        {
+          "name": "Dry Amber",
+          "position": "base"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-black-edition-aquatic-100-ml/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Black Edition Aromatic",
+      "slug": "morris-black-edition-aromatic",
+      "short_description": "Aromatic woody dengan bergamot, pink pepper, vegetal accord, jasmine, rose, watery notes, moss, patchouli, dan vine.",
+      "official_description": "Black Edition Aromatic menonjolkan citrus-spicy opening, floral watery heart, dan base moss-patchouli yang rapi.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "earthy",
+      "aroma_tag_slugs": [
+        "citrus",
+        "spicy",
+        "jasmine",
+        "rose",
+        "aquatic",
+        "patchouli"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Pink Pepper",
+          "position": "top"
+        },
+        {
+          "name": "Vegetal Accord",
+          "position": "top"
+        },
+        {
+          "name": "Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Watery Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Moss",
+          "position": "base"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        },
+        {
+          "name": "Vine",
+          "position": "base"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-black-edition-aromatic-100-ml/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Black Edition Musky",
+      "slug": "morris-black-edition-musky",
+      "short_description": "Floral musk powdery dengan muguet, velvet musk, powdery notes, amber, dan balsamic warmth.",
+      "official_description": "Black Edition Musky memberi kesan musk powdery yang soft, floral segar, lalu amber balsamic yang hangat, sensual, dan elegan.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "powdery",
+      "aroma_tag_slugs": [
+        "white-floral",
+        "musky",
+        "powdery",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Muguet",
+          "position": "top"
+        },
+        {
+          "name": "Velvet Musk",
+          "position": "middle"
+        },
+        {
+          "name": "Powdery Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Balsamic Notes",
+          "position": "base"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-black-edition-musky-100-ml/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Black Edition Oud",
+      "slug": "morris-black-edition-oud",
+      "short_description": "Floral woody oud dengan fruity opening, rose nuance, sandalwood, dan karakter warm yang elegan.",
+      "official_description": "Black Edition Oud menempatkan oud sebagai spotlight, dipadukan fruity opening, floral rose, dan sandalwood yang membuatnya terasa lebih warm.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "warm",
+      "aroma_tag_slugs": [
+        "oud",
+        "fruity",
+        "rose",
+        "sandalwood"
+      ],
+      "occasion_slugs": [
+        "date",
+        "formal",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Fruity Notes",
+          "position": "top"
+        },
+        {
+          "name": "Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Oud",
+          "position": "middle"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        },
+        {
+          "name": "Woody Notes",
+          "position": "base"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-black-edition-oud-100-ml/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "White Edition Fresh",
+      "slug": "morris-white-edition-fresh",
+      "short_description": "Fresh aquatic citrus dengan marine note, lime, mandarin, freesia, rose, jasmine, cypress, musk, cedarwood, dan gaiac wood.",
+      "official_description": "White Edition Fresh membawa opening marine-citrus yang ringan, heart floral, dan base woody-musky yang clean.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "aquatic",
+        "citrus",
+        "rose",
+        "jasmine",
+        "musky",
+        "cedar"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "office"
+      ],
+      "notes": [
+        {
+          "name": "Marine Note",
+          "position": "top"
+        },
+        {
+          "name": "Lime",
+          "position": "top"
+        },
+        {
+          "name": "Mandarin",
+          "position": "top"
+        },
+        {
+          "name": "Freesia",
+          "position": "middle"
+        },
+        {
+          "name": "Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Lily of the Valley",
+          "position": "middle"
+        },
+        {
+          "name": "Cypress",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "base"
+        },
+        {
+          "name": "Gaiac Wood",
+          "position": "base"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-white-edition-fresh-100-ml/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Glam Edition Famous",
+      "slug": "morris-glam-edition-famous",
+      "short_description": "Fruity floral soft dengan fresh pear, peach, melon, rose, jasmine, lily of the valley, sandalwood, white musk, dan vanilla.",
+      "official_description": "Glam Edition Famous memadukan buah segar, floral lembut, dan drydown sandalwood-white musk-vanilla yang feminin.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "fruity",
+        "rose",
+        "jasmine",
+        "white-floral",
+        "sandalwood",
+        "musky",
+        "vanilla"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "date",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Fresh Pear",
+          "position": "top"
+        },
+        {
+          "name": "Peach",
+          "position": "top"
+        },
+        {
+          "name": "Melon",
+          "position": "top"
+        },
+        {
+          "name": "Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Lily of the Valley",
+          "position": "middle"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        },
+        {
+          "name": "White Musk",
+          "position": "base"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-glam-edition-famous-100-ml/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Glam Edition Luxury Star",
+      "slug": "morris-glam-edition-luxury-star",
+      "short_description": "Citrus sparkling floral dengan citrus accord, bubbly champagne, mimosa, musk, sandalwood, dan vanilla.",
+      "official_description": "Glam Edition Luxury Star menghadirkan opening citrus, heart champagne-mimosa, dan base musk-sandalwood-vanilla yang elegan.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "citrus",
+        "musky",
+        "sandalwood",
+        "vanilla"
+      ],
+      "occasion_slugs": [
+        "date",
+        "formal",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Citrus Accord",
+          "position": "top"
+        },
+        {
+          "name": "Bubbly Champagne",
+          "position": "middle"
+        },
+        {
+          "name": "Mimosa",
+          "position": "middle"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-eau-de-parfum-glam-edition-100ml-luxury-star/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Teen Cute",
+      "slug": "morris-teen-cute",
+      "short_description": "Fruity sweet musky untuk daily wear remaja dengan karakter manis, ringan, dan playful.",
+      "official_description": "Teen Cute digambarkan sebagai eau de parfum dengan aroma musky, fruity, dan sweet, ketahanan sekitar 10–12 jam, dan kekuatan aroma medium.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 50,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "sweet",
+      "aroma_tag_slugs": [
+        "fruity",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Fruity Notes",
+          "position": "unspecified"
+        },
+        {
+          "name": "Sweet Notes",
+          "position": "unspecified"
+        },
+        {
+          "name": "Musk",
+          "position": "unspecified"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-teen-60-ml-cute/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Teen Princess",
+      "slug": "morris-teen-princess",
+      "short_description": "Oriental feminine dengan citrus, floral, musky, dan ambery nuances yang sensual namun tetap ringan.",
+      "official_description": "Teen Princess memiliki karakter oriental dengan nuansa citrus, floral, musky, dan ambery untuk kesan sensual feminin.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 50,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "citrus",
+        "white-floral",
+        "musky",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Citrus Notes",
+          "position": "unspecified"
+        },
+        {
+          "name": "Floral Notes",
+          "position": "unspecified"
+        },
+        {
+          "name": "Musk",
+          "position": "unspecified"
+        },
+        {
+          "name": "Amber",
+          "position": "unspecified"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-teen-60-ml-princess/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "150 ml",
+          "volume_ml": 150,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Floral Edition Violet Glow",
+      "slug": "morris-floral-edition-violet-glow",
+      "short_description": "Floral vanilla citrus dengan bergamot, rose, vanilla, dan nuansa bunga yang sensual.",
+      "official_description": "Floral Edition Violet Glow memadukan vanilla, jeruk bergamot, dan rose dengan keharuman bunga yang memberi kesan sedikit sensual.",
+      "concentration": "Eau de Toilette",
+      "volume_ml": 150,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "citrus",
+        "rose",
+        "vanilla"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "casual-hangout",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "unspecified"
+        },
+        {
+          "name": "Rose",
+          "position": "unspecified"
+        },
+        {
+          "name": "Vanilla",
+          "position": "unspecified"
+        },
+        {
+          "name": "Floral Notes",
+          "position": "unspecified"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-parfum-eau-de-toilette-floral-edition-150ml-violet-glow/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Lifestyle Edition Creative",
+      "slug": "morris-lifestyle-edition-creative",
+      "short_description": "Citrus amber aromatic dengan kesan fresh, energic, manis-earthy, dan natural.",
+      "official_description": "Lifestyle Edition Creative dibuka citrus yang segar dan energic, dikombinasikan dengan amber aromatic yang kompleks, manis, earthy, dan natural.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "amber",
+      "aroma_tag_slugs": [
+        "citrus",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Citrus Notes",
+          "position": "unspecified"
+        },
+        {
+          "name": "Amber",
+          "position": "unspecified"
+        },
+        {
+          "name": "Aromatic Notes",
+          "position": "unspecified"
+        },
+        {
+          "name": "Earthy Notes",
+          "position": "unspecified"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-lifestyle-edition-100ml-creative/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "110 ml",
+          "volume_ml": 110,
+          "price": null
+        }
+      ],
+      "brand_slug": "morris",
+      "name": "Tropical Paradise",
+      "slug": "morris-tropical-paradise",
+      "short_description": "Sweet vanilla floral dengan nuansa bunga yang menenangkan dan cocok untuk suasana casual.",
+      "official_description": "Tropical Paradise memadukan aroma sweet vanilla dan floral yang menenangkan.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 110,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "gourmand",
+      "aroma_tag_slugs": [
+        "vanilla",
+        "white-floral"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "casual-hangout",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Vanilla",
+          "position": "unspecified"
+        },
+        {
+          "name": "Floral Notes",
+          "position": "unspecified"
+        }
+      ],
+      "source_name": "Livindo Official",
+      "source_url": "https://livindo.co.id/product/morris-tropical-eau-de-parfume-110-ml-paradise/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 42180
+        }
+      ],
+      "brand_slug": "braven",
+      "name": "Code Cedarwood",
+      "slug": "braven-code-cedarwood",
+      "short_description": "Aquatic woody maskulin dengan marine, melon, spices, galbanum, woody notes, dan amber.",
+      "official_description": "Code Cedarwood menghadirkan aroma segar dari marine dan melon, lalu rempah galbanum, sebelum mengering ke woody amber yang hangat.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": 42180,
+      "price_max": 42180,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "aquatic",
+        "fruity",
+        "spicy",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Marine",
+          "position": "top"
+        },
+        {
+          "name": "Melon",
+          "position": "top"
+        },
+        {
+          "name": "Spices",
+          "position": "middle"
+        },
+        {
+          "name": "Galbanum",
+          "position": "middle"
+        },
+        {
+          "name": "Woody Notes",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        }
+      ],
+      "source_name": "Griff Retailer",
+      "source_url": "https://griff.co.id/products/braven-code-eau-de-parfum-oud-wood-100-ml/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 42180
+        }
+      ],
+      "brand_slug": "braven",
+      "name": "Code Cool Water",
+      "slug": "braven-code-cool-water",
+      "short_description": "Fresh aquatic dengan orange, bergamot, green tea, amber, moss, dan cedarwood.",
+      "official_description": "Code Cool Water memberi kesan segar dan maskulin lewat citrus opening, green tea-amber heart, serta moss cedarwood di akhir.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": 42180,
+      "price_max": 42180,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "citrus",
+        "tea",
+        "amber",
+        "cedar"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "office"
+      ],
+      "notes": [
+        {
+          "name": "Orange",
+          "position": "top"
+        },
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Green Tea",
+          "position": "middle"
+        },
+        {
+          "name": "Amber",
+          "position": "middle"
+        },
+        {
+          "name": "Moss",
+          "position": "base"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "base"
+        }
+      ],
+      "source_name": "Griff Retailer",
+      "source_url": "https://griff.co.id/products/braven-code-eau-de-parfum-cool-water-100-ml/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 42180
+        }
+      ],
+      "brand_slug": "braven",
+      "name": "Code Urban",
+      "slug": "braven-code-urban",
+      "short_description": "Aquatic woody urban dengan grapefruit, apple, lavender, geranium, amber, dan labdanum.",
+      "official_description": "Code Urban membuka aroma segar dari grapefruit dan apple, berlanjut floral maskulin dari lavender-geranium, lalu hangat lewat amber dan labdanum.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": 42180,
+      "price_max": 42180,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "citrus",
+        "fruity",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Grapefruit",
+          "position": "top"
+        },
+        {
+          "name": "Apple",
+          "position": "top"
+        },
+        {
+          "name": "Lavender",
+          "position": "middle"
+        },
+        {
+          "name": "Geranium",
+          "position": "middle"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Labdanum",
+          "position": "base"
+        }
+      ],
+      "source_name": "Griff Retailer",
+      "source_url": "https://griff.co.id/products/evangeline-selection-eau-de-parfum-sweet-strawberry-100-ml/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "braven",
+      "name": "Sport Freestyle",
+      "slug": "braven-sport-freestyle",
+      "short_description": "Sporty fresh woody dengan elemi, grapefruit, cardamom, freesia, geranium, blackcurrant, cashmeran, sandalwood, dan amber.",
+      "official_description": "Sport Freestyle menampilkan opening fresh spicy, heart floral-fruity, dan drydown hangat dari cashmeran, sandalwood, serta amber.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "citrus",
+        "spicy",
+        "fruity",
+        "sandalwood",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Elemi",
+          "position": "top"
+        },
+        {
+          "name": "Grapefruit",
+          "position": "top"
+        },
+        {
+          "name": "Cardamom",
+          "position": "top"
+        },
+        {
+          "name": "Freesia",
+          "position": "middle"
+        },
+        {
+          "name": "Geranium",
+          "position": "middle"
+        },
+        {
+          "name": "Blackcurrant",
+          "position": "middle"
+        },
+        {
+          "name": "Cashmeran",
+          "position": "base"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        }
+      ],
+      "source_name": "Blibli Product Listing",
+      "source_url": "https://www.blibli.com/p/braven-eau-de-parfum-sport-100ml-freestyle/ps--TOD-70470-00717"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "braven",
+      "name": "Black Casual",
+      "slug": "braven-black-casual",
+      "short_description": "Woody fresh aromatic dengan karakter maskulin, clean, dan mudah dipakai harian.",
+      "official_description": "Black Casual dari Braven Black Series digambarkan sebagai aroma woody, fresh, dan aromatic dengan kesan confident.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "woody",
+      "aroma_tag_slugs": [
+        "clean"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Woody Notes",
+          "position": "unspecified"
+        },
+        {
+          "name": "Fresh Notes",
+          "position": "unspecified"
+        },
+        {
+          "name": "Aromatic Notes",
+          "position": "unspecified"
+        }
+      ],
+      "source_name": "Blibli Product Listing",
+      "source_url": "https://www.blibli.com/p/braven-black-edp-100ml-casual/ps--TOD-70470-00494"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "hmns",
+      "name": "Addict",
+      "slug": "addict",
+      "short_description": "Fruity rose coffee yang hangat dengan berries, red rose, coffee, patchouli, amber, dan tonka bean.",
+      "official_description": "Addict membawa nuansa malam yang hangat dan menggoda lewat berries segar, rose-coffee heart, lalu drydown patchouli amber tonka yang adiktif.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": 369000,
+      "price_max": 369000,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "gourmand",
+      "aroma_tag_slugs": [
+        "fruity",
+        "rose",
+        "coffee",
+        "patchouli",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "date",
+        "evening-night",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Berries",
+          "position": "top"
+        },
+        {
+          "name": "Red Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Coffee",
+          "position": "middle"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "base"
+        }
+      ],
+      "source_name": "HMNS Official",
+      "source_url": "https://madeforhmns.com/products/addict-100ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "hmns",
+      "name": "The Perfection",
+      "slug": "the-perfection",
+      "short_description": "Spicy fougere clean dengan bergamot, elemi, clove, lavender, green pear, sandalwood, leather, dan musk.",
+      "official_description": "The Perfection adalah parfum spicy fougere berkarakter rapi, bersih, dan maskulin-elegan dengan pembukaan aromatic spicy dan drydown woody leathery.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": 398000,
+      "price_max": 398000,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "woody",
+      "aroma_tag_slugs": [
+        "citrus",
+        "spicy",
+        "sandalwood",
+        "leathery",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "office",
+        "formal",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Elemi",
+          "position": "top"
+        },
+        {
+          "name": "Clove",
+          "position": "top"
+        },
+        {
+          "name": "Nutmeg",
+          "position": "top"
+        },
+        {
+          "name": "Lavender",
+          "position": "middle"
+        },
+        {
+          "name": "Tagetes",
+          "position": "middle"
+        },
+        {
+          "name": "Lily of the Valley",
+          "position": "middle"
+        },
+        {
+          "name": "Green Pear",
+          "position": "middle"
+        },
+        {
+          "name": "Driftwood",
+          "position": "base"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        },
+        {
+          "name": "Leather",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        }
+      ],
+      "source_name": "HMNS Official",
+      "source_url": "https://madeforhmns.com/products/hmns-perfume-the-perfection"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "hmns",
+      "name": "Alpha Hyper Green",
+      "slug": "alpha-hyper-green",
+      "short_description": "Green citrus extrait dengan lemon oil, pink pepper, cactus accord, patchouli, vetiver Java, dan moss.",
+      "official_description": "Alpha Hyper Green memperkuat sisi hijau dari Alpha lewat nuansa clean green, citrus spicy, dan drydown earthy vetiver moss yang lebih tahan lama.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 100,
+      "price_min": 525000,
+      "price_max": 525000,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "citrus",
+        "spicy",
+        "patchouli",
+        "vetiver"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Pure Natural Lemon Oil",
+          "position": "top"
+        },
+        {
+          "name": "Pink Pepper",
+          "position": "top"
+        },
+        {
+          "name": "Cactus Accord",
+          "position": "top"
+        },
+        {
+          "name": "Ciste Absolute",
+          "position": "middle"
+        },
+        {
+          "name": "Patchouli Indonesia",
+          "position": "base"
+        },
+        {
+          "name": "Vetiver Java",
+          "position": "base"
+        },
+        {
+          "name": "Moss",
+          "position": "base"
+        }
+      ],
+      "source_name": "HMNS Official",
+      "source_url": "https://madeforhmns.com/products/hmns-hyper-green-extrait-de-parfum"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "hmns",
+      "name": "Untitled Humans Aroma 01",
+      "slug": "untitled-humans-aroma-01",
+      "short_description": "Warm musky fig sandalwood dengan coriander seed, violet leaf, ambrette, rose, sandalwood, cypriol, dan vanilla.",
+      "official_description": "Aroma 01 dari Untitled Humans menonjolkan fig dan skamulwood dalam komposisi hangat, lembut, dan kontemplatif.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": 395000,
+      "price_max": 395000,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "woody",
+      "aroma_tag_slugs": [
+        "fruity",
+        "rose",
+        "sandalwood",
+        "vanilla",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Coriander Seed",
+          "position": "top"
+        },
+        {
+          "name": "Violet Leaf",
+          "position": "top"
+        },
+        {
+          "name": "Ambrette",
+          "position": "top"
+        },
+        {
+          "name": "Figolide",
+          "position": "middle"
+        },
+        {
+          "name": "Velvet Accord",
+          "position": "middle"
+        },
+        {
+          "name": "Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        },
+        {
+          "name": "Cypriol",
+          "position": "base"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        }
+      ],
+      "source_name": "HMNS Official",
+      "source_url": "https://madeforhmns.com/products/untitled-humans"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [],
+      "brand_slug": "saff-co",
+      "name": "EULALIE",
+      "slug": "eulalie",
+      "short_description": "Fruity floral ambery dengan lychee, raspberry cream, sampaguita, rose, amberwoods, musk, dan cashmeran.",
+      "official_description": "EULALIE menampilkan fruity floral yang cerah dan modern dengan musky amber trail yang lembut.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 249000,
+      "price_max": 249000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "fruity",
+        "rose",
+        "amber",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "date",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Lychee",
+          "position": "top"
+        },
+        {
+          "name": "Crème de Framboise",
+          "position": "top"
+        },
+        {
+          "name": "Petalia",
+          "position": "top"
+        },
+        {
+          "name": "Sampaguita",
+          "position": "middle"
+        },
+        {
+          "name": "Roseraie de L'Hay",
+          "position": "middle"
+        },
+        {
+          "name": "Akigalawood",
+          "position": "middle"
+        },
+        {
+          "name": "Amberwoods",
+          "position": "base"
+        },
+        {
+          "name": "Sheer Musk",
+          "position": "base"
+        },
+        {
+          "name": "Cashmeran",
+          "position": "base"
+        }
+      ],
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-eulalie"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [],
+      "brand_slug": "saff-co",
+      "name": "ILIAD",
+      "slug": "iliad",
+      "short_description": "Spicy floral amber dengan pink peppercorn, peony, muguet, ylang-ylang, iris, amber, cashmeran, dan patchouli.",
+      "official_description": "ILIAD adalah floral ambery yang hangat dan berkarakter dengan sentuhan spicy, cashmeran, dan patchouli.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 204500,
+      "price_max": 204500,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "spicy",
+      "aroma_tag_slugs": [
+        "spicy",
+        "amber",
+        "patchouli",
+        "white-floral"
+      ],
+      "occasion_slugs": [
+        "formal",
+        "date",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Pink Peppercorn",
+          "position": "top"
+        },
+        {
+          "name": "Peony",
+          "position": "top"
+        },
+        {
+          "name": "Muguet",
+          "position": "top"
+        },
+        {
+          "name": "Ylang-Ylang",
+          "position": "middle"
+        },
+        {
+          "name": "Iris",
+          "position": "middle"
+        },
+        {
+          "name": "Hedione",
+          "position": "middle"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Cashmeran",
+          "position": "base"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        }
+      ],
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-iliad"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [],
+      "brand_slug": "saff-co",
+      "name": "S.O.F.R",
+      "slug": "sofr",
+      "short_description": "Floral woody ambery dengan tangerine, bergamot, melon nuance, sampaguita, mimosa, tuberose, amber, dan pompona.",
+      "official_description": "S.O.F.R membawa kesan floral amber yang lembut, hangat, dan sedikit fruity, cocok untuk suasana rapi tetapi tidak terlalu berat.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 248000,
+      "price_max": 248000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "citrus",
+        "white-floral",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "date",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Tangerine Heart",
+          "position": "top"
+        },
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Charentais",
+          "position": "top"
+        },
+        {
+          "name": "Sampaguita",
+          "position": "middle"
+        },
+        {
+          "name": "Mimosa",
+          "position": "middle"
+        },
+        {
+          "name": "Tuberose",
+          "position": "middle"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Edenolide",
+          "position": "base"
+        },
+        {
+          "name": "Pompona",
+          "position": "base"
+        }
+      ],
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-sofr"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": null
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "mykonos",
+      "name": "Glitch",
+      "slug": "glitch",
+      "short_description": "Fresh fruity woody dengan bergamot, apple, grapefruit, charred pineapple, lavender, vanilla, patchouli, dan musk.",
+      "official_description": "Glitch dibuat untuk karakter modern yang energetic, dibuka citrus-fruity lalu mengering bersih woody musky.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 299000,
+      "price_max": null,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "citrus",
+        "fruity",
+        "vanilla",
+        "patchouli",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Sicilian Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Apple",
+          "position": "top"
+        },
+        {
+          "name": "Grapefruit",
+          "position": "top"
+        },
+        {
+          "name": "Charred Pineapple",
+          "position": "top"
+        },
+        {
+          "name": "Lavender",
+          "position": "middle"
+        },
+        {
+          "name": "Artemisia",
+          "position": "middle"
+        },
+        {
+          "name": "Lily of the Valley",
+          "position": "middle"
+        },
+        {
+          "name": "Pink Pepper",
+          "position": "middle"
+        },
+        {
+          "name": "Vanilla",
+          "position": "middle"
+        },
+        {
+          "name": "Dried Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        }
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-x-setiawanade-glitch-extrait-de-parfum-50ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": null
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "mykonos",
+      "name": "California Blue",
+      "slug": "california-blue",
+      "short_description": "Fruity aquatic summer scent dengan pear, grapefruit, pink salt, rhubarb, marine notes, moss, softwood, dan caramel.",
+      "official_description": "California Blue punya karakter lighthearted, fresh, fruity, dan aquatic seperti nuansa pantai musim panas.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 299000,
+      "price_max": null,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "fruity",
+        "citrus",
+        "aquatic",
+        "caramel"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Lavender",
+          "position": "top"
+        },
+        {
+          "name": "Pear",
+          "position": "top"
+        },
+        {
+          "name": "Grapefruit",
+          "position": "top"
+        },
+        {
+          "name": "Pink Salt",
+          "position": "top"
+        },
+        {
+          "name": "Rhubarb",
+          "position": "middle"
+        },
+        {
+          "name": "Water Blossoms",
+          "position": "middle"
+        },
+        {
+          "name": "Marine Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Moss",
+          "position": "base"
+        },
+        {
+          "name": "Softwood",
+          "position": "base"
+        },
+        {
+          "name": "Caramel",
+          "position": "base"
+        }
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-california-blue-extrait-de-parfum-50ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": null
+        }
+      ],
+      "brand_slug": "mykonos",
+      "name": "California Club",
+      "slug": "california-club",
+      "short_description": "Fresh marine floral woody dengan bergamot, lemon, violet leaf, rose, iris, amberwood, ambrette, dan sandalwood.",
+      "official_description": "California Club mengarah ke fresh aquatic yang lebih formal dan night-out friendly dengan floral depth dan woody amber base.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 50,
+      "price_min": 299000,
+      "price_max": 299000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "citrus",
+        "aquatic",
+        "rose",
+        "sandalwood",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "date",
+        "formal",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Lemon",
+          "position": "top"
+        },
+        {
+          "name": "Violet Leaf",
+          "position": "top"
+        },
+        {
+          "name": "Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Violet",
+          "position": "middle"
+        },
+        {
+          "name": "Iris",
+          "position": "middle"
+        },
+        {
+          "name": "Amberwood",
+          "position": "base"
+        },
+        {
+          "name": "Ambrette",
+          "position": "base"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        }
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-california-club-extrait-de-parfum-50ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": null
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "mykonos",
+      "name": "Conquer",
+      "slug": "conquer",
+      "short_description": "Citrus spicy amber dengan bergamot, ginger, cardamom, orris, orange blossom, patchouli, musk, amber, dan vanilla.",
+      "official_description": "Conquer terasa confident dan controlled dengan opening spicy fresh, heart floral-powdery, serta drydown amber musky hangat.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 299000,
+      "price_max": null,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "spicy",
+      "aroma_tag_slugs": [
+        "citrus",
+        "spicy",
+        "patchouli",
+        "musky",
+        "amber",
+        "vanilla"
+      ],
+      "occasion_slugs": [
+        "office",
+        "formal",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Ginger",
+          "position": "top"
+        },
+        {
+          "name": "Cardamom",
+          "position": "top"
+        },
+        {
+          "name": "Orris",
+          "position": "middle"
+        },
+        {
+          "name": "Orange Blossom",
+          "position": "middle"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Modern Amber",
+          "position": "base"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        }
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-conquer-extrait-de-parfum-100ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": null
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "mykonos",
+      "name": "Royal Ispahan",
+      "slug": "royal-ispahan",
+      "short_description": "Soft fruity floral amber dengan bergamot, raspberry, lychee, cotton flower, violet, rose milk, vanilla, guaiac wood, dan amber.",
+      "official_description": "Royal Ispahan terasa lembut, creamy, dan elegant lewat fruity floral opening serta vanilla amber drydown.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 299000,
+      "price_max": null,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "citrus",
+        "fruity",
+        "rose",
+        "vanilla",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "date",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Raspberry",
+          "position": "top"
+        },
+        {
+          "name": "Lychee",
+          "position": "top"
+        },
+        {
+          "name": "Cotton Flower",
+          "position": "top"
+        },
+        {
+          "name": "Violet",
+          "position": "middle"
+        },
+        {
+          "name": "Rose Milk",
+          "position": "middle"
+        },
+        {
+          "name": "Soft Wood",
+          "position": "middle"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        },
+        {
+          "name": "Guaiac Wood",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        }
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-royal-ispahan-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": null
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "mykonos",
+      "name": "Sorrento",
+      "slug": "sorrento",
+      "short_description": "Mediterranean fresh citrus floral dengan grapefruit, bergamot, jasmine, magnolia, ginger, clean musk, cedar, amber, orris, dan patchouli.",
+      "official_description": "Sorrento membawa citrus floral yang rapi dan bright, lalu menetap ke clean musk, cedar, amber, dan patchouli.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 299000,
+      "price_max": null,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "citrus",
+        "jasmine",
+        "cedar",
+        "amber",
+        "patchouli",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Grapefruit",
+          "position": "top"
+        },
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Magnolia",
+          "position": "middle"
+        },
+        {
+          "name": "Ginger",
+          "position": "middle"
+        },
+        {
+          "name": "Herbal Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Powdery Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Clean Musk",
+          "position": "base"
+        },
+        {
+          "name": "Cedar",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Orris Root",
+          "position": "base"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        }
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-sorrento-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "kahf",
+      "name": "Humbling Forest",
+      "slug": "humbling-forest",
+      "short_description": "Woody fresh forest scent dengan cypress, cedarwood, dan sentuhan floral segar.",
+      "official_description": "Humbling Forest menonjolkan aroma hutan yang woody dan segar, cocok untuk profil maskulin daily yang natural.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "woody",
+      "aroma_tag_slugs": [
+        "cedar",
+        "white-floral"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Cypress",
+          "position": "unspecified"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "unspecified"
+        },
+        {
+          "name": "Fresh Floral Notes",
+          "position": "unspecified"
+        }
+      ],
+      "source_name": "Kahf Official",
+      "source_url": "https://www.kahfeveryday.com/product/kahf-humbling-forest-eau-de-parfum/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "kahf",
+      "name": "Invigorating Waterfall",
+      "slug": "invigorating-waterfall",
+      "short_description": "Aquatic floral fresh dengan citrus energetic dan kesan air yang ringan.",
+      "official_description": "Invigorating Waterfall membawa nuansa aquatic dan floral segar dengan sentuhan citrus yang energik.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "aquatic",
+        "citrus",
+        "white-floral"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Aquatic Notes",
+          "position": "unspecified"
+        },
+        {
+          "name": "Fresh Floral Notes",
+          "position": "unspecified"
+        },
+        {
+          "name": "Citrus Notes",
+          "position": "unspecified"
+        }
+      ],
+      "source_name": "Kahf Official",
+      "source_url": "https://www.kahfeveryday.com/product/kahf-invigorating-waterfall-eau-de-parfum/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "kahf",
+      "name": "True Brotherhood",
+      "slug": "true-brotherhood",
+      "short_description": "Warm spicy aromatic dengan lavender, citrus, incense, dan nuansa kebersamaan yang maskulin.",
+      "official_description": "True Brotherhood adalah EDT pria dengan karakter rempah hangat, lavender, citrus, dan incense yang mudah dipakai harian.",
+      "concentration": "Eau de Toilette",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "spicy",
+      "aroma_tag_slugs": [
+        "spicy",
+        "citrus",
+        "smoky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Warm Spices",
+          "position": "unspecified"
+        },
+        {
+          "name": "Lavender",
+          "position": "unspecified"
+        },
+        {
+          "name": "Citrus Notes",
+          "position": "unspecified"
+        },
+        {
+          "name": "Incense",
+          "position": "unspecified"
+        }
+      ],
+      "source_name": "Kahf Official",
+      "source_url": "https://www.kahfeveryday.com/product/kahf-true-brotherhood-eau-de-toilette/"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "35 ml",
+          "volume_ml": 35,
+          "price": null
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "velixir",
+      "name": "Orion",
+      "slug": "velixir-orion",
+      "short_description": "Sweet vanilla warm spicy dengan bergamot, cinnamon, bourbon vanilla, praline, ambroxan, amber, musk, dan heliotrope.",
+      "official_description": "Orion adalah gourmand vanilla hangat yang kuat dan charismatic untuk malam atau acara santai yang ingin lebih standout.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": null,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "gourmand",
+      "aroma_tag_slugs": [
+        "citrus",
+        "spicy",
+        "vanilla",
+        "amber",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "date",
+        "evening-night",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Cinnamon",
+          "position": "top"
+        },
+        {
+          "name": "Bourbon Vanilla",
+          "position": "middle"
+        },
+        {
+          "name": "Praline",
+          "position": "middle"
+        },
+        {
+          "name": "Ambroxan",
+          "position": "middle"
+        },
+        {
+          "name": "Woody Notes",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Heliotrope",
+          "position": "base"
+        }
+      ],
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/orion"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "35 ml",
+          "volume_ml": 35,
+          "price": null
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "velixir",
+      "name": "Helios",
+      "slug": "velixir-helios",
+      "short_description": "Green coconut woody dengan coconut, mint, green notes, fig, marine notes, tonka bean, dan vetiver.",
+      "official_description": "Helios membawa tropical green yang hangat dan clean, memadukan coconut, fig, marine notes, dan woody vetiver drydown.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": null,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "fresh",
+      "aroma_tag_slugs": [
+        "creamy",
+        "fruity",
+        "aquatic",
+        "vetiver"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "casual-hangout",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Coconut",
+          "position": "top"
+        },
+        {
+          "name": "Mint",
+          "position": "top"
+        },
+        {
+          "name": "Green Notes",
+          "position": "top"
+        },
+        {
+          "name": "Fig",
+          "position": "middle"
+        },
+        {
+          "name": "Marine Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Woody Notes",
+          "position": "base"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "base"
+        },
+        {
+          "name": "Vetiver",
+          "position": "base"
+        }
+      ],
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/helios"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "35 ml",
+          "volume_ml": 35,
+          "price": null
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "velixir",
+      "name": "Artemis",
+      "slug": "velixir-artemis",
+      "short_description": "Yellow-white floral fruity dengan pear, watery notes, ambrette, jasmine, daffodils, ylang-ylang, dan patchouli.",
+      "official_description": "Artemis menonjolkan floral fruity yang luminous dengan pear watery opening dan patchouli base.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": null,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "fruity",
+        "jasmine",
+        "white-floral",
+        "patchouli"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "date",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Pear",
+          "position": "top"
+        },
+        {
+          "name": "Watery Notes",
+          "position": "top"
+        },
+        {
+          "name": "Ambrette",
+          "position": "top"
+        },
+        {
+          "name": "Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Daffodils",
+          "position": "middle"
+        },
+        {
+          "name": "Ylang-Ylang",
+          "position": "middle"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        }
+      ],
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/velixir-artemis-for-unisex-eau-de-parfum"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "35 ml",
+          "volume_ml": 35,
+          "price": null
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "velixir",
+      "name": "Hera",
+      "slug": "velixir-hera",
+      "short_description": "Powdery violet floral dengan pear, citrus, mandarin, lavender, violet, musk, sandalwood, vanilla, dan patchouli.",
+      "official_description": "Hera memberi kesan powdery floral yang lembut dan elegant dengan violet, musk, vanilla, dan sandalwood.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": null,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "powdery",
+      "aroma_tag_slugs": [
+        "fruity",
+        "citrus",
+        "powdery",
+        "musky",
+        "sandalwood",
+        "vanilla",
+        "patchouli"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Pear",
+          "position": "top"
+        },
+        {
+          "name": "Citrus",
+          "position": "top"
+        },
+        {
+          "name": "Mandarin Orange",
+          "position": "top"
+        },
+        {
+          "name": "Lavender",
+          "position": "middle"
+        },
+        {
+          "name": "Violet",
+          "position": "middle"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        }
+      ],
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/hera"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "35 ml",
+          "volume_ml": 35,
+          "price": null
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "velixir",
+      "name": "Galatea",
+      "slug": "velixir-galatea",
+      "short_description": "Sweet lactonic gourmand dengan biscuit, caramel, milk, honey, tonka bean, white musk, vanilla, praline, dan amber.",
+      "official_description": "Galatea adalah gourmand creamy manis yang warm dan inviting, cocok untuk pencinta vanilla-caramel lactonic scent.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": null,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "gourmand",
+      "aroma_tag_slugs": [
+        "caramel",
+        "creamy",
+        "vanilla",
+        "musky",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "date",
+        "casual-hangout",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Biscuit",
+          "position": "top"
+        },
+        {
+          "name": "Caramel",
+          "position": "top"
+        },
+        {
+          "name": "Milk",
+          "position": "middle"
+        },
+        {
+          "name": "Honey",
+          "position": "middle"
+        },
+        {
+          "name": "White Sugar",
+          "position": "middle"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "middle"
+        },
+        {
+          "name": "White Musk",
+          "position": "base"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        },
+        {
+          "name": "Praline",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        }
+      ],
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/velixir-galatea-eau-de-parfum-for-unisex"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "30 ml",
+          "volume_ml": 30,
+          "price": null
+        }
+      ],
+      "brand_slug": "scarlett",
+      "name": "Wonderland",
+      "slug": "scarlett-wonderland",
+      "short_description": "Floral warm spicy woody dengan rose, red fruits, white floral, amber, patchouli, dan woody notes.",
+      "official_description": "Wonderland menghadirkan floral yang hangat dengan sentuhan fruity, amber, earthy patchouli, dan woody drydown.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 30,
+      "price_min": 59900,
+      "price_max": 59900,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "rose",
+        "fruity",
+        "white-floral",
+        "spicy",
+        "amber",
+        "patchouli"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "date",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Rose",
+          "position": "top"
+        },
+        {
+          "name": "Red Fruits",
+          "position": "top"
+        },
+        {
+          "name": "White Floral",
+          "position": "top"
+        },
+        {
+          "name": "Warm Spicy",
+          "position": "middle"
+        },
+        {
+          "name": "Amber",
+          "position": "middle"
+        },
+        {
+          "name": "Floral Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Earthy Notes",
+          "position": "base"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        },
+        {
+          "name": "Woody Notes",
+          "position": "base"
+        }
+      ],
+      "source_name": "Scarlett Official",
+      "source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-wonderland-30ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "30 ml",
+          "volume_ml": 30,
+          "price": null
+        }
+      ],
+      "brand_slug": "scarlett",
+      "name": "La Foret Fairy",
+      "slug": "scarlett-la-foret-fairy",
+      "short_description": "Fruity floral musky dengan mandarin, raspberry, guava, cassis, rose, peony, peach, cardamom, musk, amber, moss, dan benzoin.",
+      "official_description": "La Foret Fairy terasa fruity floral yang playful dengan drydown musky amber moss yang lembut.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 30,
+      "price_min": 59900,
+      "price_max": 59900,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "fruity",
+        "citrus",
+        "rose",
+        "musky",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "date",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Mandarin",
+          "position": "top"
+        },
+        {
+          "name": "Raspberry",
+          "position": "top"
+        },
+        {
+          "name": "Guava",
+          "position": "top"
+        },
+        {
+          "name": "Cassis",
+          "position": "top"
+        },
+        {
+          "name": "Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Peony",
+          "position": "middle"
+        },
+        {
+          "name": "Peach",
+          "position": "middle"
+        },
+        {
+          "name": "Cardamom",
+          "position": "middle"
+        },
+        {
+          "name": "Petitgrain",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Moss",
+          "position": "base"
+        },
+        {
+          "name": "Benzoin",
+          "position": "base"
+        }
+      ],
+      "source_name": "Scarlett Official",
+      "source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-la-foret-fairy-30ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "30 ml",
+          "volume_ml": 30,
+          "price": null
+        }
+      ],
+      "brand_slug": "scarlett",
+      "name": "Jolly",
+      "slug": "scarlett-jolly",
+      "short_description": "Fruity floral gourmand dengan prune, pear, mandarin, coffee, orange blossom, jasmine, rose, caramel, vanilla, sandalwood, patchouli, dan cedar.",
+      "official_description": "Jolly memadukan fruity floral dengan coffee-caramel vanilla sehingga terasa manis, hangat, dan playful.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 30,
+      "price_min": 60900,
+      "price_max": 60900,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "gourmand",
+      "aroma_tag_slugs": [
+        "fruity",
+        "coffee",
+        "jasmine",
+        "rose",
+        "caramel",
+        "vanilla",
+        "sandalwood",
+        "patchouli",
+        "cedar"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "date",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Prune",
+          "position": "unspecified"
+        },
+        {
+          "name": "Pear",
+          "position": "unspecified"
+        },
+        {
+          "name": "Mandarin",
+          "position": "unspecified"
+        },
+        {
+          "name": "Pink Pepper",
+          "position": "unspecified"
+        },
+        {
+          "name": "Neroli",
+          "position": "unspecified"
+        },
+        {
+          "name": "Coffee",
+          "position": "unspecified"
+        },
+        {
+          "name": "Orange Blossom",
+          "position": "unspecified"
+        },
+        {
+          "name": "Jasmine",
+          "position": "unspecified"
+        },
+        {
+          "name": "Rose",
+          "position": "unspecified"
+        },
+        {
+          "name": "Freesia",
+          "position": "unspecified"
+        },
+        {
+          "name": "Heliotrope",
+          "position": "unspecified"
+        },
+        {
+          "name": "Caramel",
+          "position": "unspecified"
+        },
+        {
+          "name": "Vanilla",
+          "position": "unspecified"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "unspecified"
+        },
+        {
+          "name": "Patchouli",
+          "position": "unspecified"
+        },
+        {
+          "name": "Cedar Wood",
+          "position": "unspecified"
+        }
+      ],
+      "source_name": "Scarlett Official",
+      "source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-jolly-30ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "30 ml",
+          "volume_ml": 30,
+          "price": null
+        }
+      ],
+      "brand_slug": "scarlett",
+      "name": "Garden Of Whisper",
+      "slug": "scarlett-garden-of-whisper",
+      "short_description": "Floral fruity sweet dengan mandarin, guava, blackcurrant, jasmine, tuberose, orange flower, cedarwood, vanilla, dan musk.",
+      "official_description": "Garden Of Whisper memberi kesan fruity floral yang manis dan clean dengan cedarwood, vanilla, dan musk.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 30,
+      "price_min": 60900,
+      "price_max": 60900,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "citrus",
+        "fruity",
+        "jasmine",
+        "white-floral",
+        "cedar",
+        "vanilla",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Mandarin",
+          "position": "top"
+        },
+        {
+          "name": "Guava",
+          "position": "top"
+        },
+        {
+          "name": "Blackcurrant",
+          "position": "top"
+        },
+        {
+          "name": "Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Tuberose",
+          "position": "middle"
+        },
+        {
+          "name": "Orange Flower",
+          "position": "middle"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "base"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        }
+      ],
+      "source_name": "Scarlett Official",
+      "source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-garden-of-whisper-30ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "30 ml",
+          "volume_ml": 30,
+          "price": null
+        }
+      ],
+      "brand_slug": "scarlett",
+      "name": "Purple Kiss",
+      "slug": "scarlett-purple-kiss",
+      "short_description": "Fruity citrus oriental dengan pear, apple, bergamot, rose, vanilla, orchid, vetiver, labdanum, dan cistus.",
+      "official_description": "Purple Kiss terasa fruity-citrus dengan floral vanilla heart dan drydown vetiver-labdanum yang lebih hangat.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 30,
+      "price_min": 60900,
+      "price_max": 60900,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "warm",
+      "aroma_tag_slugs": [
+        "fruity",
+        "citrus",
+        "rose",
+        "vanilla",
+        "vetiver"
+      ],
+      "occasion_slugs": [
+        "date",
+        "formal",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Pear",
+          "position": "top"
+        },
+        {
+          "name": "Apple",
+          "position": "top"
+        },
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Vanilla",
+          "position": "middle"
+        },
+        {
+          "name": "Orchid",
+          "position": "middle"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        },
+        {
+          "name": "Vetiver",
+          "position": "base"
+        },
+        {
+          "name": "Labdanum",
+          "position": "base"
+        },
+        {
+          "name": "Cistus",
+          "position": "base"
+        }
+      ],
+      "source_name": "Scarlett Official",
+      "source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-purple-kiss-30ml"
+    }
+  ]
+}
