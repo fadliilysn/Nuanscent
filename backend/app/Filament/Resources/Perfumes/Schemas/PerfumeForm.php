@@ -21,6 +21,16 @@ use Illuminate\Support\Str;
 
 class PerfumeForm
 {
+    private static function noteOptions(): array
+    {
+        static $options = null;
+
+        return $options ??= Note::query()
+            ->orderBy('name')
+            ->pluck('name', 'id')
+            ->all();
+    }
+
     public static function configure(Schema $schema): Schema
     {
         return $schema
@@ -197,8 +207,7 @@ class PerfumeForm
                                         MultiSelect::make('aromaTags')
                                             ->label('Tag aroma')
                                             ->relationship('aromaTags', 'name')
-                                            ->searchable()
-                                            ->preload(),
+                                            ->searchable(),
                                         MultiSelect::make('occasions')
                                             ->label('Kegunaan')
                                             ->relationship('occasions', 'name')
@@ -212,39 +221,23 @@ class PerfumeForm
                                         MultiSelect::make('top_note_ids')
                                             ->label('Top Notes')
                                             ->helperText('Pilih beberapa note yang termasuk top notes.')
-                                            ->options(fn (): array => Note::query()
-                                                ->orderBy('name')
-                                                ->pluck('name', 'id')
-                                                ->all())
-                                            ->searchable()
-                                            ->preload(),
+                                            ->options(fn (): array => self::noteOptions())
+                                            ->searchable(),
                                         MultiSelect::make('middle_note_ids')
                                             ->label('Middle Notes')
                                             ->helperText('Pilih beberapa note yang menjadi karakter utama parfum.')
-                                            ->options(fn (): array => Note::query()
-                                                ->orderBy('name')
-                                                ->pluck('name', 'id')
-                                                ->all())
-                                            ->searchable()
-                                            ->preload(),
+                                            ->options(fn (): array => self::noteOptions())
+                                            ->searchable(),
                                         MultiSelect::make('base_note_ids')
                                             ->label('Base Notes')
                                             ->helperText('Pilih beberapa note yang terasa paling lama atau menjadi fondasi parfum.')
-                                            ->options(fn (): array => Note::query()
-                                                ->orderBy('name')
-                                                ->pluck('name', 'id')
-                                                ->all())
-                                            ->searchable()
-                                            ->preload(),
+                                            ->options(fn (): array => self::noteOptions())
+                                            ->searchable(),
                                         MultiSelect::make('unspecified_note_ids')
                                             ->label('Notes tanpa posisi')
                                             ->helperText('Gunakan Notes tanpa posisi jika sumber tidak menyebut top/middle/base.')
-                                            ->options(fn (): array => Note::query()
-                                                ->orderBy('name')
-                                                ->pluck('name', 'id')
-                                                ->all())
-                                            ->searchable()
-                                            ->preload(),
+                                            ->options(fn (): array => self::noteOptions())
+                                            ->searchable(),
                                     ])
                                     ->columns(2),
                             ]),
