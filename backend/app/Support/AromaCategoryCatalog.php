@@ -6,9 +6,9 @@ final class AromaCategoryCatalog
 {
     public const CATEGORIES = [
         [
-            'name' => 'Fresh',
-            'slug' => 'fresh',
-            'description' => 'Aroma segar, ringan, sering terasa citrus, aquatic, atau mudah dipakai harian.',
+            'name' => 'Amber',
+            'slug' => 'amber',
+            'description' => 'Aroma amber, resinous, sedikit manis, hangat, dan berkesan glowing.',
         ],
         [
             'name' => 'Clean',
@@ -16,14 +16,9 @@ final class AromaCategoryCatalog
             'description' => 'Aroma bersih, rapi, seperti sabun, laundry, atau baru selesai mandi.',
         ],
         [
-            'name' => 'Sweet',
-            'slug' => 'sweet',
-            'description' => 'Aroma manis umum yang terasa nyaman tanpa harus selalu seperti dessert.',
-        ],
-        [
-            'name' => 'Gourmand',
-            'slug' => 'gourmand',
-            'description' => 'Aroma dessert-like seperti vanilla, caramel, kopi, krim, atau nuansa makanan manis.',
+            'name' => 'Earthy',
+            'slug' => 'earthy',
+            'description' => 'Aroma membumi seperti tanah, akar, moss, vetiver, atau patchouli.',
         ],
         [
             'name' => 'Floral',
@@ -31,29 +26,14 @@ final class AromaCategoryCatalog
             'description' => 'Aroma bunga seperti mawar, melati, white floral, atau buket bunga.',
         ],
         [
-            'name' => 'Woody',
-            'slug' => 'woody',
-            'description' => 'Aroma kayu seperti cedar, sandalwood, atau kesan kering dan rapi.',
+            'name' => 'Fresh',
+            'slug' => 'fresh',
+            'description' => 'Aroma segar, ringan, sering terasa citrus, aquatic, atau mudah dipakai harian.',
         ],
         [
-            'name' => 'Earthy',
-            'slug' => 'earthy',
-            'description' => 'Aroma membumi seperti tanah, akar, moss, vetiver, atau patchouli.',
-        ],
-        [
-            'name' => 'Warm',
-            'slug' => 'warm',
-            'description' => 'Aroma hangat, lembut menyelimuti, dan terasa nyaman dipakai.',
-        ],
-        [
-            'name' => 'Amber',
-            'slug' => 'amber',
-            'description' => 'Aroma amber, resinous, sedikit manis, hangat, dan berkesan glowing.',
-        ],
-        [
-            'name' => 'Spicy',
-            'slug' => 'spicy',
-            'description' => 'Aroma rempah seperti saffron, pepper, cardamom, atau bumbu hangat.',
+            'name' => 'Gourmand',
+            'slug' => 'gourmand',
+            'description' => 'Aroma dessert-like seperti vanilla, caramel, kopi, krim, atau nuansa makanan manis.',
         ],
         [
             'name' => 'Musky',
@@ -69,6 +49,26 @@ final class AromaCategoryCatalog
             'name' => 'Soft',
             'slug' => 'soft',
             'description' => 'Aroma lembut, nyaman, kalem, dan biasanya terasa lebih low-risk.',
+        ],
+        [
+            'name' => 'Spicy',
+            'slug' => 'spicy',
+            'description' => 'Aroma rempah seperti saffron, pepper, cardamom, atau bumbu hangat.',
+        ],
+        [
+            'name' => 'Sweet',
+            'slug' => 'sweet',
+            'description' => 'Aroma manis umum yang terasa nyaman tanpa harus selalu seperti dessert.',
+        ],
+        [
+            'name' => 'Warm',
+            'slug' => 'warm',
+            'description' => 'Aroma hangat, lembut menyelimuti, dan terasa nyaman dipakai.',
+        ],
+        [
+            'name' => 'Woody',
+            'slug' => 'woody',
+            'description' => 'Aroma kayu seperti cedar, sandalwood, atau kesan kering dan rapi.',
         ],
     ];
 
