@@ -97,7 +97,7 @@ export function GuideListPage({ onNavigate }: GuideListPageProps) {
     <main className="page guide-page">
       <section className="guide-hero">
         <p className="eyebrow">Panduan parfum</p>
-        <h1>Belajar parfum dengan bahasa yang lebih sederhana.</h1>
+        <h1>Belajar parfum dengan bahasa yang lebih sederhana</h1>
         <p>
           Baca istilah aroma, cara membaca notes, dan tips memilih parfum lokal
           supaya keputusan blind buy terasa lebih terarah.

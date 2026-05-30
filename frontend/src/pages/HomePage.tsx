@@ -52,7 +52,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
     Promise.allSettled([
       api.getBrands(),
       api.getAromaCategories(),
-      api.getPerfumes({ per_page: '6' }),
+      api.getPerfumes({ per_page: '8' }),
     ])
       .then(([brandResult, categoryResult, perfumeResult]) => {
         if (!isMounted) {
@@ -107,7 +107,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <span>Katalog parfum lokal</span>
             </div>
           </div>
-          <h1>Temukan parfum lokal tanpa harus menebak-nebak.</h1>
+          <h1>Temukan parfum lokal tanpa harus menebak-nebak</h1>
           <p>
             Nuanscent membantu kamu memilih parfum lokal Indonesia lewat quiz
             sederhana, katalog terfilter, dan penjelasan yang ramah untuk pemula.
@@ -134,7 +134,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="home-section">
         <SectionHeader
           eyebrow="Mulai dari mana?"
-          title="Pilih jalur yang paling sesuai dengan cara kamu mencari parfum."
+          title="Pilih jalur yang paling sesuai dengan cara kamu mencari parfum"
         />
         <div className="home-choice-grid">
           <a
@@ -176,7 +176,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="home-section">
         <SectionHeader
           eyebrow="Brand lokal"
-          title="Mulai dari brand yang sudah ada di katalog."
+          title="Mulai dari brand yang sudah ada di katalog"
           actionLabel="Lihat semua brands"
           actionHref="/brands"
           onNavigate={onNavigate}
@@ -211,7 +211,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="home-section">
         <SectionHeader
           eyebrow="Eksplorasi aroma"
-          title="Cari dari keluarga aroma yang paling dekat dengan seleramu."
+          title="Cari dari keluarga aroma yang paling dekat dengan seleramu"
         />
         {isLoading ? (
           <InlineState message="Sedang memuat kategori aroma." />
@@ -240,7 +240,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="home-section">
         <SectionHeader
           eyebrow="Preview katalog"
-          title="Beberapa parfum lokal untuk mulai dijelajahi."
+          title="Beberapa parfum lokal untuk mulai dijelajahi"
           actionLabel="Buka katalog lengkap"
           actionHref="/parfum"
           onNavigate={onNavigate}

@@ -59,7 +59,7 @@ export function BrandListPage({ onNavigate }: BrandListPageProps) {
     <main className="page brand-page">
       <section className="brand-hero">
         <p className="eyebrow">Brands parfum lokal</p>
-        <h1>Kenali brand sebelum memilih parfumnya.</h1>
+        <h1>Kenali brand sebelum memilih parfumnya</h1>
         <p>
           Jelajahi brand lokal yang sudah masuk katalog Nuanscent, lalu masuk ke
           koleksi parfumnya atau lihat langsung di katalog terfilter.

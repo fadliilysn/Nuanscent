@@ -490,7 +490,7 @@ export function RecommendationQuizPage({
         <section className="state-block" aria-live="polite">
           <span className="state-block__marker"></span>
           <h2>Menyiapkan quiz parfum</h2>
-          <p>Kami sedang menyiapkan pilihan aroma dan kebutuhan parfum untukmu.</p>
+          <p>Kami sedang menyiapkan pilihan aroma dan kebutuhan parfum untukmu</p>
         </section>
       </main>
     )
@@ -515,7 +515,7 @@ export function RecommendationQuizPage({
         <section className="quiz-hero quiz-hero--results">
           <div>
             <p className="eyebrow">Hasil rekomendasi</p>
-            <h1>Parfum yang paling mendekati preferensimu.</h1>
+            <h1>Parfum yang paling mendekati preferensimu</h1>
             <p>
               Urutan ini dihitung dari kecocokan aroma, kebutuhan, budget, intensitas,
               dan kenyamanan blind buy. Gunakan sebagai pertimbangan, bukan jaminan pasti cocok.
@@ -573,7 +573,7 @@ export function RecommendationQuizPage({
       <section className="quiz-hero">
         <div>
           <p className="eyebrow">Quiz rekomendasi parfum</p>
-          <h1>Ceritakan kebutuhanmu, Nuanscent bantu pilihkan arah parfum.</h1>
+          <h1>Ceritakan kebutuhanmu, Nuanscent bantu pilihkan arah parfum</h1>
           <p>
             Jawab beberapa pertanyaan sederhana. Kamu tidak perlu hafal istilah parfum;
             pilih yang terasa paling dekat dengan situasimu.

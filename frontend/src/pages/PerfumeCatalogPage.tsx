@@ -274,7 +274,7 @@ export function PerfumeCatalogPage({
       <section className="catalog-hero">
         <div>
           <p className="eyebrow">Katalog parfum lokal</p>
-          <h1>Jelajahi parfum lokal.</h1>
+          <h1>Jelajahi parfum lokal</h1>
           <p>
             Gunakan filter aroma, kebutuhan, brand, dan harga untuk mempersempit
             pilihan parfum yang bisa kamu jelajahi.
