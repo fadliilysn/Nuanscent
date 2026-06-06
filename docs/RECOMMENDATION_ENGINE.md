@@ -18,7 +18,7 @@ The quiz should collect these inputs:
 
 ### 2.1. Required or primary inputs
 - `occasion`
-- `aroma_preference`
+- `aroma_preferences[]` (1-3 desired aroma category slugs)
 - `budget_range`
 - `intensity_preference`
 - `blind_buy_comfort`
@@ -41,13 +41,25 @@ The quiz should collect these inputs:
 - evening
 
 ### 3.2. Aroma preference
-Map beginner-friendly wording to stored aroma categories:
-- “Fresh dan bersih” -> Fresh / Clean
-- “Manis dan nyaman” -> Sweet / Gourmand
-- “Floral lembut” -> Floral
-- “Woody dan dewasa” -> Woody / Earthy
-- “Hangat, amber, atau spicy” -> Warm / Amber / Spicy
-- “Soft, musky, calming” -> Musky / Powdery / Soft
+Users can choose 1-3 desired aroma categories. Map beginner-friendly wording to stored single aroma categories:
+- Fresh -> `fresh`
+- Clean -> `clean`
+- Sweet -> `sweet`
+- Gourmand -> `gourmand`
+- Floral -> `floral`
+- Woody -> `woody`
+- Earthy -> `earthy`
+- Warm -> `warm`
+- Amber -> `amber`
+- Spicy -> `spicy`
+- Musky -> `musky`
+- Powdery -> `powdery`
+- Soft -> `soft`
+
+Legacy grouped slugs such as `fresh-clean`, `sweet-gourmand`, `woody-earthy`,
+`warm-amber-spicy`, and `musky-powdery-soft` can remain backward-compatible
+aliases for the legacy `aroma_preference` field, but new frontend choices should
+send `aroma_preferences`.
 
 ### 3.3. Budget range
 Example buckets:
@@ -111,8 +123,11 @@ Recommended total weight: **100 points**.
 
 ### 6.1. Aroma match — 40 points
 Recommended structure:
-- Main aroma category matches selected category: `+25`
-- Secondary tags support selected preference: up to `+15`
+- Main aroma category matches any selected category: `+25`
+- Secondary tags support any selected preference: up to `+15`
+
+Multiple selected aroma preferences must not increase aroma scoring beyond the
+same 40-point maximum.
 
 Do not create subjective arbitrary aroma scores.
 
@@ -223,7 +238,7 @@ Every caution label must include reasons, for example:
       "price_max": 200000,
       "match_percentage": 87,
       "matched_reasons": [
-        "Sesuai dengan preferensi aroma Fresh / Clean.",
+        "Sesuai dengan preferensi aroma Fresh.",
         "Cocok untuk pemakaian daily.",
         "Masuk dalam rentang budget yang dipilih."
       ],

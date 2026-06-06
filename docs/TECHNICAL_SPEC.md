@@ -104,6 +104,10 @@ GET    /api/guides/{slug}
 POST   /api/recommendations
 ```
 
+`POST /api/recommendations` accepts legacy `aroma_preference: string` and the
+new preferred `aroma_preferences: string[]` payload. The array should contain
+1-3 aroma category slugs and is normalized internally before scoring.
+
 ### 5.2. Admin endpoints
 Use Filament Resources where possible instead of building unnecessary custom admin APIs.
 
@@ -161,13 +165,25 @@ Perfume variants represent purchasable options under a single perfume record, su
 - `slug`
 - `description` nullable
 
-Initial locked categories:
-1. Fresh / Clean
-2. Sweet / Gourmand
-3. Floral
-4. Woody / Earthy
-5. Warm / Amber / Spicy
-6. Musky / Powdery / Soft
+Public aroma categories are stored as single aroma-family records:
+1. Fresh (`fresh`)
+2. Clean (`clean`)
+3. Sweet (`sweet`)
+4. Gourmand (`gourmand`)
+5. Floral (`floral`)
+6. Woody (`woody`)
+7. Earthy (`earthy`)
+8. Warm (`warm`)
+9. Amber (`amber`)
+10. Spicy (`spicy`)
+11. Musky (`musky`)
+12. Powdery (`powdery`)
+13. Soft (`soft`)
+
+Legacy grouped slugs such as `fresh-clean`, `sweet-gourmand`, `woody-earthy`,
+`warm-amber-spicy`, and `musky-powdery-soft` may be accepted as API aliases for
+backward compatibility, but public reference data should expose the single
+categories above.
 
 ### 6.4. `aroma_tags`
 - `id`
