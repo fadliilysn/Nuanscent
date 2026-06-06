@@ -1258,8 +1258,11 @@ img {
   display: flex;
   inset: 0;
   justify-content: center;
+  overflow: hidden;
+  overscroll-behavior: contain;
   padding: clamp(12px, 3vw, 28px);
   position: fixed;
+  touch-action: none;
   z-index: 50;
 }
 
@@ -1275,7 +1278,9 @@ img {
   max-width: 1120px;
   min-width: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: clamp(16px, 3vw, 24px);
+  touch-action: pan-y;
   width: 100%;
 }
 

@@ -111,10 +111,32 @@ export function CompareModal({
   )
 
   useEffect(() => {
+    const scrollY = window.scrollY
+    const documentElement = document.documentElement
+    const body = document.body
+    const scrollbarWidth = window.innerWidth - documentElement.clientWidth
+    const previousHtmlOverflow = documentElement.style.overflow
     const previousOverflow = document.body.style.overflow
+    const previousPosition = body.style.position
+    const previousTop = body.style.top
+    const previousLeft = body.style.left
+    const previousRight = body.style.right
+    const previousWidth = body.style.width
+    const previousPaddingRight = body.style.paddingRight
     const previousActiveElement = document.activeElement as HTMLElement | null
 
-    document.body.style.overflow = 'hidden'
+    documentElement.style.overflow = 'hidden'
+    body.style.overflow = 'hidden'
+    body.style.position = 'fixed'
+    body.style.top = `-${scrollY}px`
+    body.style.left = '0'
+    body.style.right = '0'
+    body.style.width = '100%'
+
+    if (scrollbarWidth > 0) {
+      body.style.paddingRight = `${scrollbarWidth}px`
+    }
+
     closeButtonRef.current?.focus()
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -126,8 +148,16 @@ export function CompareModal({
     window.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      document.body.style.overflow = previousOverflow
+      documentElement.style.overflow = previousHtmlOverflow
+      body.style.overflow = previousOverflow
+      body.style.position = previousPosition
+      body.style.top = previousTop
+      body.style.left = previousLeft
+      body.style.right = previousRight
+      body.style.width = previousWidth
+      body.style.paddingRight = previousPaddingRight
       window.removeEventListener('keydown', handleKeyDown)
+      window.scrollTo(0, scrollY)
       previousActiveElement?.focus()
     }
   }, [onClose])
