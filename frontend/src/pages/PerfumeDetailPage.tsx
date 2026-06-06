@@ -107,6 +107,10 @@ export function PerfumeDetailPage({
   const [perfume, setPerfume] = useState<Perfume | null>(cachedPerfume?.data ?? null)
   const [isLoading, setIsLoading] = useState(!cachedPerfume)
   const [error, setError] = useState<string | null>(null)
+  const [expandedNote, setExpandedNote] = useState<{
+    slug: string
+    noteKey: string
+  } | null>(null)
 
   useEffect(() => {
     let isMounted = true
@@ -160,6 +164,13 @@ export function PerfumeDetailPage({
   const hasSource =
     perfume?.source.name || perfume?.source.url || perfume?.source.last_verified_at
   const hasVariants = Boolean(perfume?.variants && perfume.variants.length > 0)
+  const toggleExpandedNote = (noteKey: string) => {
+    setExpandedNote((currentNote) =>
+      currentNote?.slug === slug && currentNote.noteKey === noteKey
+        ? null
+        : { slug, noteKey },
+    )
+  }
   const backTarget = returnTo ?? '/parfum'
   const backLabel = returnTo?.startsWith('/quiz')
     ? 'Kembali ke hasil rekomendasi'
@@ -343,12 +354,21 @@ export function PerfumeDetailPage({
                     </div>
                     <div className="note-chip-list">
                       {groupedNotes[section.key].length > 0 ? (
-                        groupedNotes[section.key].map((note) => (
-                          <span className="note-chip" key={`${section.key}-${note.slug}`}>
-                            <strong>{note.name}</strong>
-                            {note.description_simple ? <small>{note.description_simple}</small> : null}
-                          </span>
-                        ))
+                        groupedNotes[section.key].map((note, index) => {
+                          const noteKey = `${section.key}-${note.slug}-${index}`
+
+                          return (
+                            <NoteItem
+                              key={noteKey}
+                              note={note}
+                              noteKey={noteKey}
+                              isExpanded={
+                                expandedNote?.slug === slug && expandedNote.noteKey === noteKey
+                              }
+                              onToggle={toggleExpandedNote}
+                            />
+                          )
+                        })
                       ) : (
                         <span className="note-chip note-chip--empty">Belum tersedia.</span>
                       )}
@@ -366,12 +386,21 @@ export function PerfumeDetailPage({
                     </div>
                   </div>
                   <div className="note-chip-list">
-                    {groupedNotes.unspecified.map((note) => (
-                      <span className="note-chip" key={`unspecified-${note.slug}`}>
-                        <strong>{note.name}</strong>
-                        {note.description_simple ? <small>{note.description_simple}</small> : null}
-                      </span>
-                    ))}
+                    {groupedNotes.unspecified.map((note, index) => {
+                      const noteKey = `unspecified-${note.slug}-${index}`
+
+                      return (
+                        <NoteItem
+                          key={noteKey}
+                          note={note}
+                          noteKey={noteKey}
+                          isExpanded={
+                            expandedNote?.slug === slug && expandedNote.noteKey === noteKey
+                          }
+                          onToggle={toggleExpandedNote}
+                        />
+                      )
+                    })}
                   </div>
                 </div>
               ) : null}
@@ -407,5 +436,42 @@ export function PerfumeDetailPage({
         />
       ) : null}
     </main>
+  )
+}
+
+function NoteItem({
+  note,
+  noteKey,
+  isExpanded,
+  onToggle,
+}: {
+  note: Note
+  noteKey: string
+  isExpanded: boolean
+  onToggle: (noteKey: string) => void
+}) {
+  const description = note.description_simple?.trim()
+
+  if (!description) {
+    return (
+      <span className="note-chip note-chip--static">
+        <strong>{note.name}</strong>
+      </span>
+    )
+  }
+
+  const descriptionId = `${noteKey}-description`
+
+  return (
+    <button
+      className={`note-chip note-chip--button ${isExpanded ? 'note-chip--expanded' : ''}`}
+      type="button"
+      aria-expanded={isExpanded}
+      aria-controls={descriptionId}
+      onClick={() => onToggle(noteKey)}
+    >
+      <strong>{note.name}</strong>
+      <small id={descriptionId}>{description}</small>
+    </button>
   )
 }

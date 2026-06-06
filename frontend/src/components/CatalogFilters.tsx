@@ -49,7 +49,7 @@ export function CatalogFilters({
             <h2>Persempit pilihan</h2>
           </div>
           <button className="button button--ghost" type="button" onClick={onReset}>
-            Atur ulang
+            Reset
           </button>
         </div>
 
