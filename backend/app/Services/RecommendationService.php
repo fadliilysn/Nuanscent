@@ -143,7 +143,7 @@ class RecommendationService
 
             if ($supportingTags->isNotEmpty()) {
                 $score += min(self::AROMA_TAG_POINTS, $supportingTags->count() * 5);
-                $reasons[] = $this->supportingTagReason($supportingTags);
+                $reasons = array_merge($reasons, $this->supportingTagReasons($supportingTags, $preferredCategories));
             }
         }
 
@@ -377,17 +377,46 @@ class RecommendationService
 
     /**
      * @param  SupportCollection<int, mixed>  $tags
+     * @param  array<int, string>  $preferredCategories
+     * @return array<int, string>
      */
-    private function supportingTagReason(SupportCollection $tags): string
+    private function supportingTagReasons(SupportCollection $tags, array $preferredCategories): array
     {
-        $nuances = $this->formatIndonesianList(
-            $tags
-                ->pluck('name')
-                ->map(fn (string $name): string => mb_strtolower($name))
-                ->all(),
-        );
+        $tagsBySlug = $tags->keyBy('slug');
+        $usedTagSlugs = [];
+        $reasons = [];
 
-        return "Tag aroma mendukung preferensimu: {$nuances}.";
+        foreach ($preferredCategories as $categorySlug) {
+            $supportingSlugs = collect(AromaCategoryCatalog::tagMap()[$categorySlug] ?? [])
+                ->merge([$categorySlug])
+                ->unique()
+                ->values();
+
+            $matchedTags = $supportingSlugs
+                ->map(fn (string $tagSlug) => $tagsBySlug->get($tagSlug))
+                ->filter(fn ($tag): bool => $tag !== null && ! in_array($tag->slug, $usedTagSlugs, true))
+                ->unique('slug')
+                ->values();
+
+            if ($matchedTags->isEmpty()) {
+                continue;
+            }
+
+            $usedTagSlugs = array_merge($usedTagSlugs, $matchedTags->pluck('slug')->all());
+
+            $nuances = $this->formatIndonesianList(
+                $matchedTags
+                    ->pluck('name')
+                    ->map(fn (string $name): string => mb_strtolower($name))
+                    ->all(),
+            );
+
+            $reasons[] = 'Nuansa pendukung yang sejalan dengan pilihan '
+                .$this->categoryNameForSlug($categorySlug)
+                .": {$nuances}.";
+        }
+
+        return $reasons;
     }
 
     /**
