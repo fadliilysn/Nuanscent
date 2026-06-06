@@ -83,7 +83,10 @@ export function BrandDetailPage({ slug, onNavigate }: BrandDetailPageProps) {
   if (isLoading) {
     return (
       <main className="page page--compact">
-        <LoadingBlock />
+        <LoadingBlock
+          title="Sedang memuat profil brand"
+          message="Kami sedang menyiapkan profil dan koleksi parfum brand ini."
+        />
       </main>
     )
   }
@@ -180,10 +183,18 @@ export function BrandDetailPage({ slug, onNavigate }: BrandDetailPageProps) {
 }
 
 function BrandLogo({ brand }: { brand: Brand }) {
+  const [hasImageError, setHasImageError] = useState(false)
+
   return (
     <div className="brand-logo brand-logo--detail" aria-hidden="true">
-      {brand.logo_url ? (
-        <img src={brand.logo_url} alt="" loading="lazy" decoding="async" />
+      {brand.logo_url && !hasImageError ? (
+        <img
+          src={brand.logo_url}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          onError={() => setHasImageError(true)}
+        />
       ) : (
         <span>{brand.name.slice(0, 1).toUpperCase()}</span>
       )}

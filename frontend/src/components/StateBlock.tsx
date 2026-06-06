@@ -5,12 +5,20 @@ type StateBlockProps = {
   onAction?: () => void
 }
 
-export function LoadingBlock() {
+type LoadingBlockProps = {
+  title?: string
+  message?: string
+}
+
+export function LoadingBlock({
+  title = 'Sedang memuat pilihan parfum',
+  message = 'Kami sedang menyiapkan pilihan yang paling pas untuk kamu lihat.',
+}: LoadingBlockProps = {}) {
   return (
     <section className="state-block" aria-live="polite">
       <span className="state-block__marker"></span>
-      <h2>Sedang memuat pilihan parfum</h2>
-      <p>Kami sedang menyiapkan pilihan yang paling pas untuk kamu lihat.</p>
+      <h2>{title}</h2>
+      <p>{message}</p>
     </section>
   )
 }

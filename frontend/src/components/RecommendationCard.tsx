@@ -146,15 +146,20 @@ export function RecommendationReasonModal({
     : `/parfum/${recommendation.slug}`
 
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         onClose()
       }
     }
 
+    document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', handleKeyDown)
 
-    return () => window.removeEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
   }, [onClose])
 
   return (

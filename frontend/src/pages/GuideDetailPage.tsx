@@ -116,7 +116,10 @@ export function GuideDetailPage({ slug, onNavigate }: GuideDetailPageProps) {
   if (isLoading) {
     return (
       <main className="page page--compact">
-        <LoadingBlock />
+        <LoadingBlock
+          title="Sedang memuat panduan"
+          message="Kami sedang menyiapkan isi panduan ini agar nyaman dibaca."
+        />
       </main>
     )
   }

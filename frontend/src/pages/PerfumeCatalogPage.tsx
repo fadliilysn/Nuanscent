@@ -281,7 +281,7 @@ export function PerfumeCatalogPage({
           </p>
         </div>
         <div className="catalog-hero__note">
-          <strong>{catalog?.meta.total ?? 0}</strong>
+          <strong>{catalog?.meta.total ?? '...'}</strong>
           <span>parfum tersedia</span>
         </div>
       </section>
@@ -300,7 +300,10 @@ export function PerfumeCatalogPage({
 
         <section className="catalog-results">
           {isLoading ? (
-            <LoadingBlock />
+            <LoadingBlock
+              title="Sedang memuat katalog parfum"
+              message="Kami sedang menyiapkan parfum dan filter yang kamu pilih."
+            />
           ) : error ? (
             <ErrorBlock
               title="Katalog belum tersedia"

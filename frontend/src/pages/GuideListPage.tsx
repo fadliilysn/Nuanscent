@@ -105,7 +105,10 @@ export function GuideListPage({ onNavigate }: GuideListPageProps) {
       </section>
 
       {isLoading ? (
-        <LoadingBlock />
+        <LoadingBlock
+          title="Sedang memuat panduan parfum"
+          message="Kami sedang menyiapkan panduan yang mudah dibaca untukmu."
+        />
       ) : error ? (
         <ErrorBlock title="Panduan belum tersedia" message={error} />
       ) : guides.length > 0 ? (

@@ -97,13 +97,6 @@ const aromaExplorerContent: Record<string, { icon: string; description: string; 
   },
 };
 
-const homeFooterLinks = [
-  { label: "Katalog", href: "/parfum" },
-  { label: "Quiz", href: "/quiz" },
-  { label: "Brands", href: "/brands" },
-  { label: "Guides", href: "/guides" },
-];
-
 const preventAndNavigate = (event: MouseEvent<HTMLAnchorElement>, to: string, onNavigate: (to: string) => void) => {
   event.preventDefault();
   onNavigate(to);
@@ -265,7 +258,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         )}
       </section>
 
-      <HomeFooter onNavigate={onNavigate} />
+      <HomeFooter />
     </main>
   );
 }
@@ -286,7 +279,7 @@ function SectionHeader({ eyebrow, title, actionLabel, actionHref, onNavigate }: 
   );
 }
 
-function HomeFooter({ onNavigate }: { onNavigate: (to: string) => void }) {
+function HomeFooter() {
   return (
     <footer className="home-footer">
       <div className="home-footer__inner">
@@ -311,9 +304,21 @@ function InlineState({ message }: { message: string }) {
 }
 
 function BrandLogo({ brand }: { brand: Brand }) {
+  const [hasImageError, setHasImageError] = useState(false);
+
   return (
     <span className="brand-logo" aria-hidden="true">
-      {brand.logo_url ? <img src={brand.logo_url} alt="" loading="lazy" decoding="async" /> : <span>{brand.name.slice(0, 1).toUpperCase()}</span>}
+      {brand.logo_url && !hasImageError ? (
+        <img
+          src={brand.logo_url}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          onError={() => setHasImageError(true)}
+        />
+      ) : (
+        <span>{brand.name.slice(0, 1).toUpperCase()}</span>
+      )}
     </span>
   );
 }

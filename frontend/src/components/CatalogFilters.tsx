@@ -1,4 +1,4 @@
-import type { FormEvent, KeyboardEvent } from 'react'
+import { useEffect, useState, type FormEvent, type KeyboardEvent } from 'react'
 import type { AromaCategory, AromaTag, Brand, CatalogFilters, Occasion } from '../types/api'
 
 type CatalogFiltersProps = {
@@ -22,6 +22,23 @@ export function CatalogFilters({
   onSubmit,
   onReset,
 }: CatalogFiltersProps) {
+  const [isOpen, setIsOpen] = useState(() =>
+    window.matchMedia('(min-width: 721px)').matches,
+  )
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 721px)')
+    const handleViewportChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        setIsOpen(true)
+      }
+    }
+
+    mediaQuery.addEventListener('change', handleViewportChange)
+
+    return () => mediaQuery.removeEventListener('change', handleViewportChange)
+  }, [])
+
   const updateFilter = (key: keyof CatalogFilters, value: string) => {
     onChange({ ...filters, [key]: value })
   }
@@ -39,7 +56,11 @@ export function CatalogFilters({
   }
 
   return (
-    <details className="filter-disclosure" open>
+    <details
+      className="filter-disclosure"
+      open={isOpen}
+      onToggle={(event) => setIsOpen(event.currentTarget.open)}
+    >
       <summary>Filter katalog</summary>
 
       <form className="filter-panel" onSubmit={handleSubmit}>
@@ -49,7 +70,7 @@ export function CatalogFilters({
             <h2>Persempit pilihan</h2>
           </div>
           <button className="button button--ghost" type="button" onClick={onReset}>
-            Reset
+            Atur ulang
           </button>
         </div>
 

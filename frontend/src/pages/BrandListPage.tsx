@@ -67,7 +67,10 @@ export function BrandListPage({ onNavigate }: BrandListPageProps) {
       </section>
 
       {isLoading ? (
-        <LoadingBlock />
+        <LoadingBlock
+          title="Sedang memuat daftar brand"
+          message="Kami sedang menyiapkan brand parfum lokal yang bisa kamu jelajahi."
+        />
       ) : error ? (
         <ErrorBlock title="Merek belum tersedia" message={error} />
       ) : brands.length > 0 ? (
@@ -120,10 +123,18 @@ export function BrandListPage({ onNavigate }: BrandListPageProps) {
 }
 
 function BrandLogo({ brand }: { brand: Brand }) {
+  const [hasImageError, setHasImageError] = useState(false)
+
   return (
     <div className="brand-logo brand-logo--list" aria-hidden="true">
-      {brand.logo_url ? (
-        <img src={brand.logo_url} alt="" loading="lazy" decoding="async" />
+      {brand.logo_url && !hasImageError ? (
+        <img
+          src={brand.logo_url}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          onError={() => setHasImageError(true)}
+        />
       ) : (
         <span>{brand.name.slice(0, 1).toUpperCase()}</span>
       )}

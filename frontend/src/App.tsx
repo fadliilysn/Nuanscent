@@ -17,9 +17,9 @@ type AppLocation = {
 const navItems = [
   { label: 'Home', href: '/' },
   { label: 'Quiz', href: '/quiz' },
-  { label: 'Catalog', href: '/parfum' },
+  { label: 'Katalog', href: '/parfum' },
   { label: 'Brands', href: '/brands' },
-  { label: 'Guides', href: '/guides' },
+  { label: 'Panduan', href: '/guides' },
 ]
 
 const isNavItemActive = (pathname: string, href: string) => {

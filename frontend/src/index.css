@@ -331,7 +331,6 @@ img {
 .home-choice-card:focus-visible,
 .home-brand-card:focus-visible,
 .home-aroma-card:focus-visible,
-.home-footer__nav a:focus-visible,
 .brand-list-item a:focus-visible,
 .brand-detail-actions a:focus-visible,
 .guide-list-item a:focus-visible,
@@ -750,12 +749,12 @@ img {
 
 .home-footer__inner {
   display: grid;
-  gap: 18px;
-  grid-template-columns: minmax(0, 1.3fr) minmax(180px, auto);
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr);
   margin: 0 auto;
   max-width: var(--container);
   min-width: 0;
-  padding: clamp(22px, 4vw, 34px) clamp(16px, 4vw, 48px);
+  padding: clamp(20px, 3vw, 30px) clamp(16px, 4vw, 48px);
 }
 
 .home-footer__brand,
@@ -781,6 +780,10 @@ img {
   font-weight: 850;
 }
 
+.home-footer__brand > p {
+  max-width: 680px;
+}
+
 .home-footer p,
 .home-footer small {
   color: var(--muted);
@@ -788,43 +791,22 @@ img {
   overflow-wrap: anywhere;
 }
 
-.home-footer__nav {
-  align-content: start;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 16px;
-  justify-content: flex-end;
-  min-width: 0;
-}
-
-.home-footer__nav a {
-  align-items: center;
-  color: var(--ink);
-  display: inline-flex;
-  font-weight: 850;
-  min-height: 32px;
-  text-decoration: none;
-  transition:
-    color 160ms ease,
-    text-decoration-color 160ms ease;
-  text-decoration-color: transparent;
-  text-decoration-line: underline;
-  text-underline-offset: 4px;
-}
-
-.home-footer__nav a:hover {
-  color: var(--ink-soft);
-  text-decoration-color: var(--amber);
-}
-
 .home-footer__meta {
+  align-items: end;
   border-top: 1px solid rgba(33, 28, 24, 0.12);
-  grid-column: 1 / -1;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) auto;
   padding-top: 14px;
+}
+
+.home-footer__meta p {
+  max-width: 780px;
 }
 
 .home-footer__meta small {
   font-weight: 850;
+  white-space: nowrap;
 }
 
 .catalog-hero,
@@ -2642,6 +2624,17 @@ img {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .home-choice-card {
+    align-items: start;
+    grid-template-columns: 40px minmax(0, 1fr);
+    padding: 14px;
+  }
+
+  .home-choice-card > span:first-child {
+    height: 40px;
+    width: 40px;
+  }
+
   .guide-list-item__visual {
     min-height: 64px;
     padding: 12px 14px;
@@ -2763,12 +2756,17 @@ img {
 
   .home-footer__inner {
     grid-template-columns: minmax(0, 1fr);
-    padding: 22px 14px;
+    padding: 20px 14px;
   }
 
-  .home-footer__nav {
-    gap: 10px 14px;
-    justify-content: flex-start;
+  .home-footer__meta {
+    align-items: start;
+    gap: 10px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-footer__meta small {
+    white-space: normal;
   }
 
   .perfume-card:hover,
@@ -2823,7 +2821,10 @@ img {
 
   .recommendation-reason-modal__dialog {
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    max-height: min(82vh, 720px);
+    max-height: min(88vh, 720px);
+    max-height: min(88dvh, 720px);
+    overscroll-behavior: contain;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
     width: 100%;
   }
 

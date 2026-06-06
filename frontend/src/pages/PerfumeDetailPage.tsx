@@ -174,14 +174,17 @@ export function PerfumeDetailPage({
   const backTarget = returnTo ?? '/parfum'
   const backLabel = returnTo?.startsWith('/quiz')
     ? 'Kembali ke hasil rekomendasi'
-    : returnTo?.startsWith('/brands') || returnTo?.startsWith('/brands')
+    : returnTo?.startsWith('/brands') || returnTo?.startsWith('/merek')
       ? 'Kembali ke brand'
       : 'Kembali ke katalog'
 
   if (isLoading) {
     return (
       <main className="page page--compact">
-        <LoadingBlock />
+        <LoadingBlock
+          title="Sedang memuat detail parfum"
+          message="Kami sedang menyiapkan informasi aroma, ukuran, dan notes parfum ini."
+        />
       </main>
     )
   }
@@ -211,8 +214,9 @@ export function PerfumeDetailPage({
             <img
               src={perfume.image_url}
               alt={`Botol parfum ${perfume.name}`}
-              loading="lazy"
+              loading="eager"
               decoding="async"
+              fetchPriority="high"
             />
           ) : (
             <span>{perfume.name.slice(0, 1).toUpperCase()}</span>
