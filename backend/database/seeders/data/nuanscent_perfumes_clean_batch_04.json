@@ -1,0 +1,997 @@
+{
+  "meta": {
+    "dataset_name": "Nuanscent Clean Aroma Perfumes Batch 04",
+    "version": "1.0.0",
+    "generated_at": "2026-05-29",
+    "purpose": "Menambahkan dan/atau memperbarui parfum dari brand yang sudah ada agar kategori aroma Clean memiliki data yang cukup untuk katalog dan rekomendasi.",
+    "notes": [
+      "Batch ini hanya memakai brand yang sudah ada di database Nuanscent.",
+      "Semua perfume di batch ini menggunakan main_aroma_category_slug clean.",
+      "Sebagian slug mungkin sudah ada dari batch sebelumnya; seeder updateOrCreate akan memperbarui kategorinya menjadi clean jika produk tersebut memang lebih cocok sebagai clean scent.",
+      "Harga diisi hanya jika sumber menampilkan harga Rupiah yang cukup jelas; jika tidak, harga dibiarkan null.",
+      "image_url dibiarkan null karena patch gambar produk dikelola terpisah."
+    ]
+  },
+  "brands": [],
+  "perfumes": [
+    {
+      "image_url": null,
+      "intensity": "medium",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 415000
+        }
+      ],
+      "brand_slug": "hmns",
+      "name": "The Perfection",
+      "slug": "the-perfection",
+      "short_description": "Spicy fougere clean dengan bergamot, elemi, clove, lavender, green pear, driftwood, sandalwood, leather, dan white musk.",
+      "official_description": "The Perfection menonjolkan karakter luxurious clean yang rapi dan maskulin, dengan pembukaan aromatic spicy, heart lavender-floral, dan drydown woody musky.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": 415000,
+      "price_max": 415000,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "citrus",
+        "spicy",
+        "sandalwood",
+        "leathery",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "office",
+        "formal",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Elemi",
+          "position": "top"
+        },
+        {
+          "name": "Clove",
+          "position": "top"
+        },
+        {
+          "name": "Nutmeg",
+          "position": "top"
+        },
+        {
+          "name": "Lavender",
+          "position": "middle"
+        },
+        {
+          "name": "Tagetes",
+          "position": "middle"
+        },
+        {
+          "name": "Lily of the Valley",
+          "position": "middle"
+        },
+        {
+          "name": "Green Pear",
+          "position": "middle"
+        },
+        {
+          "name": "Driftwood",
+          "position": "base"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        },
+        {
+          "name": "Leather",
+          "position": "base"
+        },
+        {
+          "name": "White Musk",
+          "position": "base"
+        }
+      ],
+      "source_name": "HMNS Official Catalog",
+      "source_url": "https://madeforhmns.com/pages/catalog-hmns"
+    },
+    {
+      "image_url": null,
+      "intensity": "soft",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        }
+      ],
+      "brand_slug": "mykonos",
+      "name": "Slow Living",
+      "slug": "slow-living",
+      "short_description": "Clean laundry citrus aquatic dengan Amalfi lemon, lemon blossom, neroli, lavender, musk, dan cedarwood.",
+      "official_description": "Slow Living menggambarkan suasana santai di pesisir Italia dengan udara oceanic segar dan kesan clean laundry yang nyaman.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 50,
+      "price_min": 299000,
+      "price_max": 299000,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "citrus",
+        "aquatic",
+        "musky",
+        "cedar"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "office"
+      ],
+      "notes": [
+        {
+          "name": "Amalfi Lemon",
+          "position": "top"
+        },
+        {
+          "name": "Lemon Blossom",
+          "position": "top"
+        },
+        {
+          "name": "Neroli",
+          "position": "middle"
+        },
+        {
+          "name": "Lavender",
+          "position": "middle"
+        },
+        {
+          "name": "Orcanox",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "base"
+        }
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-slow-living-edp-50ml"
+    },
+    {
+      "image_url": null,
+      "intensity": "medium",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "mykonos",
+      "name": "Empire",
+      "slug": "mykonos-rrq-empire",
+      "short_description": "Clean citrus musky dengan lime, bergamot, mandarin orange, jasmine, coconut water, patchouli, white musk, dan tonka bean.",
+      "official_description": "Empire terasa crisp, clean, dan refined, dibuka citrus tajam lalu mengering ke patchouli, white musk, dan tonka bean.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 299000,
+      "price_max": null,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "citrus",
+        "jasmine",
+        "musky",
+        "patchouli"
+      ],
+      "occasion_slugs": [
+        "office",
+        "formal",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Lime",
+          "position": "top"
+        },
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Mandarin Orange",
+          "position": "top"
+        },
+        {
+          "name": "Tropical Fruits",
+          "position": "top"
+        },
+        {
+          "name": "Sicilian Orange",
+          "position": "middle"
+        },
+        {
+          "name": "Ginger",
+          "position": "middle"
+        },
+        {
+          "name": "Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Coconut Water",
+          "position": "middle"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        },
+        {
+          "name": "White Musk",
+          "position": "base"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "base"
+        }
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-x-rrq-empire-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "image_url": null,
+      "intensity": "medium",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "mykonos",
+      "name": "MyEgo",
+      "slug": "mykonos-alterego-myego",
+      "short_description": "Clean musky aldehydic dengan muscat grapes, pink pepper, bergamot, aldehydes, amber, jasmine, musk, vanilla, dan transparent woods.",
+      "official_description": "MyEgo memberi trail yang clean, confident, dan bold lewat opening aldehydic fruity serta base musk, vanilla, transparent woods, dan Iso E Super.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 299000,
+      "price_max": null,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "fruity",
+        "spicy",
+        "citrus",
+        "amber",
+        "jasmine",
+        "musky",
+        "vanilla"
+      ],
+      "occasion_slugs": [
+        "office",
+        "date",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Muscat Grapes",
+          "position": "top"
+        },
+        {
+          "name": "Pink Pepper",
+          "position": "top"
+        },
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Aldehydes",
+          "position": "top"
+        },
+        {
+          "name": "Amber",
+          "position": "middle"
+        },
+        {
+          "name": "Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Geranium",
+          "position": "middle"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        },
+        {
+          "name": "Transparent Woods",
+          "position": "base"
+        },
+        {
+          "name": "Iso E Super",
+          "position": "base"
+        }
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-x-alterego-myego-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "image_url": null,
+      "intensity": "medium",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "mykonos",
+      "name": "Sorrento",
+      "slug": "sorrento",
+      "short_description": "Clean citrus musky dengan grapefruit, bergamot, magnolia, neroli, powdery notes, water notes, musk, cedar, amber, dan patchouli.",
+      "official_description": "Sorrento terasa elegant, bright, dan clean lewat citrus-floral opening, powdery watery nuance, serta clean musk di drydown.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 299000,
+      "price_max": null,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "citrus",
+        "jasmine",
+        "powdery",
+        "aquatic",
+        "musky",
+        "cedar",
+        "amber",
+        "patchouli"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Fizzy Grapefruit",
+          "position": "top"
+        },
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Mandarin Orange",
+          "position": "top"
+        },
+        {
+          "name": "Magnolia",
+          "position": "top"
+        },
+        {
+          "name": "Ginger",
+          "position": "top"
+        },
+        {
+          "name": "Neroli",
+          "position": "middle"
+        },
+        {
+          "name": "Powdery Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Water Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Cedar",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        },
+        {
+          "name": "Orris Root",
+          "position": "base"
+        }
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-sorrento-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "image_url": null,
+      "intensity": "medium",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "35 ml",
+          "volume_ml": 35,
+          "price": null
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "velixir",
+      "name": "Ares",
+      "slug": "velixir-ares",
+      "short_description": "Clean citrus woody musky dengan citrus, mandarin orange, grapefruit, cedarwood, sandalwood, musk, amber, dan patchouli.",
+      "official_description": "Ares terasa sporty, refined, clean, grounded, dan enduring dengan karakter citrus, woody, musky, serta amber.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": null,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "citrus",
+        "cedar",
+        "sandalwood",
+        "musky",
+        "amber",
+        "patchouli"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Citrus",
+          "position": "top"
+        },
+        {
+          "name": "Mandarin Orange",
+          "position": "top"
+        },
+        {
+          "name": "Grapefruit",
+          "position": "top"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "middle"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "middle"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        }
+      ],
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/ares"
+    },
+    {
+      "image_url": null,
+      "intensity": "medium",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": null
+        }
+      ],
+      "brand_slug": "kahf",
+      "name": "Mineralwave",
+      "slug": "kahf-mineralwave",
+      "short_description": "Clean ozonic aromatic dengan white bergamot, ozonic notes, green tea, akigalawood, ambergris, cedarwood, sandalwood, dan musk.",
+      "official_description": "Mineralwave menghadirkan kesegaran white bergamot dan ozonic-green tea dengan drydown woody musky yang rapi.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 100,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "citrus",
+        "tea",
+        "cedar",
+        "sandalwood",
+        "musky",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Ozonic Notes",
+          "position": "top"
+        },
+        {
+          "name": "Green Leaves",
+          "position": "top"
+        },
+        {
+          "name": "Cardamom",
+          "position": "middle"
+        },
+        {
+          "name": "Green Tea",
+          "position": "middle"
+        },
+        {
+          "name": "Akigalawood",
+          "position": "middle"
+        },
+        {
+          "name": "Ambergris",
+          "position": "base"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "base"
+        },
+        {
+          "name": "Dry Amber",
+          "position": "base"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        }
+      ],
+      "source_name": "Kahf Official",
+      "source_url": "https://www.kahfeveryday.com/product/kahf-mineralwave-extrait-de-parfum/"
+    },
+    {
+      "image_url": null,
+      "intensity": "soft",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "30 ml",
+          "volume_ml": 30,
+          "price": 60900
+        }
+      ],
+      "brand_slug": "scarlett",
+      "name": "Cotton Hug",
+      "slug": "scarlett-cotton-hug",
+      "short_description": "Clean cotton powdery dengan aldehyde, orange, coconut, muguet, violet, orchid, moss, sandalwood, musk, dan amber.",
+      "official_description": "Cotton Hug menggambarkan aroma bersih seperti pakaian hangat yang baru dijemur, lalu mengering powdery musky yang lembut.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 30,
+      "price_min": 60900,
+      "price_max": 60900,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "citrus",
+        "white-floral",
+        "powdery",
+        "sandalwood",
+        "musky",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "office"
+      ],
+      "notes": [
+        {
+          "name": "Aldehyde",
+          "position": "top"
+        },
+        {
+          "name": "Orange",
+          "position": "top"
+        },
+        {
+          "name": "Coconut",
+          "position": "top"
+        },
+        {
+          "name": "Muguet",
+          "position": "middle"
+        },
+        {
+          "name": "Violet",
+          "position": "middle"
+        },
+        {
+          "name": "Orchid",
+          "position": "middle"
+        },
+        {
+          "name": "Moss",
+          "position": "base"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        }
+      ],
+      "source_name": "Scarlett Official",
+      "source_url": "https://scarlettofficial.id/product/scarlett-whitening-extrait-de-parfum-cotton-hug-30ml"
+    },
+    {
+      "image_url": null,
+      "intensity": "soft",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "30 ml",
+          "volume_ml": 30,
+          "price": 60900
+        }
+      ],
+      "brand_slug": "scarlett",
+      "name": "Safa Ather",
+      "slug": "scarlett-safa-ather",
+      "short_description": "Fruity clean chypre dengan passionfruit, pear, raspberry, cassis buds, lily of the valley, patchouli, heliotrope, sandalwood, dan amber.",
+      "official_description": "Safa Ather membawa fruity clean yang ringan dan segar, dengan inti aroma bersih, lembut, dan terasa ringan.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 30,
+      "price_min": 60900,
+      "price_max": 60900,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "fruity",
+        "white-floral",
+        "patchouli",
+        "sandalwood",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Passionfruit",
+          "position": "top"
+        },
+        {
+          "name": "Pear",
+          "position": "top"
+        },
+        {
+          "name": "Raspberry",
+          "position": "top"
+        },
+        {
+          "name": "Cassis Buds",
+          "position": "middle"
+        },
+        {
+          "name": "Lily of the Valley",
+          "position": "middle"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        },
+        {
+          "name": "Heliotrope",
+          "position": "base"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        }
+      ],
+      "source_name": "Scarlett Official",
+      "source_url": "https://scarlettofficial.id/product/new%21-scarlett-extrait-de-parfum-30ml---safa-ather---golden-scents-of-arabia---wangi-fruity-clean-yang-ringan-dan-segar---parfum-unisex-pria-wanita-tahan-lama-for-daily-use"
+    },
+    {
+      "image_url": null,
+      "intensity": "soft",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "30 ml",
+          "volume_ml": 30,
+          "price": 60900
+        }
+      ],
+      "brand_slug": "scarlett",
+      "name": "Biru Samudra",
+      "slug": "scarlett-biru-samudra",
+      "short_description": "Clean citrus floral musky dengan bergamot, mandarin, rose, freesia, orris, dan musk.",
+      "official_description": "Biru Samudra memberi kesan citrus floral musky yang ringan dan bersih untuk pemakaian harian.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 30,
+      "price_min": 60900,
+      "price_max": 60900,
+      "marketed_gender": "unisex",
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "citrus",
+        "rose",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "office"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "unspecified"
+        },
+        {
+          "name": "Mandarin",
+          "position": "unspecified"
+        },
+        {
+          "name": "Rose",
+          "position": "unspecified"
+        },
+        {
+          "name": "Freesia",
+          "position": "unspecified"
+        },
+        {
+          "name": "Orris",
+          "position": "unspecified"
+        },
+        {
+          "name": "Musk",
+          "position": "unspecified"
+        }
+      ],
+      "source_name": "Scarlett Official",
+      "source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-biru-samudra-30ml"
+    },
+    {
+      "image_url": null,
+      "intensity": "soft",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 191500
+        }
+      ],
+      "brand_slug": "saff-co",
+      "name": "LOUI",
+      "slug": "loui",
+      "short_description": "Clean floral musky dengan verbena, violet leaf, aldehyde, rose, peony, muguet, cedarwood, dan musk.",
+      "official_description": "LOUI terasa fresh, floral, dan musky dengan aldehydic opening serta cedarwood-musk drydown yang ringan dan rapi.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 100,
+      "price_min": 191500,
+      "price_max": 191500,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "white-floral",
+        "rose",
+        "cedar",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Verbena",
+          "position": "top"
+        },
+        {
+          "name": "Violet Leaf",
+          "position": "top"
+        },
+        {
+          "name": "Aldehyde",
+          "position": "top"
+        },
+        {
+          "name": "Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Peony",
+          "position": "middle"
+        },
+        {
+          "name": "Muguet",
+          "position": "middle"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        }
+      ],
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-loui"
+    },
+    {
+      "image_url": null,
+      "intensity": "soft",
+      "data_status": "published",
+      "last_verified_at": "2026-05-29",
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 189300
+        }
+      ],
+      "brand_slug": "saff-co",
+      "name": "COCO",
+      "slug": "coco",
+      "short_description": "Clean citrus musky woody dengan bergamot, mandarin, neroli, rose, patchouli, white musk, tonka bean, dan vetiver.",
+      "official_description": "COCO membawa citrus yang rapi dengan drydown white musk, tonka bean, dan vetiver sehingga cocok untuk clean daily scent.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 100,
+      "price_min": 189300,
+      "price_max": 189300,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "clean",
+      "aroma_tag_slugs": [
+        "clean",
+        "citrus",
+        "rose",
+        "patchouli",
+        "musky",
+        "vetiver"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Mandarin",
+          "position": "top"
+        },
+        {
+          "name": "Neroli",
+          "position": "top"
+        },
+        {
+          "name": "Ylang-ylang",
+          "position": "middle"
+        },
+        {
+          "name": "Turkish Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Peach Leaf",
+          "position": "middle"
+        },
+        {
+          "name": "Patchouli",
+          "position": "middle"
+        },
+        {
+          "name": "White Musk",
+          "position": "base"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "base"
+        },
+        {
+          "name": "Vetiver",
+          "position": "base"
+        }
+      ],
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-coco"
+    }
+  ]
+}

@@ -1,0 +1,2111 @@
+{
+  "meta": {
+    "dataset_name": "Nuanscent Note Enrichment",
+    "version": "1.0.0",
+    "generated_at": "2026-05-30",
+    "purpose": "Melengkapi note_family dan description_simple untuk master notes Nuanscent berdasarkan export notes_parfum.json.",
+    "source_note_count": 295,
+    "strategy": [
+      "Preserve existing non-empty note_family and description_simple values.",
+      "Fill missing values using a controlled note-family mapping and concise Bahasa Indonesia descriptions.",
+      "Use slug/name matching in the seeder for idempotent updates."
+    ]
+  },
+  "families": {
+    "aldehydic": 2,
+    "amber": 14,
+    "aquatic": 8,
+    "aromatic": 9,
+    "boozy": 1,
+    "citrus": 27,
+    "clean": 4,
+    "earthy": 14,
+    "floral": 26,
+    "fresh": 6,
+    "fruity": 34,
+    "gourmand": 25,
+    "green": 18,
+    "leathery": 2,
+    "marine": 3,
+    "mineral": 1,
+    "musky": 12,
+    "other": 1,
+    "oud": 3,
+    "powdery": 6,
+    "resinous": 7,
+    "smoky": 3,
+    "spicy": 22,
+    "sweet": 1,
+    "tea": 4,
+    "tobacco": 1,
+    "white-floral": 17,
+    "woody": 24
+  },
+  "notes": [
+    {
+      "id": 19,
+      "name": "Tobacco",
+      "slug": "tobacco",
+      "note_family": "tobacco",
+      "description_simple": "Note hangat-kering yang sedikit manis dan memberi kesan dewasa."
+    },
+    {
+      "id": 7,
+      "name": "Coffee",
+      "slug": "coffee",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang gelap, roasted, sedikit pahit, dan memberi kesan hangat."
+    },
+    {
+      "id": 43,
+      "name": "Ylang-ylang",
+      "slug": "ylang-ylang",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 4,
+      "name": "aquatic",
+      "slug": "aquatic",
+      "note_family": "fresh",
+      "description_simple": "Kesan aroma berair atau ringan yang sering muncul pada parfum bernuansa fresh."
+    },
+    {
+      "id": 8,
+      "name": "tea",
+      "slug": "tea",
+      "note_family": "aromatic",
+      "description_simple": "Note aromatik yang lembut, bisa terasa menenangkan, leafy, atau sedikit pahit."
+    },
+    {
+      "id": 1,
+      "name": "Bergamot",
+      "slug": "bergamot",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, sedikit pahit, dan sering memberi kesan bersih di pembukaan parfum."
+    },
+    {
+      "id": 21,
+      "name": "Lavender",
+      "slug": "lavender",
+      "note_family": "aromatic",
+      "description_simple": "Note aromatik yang bersih, herbal, dan sering terasa menenangkan."
+    },
+    {
+      "id": 22,
+      "name": "Orange Blossom",
+      "slug": "orange-blossom",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 23,
+      "name": "Labdanum",
+      "slug": "labdanum",
+      "note_family": "resinous",
+      "description_simple": "Note resin atau balsamic yang hangat, pekat, dan memberi kesan dalam pada parfum."
+    },
+    {
+      "id": 11,
+      "name": "Cedar",
+      "slug": "cedar",
+      "note_family": "woody",
+      "description_simple": "Note kayu kering yang rapi, ringan, dan memberi struktur pada parfum."
+    },
+    {
+      "id": 24,
+      "name": "Tonka Bean",
+      "slug": "tonka-bean",
+      "note_family": "gourmand",
+      "description_simple": "Note hangat manis dengan kesan vanilla, almond, dan sedikit powdery."
+    },
+    {
+      "id": 25,
+      "name": "Citrus",
+      "slug": "citrus",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 26,
+      "name": "Green Grass",
+      "slug": "green-grass",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 27,
+      "name": "Green Tea",
+      "slug": "green-tea",
+      "note_family": "tea",
+      "description_simple": "Note teh yang lembut, leafy, sedikit pahit, dan memberi kesan menenangkan."
+    },
+    {
+      "id": 28,
+      "name": "Woody Notes",
+      "slug": "woody-notes",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 13,
+      "name": "Vetiver",
+      "slug": "vetiver",
+      "note_family": "earthy",
+      "description_simple": "Note akar-rumput yang earthy, kering, dan memberi kesan elegan."
+    },
+    {
+      "id": 29,
+      "name": "Red Apple",
+      "slug": "red-apple",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 9,
+      "name": "Rose",
+      "slug": "rose",
+      "note_family": "floral",
+      "description_simple": "Note floral klasik yang romantis, lembut, dan mudah dikenali."
+    },
+    {
+      "id": 10,
+      "name": "Jasmine",
+      "slug": "jasmine",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang lembut, creamy, dan memberi kesan elegan."
+    },
+    {
+      "id": 30,
+      "name": "Peony",
+      "slug": "peony",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 15,
+      "name": "Amber",
+      "slug": "amber",
+      "note_family": "amber",
+      "description_simple": "Note hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 31,
+      "name": "Vanilla Beans",
+      "slug": "vanilla-beans",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 32,
+      "name": "Coriander Seed",
+      "slug": "coriander-seed",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 33,
+      "name": "Pink Pepper",
+      "slug": "pink-pepper",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 34,
+      "name": "Jasmine Sambac",
+      "slug": "jasmine-sambac",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 35,
+      "name": "Turkish Rose",
+      "slug": "turkish-rose",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 36,
+      "name": "Tiare Flower",
+      "slug": "tiare-flower",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 37,
+      "name": "Solar Accord",
+      "slug": "solar-accord",
+      "note_family": "fresh",
+      "description_simple": "Accord solar accord yang membantu membentuk nuansa fresh dalam komposisi parfum."
+    },
+    {
+      "id": 5,
+      "name": "Vanilla",
+      "slug": "vanilla",
+      "note_family": "gourmand",
+      "description_simple": "Note manis creamy yang memberi kesan hangat, lembut, dan gourmand."
+    },
+    {
+      "id": 38,
+      "name": "Ambrette",
+      "slug": "ambrette",
+      "note_family": "musky",
+      "description_simple": "Note musk yang lembut, dekat dengan kulit, dan sering memberi kesan bersih atau halus."
+    },
+    {
+      "id": 39,
+      "name": "Apple",
+      "slug": "apple",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 40,
+      "name": "Pepper",
+      "slug": "pepper",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 41,
+      "name": "Cypriol",
+      "slug": "cypriol",
+      "note_family": "earthy",
+      "description_simple": "Note membumi yang terasa natural, sedikit lembap, dan memberi kedalaman pada drydown."
+    },
+    {
+      "id": 6,
+      "name": "Caramel",
+      "slug": "caramel",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang manis, lengket, dan memberi kesan dessert-like."
+    },
+    {
+      "id": 14,
+      "name": "Patchouli",
+      "slug": "patchouli",
+      "note_family": "earthy",
+      "description_simple": "Note earthy-woody yang memberi kesan dalam, sedikit lembap, dan tahan lama."
+    },
+    {
+      "id": 42,
+      "name": "Mandarin Orange",
+      "slug": "mandarin-orange",
+      "note_family": "citrus",
+      "description_simple": "Note citrus manis-segar yang memberi kesan cerah dan mudah disukai."
+    },
+    {
+      "id": 16,
+      "name": "Saffron",
+      "slug": "saffron",
+      "note_family": "spicy",
+      "description_simple": "Note rempah hangat yang memberi kesan mewah, leathery, dan sedikit manis."
+    },
+    {
+      "id": 44,
+      "name": "Muguet",
+      "slug": "muguet",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 45,
+      "name": "Dry Amber",
+      "slug": "dry-amber",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 18,
+      "name": "Leather",
+      "slug": "leather",
+      "note_family": "leathery",
+      "description_simple": "Note kulit yang tegas, hangat, dan memberi karakter lebih bold."
+    },
+    {
+      "id": 17,
+      "name": "Musk",
+      "slug": "musk",
+      "note_family": "musky",
+      "description_simple": "Note lembut yang terasa dekat dengan kulit, bersih, dan membantu aroma terasa lebih halus."
+    },
+    {
+      "id": 3,
+      "name": "Mandarin",
+      "slug": "mandarin",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang manis-segar, lembut, dan tidak setajam lemon."
+    },
+    {
+      "id": 46,
+      "name": "Galbanum",
+      "slug": "galbanum",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 47,
+      "name": "Ylang",
+      "slug": "ylang",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 48,
+      "name": "Tuberose",
+      "slug": "tuberose",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 49,
+      "name": "Orange Flower",
+      "slug": "orange-flower",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 50,
+      "name": "Rhubarb",
+      "slug": "rhubarb",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 51,
+      "name": "Yuzu",
+      "slug": "yuzu",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 52,
+      "name": "Elletaria",
+      "slug": "elletaria",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 53,
+      "name": "Shogayu",
+      "slug": "shogayu",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 54,
+      "name": "Narcissus",
+      "slug": "narcissus",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 55,
+      "name": "Cape Jasmine",
+      "slug": "cape-jasmine",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 56,
+      "name": "Red Cedar",
+      "slug": "red-cedar",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 57,
+      "name": "Haiti Vetiver",
+      "slug": "haiti-vetiver",
+      "note_family": "earthy",
+      "description_simple": "Note membumi yang terasa natural, sedikit lembap, dan memberi kedalaman pada drydown."
+    },
+    {
+      "id": 58,
+      "name": "Raspberry",
+      "slug": "raspberry",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 59,
+      "name": "Passionfruit",
+      "slug": "passionfruit",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 60,
+      "name": "Pear",
+      "slug": "pear",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 61,
+      "name": "Cassis Buds",
+      "slug": "cassis-buds",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 62,
+      "name": "Lily of the Valley",
+      "slug": "lily-of-the-valley",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 63,
+      "name": "Heliotrope",
+      "slug": "heliotrope",
+      "note_family": "powdery",
+      "description_simple": "Note powdery yang terasa lembut, kering, halus, dan memberi kesan rapi seperti bedak."
+    },
+    {
+      "id": 64,
+      "name": "Neroli",
+      "slug": "neroli",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 65,
+      "name": "Freesia",
+      "slug": "freesia",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 66,
+      "name": "Violet Leaves",
+      "slug": "violet-leaves",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 67,
+      "name": "Orris",
+      "slug": "orris",
+      "note_family": "powdery",
+      "description_simple": "Note powdery yang terasa lembut, kering, halus, dan memberi kesan rapi seperti bedak."
+    },
+    {
+      "id": 68,
+      "name": "Cedarwood",
+      "slug": "cedarwood",
+      "note_family": "woody",
+      "description_simple": "Note kayu kering yang rapi, bersih, dan sering membuat parfum terasa lebih maskulin."
+    },
+    {
+      "id": 69,
+      "name": "Ginger",
+      "slug": "ginger",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 70,
+      "name": "Orange",
+      "slug": "orange",
+      "note_family": "citrus",
+      "description_simple": "Note citrus manis yang memberi kesan cerah, juicy, dan familiar."
+    },
+    {
+      "id": 2,
+      "name": "Lemon",
+      "slug": "lemon",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang cerah, asam segar, dan memberi kesan energik pada pembukaan parfum."
+    },
+    {
+      "id": 71,
+      "name": "Cinnamon",
+      "slug": "cinnamon",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 72,
+      "name": "Black Tea",
+      "slug": "black-tea",
+      "note_family": "tea",
+      "description_simple": "Note teh yang lembut, leafy, sedikit pahit, dan memberi kesan menenangkan."
+    },
+    {
+      "id": 73,
+      "name": "Biga Flower",
+      "slug": "biga-flower",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 74,
+      "name": "Guaiac",
+      "slug": "guaiac",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 75,
+      "name": "Lorenox",
+      "slug": "lorenox",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 76,
+      "name": "Lychee",
+      "slug": "lychee",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 77,
+      "name": "Rosemary",
+      "slug": "rosemary",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 78,
+      "name": "Cardamom",
+      "slug": "cardamom",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 79,
+      "name": "Geranium",
+      "slug": "geranium",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 80,
+      "name": "Aquatic Notes",
+      "slug": "aquatic-notes",
+      "note_family": "aquatic",
+      "description_simple": "Note berair yang terasa ringan, segar, dan memberi kesan clean seperti udara atau air."
+    },
+    {
+      "id": 81,
+      "name": "Teak Wood",
+      "slug": "teak-wood",
+      "note_family": "tea",
+      "description_simple": "Note teh yang lembut, leafy, sedikit pahit, dan memberi kesan menenangkan."
+    },
+    {
+      "id": 82,
+      "name": "Grapefruit",
+      "slug": "grapefruit",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, sedikit pahit, dan terasa sparkling."
+    },
+    {
+      "id": 83,
+      "name": "Marine Notes",
+      "slug": "marine-notes",
+      "note_family": "marine",
+      "description_simple": "Note laut yang terasa segar, airy, dan sering memberi nuansa aquatic yang lebih breezy."
+    },
+    {
+      "id": 84,
+      "name": "Ambroxan",
+      "slug": "ambroxan",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 85,
+      "name": "Melon",
+      "slug": "melon",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 86,
+      "name": "Green Notes",
+      "slug": "green-notes",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 87,
+      "name": "Soft Wood",
+      "slug": "soft-wood",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 88,
+      "name": "Moss",
+      "slug": "moss",
+      "note_family": "earthy",
+      "description_simple": "Note membumi yang terasa natural, sedikit lembap, dan memberi kedalaman pada drydown."
+    },
+    {
+      "id": 89,
+      "name": "Sparkling Blackcurrant",
+      "slug": "sparkling-blackcurrant",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 90,
+      "name": "Aldehydes",
+      "slug": "aldehydes",
+      "note_family": "aldehydic",
+      "description_simple": "Note aldehydic yang memberi kesan sparkling, bersih, airy, dan sedikit seperti sabun."
+    },
+    {
+      "id": 91,
+      "name": "Mandarin Zest",
+      "slug": "mandarin-zest",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 92,
+      "name": "Rose Mist",
+      "slug": "rose-mist",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 93,
+      "name": "Velvety White Floral",
+      "slug": "velvety-white-floral",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 94,
+      "name": "White Tea Vapor",
+      "slug": "white-tea-vapor",
+      "note_family": "tea",
+      "description_simple": "Note teh yang lembut, leafy, sedikit pahit, dan memberi kesan menenangkan."
+    },
+    {
+      "id": 95,
+      "name": "White Soap Accord",
+      "slug": "white-soap-accord",
+      "note_family": "clean",
+      "description_simple": "Accord white soap accord yang membantu membentuk nuansa clean dalam komposisi parfum."
+    },
+    {
+      "id": 20,
+      "name": "Oud",
+      "slug": "oud",
+      "note_family": "oud",
+      "description_simple": "Note woody-resinous yang pekat, mewah, dan berkarakter kuat."
+    },
+    {
+      "id": 96,
+      "name": "Cashmere Wood",
+      "slug": "cashmere-wood",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 97,
+      "name": "Tonka Foam",
+      "slug": "tonka-foam",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 98,
+      "name": "Iso E Super",
+      "slug": "iso-e-super",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 99,
+      "name": "Clean Musks",
+      "slug": "clean-musks",
+      "note_family": "clean",
+      "description_simple": "Note clean yang terasa bersih, rapi, seperti sabun, laundry, atau baru selesai mandi."
+    },
+    {
+      "id": 100,
+      "name": "Cashmeran",
+      "slug": "cashmeran",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 101,
+      "name": "Ozonic",
+      "slug": "ozonic",
+      "note_family": "fresh",
+      "description_simple": "Note fresh yang memberi kesan segar, ringan, dan mudah dipakai sehari-hari."
+    },
+    {
+      "id": 102,
+      "name": "Green Leaves",
+      "slug": "green-leaves",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 103,
+      "name": "Akigalawood",
+      "slug": "akigalawood",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 104,
+      "name": "Ambergris",
+      "slug": "ambergris",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 12,
+      "name": "Sandalwood",
+      "slug": "sandalwood",
+      "note_family": "woody",
+      "description_simple": "Note kayu creamy yang lembut, hangat, dan halus."
+    },
+    {
+      "id": 105,
+      "name": "Black Pepper",
+      "slug": "black-pepper",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 106,
+      "name": "Clary Sage",
+      "slug": "clary-sage",
+      "note_family": "aromatic",
+      "description_simple": "Note aromatik yang terasa herbal, tenang, dan sering membuat parfum terasa rapi."
+    },
+    {
+      "id": 107,
+      "name": "Cypress Oil",
+      "slug": "cypress-oil",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 108,
+      "name": "Violet Green",
+      "slug": "violet-green",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 109,
+      "name": "Saffiano",
+      "slug": "saffiano",
+      "note_family": "leathery",
+      "description_simple": "Note leather yang memberi kesan kulit, tegas, hangat, dan lebih maskulin."
+    },
+    {
+      "id": 110,
+      "name": "Ambertonic",
+      "slug": "ambertonic",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 111,
+      "name": "Symrose",
+      "slug": "symrose",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 112,
+      "name": "Madagascar Vanilla",
+      "slug": "madagascar-vanilla",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 113,
+      "name": "Gaiac Wood",
+      "slug": "gaiac-wood",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 114,
+      "name": "Aquaflora",
+      "slug": "aquaflora",
+      "note_family": "aquatic",
+      "description_simple": "Note berair yang terasa ringan, segar, dan memberi kesan clean seperti udara atau air."
+    },
+    {
+      "id": 115,
+      "name": "Timur Pepper",
+      "slug": "timur-pepper",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 116,
+      "name": "Violet",
+      "slug": "violet",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 117,
+      "name": "Cypriol Oil",
+      "slug": "cypriol-oil",
+      "note_family": "earthy",
+      "description_simple": "Note membumi yang terasa natural, sedikit lembap, dan memberi kedalaman pada drydown."
+    },
+    {
+      "id": 118,
+      "name": "Cashmere Woods",
+      "slug": "cashmere-woods",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 119,
+      "name": "Vetiver Oil",
+      "slug": "vetiver-oil",
+      "note_family": "earthy",
+      "description_simple": "Note membumi yang terasa natural, sedikit lembap, dan memberi kedalaman pada drydown."
+    },
+    {
+      "id": 120,
+      "name": "Papyrus",
+      "slug": "papyrus",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 121,
+      "name": "Iris",
+      "slug": "iris",
+      "note_family": "powdery",
+      "description_simple": "Note powdery yang terasa lembut, kering, halus, dan memberi kesan rapi seperti bedak."
+    },
+    {
+      "id": 122,
+      "name": "Fig",
+      "slug": "fig",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 123,
+      "name": "Operanide",
+      "slug": "operanide",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 124,
+      "name": "Calabrian Bergamot",
+      "slug": "calabrian-bergamot",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 125,
+      "name": "Georgywood",
+      "slug": "georgywood",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 126,
+      "name": "Ambrofix",
+      "slug": "ambrofix",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 127,
+      "name": "Solar Notes",
+      "slug": "solar-notes",
+      "note_family": "fresh",
+      "description_simple": "Note fresh yang memberi kesan segar, ringan, dan mudah dipakai sehari-hari."
+    },
+    {
+      "id": 128,
+      "name": "Blood Orange",
+      "slug": "blood-orange",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 129,
+      "name": "Powdery Notes",
+      "slug": "powdery-notes",
+      "note_family": "powdery",
+      "description_simple": "Note powdery yang terasa lembut, kering, halus, dan memberi kesan rapi seperti bedak."
+    },
+    {
+      "id": 130,
+      "name": "Green Apple",
+      "slug": "green-apple",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 131,
+      "name": "Juniper Berries",
+      "slug": "juniper-berries",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 132,
+      "name": "Amberwood",
+      "slug": "amberwood",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 133,
+      "name": "Mint",
+      "slug": "mint",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 134,
+      "name": "Benzoin",
+      "slug": "benzoin",
+      "note_family": "resinous",
+      "description_simple": "Note resin atau balsamic yang hangat, pekat, dan memberi kesan dalam pada parfum."
+    },
+    {
+      "id": 135,
+      "name": "Gourmand",
+      "slug": "gourmand",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 136,
+      "name": "Amber Dry",
+      "slug": "amber-dry",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 137,
+      "name": "Egyptian Balsam",
+      "slug": "egyptian-balsam",
+      "note_family": "resinous",
+      "description_simple": "Note resin atau balsamic yang hangat, pekat, dan memberi kesan dalam pada parfum."
+    },
+    {
+      "id": 138,
+      "name": "Damask Rose",
+      "slug": "damask-rose",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 139,
+      "name": "Honeysuckle",
+      "slug": "honeysuckle",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 140,
+      "name": "Peach",
+      "slug": "peach",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 141,
+      "name": "Musky",
+      "slug": "musky",
+      "note_family": "musky",
+      "description_simple": "Note musk yang lembut, dekat dengan kulit, dan sering memberi kesan bersih atau halus."
+    },
+    {
+      "id": 142,
+      "name": "Violet Leaf",
+      "slug": "violet-leaf",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 143,
+      "name": "Exotic Fruits",
+      "slug": "exotic-fruits",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 144,
+      "name": "Milk",
+      "slug": "milk",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 145,
+      "name": "White Floral",
+      "slug": "white-floral",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 146,
+      "name": "Pineapple",
+      "slug": "pineapple",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 147,
+      "name": "Banana",
+      "slug": "banana",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 148,
+      "name": "Strawberry",
+      "slug": "strawberry",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 149,
+      "name": "Marshmallow",
+      "slug": "marshmallow",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 150,
+      "name": "Coconut",
+      "slug": "coconut",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 151,
+      "name": "Whipped Cream Accord",
+      "slug": "whipped-cream-accord",
+      "note_family": "gourmand",
+      "description_simple": "Accord whipped cream accord yang membantu membentuk nuansa gourmand dalam komposisi parfum."
+    },
+    {
+      "id": 152,
+      "name": "Musk Milk",
+      "slug": "musk-milk",
+      "note_family": "musky",
+      "description_simple": "Note musk yang lembut, dekat dengan kulit, dan sering memberi kesan bersih atau halus."
+    },
+    {
+      "id": 153,
+      "name": "Almond",
+      "slug": "almond",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 154,
+      "name": "Pistachio",
+      "slug": "pistachio",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 155,
+      "name": "Milk Sweetness",
+      "slug": "milk-sweetness",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 156,
+      "name": "Salted Butter Caramel",
+      "slug": "salted-butter-caramel",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 157,
+      "name": "Fresh Flowers",
+      "slug": "fresh-flowers",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 158,
+      "name": "Blackcurrant",
+      "slug": "blackcurrant",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 159,
+      "name": "Marine Accord Apple",
+      "slug": "marine-accord-apple",
+      "note_family": "aquatic",
+      "description_simple": "Accord marine accord apple yang membantu membentuk nuansa aquatic dalam komposisi parfum."
+    },
+    {
+      "id": 160,
+      "name": "Chamomile",
+      "slug": "chamomile",
+      "note_family": "aromatic",
+      "description_simple": "Note aromatik yang terasa herbal, tenang, dan sering membuat parfum terasa rapi."
+    },
+    {
+      "id": 161,
+      "name": "Apple-Green",
+      "slug": "apple-green",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 162,
+      "name": "Orchid",
+      "slug": "orchid",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 163,
+      "name": "White Musk",
+      "slug": "white-musk",
+      "note_family": "musky",
+      "description_simple": "Note musk yang bersih, lembut, dan sering memberi kesan laundry atau skin-like."
+    },
+    {
+      "id": 164,
+      "name": "Chantilly Cream",
+      "slug": "chantilly-cream",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 165,
+      "name": "Marine",
+      "slug": "marine",
+      "note_family": "marine",
+      "description_simple": "Note laut yang terasa segar, airy, dan sering memberi nuansa aquatic yang lebih breezy."
+    },
+    {
+      "id": 166,
+      "name": "Oakmoss",
+      "slug": "oakmoss",
+      "note_family": "earthy",
+      "description_simple": "Note membumi yang terasa natural, sedikit lembap, dan memberi kedalaman pada drydown."
+    },
+    {
+      "id": 167,
+      "name": "Fruity Notes",
+      "slug": "fruity-notes",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 168,
+      "name": "Sweet Notes",
+      "slug": "sweet-notes",
+      "note_family": "sweet",
+      "description_simple": "Note manis yang membuat parfum terasa lebih nyaman, hangat, dan mudah disukai."
+    },
+    {
+      "id": 169,
+      "name": "Agarwood",
+      "slug": "agarwood",
+      "note_family": "oud",
+      "description_simple": "Note oud yang pekat, woody, resinous, dan memberi karakter mewah serta kuat."
+    },
+    {
+      "id": 170,
+      "name": "Chocolate",
+      "slug": "chocolate",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 171,
+      "name": "Floral Rose Accord",
+      "slug": "floral-rose-accord",
+      "note_family": "floral",
+      "description_simple": "Accord floral rose accord yang membantu membentuk nuansa floral dalam komposisi parfum."
+    },
+    {
+      "id": 172,
+      "name": "Earthy Accents",
+      "slug": "earthy-accents",
+      "note_family": "earthy",
+      "description_simple": "Note membumi yang terasa natural, sedikit lembap, dan memberi kedalaman pada drydown."
+    },
+    {
+      "id": 173,
+      "name": "Musky Undertones",
+      "slug": "musky-undertones",
+      "note_family": "musky",
+      "description_simple": "Note musk yang lembut, dekat dengan kulit, dan sering memberi kesan bersih atau halus."
+    },
+    {
+      "id": 174,
+      "name": "Smoky Notes",
+      "slug": "smoky-notes",
+      "note_family": "smoky",
+      "description_simple": "Note smoky yang memberi kesan asap, gelap, dan lebih bold pada karakter parfum."
+    },
+    {
+      "id": 175,
+      "name": "Anisse",
+      "slug": "anisse",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 176,
+      "name": "Rose Absolute",
+      "slug": "rose-absolute",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 177,
+      "name": "Cashmere",
+      "slug": "cashmere",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 178,
+      "name": "Starkrimson",
+      "slug": "starkrimson",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 180,
+      "name": "Bigarade Orange",
+      "slug": "bigarade-orange",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 181,
+      "name": "Iris Pallida",
+      "slug": "iris-pallida",
+      "note_family": "powdery",
+      "description_simple": "Note powdery yang terasa lembut, kering, halus, dan memberi kesan rapi seperti bedak."
+    },
+    {
+      "id": 182,
+      "name": "Fior di Latte",
+      "slug": "fior-di-latte",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 183,
+      "name": "Verbena",
+      "slug": "verbena",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 184,
+      "name": "Aldehyde",
+      "slug": "aldehyde",
+      "note_family": "aldehydic",
+      "description_simple": "Note aldehydic yang memberi kesan sparkling, bersih, airy, dan sedikit seperti sabun."
+    },
+    {
+      "id": 185,
+      "name": "Cajuput",
+      "slug": "cajuput",
+      "note_family": "aromatic",
+      "description_simple": "Note aromatik yang terasa herbal, tenang, dan sering membuat parfum terasa rapi."
+    },
+    {
+      "id": 186,
+      "name": "Bigarade",
+      "slug": "bigarade",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 187,
+      "name": "Aquamare",
+      "slug": "aquamare",
+      "note_family": "aquatic",
+      "description_simple": "Note berair yang terasa ringan, segar, dan memberi kesan clean seperti udara atau air."
+    },
+    {
+      "id": 188,
+      "name": "Crystal Amber",
+      "slug": "crystal-amber",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 189,
+      "name": "Sulawesi Patchouli",
+      "slug": "sulawesi-patchouli",
+      "note_family": "earthy",
+      "description_simple": "Note membumi yang terasa natural, sedikit lembap, dan memberi kedalaman pada drydown."
+    },
+    {
+      "id": 190,
+      "name": "Peach Leaf",
+      "slug": "peach-leaf",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 191,
+      "name": "Burnt Cinnamon",
+      "slug": "burnt-cinnamon",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 192,
+      "name": "Myrrh",
+      "slug": "myrrh",
+      "note_family": "resinous",
+      "description_simple": "Note resin atau balsamic yang hangat, pekat, dan memberi kesan dalam pada parfum."
+    },
+    {
+      "id": 193,
+      "name": "Mineral Amber",
+      "slug": "mineral-amber",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 194,
+      "name": "Lime",
+      "slug": "lime",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 195,
+      "name": "Tropical Fruits",
+      "slug": "tropical-fruits",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 196,
+      "name": "Sicilian Orange",
+      "slug": "sicilian-orange",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 197,
+      "name": "Coconut Water",
+      "slug": "coconut-water",
+      "note_family": "aquatic",
+      "description_simple": "Note berair yang terasa ringan, segar, dan memberi kesan clean seperti udara atau air."
+    },
+    {
+      "id": 198,
+      "name": "Wood",
+      "slug": "wood",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 199,
+      "name": "Licorice",
+      "slug": "licorice",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 200,
+      "name": "Rhubarb Leaves",
+      "slug": "rhubarb-leaves",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 201,
+      "name": "Magnolia",
+      "slug": "magnolia",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 202,
+      "name": "Chypre Accord",
+      "slug": "chypre-accord",
+      "note_family": "earthy",
+      "description_simple": "Accord chypre accord yang membantu membentuk nuansa earthy dalam komposisi parfum."
+    },
+    {
+      "id": 203,
+      "name": "Amber Xtreme",
+      "slug": "amber-xtreme",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 204,
+      "name": "Olibanum",
+      "slug": "olibanum",
+      "note_family": "smoky",
+      "description_simple": "Note smoky yang memberi kesan asap, gelap, dan lebih bold pada karakter parfum."
+    },
+    {
+      "id": 205,
+      "name": "Betahydrane",
+      "slug": "betahydrane",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 206,
+      "name": "Mugane",
+      "slug": "mugane",
+      "note_family": "musky",
+      "description_simple": "Note musk yang lembut, dekat dengan kulit, dan sering memberi kesan bersih atau halus."
+    },
+    {
+      "id": 207,
+      "name": "Sage",
+      "slug": "sage",
+      "note_family": "aromatic",
+      "description_simple": "Note aromatik yang terasa herbal, tenang, dan sering membuat parfum terasa rapi."
+    },
+    {
+      "id": 208,
+      "name": "Incense",
+      "slug": "incense",
+      "note_family": "smoky",
+      "description_simple": "Note smoky yang memberi kesan asap, gelap, dan lebih bold pada karakter parfum."
+    },
+    {
+      "id": 209,
+      "name": "Leaves",
+      "slug": "leaves",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 210,
+      "name": "White Violet",
+      "slug": "white-violet",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 211,
+      "name": "White Musks",
+      "slug": "white-musks",
+      "note_family": "musky",
+      "description_simple": "Note musk yang lembut, dekat dengan kulit, dan sering memberi kesan bersih atau halus."
+    },
+    {
+      "id": 212,
+      "name": "Nutmeg",
+      "slug": "nutmeg",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 213,
+      "name": "Dry Apple",
+      "slug": "dry-apple",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 214,
+      "name": "Peppercorn",
+      "slug": "peppercorn",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 215,
+      "name": "Oud Wood",
+      "slug": "oud-wood",
+      "note_family": "oud",
+      "description_simple": "Note oud yang pekat, woody, resinous, dan memberi karakter mewah serta kuat."
+    },
+    {
+      "id": 216,
+      "name": "Vegetal Accord",
+      "slug": "vegetal-accord",
+      "note_family": "green",
+      "description_simple": "Accord vegetal accord yang membantu membentuk nuansa green dalam komposisi parfum."
+    },
+    {
+      "id": 217,
+      "name": "Watery Notes",
+      "slug": "watery-notes",
+      "note_family": "aquatic",
+      "description_simple": "Note berair yang terasa ringan, segar, dan memberi kesan clean seperti udara atau air."
+    },
+    {
+      "id": 218,
+      "name": "Vine",
+      "slug": "vine",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 219,
+      "name": "Velvet Musk",
+      "slug": "velvet-musk",
+      "note_family": "musky",
+      "description_simple": "Note musk yang lembut, dekat dengan kulit, dan sering memberi kesan bersih atau halus."
+    },
+    {
+      "id": 220,
+      "name": "Balsamic Notes",
+      "slug": "balsamic-notes",
+      "note_family": "resinous",
+      "description_simple": "Note resin atau balsamic yang hangat, pekat, dan memberi kesan dalam pada parfum."
+    },
+    {
+      "id": 221,
+      "name": "Marine Note",
+      "slug": "marine-note",
+      "note_family": "marine",
+      "description_simple": "Note laut yang terasa segar, airy, dan sering memberi nuansa aquatic yang lebih breezy."
+    },
+    {
+      "id": 222,
+      "name": "Cypress",
+      "slug": "cypress",
+      "note_family": "green",
+      "description_simple": "Note hijau yang terasa leafy, natural, dan memberi nuansa segar seperti dedaunan."
+    },
+    {
+      "id": 223,
+      "name": "Fresh Pear",
+      "slug": "fresh-pear",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 224,
+      "name": "Citrus Accord",
+      "slug": "citrus-accord",
+      "note_family": "citrus",
+      "description_simple": "Accord citrus accord yang membantu membentuk nuansa citrus dalam komposisi parfum."
+    },
+    {
+      "id": 225,
+      "name": "Bubbly Champagne",
+      "slug": "bubbly-champagne",
+      "note_family": "boozy",
+      "description_simple": "Note boozy yang mengingatkan pada minuman beralkohol, hangat, dan sedikit sparkling."
+    },
+    {
+      "id": 226,
+      "name": "Mimosa",
+      "slug": "mimosa",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 227,
+      "name": "Citrus Notes",
+      "slug": "citrus-notes",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 228,
+      "name": "Floral Notes",
+      "slug": "floral-notes",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 229,
+      "name": "Aromatic Notes",
+      "slug": "aromatic-notes",
+      "note_family": "aromatic",
+      "description_simple": "Note aromatik yang terasa herbal, tenang, dan sering membuat parfum terasa rapi."
+    },
+    {
+      "id": 230,
+      "name": "Earthy Notes",
+      "slug": "earthy-notes",
+      "note_family": "earthy",
+      "description_simple": "Note membumi yang terasa natural, sedikit lembap, dan memberi kedalaman pada drydown."
+    },
+    {
+      "id": 231,
+      "name": "Spices",
+      "slug": "spices",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 232,
+      "name": "Elemi",
+      "slug": "elemi",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 233,
+      "name": "Fresh Notes",
+      "slug": "fresh-notes",
+      "note_family": "fresh",
+      "description_simple": "Note fresh yang memberi kesan segar, ringan, dan mudah dipakai sehari-hari."
+    },
+    {
+      "id": 234,
+      "name": "Berries",
+      "slug": "berries",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 235,
+      "name": "Red Rose",
+      "slug": "red-rose",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 236,
+      "name": "Clove",
+      "slug": "clove",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 237,
+      "name": "Tagetes",
+      "slug": "tagetes",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 238,
+      "name": "Green Pear",
+      "slug": "green-pear",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 239,
+      "name": "Driftwood",
+      "slug": "driftwood",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 240,
+      "name": "Pure Natural Lemon Oil",
+      "slug": "pure-natural-lemon-oil",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 241,
+      "name": "Cactus Accord",
+      "slug": "cactus-accord",
+      "note_family": "green",
+      "description_simple": "Accord cactus accord yang membantu membentuk nuansa green dalam komposisi parfum."
+    },
+    {
+      "id": 242,
+      "name": "Ciste Absolute",
+      "slug": "ciste-absolute",
+      "note_family": "resinous",
+      "description_simple": "Note resin atau balsamic yang hangat, pekat, dan memberi kesan dalam pada parfum."
+    },
+    {
+      "id": 243,
+      "name": "Patchouli Indonesia",
+      "slug": "patchouli-indonesia",
+      "note_family": "earthy",
+      "description_simple": "Note membumi yang terasa natural, sedikit lembap, dan memberi kedalaman pada drydown."
+    },
+    {
+      "id": 244,
+      "name": "Vetiver Java",
+      "slug": "vetiver-java",
+      "note_family": "earthy",
+      "description_simple": "Note membumi yang terasa natural, sedikit lembap, dan memberi kedalaman pada drydown."
+    },
+    {
+      "id": 245,
+      "name": "Figolide",
+      "slug": "figolide",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 246,
+      "name": "Velvet Accord",
+      "slug": "velvet-accord",
+      "note_family": "other",
+      "description_simple": "Accord velvet accord yang membantu membentuk nuansa other dalam komposisi parfum."
+    },
+    {
+      "id": 247,
+      "name": "Crème de Framboise",
+      "slug": "creme-de-framboise",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 248,
+      "name": "Petalia",
+      "slug": "petalia",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 249,
+      "name": "Sampaguita",
+      "slug": "sampaguita",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 179,
+      "name": "Roseraie de L'Hay",
+      "slug": "roseraie-de-lhay",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 250,
+      "name": "Amberwoods",
+      "slug": "amberwoods",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 251,
+      "name": "Sheer Musk",
+      "slug": "sheer-musk",
+      "note_family": "musky",
+      "description_simple": "Note musk yang lembut, dekat dengan kulit, dan sering memberi kesan bersih atau halus."
+    },
+    {
+      "id": 252,
+      "name": "Pink Peppercorn",
+      "slug": "pink-peppercorn",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 253,
+      "name": "Hedione",
+      "slug": "hedione",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 254,
+      "name": "Tangerine Heart",
+      "slug": "tangerine-heart",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 255,
+      "name": "Charentais",
+      "slug": "charentais",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 256,
+      "name": "Edenolide",
+      "slug": "edenolide",
+      "note_family": "musky",
+      "description_simple": "Note musk yang lembut, dekat dengan kulit, dan sering memberi kesan bersih atau halus."
+    },
+    {
+      "id": 257,
+      "name": "Pompona",
+      "slug": "pompona",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 258,
+      "name": "Sicilian Bergamot",
+      "slug": "sicilian-bergamot",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 259,
+      "name": "Charred Pineapple",
+      "slug": "charred-pineapple",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 260,
+      "name": "Artemisia",
+      "slug": "artemisia",
+      "note_family": "aromatic",
+      "description_simple": "Note aromatik yang terasa herbal, tenang, dan sering membuat parfum terasa rapi."
+    },
+    {
+      "id": 261,
+      "name": "Dried Jasmine",
+      "slug": "dried-jasmine",
+      "note_family": "white-floral",
+      "description_simple": "Note bunga putih yang terasa bersih, lembut, dan bisa memberi kesan floral yang lebih creamy."
+    },
+    {
+      "id": 262,
+      "name": "Pink Salt",
+      "slug": "pink-salt",
+      "note_family": "mineral",
+      "description_simple": "Note mineral yang terasa kering, airy, dan memberi kesan modern atau bersih."
+    },
+    {
+      "id": 263,
+      "name": "Water Blossoms",
+      "slug": "water-blossoms",
+      "note_family": "aquatic",
+      "description_simple": "Note berair yang terasa ringan, segar, dan memberi kesan clean seperti udara atau air."
+    },
+    {
+      "id": 264,
+      "name": "Softwood",
+      "slug": "softwood",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 265,
+      "name": "Modern Amber",
+      "slug": "modern-amber",
+      "note_family": "amber",
+      "description_simple": "Note amber yang hangat, resinous, sedikit manis, dan memberi kesan glowing pada drydown."
+    },
+    {
+      "id": 266,
+      "name": "Cotton Flower",
+      "slug": "cotton-flower",
+      "note_family": "clean",
+      "description_simple": "Note clean yang terasa bersih, rapi, seperti sabun, laundry, atau baru selesai mandi."
+    },
+    {
+      "id": 267,
+      "name": "Rose Milk",
+      "slug": "rose-milk",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 268,
+      "name": "Guaiac Wood",
+      "slug": "guaiac-wood",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 269,
+      "name": "Herbal Notes",
+      "slug": "herbal-notes",
+      "note_family": "aromatic",
+      "description_simple": "Note aromatik yang terasa herbal, tenang, dan sering membuat parfum terasa rapi."
+    },
+    {
+      "id": 270,
+      "name": "Clean Musk",
+      "slug": "clean-musk",
+      "note_family": "clean",
+      "description_simple": "Note musk bersih yang memberi kesan rapi, soft, dan baru selesai mandi."
+    },
+    {
+      "id": 271,
+      "name": "Orris Root",
+      "slug": "orris-root",
+      "note_family": "powdery",
+      "description_simple": "Note powdery yang terasa lembut, kering, halus, dan memberi kesan rapi seperti bedak."
+    },
+    {
+      "id": 272,
+      "name": "Fresh Floral Notes",
+      "slug": "fresh-floral-notes",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 273,
+      "name": "Warm Spices",
+      "slug": "warm-spices",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 274,
+      "name": "Bourbon Vanilla",
+      "slug": "bourbon-vanilla",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 275,
+      "name": "Praline",
+      "slug": "praline",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 276,
+      "name": "Daffodils",
+      "slug": "daffodils",
+      "note_family": "floral",
+      "description_simple": "Note bunga yang memberi kesan lembut, elegan, dan lebih hidup pada komposisi parfum."
+    },
+    {
+      "id": 277,
+      "name": "Biscuit",
+      "slug": "biscuit",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 278,
+      "name": "Honey",
+      "slug": "honey",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 279,
+      "name": "White Sugar",
+      "slug": "white-sugar",
+      "note_family": "gourmand",
+      "description_simple": "Note gourmand yang terasa manis, creamy, dan mengingatkan pada makanan atau dessert."
+    },
+    {
+      "id": 280,
+      "name": "Red Fruits",
+      "slug": "red-fruits",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 281,
+      "name": "Warm Spicy",
+      "slug": "warm-spicy",
+      "note_family": "spicy",
+      "description_simple": "Note rempah yang hangat, tajam, dan memberi karakter lebih tegas pada parfum."
+    },
+    {
+      "id": 282,
+      "name": "Guava",
+      "slug": "guava",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 283,
+      "name": "Cassis",
+      "slug": "cassis",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 284,
+      "name": "Petitgrain",
+      "slug": "petitgrain",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 285,
+      "name": "Prune",
+      "slug": "prune",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 286,
+      "name": "Cedar Wood",
+      "slug": "cedar-wood",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 287,
+      "name": "Cistus",
+      "slug": "cistus",
+      "note_family": "resinous",
+      "description_simple": "Note resin atau balsamic yang hangat, pekat, dan memberi kesan dalam pada parfum."
+    },
+    {
+      "id": 288,
+      "name": "Amalfi Lemon",
+      "slug": "amalfi-lemon",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 289,
+      "name": "Lemon Blossom",
+      "slug": "lemon-blossom",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 290,
+      "name": "Orcanox",
+      "slug": "orcanox",
+      "note_family": "musky",
+      "description_simple": "Note musk yang lembut, dekat dengan kulit, dan sering memberi kesan bersih atau halus."
+    },
+    {
+      "id": 291,
+      "name": "Muscat Grapes",
+      "slug": "muscat-grapes",
+      "note_family": "fruity",
+      "description_simple": "Note buah yang memberi kesan manis-segar, juicy, dan lebih playful pada parfum."
+    },
+    {
+      "id": 292,
+      "name": "Transparent Woods",
+      "slug": "transparent-woods",
+      "note_family": "woody",
+      "description_simple": "Note kayu yang memberi kesan kering, rapi, hangat, dan membuat parfum terasa lebih kokoh."
+    },
+    {
+      "id": 293,
+      "name": "Fizzy Grapefruit",
+      "slug": "fizzy-grapefruit",
+      "note_family": "citrus",
+      "description_simple": "Note citrus yang segar, cerah, dan sering memberi kesan ringan di pembukaan parfum."
+    },
+    {
+      "id": 294,
+      "name": "Water Notes",
+      "slug": "water-notes",
+      "note_family": "aquatic",
+      "description_simple": "Note berair yang terasa ringan, segar, dan memberi kesan clean seperti udara atau air."
+    },
+    {
+      "id": 295,
+      "name": "Ozonic Notes",
+      "slug": "ozonic-notes",
+      "note_family": "fresh",
+      "description_simple": "Note fresh yang memberi kesan segar, ringan, dan mudah dipakai sehari-hari."
+    }
+  ]
+}

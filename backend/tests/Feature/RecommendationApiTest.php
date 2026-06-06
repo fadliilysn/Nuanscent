@@ -178,13 +178,57 @@ class RecommendationApiTest extends TestCase
         $recommendations = collect($response->json('recommendations'));
 
         $this->assertContains(
-            'Tag aroma mendukung preferensimu: citrus.',
+            'Nuansa pendukung yang sejalan dengan pilihan Fresh: citrus.',
             $recommendations->firstWhere('slug', 'single-nuance')['matched_reasons'],
         );
         $this->assertContains(
-            'Tag aroma mendukung preferensimu: citrus dan aquatic.',
+            'Nuansa pendukung yang sejalan dengan pilihan Fresh: citrus dan aquatic.',
             $recommendations->firstWhere('slug', 'multiple-nuances')['matched_reasons'],
         );
+    }
+
+    public function test_supporting_aroma_tag_reasons_distinguish_selected_categories_from_nuance_tags(): void
+    {
+        [$brand, $fresh, , $citrus, , $office] = $this->createReferenceData();
+        AromaCategory::create([
+            'name' => 'Musky',
+            'slug' => 'musky',
+        ]);
+        $aquatic = AromaTag::create([
+            'name' => 'Aquatic',
+            'slug' => 'aquatic',
+        ]);
+        $muskyTag = AromaTag::create([
+            'name' => 'Musky',
+            'slug' => 'musky',
+        ]);
+
+        $perfume = Perfume::create([
+            'brand_id' => $brand->id,
+            'name' => 'Fresh Musky Nuance',
+            'slug' => 'fresh-musky-nuance',
+            'price_min' => 150000,
+            'price_max' => 200000,
+            'intensity' => 'soft',
+            'main_aroma_category_id' => $fresh->id,
+            'data_status' => 'published',
+        ]);
+        $perfume->aromaTags()->attach([$aquatic->id, $citrus->id, $muskyTag->id]);
+        $perfume->occasions()->attach($office);
+
+        $response = $this->postJson('/api/recommendations', $this->validPayload([
+            'aroma_preference' => null,
+            'aroma_preferences' => ['fresh', 'musky'],
+        ]))->assertOk();
+
+        $reasons = $response->json('recommendations.0.matched_reasons');
+        $reasonText = implode(' ', $reasons);
+
+        $this->assertContains('Sesuai dengan preferensi aroma Fresh.', $reasons);
+        $this->assertContains('Nuansa pendukung yang sejalan dengan pilihan Fresh: citrus dan aquatic.', $reasons);
+        $this->assertContains('Nuansa pendukung yang sejalan dengan pilihan Musky: musky.', $reasons);
+        $this->assertStringNotContainsString('Tag aroma mendukung preferensimu', $reasonText);
+        $this->assertStringNotContainsString('Sesuai dengan preferensi aroma Aquatic', $reasonText);
     }
 
     public function test_aroma_preferences_array_matches_any_selected_category(): void
@@ -215,7 +259,137 @@ class RecommendationApiTest extends TestCase
             ->assertOk()
             ->assertJsonPath('recommendations.0.slug', 'woody-multi-match')
             ->assertJsonFragment(['Sesuai dengan preferensi aroma Woody.'])
-            ->assertJsonFragment(['Tag aroma mendukung preferensimu: cedar.']);
+            ->assertJsonFragment(['Nuansa pendukung yang sejalan dengan pilihan Woody: cedar.']);
+    }
+
+    public function test_one_two_and_three_aroma_preferences_are_supported(): void
+    {
+        [$brand, $fresh, , $citrus, , $office] = $this->createReferenceData();
+        $clean = AromaCategory::create([
+            'name' => 'Clean',
+            'slug' => 'clean',
+        ]);
+        $musky = AromaCategory::create([
+            'name' => 'Musky',
+            'slug' => 'musky',
+        ]);
+
+        foreach ([
+            [$fresh, $citrus, 'fresh-option', 'Fresh Option'],
+            [$clean, AromaTag::create(['name' => 'Soapy', 'slug' => 'soapy']), 'clean-option', 'Clean Option'],
+            [$musky, AromaTag::create(['name' => 'Musky', 'slug' => 'musky']), 'musky-option', 'Musky Option'],
+        ] as [$category, $tag, $slug, $name]) {
+            $perfume = Perfume::create([
+                'brand_id' => $brand->id,
+                'name' => $name,
+                'slug' => $slug,
+                'price_min' => 150000,
+                'price_max' => 200000,
+                'intensity' => 'soft',
+                'main_aroma_category_id' => $category->id,
+                'data_status' => 'published',
+            ]);
+            $perfume->aromaTags()->attach($tag);
+            $perfume->occasions()->attach($office);
+        }
+
+        $this->postJson('/api/recommendations', $this->validPayload([
+            'aroma_preference' => null,
+            'aroma_preferences' => ['fresh'],
+        ]))
+            ->assertOk()
+            ->assertJsonFragment(['slug' => 'fresh-option']);
+
+        $this->postJson('/api/recommendations', $this->validPayload([
+            'aroma_preference' => null,
+            'aroma_preferences' => ['fresh', 'clean'],
+        ]))
+            ->assertOk()
+            ->assertJsonFragment(['slug' => 'fresh-option'])
+            ->assertJsonFragment(['slug' => 'clean-option']);
+
+        $this->postJson('/api/recommendations', $this->validPayload([
+            'aroma_preference' => null,
+            'aroma_preferences' => ['fresh', 'clean', 'musky'],
+        ]))
+            ->assertOk()
+            ->assertJsonFragment(['slug' => 'fresh-option'])
+            ->assertJsonFragment(['slug' => 'clean-option'])
+            ->assertJsonFragment(['slug' => 'musky-option']);
+    }
+
+    public function test_underrepresented_aroma_preferences_can_return_recommendations(): void
+    {
+        [$brand, , , , , $office] = $this->createReferenceData();
+
+        foreach ([
+            ['Soft', 'soft'],
+            ['Musky', 'musky'],
+            ['Sweet', 'sweet'],
+            ['Powdery', 'powdery'],
+        ] as [$name, $slug]) {
+            $category = AromaCategory::create([
+                'name' => $name,
+                'slug' => $slug,
+            ]);
+            $tag = AromaTag::create([
+                'name' => $name,
+                'slug' => $slug,
+            ]);
+            $perfume = Perfume::create([
+                'brand_id' => $brand->id,
+                'name' => "{$name} Match",
+                'slug' => "{$slug}-match",
+                'price_min' => 150000,
+                'price_max' => 200000,
+                'intensity' => 'soft',
+                'main_aroma_category_id' => $category->id,
+                'data_status' => 'published',
+            ]);
+            $perfume->aromaTags()->attach($tag);
+            $perfume->occasions()->attach($office);
+
+            $this->postJson('/api/recommendations', $this->validPayload([
+                'aroma_preference' => null,
+                'aroma_preferences' => [$slug],
+            ]))
+                ->assertOk()
+                ->assertJsonPath('recommendations.0.slug', "{$slug}-match");
+        }
+    }
+
+    public function test_empty_avoided_tags_do_not_penalize_recommendations(): void
+    {
+        [$brand, $fresh, , $citrus, , $office] = $this->createReferenceData();
+
+        $perfume = Perfume::create([
+            'brand_id' => $brand->id,
+            'name' => 'No Avoidance Penalty',
+            'slug' => 'no-avoidance-penalty',
+            'price_min' => 150000,
+            'price_max' => 200000,
+            'intensity' => 'soft',
+            'main_aroma_category_id' => $fresh->id,
+            'data_status' => 'published',
+        ]);
+        $perfume->aromaTags()->attach($citrus);
+        $perfume->occasions()->attach($office);
+
+        $withoutAvoidancePayload = $this->validPayload();
+        unset($withoutAvoidancePayload['avoided_tags']);
+
+        $withoutAvoidance = $this->postJson('/api/recommendations', $withoutAvoidancePayload)
+            ->assertOk()
+            ->json('recommendations.0');
+
+        $withEmptyAvoidance = $this->postJson('/api/recommendations', $this->validPayload([
+            'avoided_tags' => [],
+        ]))
+            ->assertOk()
+            ->json('recommendations.0');
+
+        $this->assertSame('no-avoidance-penalty', $withoutAvoidance['slug']);
+        $this->assertSame($withoutAvoidance['match_percentage'], $withEmptyAvoidance['match_percentage']);
     }
 
     public function test_legacy_aroma_preference_alias_is_still_accepted(): void

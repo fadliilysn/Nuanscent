@@ -1,0 +1,352 @@
+{
+  "meta": {
+    "dataset_name": "Nuanscent Product Image URL Patch Batch 02",
+    "version": "1.0.0",
+    "purpose": "Melengkapi image_url untuk parfum published yang masih belum memiliki gambar.",
+    "notes": [
+      "Patch ini hanya memperbarui image_url berdasarkan slug parfum.",
+      "HMNS tidak termasuk dalam patch karena image_url HMNS sudah lengkap.",
+      "Mayoritas gambar berasal dari halaman produk resmi brand. Braven Black Casual dan Braven Sport Freestyle memakai CDN retailer Blibli karena gambar produk dapat dicocokkan dengan jelas.",
+      "image_source_name dan image_source_url disimpan untuk review provenance, bukan untuk mengubah source fields parfum."
+    ]
+  },
+  "patches": [
+    {
+      "slug": "ambremusc",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F1333%2FExtrait_Ambremusc-%281%29.png&w=3840",
+      "image_source_name": "Kahf Official",
+      "image_source_url": "https://www.kahfeveryday.com/product/kahf-ambremusc-extrait-de-parfum/"
+    },
+    {
+      "slug": "aquaterrae",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F773%2FExtrait_Aquaterrae.png&w=3840",
+      "image_source_name": "Kahf Official",
+      "image_source_url": "https://www.kahfeveryday.com/product/kahf-aquaterrae-extrait-de-parfum/"
+    },
+    {
+      "slug": "braven-black-casual",
+      "image_url": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//catalog-image/99/MTA-133409942/braven_braven_black_edp_100ml_casual_full01_is7560jg.jpg",
+      "image_source_name": "Blibli Product CDN",
+      "image_source_url": "https://www.blibli.com/p/braven-black-edp-100ml-casual/ps--TOD-70470-00494"
+    },
+    {
+      "slug": "braven-code-cedarwood",
+      "image_url": "https://griff.co.id/wp-content/uploads/2025/07/BRAVEN-CODE-CEDARWOOD-600x900.jpg",
+      "image_source_name": "Griff Official",
+      "image_source_url": "https://griff.co.id/products/braven-code-eau-de-parfum-oud-wood-100-ml/"
+    },
+    {
+      "slug": "braven-code-cool-water",
+      "image_url": "https://griff.co.id/wp-content/uploads/2025/07/BRAVEN-CODE-COOL-WATER-600x900.jpg",
+      "image_source_name": "Griff Official",
+      "image_source_url": "https://griff.co.id/products/braven-code-eau-de-parfum-cool-water-100-ml/"
+    },
+    {
+      "slug": "braven-code-urban",
+      "image_url": "https://griff.co.id/wp-content/uploads/2025/07/BRAVEN-CODE-URBAN-600x900.jpg",
+      "image_source_name": "Griff Official",
+      "image_source_url": "https://griff.co.id/products/evangeline-selection-eau-de-parfum-sweet-strawberry-100-ml/"
+    },
+    {
+      "slug": "braven-dark-polo",
+      "image_url": "https://griff.co.id/wp-content/uploads/2025/07/BRAVEN-DARK-POLO-600x900.jpg",
+      "image_source_name": "Griff Official",
+      "image_source_url": "https://griff.co.id/products/braven-collection-eau-de-parfum-dark-polo-100-ml/"
+    },
+    {
+      "slug": "braven-french-oak",
+      "image_url": "https://griff.co.id/wp-content/uploads/2025/07/BRAVEN-COLLECTION-FRENCH-OAK-600x900.jpg",
+      "image_source_name": "Griff Official",
+      "image_source_url": "https://griff.co.id/id/products/braven-collection-eau-de-parfum-french-oak-100-ml/"
+    },
+    {
+      "slug": "braven-oud-wood",
+      "image_url": "https://griff.co.id/wp-content/uploads/2025/07/BRAVEN-CODE-OUD-WOOD-600x900.jpg",
+      "image_source_name": "Griff Official",
+      "image_source_url": "https://griff.co.id/id/products/braven-code-eau-de-parfum-oud-wood-100-ml-2/"
+    },
+    {
+      "slug": "braven-sensual-oud",
+      "image_url": "https://griff.co.id/wp-content/uploads/2025/07/BRAVEN-COLLECTION-SENSUAL-OUD-600x900.jpg",
+      "image_source_name": "Griff Official",
+      "image_source_url": "https://griff.co.id/products/braven-collection-eau-de-parfum-sensual-oud-100-ml-2/"
+    },
+    {
+      "slug": "braven-sport-freestyle",
+      "image_url": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/113/MTA-181875794/braven_braven_eau_de_parfum_sport_100ml_-_freestyle_full01_s18tmbvn.jpg",
+      "image_source_name": "Blibli Product CDN",
+      "image_source_url": "https://www.blibli.com/p/braven-eau-de-parfum-sport-100ml-freestyle/ps--TOD-70470-00717"
+    },
+    {
+      "slug": "braven-vanilla-wood",
+      "image_url": "https://griff.co.id/wp-content/uploads/2025/07/BRAVEN-COLLECTION-VANILLA-WOOD-600x900.jpg",
+      "image_source_name": "Griff Official",
+      "image_source_url": "https://griff.co.id/products/braven-collection-eau-de-parfum-sensual-oud-100-ml/"
+    },
+    {
+      "slug": "kie-raha",
+      "image_url": "https://saffnco.com/cdn/shop/files/PDP_Website_KIE_RAHA.png?crop=center&height=1080&v=1761702993&width=1080",
+      "image_source_name": "SAFF & Co. Official",
+      "image_source_url": "https://saffnco.com/products/extrait-de-parfum-kie-raha"
+    },
+    {
+      "slug": "leatherfield",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F1298%2FExtrait_Leatherfield.png&w=3840",
+      "image_source_name": "Kahf Official",
+      "image_source_url": "https://www.kahfeveryday.com/product/kahf-leatherfield-extrait-de-parfum/"
+    },
+    {
+      "slug": "minouet",
+      "image_url": "https://saffnco.com/cdn/shop/files/Launch-Minouet-PDP_White.jpg?crop=center&height=2250&v=1758785916&width=2250",
+      "image_source_name": "SAFF & Co. Official",
+      "image_source_url": "https://saffnco.com/products/extrait-de-parfum-minouet"
+    },
+    {
+      "slug": "morfosia",
+      "image_url": "https://saffnco.com/cdn/shop/files/Morfosia_4b2e5bd5-8ed4-496d-8071-41d34417d2c2.png?crop=center&height=4320&v=1749799441&width=4320",
+      "image_source_name": "SAFF & Co. Official",
+      "image_source_url": "https://saffnco.com/products/extrait-de-parfum-morfosia"
+    },
+    {
+      "slug": "morris-black-edition-aquatic",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/02/BL-aquatic.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-black-edition-aquatic-100-ml/"
+    },
+    {
+      "slug": "morris-black-edition-aromatic",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/02/BL-aromatic.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-black-edition-aromatic-100-ml/"
+    },
+    {
+      "slug": "morris-black-edition-musky",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/02/BL-Musky.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-black-edition-musky-100-ml/"
+    },
+    {
+      "slug": "morris-black-edition-oud",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/02/BL-oud.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-black-edition-oud-100-ml/"
+    },
+    {
+      "slug": "morris-black-edition-woody",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/02/BL-woody.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-black-edition-woody-100-ml/"
+    },
+    {
+      "slug": "morris-floral-edition-violet-glow",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2020/11/VIOLET-GLOW-745x745.jpg",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-parfum-eau-de-toilette-floral-edition-150ml-violet-glow/"
+    },
+    {
+      "slug": "morris-glam-edition-famous",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/03/Famous.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-glam-edition-famous-100-ml/"
+    },
+    {
+      "slug": "morris-glam-edition-luxury-star",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2023/01/Artboard-9-1-745x745.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-eau-de-parfum-glam-edition-100ml-luxury-star/"
+    },
+    {
+      "slug": "morris-i-can-do-it",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/03/Fantasy-I-Can-Do-It.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-edp-fantasy-edition-i-can-do-it-110-ml/"
+    },
+    {
+      "slug": "morris-lifestyle-edition-creative",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2020/06/Creative_800-745x745.jpg",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-lifestyle-edition-100ml-creative/"
+    },
+    {
+      "slug": "morris-pistachio-vanilla",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/03/Pistachio-Vanilla.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-eau-de-perfume-gourmand-edition-pistachio-vanilla-100ml/"
+    },
+    {
+      "slug": "morris-smoothie-pink",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/03/Smoothie-Pink.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-eau-de-perfume-gourmand-edition-smoothie-pink-100ml/"
+    },
+    {
+      "slug": "morris-surprise-me",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/03/Fantasy-Surprise-Me.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-edp-fantasy-edition-surprise-me-110-ml/"
+    },
+    {
+      "slug": "morris-teen-cute",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2019/01/CUTE-745x745.jpg",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-teen-60-ml-cute/"
+    },
+    {
+      "slug": "morris-teen-princess",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2019/01/PRINCESS-745x745.jpg",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-teen-60-ml-princess/"
+    },
+    {
+      "slug": "morris-to-the-moon",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/03/To-The-Moon-Depan-745x745.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-perfume-eau-de-toilette-to-the-moon-100-ml/"
+    },
+    {
+      "slug": "morris-tropical-paradise",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2019/07/Morris-Tropical-Paradise.jpg",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-tropical-eau-de-parfume-110-ml-paradise/"
+    },
+    {
+      "slug": "morris-white-edition-fresh",
+      "image_url": "https://livindo.co.id/wp-content/uploads/2026/03/White-fresh-745x745.png",
+      "image_source_name": "PT. Aroma Prima Livindo Official",
+      "image_source_url": "https://livindo.co.id/product/morris-white-edition-fresh-100-ml/"
+    },
+    {
+      "slug": "neofougere",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F763%2FExtrait_Neofougere.png&w=3840",
+      "image_source_name": "Kahf Official",
+      "image_source_url": "https://www.kahfeveryday.com/product/kahf-neofougere-extrait-de-parfum/"
+    },
+    {
+      "slug": "ostara",
+      "image_url": "https://saffnco.com/cdn/shop/files/pdp_ostara_box_and_bottle_bg_putih_square.jpg?crop=center&height=1080&v=1765872789&width=1080",
+      "image_source_name": "SAFF & Co. Official",
+      "image_source_url": "https://saffnco.com/products/extrait-de-parfum-ostara"
+    },
+    {
+      "slug": "revered-oud",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F1242%2FEDP-Revered.png&w=3840",
+      "image_source_name": "Kahf Official",
+      "image_source_url": "https://www.kahfeveryday.com/product/kahf-revered-oud-eau-de-parfum/"
+    },
+    {
+      "slug": "saff",
+      "image_url": "https://saffnco.com/cdn/shop/files/box_botol_background_putih.png?crop=center&height=4518&v=1764311259&width=4503",
+      "image_source_name": "SAFF & Co. Official",
+      "image_source_url": "https://saffnco.com/products/extrait-de-parfum-saff"
+    },
+    {
+      "slug": "saffron-oud",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F708%2FEDP-Saffron.png&w=3840",
+      "image_source_name": "Kahf Official",
+      "image_source_url": "https://www.kahfeveryday.com/product/kahf-saffron-oud-eau-de-parfum/"
+    },
+    {
+      "slug": "santalscape",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F754%2FExtrait_Santalscape.png&w=3840",
+      "image_source_name": "Kahf Official",
+      "image_source_url": "https://www.kahfeveryday.com/product/kahf-santalscape-extrait-de-parfum/"
+    },
+    {
+      "slug": "scarlett-banana-fusion",
+      "image_url": "https://cdn.scarlett.id/product/d4f7e47f-83c5-4476-90a7-994131cdde46_Cover_PDP_Website_BananaFusion.jpg",
+      "image_source_name": "Scarlett Official",
+      "image_source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-banana-fusion-30ml"
+    },
+    {
+      "slug": "scarlett-biru-samudra",
+      "image_url": "https://cdn.scarlett.id/product/932c31fe-9a22-49d7-8e61-abf8d2916b1a_BIRU_SAMUDRA.png",
+      "image_source_name": "Scarlett Official",
+      "image_source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-biru-samudra-30ml"
+    },
+    {
+      "slug": "scarlett-dreamy",
+      "image_url": "https://cdn.scarlett.id/product/e006ca12-dfc6-47d0-abb6-40b716f06af2_DREAMY.png",
+      "image_source_name": "Scarlett Official",
+      "image_source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-dreamy"
+    },
+    {
+      "slug": "scarlett-euphoria",
+      "image_url": "https://cdn.scarlett.id/product/bcd54b38-b084-4acf-8f19-9b5717397bb6_euphoria_1.png",
+      "image_source_name": "Scarlett Official",
+      "image_source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-euphoria"
+    },
+    {
+      "slug": "scarlett-garden-of-whisper",
+      "image_url": "https://cdn.scarlett.id/product/e041d1d3-fbd9-4d6d-b597-77fa8e461cdb_PDP_Website_Cover_GardenOfWhisper.jpg",
+      "image_source_name": "Scarlett Official",
+      "image_source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-garden-of-whisper-30ml"
+    },
+    {
+      "slug": "scarlett-la-foret-fairy",
+      "image_url": "https://cdn.scarlett.id/product/137cf45d-c905-4e74-91ac-f7bcac20eaa9_LA_FORET_FAIRY.png",
+      "image_source_name": "Scarlett Official",
+      "image_source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-la-foret-fairy-30ml"
+    },
+    {
+      "slug": "scarlett-passionate",
+      "image_url": "https://cdn.scarlett.id/product/7f722639-1e7f-44bb-9d62-6ae4c598fc56_PASSIONATE.png",
+      "image_source_name": "Scarlett Official",
+      "image_source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-passionate"
+    },
+    {
+      "slug": "scarlett-purple-kiss",
+      "image_url": "https://cdn.scarlett.id/product/fd6c57d0-c4ad-4bdd-9974-6238845b7bfc_PURPLE_KISS.png",
+      "image_source_name": "Scarlett Official",
+      "image_source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-purple-kiss-30ml"
+    },
+    {
+      "slug": "scarlett-safa-ather",
+      "image_url": "https://cdn.scarlett.id/product/27f1eab2-2dea-4d32-b4da-a5e95d3bce63_PDP_Website___safa.jpg",
+      "image_source_name": "Scarlett Official",
+      "image_source_url": "https://scarlettofficial.id/product/new%21-scarlett-extrait-de-parfum-30ml---safa-ather---golden-scents-of-arabia---wangi-fruity-clean-yang-ringan-dan-segar---parfum-unisex-pria-wanita-tahan-lama-for-daily-use"
+    },
+    {
+      "slug": "scarlett-sweet-memories",
+      "image_url": "https://cdn.scarlett.id/product/67577b38-8c6a-4558-81df-40e9c4bd9872_SWEET_MEMORIES.png",
+      "image_source_name": "Scarlett Official",
+      "image_source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-sweet-memories"
+    },
+    {
+      "slug": "scarlett-velvet-rouge",
+      "image_url": "https://cdn.scarlett.id/product/10bd4b99-af5f-4b9e-9eba-2ad6ae1890d1_VELVET_ROUGE.png",
+      "image_source_name": "Scarlett Official",
+      "image_source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-velvet-rouge-30ml"
+    },
+    {
+      "slug": "silverwood",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F767%2FExtrait_Silverwood.png&w=3840",
+      "image_source_name": "Kahf Official",
+      "image_source_url": "https://www.kahfeveryday.com/product/kahf-silverwood-extrait-de-parfum/"
+    },
+    {
+      "slug": "solaris",
+      "image_url": "https://saffnco.com/cdn/shop/files/PDPSOLARIS03.jpg?crop=center&height=2250&v=1775111812&width=2250",
+      "image_source_name": "SAFF & Co. Official",
+      "image_source_url": "https://saffnco.com/products/extrait-de-parfum-solaris"
+    },
+    {
+      "slug": "sotb",
+      "image_url": "https://saffnco.com/cdn/shop/files/box-_-botol-background-putih.png?crop=center&height=4518&v=1764310886&width=4503",
+      "image_source_name": "SAFF & Co. Official",
+      "image_source_url": "https://saffnco.com/products/extrait-de-parfum-sotb"
+    },
+    {
+      "slug": "spicestone",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F1330%2FExtrait_Spicestone-%281%29.png&w=3840",
+      "image_source_name": "Kahf Official",
+      "image_source_url": "https://www.kahfeveryday.com/product/kahf-spicestone-extrait-de-parfum/"
+    },
+    {
+      "slug": "troupe",
+      "image_url": "https://saffnco.com/cdn/shop/files/Troupe.png?crop=center&height=4320&v=1746432610&width=4320",
+      "image_source_name": "SAFF & Co. Official",
+      "image_source_url": "https://saffnco.com/products/extrait-de-parfum-troupe"
+    }
+  ],
+  "missing_or_needs_manual_review": []
+}

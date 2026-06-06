@@ -1,0 +1,268 @@
+{
+  "meta": {
+    "dataset_name": "Nuanscent Non-HMNS Product Image URL Patch",
+    "version": "1.0.0",
+    "generated_at": "2026-05-30",
+    "purpose": "Patch image_url untuk parfum non-HMNS dari batch tambahan Nuanscent, menggunakan URL gambar produk yang tersedia dari halaman resmi brand atau CDN resmi yang terhubung dari halaman produk.",
+    "notes": [
+      "HMNS dikecualikan karena user menyatakan gambar HMNS sudah lengkap.",
+      "Patch ini tidak mencakup semua parfum batch; hanya parfum yang URL gambar produk berhasil dikumpulkan dengan cukup jelas.",
+      "Importer sebaiknya mencari perfume berdasarkan slug dan hanya memperbarui image_url."
+    ]
+  },
+  "patches": [
+    {
+      "slug": "aphrodite",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/aphrodite_100ml_sku_fda14724-b7b5-4a0a-8d8b-101b23289458.jpg?v=1777980799&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-aphrodite-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "slug": "california",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/california_og_100ml_sku.jpg?v=1778043193&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-california-signature-50ml"
+    },
+    {
+      "slug": "california-blue",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/california_blue_100ml_sku_1.jpg?v=1778043191&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-california-blue-extrait-de-parfum-50ml"
+    },
+    {
+      "slug": "california-club",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/california_club_50ml_sku_1.jpg?v=1778043190&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-california-club-extrait-de-parfum-50ml"
+    },
+    {
+      "slug": "coco",
+      "image_url": "https://saffnco.com/cdn/shop/files/PDPCOCONEWBOTTLE-01.jpg?crop=center&height=4500&v=1770092715&width=4500",
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-coco"
+    },
+    {
+      "slug": "conquer",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/conquer_100ml_sku_1.jpg?v=1778043195&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-conquer-extrait-de-parfum-100ml"
+    },
+    {
+      "slug": "eulalie",
+      "image_url": "https://saffnco.com/cdn/shop/files/81dccf93eb8c4e4baf735b41ead466b2_tplv-aphluv4xwc-origin-jpeg.jpg?crop=center&height=1080&v=1779356005&width=1080",
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-eulalie"
+    },
+    {
+      "slug": "glitch",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/glitch_100ml_sku_1.jpg?v=1778043194&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-x-setiawanade-glitch-extrait-de-parfum-50ml"
+    },
+    {
+      "slug": "humbling-forest",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F1296%2FEDP-Humbling-Forest.png&w=3840",
+      "source_name": "Kahf Official",
+      "source_url": "https://www.kahfeveryday.com/product/kahf-humbling-forest-eau-de-parfum/"
+    },
+    {
+      "slug": "iliad",
+      "image_url": "https://saffnco.com/cdn/shop/files/Iliad.png?crop=center&height=4320&v=1746430807&width=4320",
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-iliad"
+    },
+    {
+      "slug": "inception",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/inception_50ml_sku_1.jpg?v=1778043194&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-inception-extrait-de-parfum-50ml"
+    },
+    {
+      "slug": "invigorating-waterfall",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F1292%2FEDP-Invigorating-Waterfall.png&w=3840",
+      "source_name": "Kahf Official",
+      "source_url": "https://www.kahfeveryday.com/product/kahf-invigorating-waterfall-eau-de-parfum/"
+    },
+    {
+      "slug": "kahf-mineralwave",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F1304%2FExtrait_Mineralwave.png&w=3840",
+      "source_name": "Kahf Official",
+      "source_url": "https://www.kahfeveryday.com/product/kahf-mineralwave-extrait-de-parfum/"
+    },
+    {
+      "slug": "loui",
+      "image_url": "https://saffnco.com/cdn/shop/files/PDP_Website_LOUI.png?crop=center&height=1080&v=1761703061&width=1080",
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-loui"
+    },
+    {
+      "slug": "monaco-royale",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/monaco_royale_100ml_sku_1.jpg?v=1778043194&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-monaco-royale-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "slug": "mykonos-alterego-myego",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/myego_100ml_sku_1.jpg?v=1778043194&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-x-alterego-myego-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "slug": "mykonos-rrq-empire",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/empire_100ml_sku_1.jpg?v=1778043194&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-x-rrq-empire-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "slug": "penthouse",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/penthouse_100ml_sku_1.jpg?v=1778043616&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-penthouse-extrait-de-parfum-100ml"
+    },
+    {
+      "slug": "reflection",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/reflection_100ml_sku_1.jpg?v=1778043195&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-reflection-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "slug": "royal-ispahan",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/royal_ispahan_100ml_sku_1.jpg?v=1778043195&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-royal-ispahan-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "slug": "scarlett-cotton-hug",
+      "image_url": "https://cdn.scarlett.id/product/0a1d6c94-a51e-44f0-b899-c4d739f44913_COTTON_HUG.png",
+      "source_name": "Scarlett Official",
+      "source_url": "https://scarlettofficial.id/product/scarlett-whitening-extrait-de-parfum-cotton-hug-30ml"
+    },
+    {
+      "slug": "scarlett-jolly",
+      "image_url": "https://cdn.scarlett.id/product/a493916e-015a-4d5b-b373-be1844e7aadc_JOLLY.png",
+      "source_name": "Scarlett Official",
+      "source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-jolly-30ml"
+    },
+    {
+      "slug": "scarlett-wonderland",
+      "image_url": "https://cdn.scarlett.id/product/1d61c7df-fd86-4957-a7b3-7d664e4fee6a_WONDERLAND.png",
+      "source_name": "Scarlett Official",
+      "source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-wonderland-30ml"
+    },
+    {
+      "slug": "slow-living",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/slow_living_50ml_sku_1.jpg?v=1778043195&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-slow-living-edp-50ml"
+    },
+    {
+      "slug": "sofr",
+      "image_url": "https://saffnco.com/cdn/shop/files/SOFR.png?crop=center&height=4500&v=1755578464&width=4500",
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-sofr"
+    },
+    {
+      "slug": "sorrento",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/sorrento_100ml_sku_1.jpg?v=1778043194&width=1946",
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-sorrento-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "slug": "true-brotherhood",
+      "image_url": "https://www.kahfeveryday.com/_next/image/?q=75&url=https%3A%2F%2Fkahf-bucket-prod.s3.ap-southeast-3.amazonaws.com%2F1183%2FEDT-Coklat.png&w=3840",
+      "source_name": "Kahf Official",
+      "source_url": "https://www.kahfeveryday.com/product/kahf-true-brotherhood-eau-de-toilette/"
+    },
+    {
+      "slug": "velixir-adonis",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/FOTOCATALOGFIRSTCOLLECTION-06_afbaaed7-716e-43de-b4d7-6aa0897e2b55.jpg?v=1773369836&width=1500",
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/adonis"
+    },
+    {
+      "slug": "velixir-apollo",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/FOTOCATALOGFIRSTCOLLECTION-18.jpg?v=1773370021&width=1500",
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/apollo"
+    },
+    {
+      "slug": "velixir-ares",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/FOTOCATALOGFIRSTCOLLECTION-03_1a4b09ee-83bf-405a-8d0b-d0d02dccb4fe.jpg?v=1773369442&width=1500",
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/ares"
+    },
+    {
+      "slug": "velixir-artemis",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/FOTOCATALOGMARKETPLACE-05.jpg?v=1773723307&width=1500",
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/velixir-artemis-for-unisex-eau-de-parfum"
+    },
+    {
+      "slug": "velixir-asteria",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/CATALOGLV-12.jpg?v=1773368054&width=1500",
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/velixir-asteria-for-unisex-eau-de-parfum"
+    },
+    {
+      "slug": "velixir-galatea",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/FOTOCATALOGFIRSTCOLLECTION-15.jpg?v=1773300099&width=1500",
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/velixir-galatea-eau-de-parfum-for-unisex"
+    },
+    {
+      "slug": "velixir-helios",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/FOTOCATALOGFIRSTCOLLECTION-27_22438352-2ba5-40cf-bcf7-42035ff163b2.jpg?v=1773369895&width=1500",
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/helios"
+    },
+    {
+      "slug": "velixir-hera",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/FOTOCATALOGFIRSTCOLLECTION-36_4d754ac5-69f9-4679-9a58-23c461cd064e.jpg?v=1773370162&width=1500",
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/hera"
+    },
+    {
+      "slug": "velixir-himeros",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/CATALOGLV-09.jpg?v=1773368291&width=1500",
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/velixir-himeros-for-unisex-eau-de-parfum"
+    },
+    {
+      "slug": "velixir-icarus",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/FOTOCATALOGFIRSTCOLLECTION-30_6a69cff6-9b03-4ee8-a596-7a6ab923f380.jpg?v=1773370117&width=1500",
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/icarus"
+    },
+    {
+      "slug": "velixir-orion",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/FOTOCATALOGFIRSTCOLLECTION-24_74a7803b-b5b6-4873-82b7-031f019b33f0.jpg?v=1773369968&width=1500",
+      "source_name": "Velixir Official",
+      "source_url": "https://velixirparfums.com/products/orion"
+    }
+  ],
+  "missing_or_needs_manual_review": [
+    "braven-code-cedarwood",
+    "braven-code-cool-water",
+    "braven-code-urban",
+    "braven-sport-freestyle",
+    "braven-black-casual",
+    "morris-black-edition-woody",
+    "morris-black-edition-aquatic",
+    "morris-black-edition-aromatic",
+    "morris-black-edition-musky",
+    "morris-black-edition-oud",
+    "morris-white-edition-fresh",
+    "morris-glam-edition-famous",
+    "morris-glam-edition-luxury-star",
+    "morris-teen-cute",
+    "morris-teen-princess",
+    "morris-floral-edition-violet-glow",
+    "morris-lifestyle-edition-creative",
+    "morris-tropical-paradise",
+    "scarlett-la-foret-fairy",
+    "scarlett-garden-of-whisper",
+    "scarlett-purple-kiss",
+    "scarlett-safa-ather",
+    "scarlett-biru-samudra"
+  ]
+}

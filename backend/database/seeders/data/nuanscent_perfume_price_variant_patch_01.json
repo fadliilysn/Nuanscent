@@ -1,0 +1,543 @@
+{
+  "meta": {
+    "dataset_name": "Nuanscent Perfume Price & Variant Patch 01",
+    "version": "1.0.0",
+    "generated_at": "2026-06-02",
+    "purpose": "Melengkapi price_min, price_max, dan perfume_variants untuk parfum published yang masih belum lengkap.",
+    "notes": [
+      "Patch ini hanya memperbarui price_min, price_max, dan perfume_variants pada parfum existing berdasarkan slug.",
+      "Harga yang dicatat adalah harga produk yang tampil saat kurasi pada halaman sumber. Harga promosi dapat berubah sehingga provenance tetap disimpan untuk review berikutnya.",
+      "SAFF & Co. menampilkan satu listing produk utama dengan harga yang jelas, tetapi volume botol tidak ditampilkan pada halaman produk. Variant SAFF & Co. memakai name Produk utama dan size_ml null agar tidak mengarang ukuran.",
+      "Variant existing hanya diperbarui ketika listing sumber dapat dicocokkan dengan ukuran yang sudah ada. Variant baru hanya dibuat untuk listing produk utama SAFF & Co. yang sebelumnya belum memiliki variant.",
+      "Produk dengan harga atau detail variant yang belum cukup jelas tetap berada di missing_or_needs_manual_review."
+    ]
+  },
+  "patches": [
+    {
+      "slug": "braven-dark-polo",
+      "price_min": 42180,
+      "price_max": 42180,
+      "price_source_name": "Griff Official",
+      "price_source_url": "https://griff.co.id/products/braven-collection-eau-de-parfum-dark-polo-100-ml/",
+      "variants": [
+        {
+          "name": "100 ml",
+          "size_ml": 100,
+          "price": 42180,
+          "source_name": "Griff Official",
+          "source_url": "https://griff.co.id/products/braven-collection-eau-de-parfum-dark-polo-100-ml/"
+        }
+      ]
+    },
+    {
+      "slug": "braven-french-oak",
+      "price_min": 42180,
+      "price_max": 42180,
+      "price_source_name": "Griff Official",
+      "price_source_url": "https://griff.co.id/id/products/braven-collection-eau-de-parfum-french-oak-100-ml/",
+      "variants": [
+        {
+          "name": "100 ml",
+          "size_ml": 100,
+          "price": 42180,
+          "source_name": "Griff Official",
+          "source_url": "https://griff.co.id/id/products/braven-collection-eau-de-parfum-french-oak-100-ml/"
+        }
+      ]
+    },
+    {
+      "slug": "braven-oud-wood",
+      "price_min": 42180,
+      "price_max": 42180,
+      "price_source_name": "Griff Official",
+      "price_source_url": "https://griff.co.id/id/products/braven-code-eau-de-parfum-oud-wood-100-ml-2/",
+      "variants": [
+        {
+          "name": "100 ml",
+          "size_ml": 100,
+          "price": 42180,
+          "source_name": "Griff Official",
+          "source_url": "https://griff.co.id/id/products/braven-code-eau-de-parfum-oud-wood-100-ml-2/"
+        }
+      ]
+    },
+    {
+      "slug": "braven-sensual-oud",
+      "price_min": 42180,
+      "price_max": 42180,
+      "price_source_name": "Griff Official",
+      "price_source_url": "https://griff.co.id/products/braven-collection-eau-de-parfum-sensual-oud-100-ml-2/",
+      "variants": [
+        {
+          "name": "100 ml",
+          "size_ml": 100,
+          "price": 42180,
+          "source_name": "Griff Official",
+          "source_url": "https://griff.co.id/products/braven-collection-eau-de-parfum-sensual-oud-100-ml-2/"
+        }
+      ]
+    },
+    {
+      "slug": "braven-sport-freestyle",
+      "price_min": 35500,
+      "price_max": 35500,
+      "price_source_name": "Blibli - Toko Dhetik",
+      "price_source_url": "https://www.blibli.com/p/braven-eau-de-parfum-sport-100ml-freestyle/ps--TOD-70470-00717",
+      "variants": [
+        {
+          "name": "100 ml",
+          "size_ml": 100,
+          "price": 35500,
+          "source_name": "Blibli - Toko Dhetik",
+          "source_url": "https://www.blibli.com/p/braven-eau-de-parfum-sport-100ml-freestyle/ps--TOD-70470-00717"
+        }
+      ]
+    },
+    {
+      "slug": "braven-vanilla-wood",
+      "price_min": 36770,
+      "price_max": 36770,
+      "price_source_name": "Blibli - Dan+Dan Flagship Store",
+      "price_source_url": "https://www.blibli.com/p/braven-collection-eau-de-parfum-vanilla-wood-100-ml/ps--DAO-60021-04997",
+      "variants": [
+        {
+          "name": "100 ml",
+          "size_ml": 100,
+          "price": 36770,
+          "source_name": "Blibli - Dan+Dan Flagship Store",
+          "source_url": "https://www.blibli.com/p/braven-collection-eau-de-parfum-vanilla-wood-100-ml/ps--DAO-60021-04997"
+        }
+      ]
+    },
+    {
+      "slug": "eulalie",
+      "price_min": 249000,
+      "price_max": 249000,
+      "price_source_name": "SAFF & Co. Official",
+      "price_source_url": "https://saffnco.com/products/extrait-de-parfum-eulalie",
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 249000,
+          "source_name": "SAFF & Co. Official",
+          "source_url": "https://saffnco.com/products/extrait-de-parfum-eulalie"
+        }
+      ]
+    },
+    {
+      "slug": "iliad",
+      "price_min": 208500,
+      "price_max": 208500,
+      "price_source_name": "SAFF & Co. Official",
+      "price_source_url": "https://saffnco.com/products/extrait-de-parfum-iliad",
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 208500,
+          "source_name": "SAFF & Co. Official",
+          "source_url": "https://saffnco.com/products/extrait-de-parfum-iliad"
+        }
+      ]
+    },
+    {
+      "slug": "kie-raha",
+      "price_min": 249000,
+      "price_max": 249000,
+      "price_source_name": "SAFF & Co. Official",
+      "price_source_url": "https://saffnco.com/products/extrait-de-parfum-kie-raha",
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 249000,
+          "source_name": "SAFF & Co. Official",
+          "source_url": "https://saffnco.com/products/extrait-de-parfum-kie-raha"
+        }
+      ]
+    },
+    {
+      "slug": "minouet",
+      "price_min": 228500,
+      "price_max": 228500,
+      "price_source_name": "SAFF & Co. Official",
+      "price_source_url": "https://saffnco.com/products/extrait-de-parfum-minouet",
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 228500,
+          "source_name": "SAFF & Co. Official",
+          "source_url": "https://saffnco.com/products/extrait-de-parfum-minouet"
+        }
+      ]
+    },
+    {
+      "slug": "morfosia",
+      "price_min": 247500,
+      "price_max": 247500,
+      "price_source_name": "SAFF & Co. Official",
+      "price_source_url": "https://saffnco.com/products/extrait-de-parfum-morfosia",
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 247500,
+          "source_name": "SAFF & Co. Official",
+          "source_url": "https://saffnco.com/products/extrait-de-parfum-morfosia"
+        }
+      ]
+    },
+    {
+      "slug": "ostara",
+      "price_min": 232900,
+      "price_max": 232900,
+      "price_source_name": "SAFF & Co. Official",
+      "price_source_url": "https://saffnco.com/products/extrait-de-parfum-ostara",
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 232900,
+          "source_name": "SAFF & Co. Official",
+          "source_url": "https://saffnco.com/products/extrait-de-parfum-ostara"
+        }
+      ]
+    },
+    {
+      "slug": "saff",
+      "price_min": 261100,
+      "price_max": 261100,
+      "price_source_name": "SAFF & Co. Official",
+      "price_source_url": "https://saffnco.com/products/extrait-de-parfum-saff",
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 261100,
+          "source_name": "SAFF & Co. Official",
+          "source_url": "https://saffnco.com/products/extrait-de-parfum-saff"
+        }
+      ]
+    },
+    {
+      "slug": "sofr",
+      "price_min": 247500,
+      "price_max": 247500,
+      "price_source_name": "SAFF & Co. Official",
+      "price_source_url": "https://saffnco.com/products/extrait-de-parfum-sofr",
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 247500,
+          "source_name": "SAFF & Co. Official",
+          "source_url": "https://saffnco.com/products/extrait-de-parfum-sofr"
+        }
+      ]
+    },
+    {
+      "slug": "solaris",
+      "price_min": 233500,
+      "price_max": 233500,
+      "price_source_name": "SAFF & Co. Official",
+      "price_source_url": "https://saffnco.com/products/extrait-de-parfum-solaris",
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 233500,
+          "source_name": "SAFF & Co. Official",
+          "source_url": "https://saffnco.com/products/extrait-de-parfum-solaris"
+        }
+      ]
+    },
+    {
+      "slug": "sotb",
+      "price_min": 262300,
+      "price_max": 262300,
+      "price_source_name": "SAFF & Co. Official",
+      "price_source_url": "https://saffnco.com/products/extrait-de-parfum-sotb",
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 262300,
+          "source_name": "SAFF & Co. Official",
+          "source_url": "https://saffnco.com/products/extrait-de-parfum-sotb"
+        }
+      ]
+    },
+    {
+      "slug": "troupe",
+      "price_min": 137000,
+      "price_max": 137000,
+      "price_source_name": "SAFF & Co. Official",
+      "price_source_url": "https://saffnco.com/products/extrait-de-parfum-troupe",
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 137000,
+          "source_name": "SAFF & Co. Official",
+          "source_url": "https://saffnco.com/products/extrait-de-parfum-troupe"
+        }
+      ]
+    },
+    {
+      "slug": "scarlett-garden-of-whisper",
+      "price_min": 60900,
+      "price_max": 60900,
+      "price_source_name": "Scarlett Official",
+      "price_source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-garden-of-whisper-30ml",
+      "variants": [
+        {
+          "name": "30 ml",
+          "size_ml": 30,
+          "price": 60900,
+          "source_name": "Scarlett Official",
+          "source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-garden-of-whisper-30ml"
+        }
+      ]
+    },
+    {
+      "slug": "scarlett-jolly",
+      "price_min": 60900,
+      "price_max": 60900,
+      "price_source_name": "Scarlett Official",
+      "price_source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-jolly-30ml",
+      "variants": [
+        {
+          "name": "30 ml",
+          "size_ml": 30,
+          "price": 60900,
+          "source_name": "Scarlett Official",
+          "source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-jolly-30ml"
+        }
+      ]
+    },
+    {
+      "slug": "scarlett-la-foret-fairy",
+      "price_min": 59900,
+      "price_max": 59900,
+      "price_source_name": "Scarlett Official",
+      "price_source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-la-foret-fairy-30ml",
+      "variants": [
+        {
+          "name": "30 ml",
+          "size_ml": 30,
+          "price": 59900,
+          "source_name": "Scarlett Official",
+          "source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-la-foret-fairy-30ml"
+        }
+      ]
+    },
+    {
+      "slug": "scarlett-purple-kiss",
+      "price_min": 60900,
+      "price_max": 60900,
+      "price_source_name": "Scarlett Official",
+      "price_source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-purple-kiss-30ml",
+      "variants": [
+        {
+          "name": "30 ml",
+          "size_ml": 30,
+          "price": 60900,
+          "source_name": "Scarlett Official",
+          "source_url": "https://scarlettofficial.id/product/scarlett-extrait-de-parfum-purple-kiss-30ml"
+        }
+      ]
+    },
+    {
+      "slug": "scarlett-wonderland",
+      "price_min": 59900,
+      "price_max": 59900,
+      "price_source_name": "Scarlett Official",
+      "price_source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-wonderland-30ml",
+      "variants": [
+        {
+          "name": "30 ml",
+          "size_ml": 30,
+          "price": 59900,
+          "source_name": "Scarlett Official",
+          "source_url": "https://scarlettofficial.id/product/scarlett-eau-de-parfum-wonderland-30ml"
+        }
+      ]
+    }
+  ],
+  "missing_or_needs_manual_review": [
+    {
+      "slug": "ambremusc",
+      "reason": "Halaman resmi Kahf belum menampilkan harga dan ukuran variant secara eksplisit."
+    },
+    {
+      "slug": "aquaterrae",
+      "reason": "Halaman resmi Kahf belum menampilkan harga dan ukuran variant secara eksplisit."
+    },
+    {
+      "slug": "braven-black-casual",
+      "reason": "Listing retailer yang ditinjau menampilkan total harga Rp0 sehingga belum layak dipakai."
+    },
+    {
+      "slug": "humbling-forest",
+      "reason": "Halaman resmi Kahf belum menampilkan harga variant secara eksplisit."
+    },
+    {
+      "slug": "invigorating-waterfall",
+      "reason": "Halaman resmi Kahf belum menampilkan harga variant secara eksplisit."
+    },
+    {
+      "slug": "leatherfield",
+      "reason": "Halaman resmi Kahf belum menampilkan harga variant secara eksplisit."
+    },
+    {
+      "slug": "mineralwave",
+      "reason": "Halaman resmi Kahf belum menampilkan harga variant secara eksplisit."
+    },
+    {
+      "slug": "morris-black-edition-aquatic",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-black-edition-aromatic",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-black-edition-musky",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-black-edition-oud",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-black-edition-woody",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-floral-edition-violet-glow",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-glam-edition-famous",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-glam-edition-luxury-star",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-i-can-do-it",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-lifestyle-edition-creative",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-pistachio-vanilla",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-smoothie-pink",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-surprise-me",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-teen-cute",
+      "reason": "Halaman resmi Livindo menampilkan produk tetapi data ukuran existing perlu review manual sebelum patch harga."
+    },
+    {
+      "slug": "morris-teen-princess",
+      "reason": "Halaman resmi Livindo menampilkan produk tetapi data ukuran existing perlu review manual sebelum patch harga."
+    },
+    {
+      "slug": "morris-to-the-moon",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-tropical-paradise",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "morris-white-edition-fresh",
+      "reason": "Halaman resmi Livindo menampilkan produk dan ukuran tetapi tidak menampilkan harga."
+    },
+    {
+      "slug": "neofougere",
+      "reason": "Halaman resmi Kahf belum menampilkan harga dan ukuran variant secara eksplisit."
+    },
+    {
+      "slug": "revered-oud",
+      "reason": "Halaman resmi Kahf belum menampilkan harga dan ukuran variant secara eksplisit."
+    },
+    {
+      "slug": "saffron-oud",
+      "reason": "Halaman resmi Kahf belum menampilkan harga dan ukuran variant secara eksplisit."
+    },
+    {
+      "slug": "santalscape",
+      "reason": "Halaman resmi Kahf belum menampilkan harga variant secara eksplisit."
+    },
+    {
+      "slug": "silverwood",
+      "reason": "Halaman resmi Kahf belum menampilkan harga variant secara eksplisit."
+    },
+    {
+      "slug": "spicestone",
+      "reason": "Halaman resmi Kahf belum menampilkan harga variant secara eksplisit."
+    },
+    {
+      "slug": "true-brotherhood",
+      "reason": "Halaman resmi Kahf belum menampilkan harga variant secara eksplisit."
+    },
+    {
+      "slug": "velixir-apollo",
+      "reason": "Halaman resmi Velixir menampilkan pilihan ukuran, tetapi harga yang tampil memakai mata uang non-IDR dan harga per variant belum cukup jelas."
+    },
+    {
+      "slug": "velixir-ares",
+      "reason": "Halaman resmi Velixir menampilkan pilihan ukuran, tetapi harga yang tampil memakai mata uang non-IDR dan harga per variant belum cukup jelas."
+    },
+    {
+      "slug": "velixir-artemis",
+      "reason": "Halaman resmi Velixir menampilkan pilihan ukuran, tetapi harga yang tampil memakai mata uang non-IDR dan harga per variant belum cukup jelas."
+    },
+    {
+      "slug": "velixir-asteria",
+      "reason": "Halaman resmi Velixir menampilkan pilihan ukuran, tetapi harga yang tampil memakai mata uang non-IDR dan harga per variant belum cukup jelas."
+    },
+    {
+      "slug": "velixir-galatea",
+      "reason": "Halaman resmi Velixir menampilkan pilihan ukuran, tetapi harga yang tampil memakai mata uang non-IDR dan harga per variant belum cukup jelas."
+    },
+    {
+      "slug": "velixir-helios",
+      "reason": "Halaman resmi Velixir menampilkan pilihan ukuran, tetapi harga yang tampil memakai mata uang non-IDR dan harga per variant belum cukup jelas."
+    },
+    {
+      "slug": "velixir-hera",
+      "reason": "Halaman resmi Velixir menampilkan pilihan ukuran, tetapi harga yang tampil memakai mata uang non-IDR dan harga per variant belum cukup jelas."
+    },
+    {
+      "slug": "velixir-himeros",
+      "reason": "Halaman resmi Velixir menampilkan pilihan ukuran, tetapi harga yang tampil memakai mata uang non-IDR dan harga per variant belum cukup jelas."
+    },
+    {
+      "slug": "velixir-icarus",
+      "reason": "Halaman resmi Velixir menampilkan pilihan ukuran, tetapi harga yang tampil memakai mata uang non-IDR dan harga per variant belum cukup jelas."
+    },
+    {
+      "slug": "velixir-orion",
+      "reason": "Halaman resmi Velixir menampilkan pilihan ukuran, tetapi harga yang tampil memakai mata uang non-IDR dan harga per variant belum cukup jelas."
+    },
+    {
+      "slug": "velixir-poseidon",
+      "reason": "Halaman resmi Velixir menampilkan pilihan ukuran, tetapi harga yang tampil memakai mata uang non-IDR dan harga per variant belum cukup jelas."
+    }
+  ]
+}

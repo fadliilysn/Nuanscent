@@ -1,0 +1,445 @@
+{
+  "meta": {
+    "dataset_name": "Nuanscent Underrepresented Aroma Batch 01",
+    "version": "1.0.0",
+    "purpose": "Menambahkan parfum lokal baru untuk memperbaiki coverage kategori aroma soft, musky, sweet, dan powdery.",
+    "notes": [
+      "Dataset ini dikurasi manual di ChatGPT sebelum diberikan ke Codex.",
+      "Codex tidak perlu mencari data produk baru.",
+      "Jangan mengubah kategori parfum existing.",
+      "Jika slug sudah ada di database, skip dan laporkan sebagai duplicate-prevented.",
+      "Fokus Phase 17.3 adalah menambahkan parfum baru, bukan memindahkan atau mengganti main_aroma_category parfum existing.",
+      "Revisi: mykonos-royal-ispahan dihapus karena sudah ada di database existing sebagai kategori floral; diganti dengan mykonos-pink-drops sebagai kandidat soft."
+    ]
+  },
+  "perfumes": [
+    {
+      "brand": "Mykonos",
+      "name": "Baby Love EDP 50ml",
+      "slug": "mykonos-baby-love",
+      "main_aroma_category": "soft",
+      "description": "Parfum bernuansa baby cologne dewasa dengan karakter fresh floral, soft musk, dan kesan lembut yang cocok untuk pemakaian santai sehari-hari.",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/babylove50mlsku.jpg?v=1777980986&width=180",
+      "price_min": 299000,
+      "price_max": 299000,
+      "variants": [
+        {
+          "name": "50 ml",
+          "size_ml": 50,
+          "price": 299000
+        }
+      ],
+      "aroma_tags": [
+        "soft",
+        "musky",
+        "floral",
+        "powdery"
+      ],
+      "notes": {
+        "top": [
+          "Violet",
+          "Musk",
+          "Rose"
+        ],
+        "middle": [
+          "Violet",
+          "Rose"
+        ],
+        "base": [
+          "Violet",
+          "Musk"
+        ]
+      },
+      "occasions": [
+        "santai",
+        "keluarga",
+        "hangout"
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-baby-love-edp-50ml"
+    },
+    {
+      "brand": "Mykonos",
+      "name": "Pink Drops Extrait de Parfum 50ml",
+      "slug": "mykonos-pink-drops",
+      "main_aroma_category": "soft",
+      "description": "Parfum sweet creamy yang lembut dan nostalgic dengan nuansa strawberry milk, milk, heliotrope, vanilla, dan white musk.",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/pink_drops_50ml_sku_1.jpg?v=1778043194&width=180",
+      "price_min": 299000,
+      "price_max": 299000,
+      "variants": [
+        {
+          "name": "50 ml",
+          "size_ml": 50,
+          "price": 299000
+        }
+      ],
+      "aroma_tags": [
+        "soft",
+        "sweet",
+        "gourmand",
+        "musky"
+      ],
+      "notes": {
+        "top": [
+          "Strawberry Preserve",
+          "Almond",
+          "Caramel"
+        ],
+        "middle": [
+          "Milk",
+          "Heliotrope"
+        ],
+        "base": [
+          "Vanilla",
+          "White Musk"
+        ]
+      },
+      "occasions": [
+        "santai",
+        "kencan",
+        "hangout"
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-pink-drops-extrait-de-parfum-50ml"
+    },
+    {
+      "brand": "Mykonos",
+      "name": "Dreamscape Extrait de Parfum",
+      "slug": "mykonos-dreamscape",
+      "main_aroma_category": "soft",
+      "description": "Parfum fruity-floral yang terasa dreamy dan comforting, dengan transisi dari buah segar menuju jasmine lembut, cedar, amber, tonka, dan moss.",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/dreamscape_100ml_sku_1.jpg?v=1778043195&width=180",
+      "price_min": 299000,
+      "price_max": 299000,
+      "variants": [
+        {
+          "name": "50 ml",
+          "size_ml": 50,
+          "price": 299000
+        }
+      ],
+      "aroma_tags": [
+        "soft",
+        "sweet",
+        "floral",
+        "woody",
+        "warm"
+      ],
+      "notes": {
+        "top": [
+          "Mango",
+          "Italian Lemon",
+          "Rhubarb"
+        ],
+        "middle": [
+          "Ginger",
+          "Jasmine",
+          "Violet",
+          "Praline",
+          "Pink Pepper"
+        ],
+        "base": [
+          "Cedar",
+          "Grey Amber",
+          "Tonka Beans",
+          "Moss"
+        ]
+      },
+      "occasions": [
+        "hangout",
+        "kencan",
+        "santai"
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-dreamscape-extrait-de-parfum-50ml-100ml"
+    },
+    {
+      "brand": "SAFF & Co.",
+      "name": "LOUI Extrait de Parfum",
+      "slug": "saff-co-loui",
+      "main_aroma_category": "musky",
+      "description": "Parfum floral-musky dengan nuansa taman bunga, violet leaf, aldehyde, rose, peony, muguet, cedarwood, dan musk.",
+      "image_url": "https://saffnco.com/cdn/shop/files/PDP_Website_LOUI.png?crop=center&height=1080&v=1761703061&width=1080",
+      "price_min": 205500,
+      "price_max": 205500,
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 205500
+        }
+      ],
+      "aroma_tags": [
+        "musky",
+        "floral",
+        "fresh",
+        "powdery"
+      ],
+      "notes": {
+        "top": [
+          "Verbena",
+          "Violet Leaf",
+          "Aldehyde"
+        ],
+        "middle": [
+          "Rose",
+          "Peony",
+          "Muguet"
+        ],
+        "base": [
+          "Cedarwood",
+          "Musk"
+        ]
+      },
+      "occasions": [
+        "kencan",
+        "formal",
+        "santai"
+      ],
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-loui"
+    },
+    {
+      "brand": "SAFF & Co.",
+      "name": "OMNIA Travel Size Extrait de Parfum",
+      "slug": "saff-co-omnia-travel-size",
+      "main_aroma_category": "musky",
+      "description": "Parfum floral woody musky dengan iris, rose, hyacinth, cashmere wood, heliotrope, dan musk.",
+      "image_url": "https://saffnco.com/cdn/shop/files/Omnia_040ee9b0-44c6-40ca-9636-1a61dc879fdd.jpg?crop=center&height=2250&v=1749622685&width=2250",
+      "price_min": 85000,
+      "price_max": 85000,
+      "variants": [
+        {
+          "name": "Travel Size",
+          "size_ml": null,
+          "price": 85000
+        }
+      ],
+      "aroma_tags": [
+        "musky",
+        "floral",
+        "woody",
+        "powdery"
+      ],
+      "notes": {
+        "top": [
+          "Grapefruit",
+          "Orchid Leaf"
+        ],
+        "middle": [
+          "Rose",
+          "Hyacinth",
+          "Iris"
+        ],
+        "base": [
+          "Cashmere Wood",
+          "Heliotrope",
+          "Musk"
+        ]
+      },
+      "occasions": [
+        "santai",
+        "formal",
+        "hangout"
+      ],
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-travel-size-omnia"
+    },
+    {
+      "brand": "Mykonos",
+      "name": "Vanilla Clouds Extrait de Parfum 50ml",
+      "slug": "mykonos-vanilla-clouds",
+      "main_aroma_category": "sweet",
+      "description": "Parfum gourmand vanilla yang manis, hangat, dan cozy dengan marshmallow, caramel, white musk, dan vanilla.",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/vanilla_clouds_50ml_sku_1_1.jpg?v=1778043192&width=180",
+      "price_min": 299000,
+      "price_max": 299000,
+      "variants": [
+        {
+          "name": "50 ml",
+          "size_ml": 50,
+          "price": 299000
+        }
+      ],
+      "aroma_tags": [
+        "sweet",
+        "gourmand",
+        "musky",
+        "warm",
+        "soft"
+      ],
+      "notes": {
+        "top": [
+          "Vanilla",
+          "Heliotrope",
+          "White Floral Accord"
+        ],
+        "middle": [
+          "Vanilla",
+          "Marshmallow",
+          "Iris"
+        ],
+        "base": [
+          "Caramel",
+          "White Musk",
+          "Vanilla"
+        ]
+      },
+      "occasions": [
+        "kencan",
+        "santai",
+        "hangout"
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-vanilla-clouds-extrait-de-parfum-50ml-1"
+    },
+    {
+      "brand": "Mykonos",
+      "name": "Caramel Fudge Cookie EDP 50ml",
+      "slug": "mykonos-caramel-fudge-cookie",
+      "main_aroma_category": "sweet",
+      "description": "Parfum gourmand manis dengan nuansa soft baked cookie, caramel, vanilla, condensed milk, sea salt, white musk, dan praline.",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/caramel_fudge_cookie_50ml_sku.jpg?v=1778043194&width=180",
+      "price_min": 299000,
+      "price_max": 299000,
+      "variants": [
+        {
+          "name": "50 ml",
+          "size_ml": 50,
+          "price": 299000
+        }
+      ],
+      "aroma_tags": [
+        "sweet",
+        "gourmand",
+        "warm",
+        "musky"
+      ],
+      "notes": {
+        "top": [
+          "Cookie Dough",
+          "Caramel",
+          "Vanilla"
+        ],
+        "middle": [
+          "Caramel",
+          "Condensed Milk",
+          "Sea Salt"
+        ],
+        "base": [
+          "White Musk",
+          "Vanilla",
+          "Caramel",
+          "Praline"
+        ]
+      },
+      "occasions": [
+        "santai",
+        "kencan",
+        "hangout"
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-caramel-fudge-cookie-edp-50ml"
+    },
+    {
+      "brand": "Mykonos",
+      "name": "Pink Beach EDP 50ml",
+      "slug": "mykonos-pink-beach",
+      "main_aroma_category": "powdery",
+      "description": "Parfum fruity floral yang diseimbangkan dengan powdery notes, sandalwood, tonka bean, cedar, musk, dan juniper berries.",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/pink_beach_50ml_sku_1_1.jpg?v=1778043194&width=180",
+      "price_min": 299000,
+      "price_max": 299000,
+      "variants": [
+        {
+          "name": "50 ml",
+          "size_ml": 50,
+          "price": 299000
+        }
+      ],
+      "aroma_tags": [
+        "powdery",
+        "fruity",
+        "floral",
+        "musky",
+        "fresh"
+      ],
+      "notes": {
+        "top": [
+          "Kiwi",
+          "Rhubarb",
+          "Pink Pepper"
+        ],
+        "middle": [
+          "Jasmine",
+          "Watermelon",
+          "Cyclamen"
+        ],
+        "base": [
+          "Powdery Notes",
+          "Sandalwood",
+          "Tonka Bean",
+          "Cedar",
+          "Musk",
+          "Juniper Berries"
+        ]
+      },
+      "occasions": [
+        "hangout",
+        "santai",
+        "keluarga"
+      ],
+      "source_name": "Mykonos Official",
+      "source_url": "https://officialmykonos.com/products/mykonos-pink-beach-edp-50ml"
+    },
+    {
+      "brand": "SAFF & Co.",
+      "name": "IRAI LEIMA Extrait de Parfum",
+      "slug": "saff-co-irai-leima",
+      "main_aroma_category": "powdery",
+      "description": "Parfum floral powdery musky bernuansa aquatic dengan cassis bud, water iris, raat ki rani, ambrette, dan ancient waters.",
+      "image_url": "https://saffnco.com/cdn/shop/files/Irai_61585e36-ed14-4032-8e6d-d14f8d2d85be.png?crop=center&height=4320&v=1749799513&width=4320",
+      "price_min": 269000,
+      "price_max": 269000,
+      "variants": [
+        {
+          "name": "Produk utama",
+          "size_ml": null,
+          "price": 269000
+        }
+      ],
+      "aroma_tags": [
+        "powdery",
+        "musky",
+        "floral",
+        "fresh"
+      ],
+      "notes": {
+        "top": [
+          "Cassis Bud",
+          "Dalanghita",
+          "Pink Peppercorn"
+        ],
+        "middle": [
+          "Duchesse De Nemours",
+          "Water Iris",
+          "Raat Ki Rani"
+        ],
+        "base": [
+          "Ambrette",
+          "Ancient Waters"
+        ]
+      },
+      "occasions": [
+        "formal",
+        "kencan",
+        "hangout"
+      ],
+      "source_name": "SAFF & Co. Official",
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-irai-leima"
+    }
+  ],
+  "missing_or_needs_manual_review": [],
+  "manual_review_candidates": []
+}
