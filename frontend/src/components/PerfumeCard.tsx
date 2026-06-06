@@ -5,12 +5,18 @@ import { TagBadge } from './TagBadge'
 type PerfumeCardProps = {
   perfume: Perfume
   detailReturnTo?: string
+  isCompareSelected?: boolean
+  isCompareDisabled?: boolean
+  onToggleCompare?: () => void
   onNavigate: (to: string) => void
 }
 
 export function PerfumeCard({
   perfume,
   detailReturnTo,
+  isCompareSelected = false,
+  isCompareDisabled = false,
+  onToggleCompare,
   onNavigate,
 }: PerfumeCardProps) {
   const detailPath = detailReturnTo
@@ -70,6 +76,36 @@ export function PerfumeCard({
           </TagBadge>
           <span>{formatPriceRange(perfume.price_min, perfume.price_max)}</span>
         </div>
+
+        {onToggleCompare ? (
+          <div className="perfume-card__actions">
+            <button
+              className="button button--primary"
+              type="button"
+              onClick={() => onNavigate(detailPath)}
+            >
+              Lihat detail
+            </button>
+            <button
+              className={`button button--ghost perfume-card__compare ${isCompareSelected ? 'perfume-card__compare--selected' : ''}`}
+              type="button"
+              aria-pressed={isCompareSelected}
+              disabled={isCompareDisabled}
+              title={
+                isCompareDisabled
+                  ? 'Maksimal 3 parfum untuk dibandingkan.'
+                  : undefined
+              }
+              onClick={onToggleCompare}
+            >
+              {isCompareSelected
+                ? 'Hapus dari banding'
+                : isCompareDisabled
+                  ? 'Maksimal 3'
+                  : 'Bandingkan'}
+            </button>
+          </div>
+        ) : null}
       </div>
     </article>
   )

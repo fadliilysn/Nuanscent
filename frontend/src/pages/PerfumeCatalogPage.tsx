@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { CatalogFilters } from '../components/CatalogFilters'
+import { CompareBar, CompareModal } from '../components/PerfumeComparison'
 import { PerfumeCard } from '../components/PerfumeCard'
 import { EmptyBlock, ErrorBlock, LoadingBlock } from '../components/StateBlock'
+import { useComparePerfumes } from '../hooks/useComparePerfumes'
 import { api } from '../lib/api'
 import type {
   AromaCategory,
@@ -140,6 +142,21 @@ export function PerfumeCatalogPage({
   const [occasions, setOccasions] = useState<Occasion[]>(cachedOccasions?.data ?? [])
   const [isLoading, setIsLoading] = useState(!cachedCatalog)
   const [error, setError] = useState<string | null>(null)
+  const [isCompareOpen, setIsCompareOpen] = useState(false)
+  const compare = useComparePerfumes()
+
+  const removeComparedPerfume = (slug: string) => {
+    compare.removePerfume(slug)
+
+    if (isCompareOpen && compare.items.length <= 2) {
+      setIsCompareOpen(false)
+    }
+  }
+
+  const clearComparedPerfumes = () => {
+    compare.clearPerfumes()
+    setIsCompareOpen(false)
+  }
 
   useEffect(() => {
     let isMounted = true
@@ -270,7 +287,9 @@ export function PerfumeCatalogPage({
     : []
 
   return (
-    <main className="page page--catalog">
+    <main
+      className={`page page--catalog ${compare.items.length > 0 ? 'page--compare-active' : ''}`}
+    >
       <section className="catalog-hero">
         <div>
           <p className="eyebrow">Katalog parfum lokal</p>
@@ -323,6 +342,11 @@ export function PerfumeCatalogPage({
                     key={perfume.slug}
                     perfume={perfume}
                     detailReturnTo={catalogReturnTo}
+                    isCompareSelected={compare.isSelected(perfume.slug)}
+                    isCompareDisabled={
+                      compare.isAtLimit && !compare.isSelected(perfume.slug)
+                    }
+                    onToggleCompare={() => compare.togglePerfume(perfume)}
                     onNavigate={onNavigate}
                   />
                 ))}
@@ -384,6 +408,25 @@ export function PerfumeCatalogPage({
           )}
         </section>
       </div>
+
+      {compare.items.length > 0 ? (
+        <CompareBar
+          items={compare.items}
+          maxItems={compare.maxItems}
+          onCompare={() => setIsCompareOpen(true)}
+          onRemove={removeComparedPerfume}
+          onClear={clearComparedPerfumes}
+        />
+      ) : null}
+      {isCompareOpen ? (
+        <CompareModal
+          items={compare.items}
+          returnTo={catalogReturnTo}
+          onClose={() => setIsCompareOpen(false)}
+          onRemove={removeComparedPerfume}
+          onNavigate={onNavigate}
+        />
+      ) : null}
     </main>
   )
 }
