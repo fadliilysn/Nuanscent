@@ -92,7 +92,66 @@ composer install --no-dev --optimize-autoloader
 
 Pastikan `storage/` dan `bootstrap/cache/` dapat ditulis oleh proses PHP.
 
-### 6.2 Environment backend
+### 6.2 Render Web Service dengan Docker
+
+Repository menyediakan `backend/Dockerfile` untuk deployment backend melalui Render Docker Web Service. Docker image memakai PHP 8.3 CLI, memasang ekstensi Laravel/PostgreSQL termasuk `pdo_pgsql`, menginstal dependency Composer tanpa package development, lalu menjalankan Laravel dari directory `public/` melalui:
+
+```bash
+php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+```
+
+Konfigurasi service di Render:
+
+| Pengaturan | Nilai |
+|---|---|
+| Service Type | Web Service |
+| Language | Docker |
+| Root Directory | `backend` |
+| Dockerfile repository path | `backend/Dockerfile` |
+| Dockerfile path dari Root Directory | `./Dockerfile` |
+
+Start command tidak perlu diisi ulang karena sudah ditentukan oleh `Dockerfile`. Render memberikan environment `PORT` saat runtime dan container otomatis mendengarkannya.
+
+Isi environment melalui dashboard Render menggunakan nilai deployment sebenarnya. Contoh berikut hanya placeholder:
+
+```env
+APP_NAME=Nuanscent
+APP_ENV=production
+APP_KEY=base64:generated-key-here
+APP_DEBUG=false
+APP_URL=https://your-render-backend-url.onrender.com
+
+FRONTEND_URL=https://your-frontend-domain.example
+CORS_ALLOWED_ORIGINS=https://your-frontend-domain.example
+
+DB_CONNECTION=pgsql
+DB_HOST=your-supabase-pooler-host
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=your-supabase-db-user
+DB_PASSWORD=your-supabase-db-password
+DB_SSLMODE=require
+
+CACHE_STORE=file
+SESSION_DRIVER=file
+QUEUE_CONNECTION=sync
+FILESYSTEM_DISK=local
+LOG_CHANNEL=stack
+```
+
+Jangan upload `.env` atau memasukkan secret ke Docker image. Setelah deployment pertama berhasil, jalankan command berikut melalui Render Shell atau mekanisme one-off command yang setara:
+
+```bash
+php artisan migrate --force
+php artisan db:seed --force
+php artisan nuanscent:audit-catalog-data
+php artisan make:filament-user
+php artisan optimize
+```
+
+Migration dan seeder sengaja tidak dijalankan saat Docker build maupun setiap container start. Dengan begitu, build tidak bergantung pada database dan redeploy tidak menjalankan perubahan data tanpa keputusan eksplisit.
+
+### 6.3 Environment backend
 
 Gunakan placeholder berikut sebagai checklist, bukan sebagai secret nyata:
 
@@ -134,7 +193,7 @@ Catatan:
 
 Jika frontend belum memiliki URL final, gunakan origin lokal bawaan saat pengujian dan perbarui environment CORS setelah frontend dibuat.
 
-### 6.3 Membuat APP_KEY
+### 6.4 Membuat APP_KEY
 
 Jalankan di shell backend:
 
@@ -144,7 +203,7 @@ php artisan key:generate --show
 
 Salin hasilnya ke environment hosting sebagai `APP_KEY`. Jangan menjalankan command yang menulis `.env` bila hosting mengelola environment melalui dashboard.
 
-### 6.4 Command deployment backend
+### 6.5 Command deployment backend
 
 Urutan aman untuk database demo baru:
 
