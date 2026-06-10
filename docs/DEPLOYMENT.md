@@ -1,282 +1,49 @@
-# Panduan Deployment Manual Nuanscent
+# Rencana Eksekusi Deployment Manual Nuanscent
 
-## Gambaran Umum
+## 1. Tujuan dan Batasan
 
-Nuanscent terdiri dari dua aplikasi terpisah:
+Dokumen ini adalah runbook untuk men-deploy Nuanscent secara manual sebagai demo publik. Nuanscent terdiri dari:
 
-- `frontend/`: React, TypeScript, dan Vite untuk antarmuka publik.
-- `backend/`: Laravel, REST API, dan Filament untuk API serta panel admin.
+- `frontend/`: React, TypeScript, dan Vite.
+- `backend/`: Laravel REST API dan Filament.
+- PostgreSQL: database katalog, panduan, dan user admin.
+- Gambar produk: URL eksternal yang sudah tersimpan di katalog.
 
-Frontend dan backend dapat ditempatkan di layanan yang berbeda. Demo publik membutuhkan PostgreSQL daring, sedangkan frontend diarahkan ke API backend melalui environment variable.
+Frontend, backend, dan database boleh menggunakan layanan berbeda. Panduan ini tidak melakukan deployment otomatis, tidak menghubungkan repository ke penyedia hosting, dan tidak memuat kredensial produksi.
 
-Panduan ini mencakup persiapan dan langkah deployment manual. Panduan ini tidak melakukan deployment otomatis dan tidak memuat kredensial produksi.
+## 2. Jalur yang Direkomendasikan
 
-## Arsitektur Demo yang Disarankan
+Untuk demo pertama yang mudah dipahami:
 
-- **Frontend statis:** Vercel, Netlify, atau static hosting serupa.
-- **Backend Laravel:** Render, Koyeb, VPS, shared hosting Laravel, atau host lain yang mendukung PHP.
-- **Database:** Supabase PostgreSQL, Render PostgreSQL, Neon, atau penyedia PostgreSQL lain.
-- **Gambar produk:** tetap memakai URL publik resmi, retailer, atau CDN yang sudah tersimpan di katalog.
+1. Push kode terbaru ke repository Git.
+2. Buat PostgreSQL hosted.
+3. Deploy backend Laravel.
+4. Isi environment backend dan `APP_KEY`.
+5. Jalankan migration, seeding, dan audit katalog.
+6. Buat user admin Filament.
+7. Uji API serta `/admin`.
+8. Deploy frontend Vite.
+9. Isi `VITE_API_BASE_URL`.
+10. Setelah URL frontend final diketahui, perbarui CORS backend.
+11. Restart atau redeploy backend bila diperlukan.
+12. Jalankan smoke test publik.
+13. Tambahkan URL demo final ke README setelah semuanya stabil.
 
-Pilihan layanan tidak dikunci di source code. Pertimbangkan dukungan PHP, PostgreSQL, biaya, lokasi server, serta kebijakan sleep dan cold start.
+Urutan backend lebih dulu memudahkan frontend langsung diuji dengan API publik yang sudah aktif.
 
-## Cakupan Panduan
+## 3. Pilihan Arsitektur Hosting
 
-Panduan ini menjelaskan konfigurasi environment, build, migration, seeding, CORS, panel admin, dan pemeriksaan setelah deployment. Panduan ini tidak:
+| Opsi | Frontend | Backend | Database | Cocok untuk |
+|---|---|---|---|---|
+| Demo terpisah | Vercel | Render, Koyeb, atau host PHP serupa | Supabase, Neon, Render PostgreSQL, atau hosted PostgreSQL lain | Demo publik sederhana dengan pengaturan layanan terpisah |
+| Hosting yang sudah dimiliki | Netlify atau static hosting | Shared hosting PHP/Laravel atau VPS | Hosted PostgreSQL | Pengguna yang sudah memiliki hosting |
+| Kendali penuh | VPS | VPS yang sama | VPS yang sama atau hosted PostgreSQL | Pengguna yang siap mengelola web server, SSL, process, backup, dan keamanan |
 
-- menghubungkan repository ke penyedia hosting;
-- membuat database daring;
-- menyediakan URL demo;
-- menyimpan password, token, `APP_KEY`, atau kredensial admin.
+Paket gratis, batas resource, dan kebijakan sleep dapat berubah. Periksa dokumentasi penyedia saat benar-benar melakukan deployment.
 
-## Deployment Frontend
+## 4. Checklist Sebelum Push
 
-Gunakan folder `frontend/` sebagai root aplikasi frontend:
-
-```bash
-cd frontend
-npm install
-npm run build
-```
-
-Konfigurasi hosting:
-
-- Install command: `npm install`
-- Build command: `npm run build`
-- Output directory: `dist`
-
-Karena frontend merupakan SPA, static hosting perlu mengarahkan route seperti `/parfum/nama-parfum` kembali ke `index.html`. Gunakan konfigurasi rewrite SPA dari penyedia hosting.
-
-### Environment frontend
-
-Nilai lokal:
-
-```env
-VITE_API_BASE_URL=http://127.0.0.1:8000/api
-```
-
-Contoh nilai deployment:
-
-```env
-VITE_API_BASE_URL=https://your-backend-domain.example/api
-```
-
-Environment Vite dimasukkan saat build. Setelah mengubah `VITE_API_BASE_URL`, lakukan build atau deployment frontend ulang.
-
-## Deployment Backend
-
-Gunakan folder `backend/` sebagai root aplikasi Laravel:
-
-```bash
-cd backend
-composer install --no-dev --optimize-autoloader
-```
-
-Urutan umum:
-
-1. Salin variabel yang diperlukan dari `.env.example` ke environment hosting.
-2. Atur `APP_ENV=production` dan `APP_DEBUG=false`.
-3. Atur `APP_URL` ke domain backend.
-4. Atur koneksi PostgreSQL.
-5. Atur `FRONTEND_URL` dan `CORS_ALLOWED_ORIGINS`.
-6. Buat `APP_KEY` bila belum tersedia.
-7. Jalankan migration dan alur data yang dipilih.
-8. Arahkan document root ke folder Laravel `public/`.
-
-Membuat nilai `APP_KEY` tanpa menulis `.env`:
-
-```bash
-php artisan key:generate --show
-```
-
-Simpan hasilnya sebagai secret `APP_KEY` di hosting. Jangan menaruhnya di Git atau dokumentasi.
-
-Setelah environment final tersedia:
-
-```bash
-php artisan migrate --force
-php artisan optimize
-```
-
-`php artisan optimize` membuat cache production. Jalankan ulang setelah konfigurasi berubah dan jangan commit file cache yang dihasilkan.
-
-Health endpoint Laravel dapat diperiksa pada:
-
-```text
-https://your-backend-domain.example/up
-```
-
-## Environment Variables
-
-### Frontend
-
-| Variabel | Lokal | Deployment |
-|---|---|---|
-| `VITE_API_BASE_URL` | `http://127.0.0.1:8000/api` | URL backend dengan akhiran `/api` |
-
-### Backend
-
-Variabel utama:
-
-- `APP_NAME=Nuanscent`
-- `APP_ENV=production`
-- `APP_KEY`: secret dari `php artisan key:generate --show`
-- `APP_DEBUG=false`
-- `APP_URL`: domain backend
-- `FRONTEND_URL`: domain frontend utama
-- `CORS_ALLOWED_ORIGINS`: daftar origin frontend yang dipisahkan koma
-- `LOG_CHANNEL`
-- `DB_CONNECTION=pgsql`
-- `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`
-- `DB_URL`: opsional bila penyedia memberi connection URL
-- `DB_SSLMODE`: ikuti persyaratan penyedia, umumnya `require` untuk database daring
-- `CACHE_STORE`
-- `SESSION_DRIVER`
-- `QUEUE_CONNECTION`
-- `FILESYSTEM_DISK`
-
-Nilai lokal yang aman tersedia di `backend/.env.example`. Untuk demo sederhana, `QUEUE_CONNECTION=sync` tidak membutuhkan worker terpisah. Jika kemudian memakai queue asynchronous, siapkan driver dan worker yang sesuai.
-
-## Database, Migration, dan Seeding
-
-### Strategi fresh database
-
-Seluruh dataset aktif berada di `backend/database/seeders/data/`. Folder root `data/` tidak diperlukan dan tidak boleh ditambahkan kembali ke Git.
-
-Untuk database PostgreSQL baru yang masih boleh dihapus seluruh isinya:
-
-```bash
-cd backend
-php artisan migrate:fresh --seed --force
-```
-
-> `migrate:fresh` menghapus seluruh tabel. Jangan jalankan command ini pada database yang berisi data penting tanpa backup.
-
-`DatabaseSeeder` menjalankan data referensi, seluruh batch parfum, patch kurasi, panduan, note enrichment, dan patch preservasi fresh install dalam urutan yang diperlukan. Hasil yang diharapkan setelah seed:
-
-- 119 parfum published;
-- 0 parfum tanpa gambar;
-- 0 URL gambar malformed;
-- 0 duplikat parfum;
-- 43 parfum masih memerlukan review harga;
-- 5 parfum masih memerlukan review variant.
-
-Untuk database yang sudah memiliki data dan hanya membutuhkan migration baru:
-
-```bash
-php artisan migrate --force
-```
-
-Seeder juga dapat dijalankan ulang secara idempotent:
-
-```bash
-php artisan db:seed --force
-```
-
-### Sumber data seeder
-
-Semua seeder pembaca JSON menggunakan `database_path('seeders/data/...')`.
-
-| Seeder | File data | Dipanggil `DatabaseSeeder` | Fungsi |
-|---|---|---:|---|
-| `NuanscentPerfumeBatch01Seeder` | `nuanscent_perfumes_batch_01.json` | Ya | Brand dan parfum Batch 01 |
-| `NuanscentPerfumeBatch01VariantsPatchSeeder` | `nuanscent_perfumes_batch_01_variants_patch.json` | Ya | Variant Batch 01 |
-| `NuanscentPerfumeBatch02Seeder` | `nuanscent_perfumes_batch_02.json` | Ya | Brand dan parfum Batch 02 |
-| `NuanscentPerfumeBatch03Seeder` | `nuanscent_perfumes_batch_03.json` | Ya | Merged Batch 03 |
-| `NuanscentPerfumeCleanBatch04Seeder` | `nuanscent_perfumes_clean_batch_04.json` | Ya | Kurasi kategori Clean dan deduplikasi slug kanonis |
-| `NuanscentUnderrepresentedAromaBatch01Seeder` | `nuanscent_perfumes_underrepresented_aroma_batch_01.json` | Ya | Parfum kategori yang kurang terwakili |
-| `NuanscentNoteEnrichmentSeeder` | `nuanscent_note_enrichment.json` | Ya | Enrichment master notes |
-| `NuanscentProductImageUrlPatchSeeder` | `nuanscent_product_image_url_patch.json` | Ya | Patch gambar awal |
-| `NuanscentNonHmnsProductImageUrlPatchSeeder` | `nuanscent_non_hmns_product_image_url_patch.json` | Ya | Patch gambar non-HMNS |
-| `NuanscentProductImageUrlPatchBatch02Seeder` | `nuanscent_product_image_url_patch_batch_02.json` | Ya | Patch gambar lanjutan |
-| `NuanscentPerfumePriceVariantPatch01Seeder` | `nuanscent_perfume_price_variant_patch_01.json` | Ya | Patch harga dan variant |
-| `NuanscentFreshInstallCatalogStatePatchSeeder` | `nuanscent_fresh_install_catalog_state_patch.json` | Ya | Mempertahankan delta database audited saat fresh install |
-
-Tidak ada seeder JSON legacy yang masih bergantung pada root `data/` atau berada di luar alur fresh seed.
-
-### Alternatif import database
-
-Sebagai alternatif, database PostgreSQL lokal yang sudah diaudit dapat diekspor lalu diimpor ke database deployment. Cara ini berguna bila penyedia hosting membatasi waktu eksekusi seeder.
-
-Jangan commit:
-
-- `.env` atau kredensial database;
-- dump database yang mengandung data sensitif atau tidak diperlukan;
-- folder root `data/`.
-
-Pastikan `backend/database/seeders/data/` tetap terlacak karena diperlukan oleh fresh seed.
-
-### Audit setelah seed atau import
-
-```bash
-php artisan nuanscent:audit-catalog-data
-```
-
-Audit memeriksa jumlah data, status published, kelengkapan gambar, harga, variant, tag, occasion, notes, kategori, URL gambar, dan kemungkinan duplikasi. Sebanyak 43 parfum yang belum memiliki harga dan 5 parfum tanpa variant merupakan kondisi kurasi yang diketahui, bukan kegagalan seed.
-
-## CORS
-
-Browser hanya mengizinkan frontend memanggil backend lintas domain jika origin frontend diizinkan oleh CORS.
-
-Origin lokal bawaan:
-
-- `http://localhost:5173`
-- `http://127.0.0.1:5173`
-
-Contoh deployment:
-
-```env
-FRONTEND_URL=https://your-frontend-domain.example
-CORS_ALLOWED_ORIGINS=https://your-frontend-domain.example
-```
-
-Beberapa origin dapat dipisahkan dengan koma:
-
-```env
-CORS_ALLOWED_ORIGINS=https://your-frontend-domain.example,https://preview.example
-```
-
-Gunakan origin lengkap tanpa path `/api` dan hindari wildcard `*` pada deployment publik. Setelah mengubah environment:
-
-```bash
-php artisan optimize
-```
-
-## Panel Admin
-
-Panel admin menjadi bagian dari backend. Jika domain backend adalah:
-
-```text
-https://your-backend-domain.example
-```
-
-panel admin tersedia di:
-
-```text
-https://your-backend-domain.example/admin
-```
-
-Database deployment harus memiliki user admin. Project menyediakan command interaktif Filament:
-
-```bash
-php artisan make:filament-user
-```
-
-Jalankan melalui shell hosting dengan email yang dikelola sendiri dan password kuat. Jangan menaruh kredensial admin di seeder publik, dokumentasi, atau Git. Pastikan `APP_ENV=production` dan `APP_DEBUG=false`.
-
-## Gambar Eksternal
-
-Gambar produk menggunakan URL publik dari sumber brand, retailer, atau CDN dan tidak disimpan secara lokal. Demo tidak membutuhkan proses download atau normalisasi gambar.
-
-Konsekuensinya:
-
-- kecepatan gambar bergantung pada server eksternal;
-- URL dapat berubah atau dibatasi oleh sumber;
-- sebagian gambar dapat lebih lambat daripada aset lokal.
-
-## Checklist Lokal Sebelum Deployment
-
-Backend:
+Jalankan secara lokal:
 
 ```bash
 cd backend
@@ -286,119 +53,329 @@ php artisan test --filter=PublicGuideApiTest
 php artisan nuanscent:audit-catalog-data
 ```
 
-Frontend:
-
 ```bash
 cd frontend
 npm run lint
 npm run build
 ```
 
-Periksa manual:
+Pastikan:
 
-- homepage dan navigasi;
-- katalog, search, filter, dan pagination;
-- detail parfum;
-- quiz dan alasan rekomendasi;
-- perbandingan parfum;
-- halaman brands dan panduan;
-- panel admin lokal;
-- tidak ada secret dalam file yang akan di-commit.
+- `.env` tidak masuk Git.
+- Tidak ada password, token, `APP_KEY`, atau kredensial admin di repository.
+- `backend/database/seeders/data/` ikut ter-push.
+- Folder root `data/` tidak diperlukan dan tidak ditambahkan kembali.
+- Build frontend berhasil.
+- Audit katalog sesuai baseline.
 
-## Checklist Setelah Deployment
+## 5. Membuat PostgreSQL Hosted
 
-1. Homepage dapat dibuka.
-2. Katalog memuat data dari API.
-3. Search, filter, dan pagination bekerja.
-4. Detail parfum dan gambar tampil.
-5. Quiz menghasilkan rekomendasi.
-6. Modal alasan rekomendasi bekerja.
-7. Perbandingan parfum bekerja.
-8. Halaman brands dan guides dapat dibuka.
-9. `/admin` dapat dijangkau dan tetap membutuhkan login.
-10. Request API tidak terkena error CORS.
-11. Route langsung seperti `/parfum/:slug` tidak menghasilkan 404 dari static hosting.
-12. Detail stack trace tidak terlihat publik.
+1. Buat project atau database PostgreSQL di penyedia pilihan.
+2. Simpan host, port, database, username, password, dan persyaratan SSL.
+3. Izinkan koneksi dari backend sesuai mekanisme penyedia.
+4. Jangan memasukkan kredensial database ke source code atau README.
 
-## Troubleshooting
+Nuanscent dapat memakai variabel database terpisah atau `DB_URL` bila penyedia memberikan connection string. Contoh di bawah menggunakan variabel terpisah agar mudah dibaca.
 
-### CORS error
+## 6. Deployment Backend Laravel
 
-- Pastikan `CORS_ALLOWED_ORIGINS` berisi origin frontend lengkap.
-- Jangan menambahkan `/api` ke origin.
-- Jalankan ulang `php artisan optimize`.
-- Pastikan frontend memakai domain yang didaftarkan.
+### 6.1 Pengaturan layanan
 
-### Frontend tidak dapat menghubungi API
+- Root directory: `backend`
+- Runtime: PHP 8.2 atau lebih baru; PHP 8.3 direkomendasikan.
+- Document/web root: `backend/public` jika penyedia meminta pengaturan web root.
+- Install command:
 
-- Periksa `VITE_API_BASE_URL` dan akhiran `/api`.
-- Build ulang frontend setelah environment berubah.
-- Buka endpoint API secara langsung.
-- Frontend HTTPS sebaiknya tidak memanggil backend HTTP.
+```bash
+composer install --no-dev --optimize-autoloader
+```
 
-### `APP_KEY` belum tersedia
+Pastikan `storage/` dan `bootstrap/cache/` dapat ditulis oleh proses PHP.
 
-Jalankan `php artisan key:generate --show`, simpan hasilnya sebagai secret hosting, lalu buat ulang cache konfigurasi.
+### 6.2 Environment backend
 
-### Error 500 setelah deployment
+Gunakan placeholder berikut sebagai checklist, bukan sebagai secret nyata:
 
-- Periksa log hosting atau `storage/logs`.
-- Pastikan dependency Composer terpasang.
-- Pastikan web root menunjuk ke `backend/public/`.
-- Periksa izin tulis `storage/` dan `bootstrap/cache/`.
-- Jalankan migration dan cache ulang konfigurasi.
+```env
+APP_NAME=Nuanscent
+APP_ENV=production
+APP_KEY=base64:generated-key-here
+APP_DEBUG=false
+APP_URL=https://your-backend-domain.example
 
-### Koneksi database gagal
+FRONTEND_URL=https://your-frontend-domain.example
+CORS_ALLOWED_ORIGINS=https://your-frontend-domain.example
 
-- Periksa host, port, nama database, username, password, dan SSL mode.
-- Bila memakai `DB_URL`, gunakan nilai dari penyedia.
-- Pastikan firewall mengizinkan koneksi dari backend.
+DB_CONNECTION=pgsql
+DB_HOST=your-db-host
+DB_PORT=5432
+DB_DATABASE=your-db-name
+DB_USERNAME=your-db-user
+DB_PASSWORD=your-db-password
+DB_SSLMODE=require
 
-### Migration gagal
+CACHE_STORE=file
+SESSION_DRIVER=file
+QUEUE_CONNECTION=sync
+FILESYSTEM_DISK=local
+LOG_CHANNEL=stack
+```
 
-- Pastikan database kosong atau berada pada versi migration yang sesuai.
-- Periksa permission user database.
-- Jangan reset/drop database berisi data tanpa backup.
+Catatan:
 
-### Seeder gagal
+- Buat `APP_KEY` dengan `php artisan key:generate --show`.
+- Simpan hasil key sebagai secret environment hosting.
+- `APP_DEBUG` harus `false` pada deployment publik.
+- `APP_URL` adalah origin backend, tanpa akhiran `/api`.
+- `FRONTEND_URL` dan `CORS_ALLOWED_ORIGINS` adalah origin frontend, tanpa path `/api`.
+- `DB_SSLMODE` mengikuti penyedia; hosted PostgreSQL sering menggunakan `require`.
+- Driver `file` membutuhkan filesystem yang writable. Untuk host dengan filesystem ephemeral, periksa dukungan provider atau gunakan driver persisten yang tersedia sebelum deployment jangka panjang.
+- `QUEUE_CONNECTION=sync` tidak membutuhkan worker queue terpisah.
 
-- Baca slug atau referensi yang dilaporkan hilang.
-- Jalankan reference seeder lebih dulu.
-- Pastikan `backend/database/seeders/data/` tersedia.
-- Pastikan seluruh file JSON dalam folder tersebut ikut ter-deploy.
+Jika frontend belum memiliki URL final, gunakan origin lokal bawaan saat pengujian dan perbarui environment CORS setelah frontend dibuat.
 
-### Gambar lambat atau rusak
+### 6.3 Membuat APP_KEY
 
-Gambar berasal dari layanan eksternal. Uji URL secara langsung dan jangan menggantinya dengan gambar yang belum terverifikasi.
+Jalankan di shell backend:
 
-### Permission storage/cache
+```bash
+php artisan key:generate --show
+```
 
-Pastikan proses PHP dapat menulis ke `storage/` dan `bootstrap/cache/`. Ikuti mekanisme permission resmi penyedia hosting.
+Salin hasilnya ke environment hosting sebagai `APP_KEY`. Jangan menjalankan command yang menulis `.env` bila hosting mengelola environment melalui dashboard.
 
-### Cold start
+### 6.4 Command deployment backend
 
-Free hosting dapat menidurkan service. Request pertama setelah idle dapat lebih lambat.
+Urutan aman untuk database demo baru:
 
-### Build Vite memakai API yang salah
+```bash
+composer install --no-dev --optimize-autoloader
+php artisan migrate --force
+php artisan db:seed --force
+php artisan nuanscent:audit-catalog-data
+php artisan make:filament-user
+php artisan optimize
+```
 
-Perbarui `VITE_API_BASE_URL`, lalu build/deploy ulang. Nilai environment tertanam dalam bundle saat build.
+Penjelasan:
 
-## Keterbatasan Demo Publik
+- `migrate --force` membuat struktur database tanpa menghapus tabel secara paksa.
+- `db:seed --force` menjalankan seluruh alur `DatabaseSeeder`.
+- Audit memastikan katalog berhasil direproduksi.
+- `make:filament-user` membuat akun admin secara interaktif.
+- `optimize` membuat cache konfigurasi, route, event, dan view untuk runtime production.
+
+Untuk database demo yang memang boleh direset sepenuhnya:
+
+```bash
+php artisan migrate:fresh --seed --force
+```
+
+`migrate:fresh` menghapus seluruh tabel. Jangan menjalankannya pada database berisi data penting tanpa backup dan keputusan reset yang jelas.
+
+## 7. Database dan Seeding
+
+Seluruh file data aktif berada di:
+
+```text
+backend/database/seeders/data/
+```
+
+Root `data/` tidak diperlukan untuk deployment. `DatabaseSeeder` sudah menjalankan data referensi, batch parfum, patch variant/gambar/harga, enrichment notes, panduan, deduplikasi, dan patch preservasi fresh install dalam urutan yang benar.
+
+Untuk database PostgreSQL kosong:
+
+```bash
+php artisan migrate --force
+php artisan db:seed --force
+php artisan nuanscent:audit-catalog-data
+```
+
+Baseline audit yang diharapkan:
+
+| Metrik | Nilai |
+|---|---:|
+| Brand | 8 |
+| Parfum published | 119 |
+| Gambar hilang | 0 |
+| URL gambar malformed | 0 |
+| Duplikat parfum | 0 |
+| Harga perlu review | 43 |
+| Variant perlu review | 5 |
+
+Harga dan variant yang belum lengkap adalah item review manual yang diketahui dan dapat diterima untuk demo saat ini.
+
+### Alternatif import database
+
+Database PostgreSQL lokal yang telah diaudit juga dapat diekspor dan diimpor ke database hosted. Pilihan ini berguna bila hosting membatasi waktu seeding.
+
+Jangan commit dump database bila mengandung data sensitif atau tidak diperlukan. Setelah import, tetap jalankan:
+
+```bash
+php artisan migrate --force
+php artisan nuanscent:audit-catalog-data
+```
+
+## 8. Membuat User Admin
+
+Setelah migration dan seeding:
+
+```bash
+php artisan make:filament-user
+```
+
+Gunakan email yang dikelola sendiri dan password yang kuat. Jangan menyimpan kredensial admin di Git, dokumentasi, atau seeder publik.
+
+Format URL admin:
+
+```text
+https://your-backend-domain.example/admin
+```
+
+Halaman `/admin` harus tetap menampilkan login dan tidak boleh membuka dashboard tanpa autentikasi.
+
+## 9. Uji Backend Sebelum Frontend
+
+Periksa:
+
+```text
+GET https://your-backend-domain.example/up
+GET https://your-backend-domain.example/api/perfumes
+GET https://your-backend-domain.example/api/brands
+GET https://your-backend-domain.example/api/guides
+```
+
+Uji `POST /api/recommendations` menggunakan client API atau frontend setelah tersedia. Pastikan `/admin` membuka halaman login.
+
+Jika endpoint belum bekerja, selesaikan backend dan database terlebih dahulu sebelum men-deploy frontend.
+
+## 10. Deployment Frontend
+
+### 10.1 Build settings
+
+Gunakan konfigurasi berikut:
+
+| Pengaturan | Nilai |
+|---|---|
+| Root directory | `frontend` |
+| Install command | `npm install` |
+| Build command | `npm run build` |
+| Output directory | `dist` |
+
+### 10.2 Environment frontend
+
+```env
+VITE_API_BASE_URL=https://your-backend-domain.example/api
+```
+
+`VITE_API_BASE_URL` wajib memiliki akhiran `/api`. Nilai Vite dimasukkan ke bundle saat build, sehingga perubahan environment memerlukan build atau redeploy frontend.
+
+### 10.3 SPA rewrite
+
+Static hosting harus mengarahkan route frontend yang tidak cocok dengan file fisik kembali ke `index.html`. Ini diperlukan agar direct URL berikut tidak menghasilkan 404:
+
+- `/quiz`
+- `/parfum`
+- `/parfum/:slug`
+- `/brands`
+- `/brands/:slug`
+- `/guides`
+- `/guides/:slug`
+
+Gunakan fitur rewrite/fallback SPA resmi dari penyedia hosting.
+
+## 11. Menyelesaikan CORS
+
+Setelah URL frontend final diketahui, ubah environment backend:
+
+```env
+FRONTEND_URL=https://your-frontend-domain.example
+CORS_ALLOWED_ORIGINS=https://your-frontend-domain.example
+```
+
+Aturan penting:
+
+- Gunakan origin frontend saja, tanpa `/api` dan tanpa path halaman.
+- Jangan memakai wildcard `*` untuk deployment publik.
+- Untuk beberapa origin yang benar-benar diperlukan, pisahkan dengan koma:
+
+```env
+CORS_ALLOWED_ORIGINS=https://your-frontend-domain.example,https://your-preview-domain.example
+```
+
+Setelah environment berubah:
+
+```bash
+php artisan optimize:clear
+php artisan optimize
+```
+
+Restart atau redeploy backend jika provider tidak memuat ulang environment secara otomatis. Kemudian muat ulang frontend dan periksa browser console.
+
+## 12. Smoke Test Setelah Deployment
+
+### Backend
+
+- [ ] `/up` merespons sukses.
+- [ ] `/api/perfumes` mengembalikan katalog.
+- [ ] `/api/brands` mengembalikan brand.
+- [ ] `/api/guides` mengembalikan panduan.
+- [ ] `POST /api/recommendations` mengembalikan rekomendasi.
+- [ ] `/admin` membuka halaman login.
+- [ ] `APP_DEBUG=false` dan stack trace tidak terlihat publik.
+
+### Frontend
+
+- [ ] Homepage dapat dibuka.
+- [ ] Katalog memuat data.
+- [ ] Search, filter, pagination, dan reset filter bekerja.
+- [ ] Detail parfum bekerja dari klik dan direct URL.
+- [ ] Quiz dapat diselesaikan.
+- [ ] Modal **Kenapa cocok?** bekerja.
+- [ ] Perbandingan parfum bekerja.
+- [ ] Halaman brands dan detail brand bekerja.
+- [ ] Halaman guides dan detail guide bekerja.
+- [ ] Gambar produk tampil.
+- [ ] Browser console tidak menunjukkan error CORS atau mixed content.
+- [ ] Route langsung tidak menghasilkan 404.
+
+## 13. Troubleshooting Cepat
+
+| Masalah | Kemungkinan penyebab | Tindakan |
+|---|---|---|
+| Frontend blank | Build gagal, output salah, atau error JavaScript | Periksa build log, gunakan output `dist`, lalu lihat browser console |
+| Frontend masih memanggil localhost | `VITE_API_BASE_URL` salah atau bundle belum dibangun ulang | Perbarui environment lalu redeploy frontend |
+| CORS error | Origin frontend belum diizinkan atau memakai path `/api` | Perbaiki `FRONTEND_URL`/`CORS_ALLOWED_ORIGINS`, bersihkan cache, restart backend |
+| Backend error 500 | Environment, dependency, permission, atau cache bermasalah | Periksa log hosting, `APP_KEY`, web root, `storage/`, dan `bootstrap/cache/` |
+| `APP_KEY` missing | Key belum dibuat atau belum masuk environment | Jalankan `php artisan key:generate --show`, simpan sebagai secret, restart |
+| Koneksi database gagal | Host, port, kredensial, firewall, atau SSL salah | Cocokkan detail provider dan `DB_SSLMODE` |
+| Seeder gagal | File JSON tidak ter-deploy atau migration belum lengkap | Pastikan `backend/database/seeders/data/` tersedia dan jalankan migration lebih dulu |
+| `/admin` tidak ditemukan | Web root/routing backend salah atau Filament belum termuat | Arahkan web root ke `public/`, cek install log dan route backend |
+| Direct route frontend 404 | SPA rewrite belum dikonfigurasi | Tambahkan fallback semua route frontend ke `index.html` |
+| Gambar lambat/rusak | Sumber gambar eksternal lambat atau URL berubah | Uji URL langsung; jangan mengganti dengan gambar yang tidak terverifikasi |
+| Request awal lambat | Free hosting sedang sleep/cold start | Tunggu service aktif atau gunakan hosting tanpa sleep |
+
+## 14. Keterbatasan Demo Publik
 
 - Free hosting dapat sleep dan mengalami cold start.
-- Database gratis dapat memiliki batas koneksi atau kapasitas.
-- CDN gambar eksternal dapat lambat atau berubah.
-- Sebagian harga dan variant masih membutuhkan review manual.
-- Project belum ditujukan sebagai sistem production-grade.
+- Paket database gratis dapat memiliki batas koneksi atau kapasitas.
+- Gambar berasal dari URL eksternal dan dapat lambat atau berubah.
+- Sebagian harga serta variant masih memerlukan review.
+- Filesystem beberapa layanan bersifat ephemeral.
+- Project belum ditujukan sebagai deployment production-grade penuh.
 - Belum ada akun pengguna publik permanen.
 
-## Ringkasan Deployment Manual
+## 15. Ringkasan Eksekusi
 
-1. Siapkan PostgreSQL daring.
-2. Pilih metode reproduksi katalog: `migrate:fresh --seed` pada database kosong atau import database audited.
-3. Deploy backend, atur environment, dan arahkan web root ke `public/`.
-4. Jalankan migration/seeding atau import, audit katalog, dan buat user admin.
-5. Pastikan API dan CORS bekerja.
-6. Deploy frontend dengan `VITE_API_BASE_URL` menuju backend.
-7. Jalankan smoke test seluruh route dan fitur utama.
-8. Tambahkan URL demo ke README setelah URL publik final tersedia.
+1. Commit dan push kode terbaru.
+2. Buat PostgreSQL hosted.
+3. Deploy backend dari folder `backend`.
+4. Isi environment dan `APP_KEY`.
+5. Jalankan `migrate`, `db:seed`, dan audit.
+6. Buat user Filament.
+7. Uji API, health endpoint, dan admin.
+8. Deploy frontend dari folder `frontend`.
+9. Isi `VITE_API_BASE_URL` dan aktifkan SPA rewrite.
+10. Perbarui CORS backend memakai URL frontend final.
+11. Restart/redeploy backend, lalu jalankan smoke test.
+12. Tambahkan URL demo final ke README saat deployment sudah stabil.
