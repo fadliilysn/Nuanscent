@@ -15,7 +15,7 @@ use RuntimeException;
 
 class NuanscentUnderrepresentedAromaBatch01Seeder extends Seeder
 {
-    private const DATASET_PATH = '/database/seeders/data/nuanscent_perfumes_underrepresented_aroma_batch_01.json';
+    private const DATASET_PATH = 'seeders/data/nuanscent_perfumes_underrepresented_aroma_batch_01.json';
 
     private const EXPECTED_SLUGS = [
         'mykonos-baby-love',
@@ -34,6 +34,14 @@ class NuanscentUnderrepresentedAromaBatch01Seeder extends Seeder
         'musky' => 2,
         'sweet' => 2,
         'powdery' => 2,
+    ];
+
+    private const DUPLICATE_PERFUME_SLUGS = [
+        'saff-co-loui' => 'loui',
+    ];
+
+    private const CANONICAL_SLUG_ALIASES = [
+        'saff-co-omnia-travel-size' => 'saff-co-omnia',
     ];
 
     private const OCCASION_ALIASES = [
@@ -82,10 +90,30 @@ class NuanscentUnderrepresentedAromaBatch01Seeder extends Seeder
             $occasions = Occasion::query()->get()->keyBy('slug');
 
             foreach ($this->payload['perfumes'] as $perfumeData) {
-                $slug = (string) $perfumeData['slug'];
+                $sourceSlug = (string) $perfumeData['slug'];
+
+                if (isset(self::DUPLICATE_PERFUME_SLUGS[$sourceSlug])) {
+                    $canonicalSlug = self::DUPLICATE_PERFUME_SLUGS[$sourceSlug];
+                    $canonicalPerfume = Perfume::query()
+                        ->where('slug', $canonicalSlug)
+                        ->firstOrFail();
+
+                    $canonicalPerfume->forceFill([
+                        'main_aroma_category_id' => $categories[$perfumeData['main_aroma_category']]->id,
+                    ])->save();
+
+                    $this->duplicatePreventedSlugs[] = "{$sourceSlug} -> {$canonicalSlug}";
+                    $this->counts['perfumes_skipped']++;
+
+                    continue;
+                }
+
+                $slug = self::CANONICAL_SLUG_ALIASES[$sourceSlug] ?? $sourceSlug;
 
                 if (Perfume::query()->where('slug', $slug)->exists()) {
-                    $this->duplicatePreventedSlugs[] = $slug;
+                    $this->duplicatePreventedSlugs[] = $sourceSlug === $slug
+                        ? $slug
+                        : "{$sourceSlug} -> {$slug}";
                     $this->counts['perfumes_skipped']++;
 
                     continue;
@@ -127,7 +155,7 @@ class NuanscentUnderrepresentedAromaBatch01Seeder extends Seeder
      */
     private function readPayload(): array
     {
-        $path = base_path(self::DATASET_PATH);
+        $path = database_path(self::DATASET_PATH);
 
         if (! file_exists($path)) {
             throw new RuntimeException("Dataset underrepresented aroma tidak ditemukan di {$path}.");

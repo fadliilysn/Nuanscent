@@ -15,9 +15,14 @@ use RuntimeException;
 
 class NuanscentPerfumeCleanBatch04Seeder extends Seeder
 {
-    private const DATASET_PATH = '/database/seeders/data/nuanscent_perfumes_clean_batch_04.json';
+    private const DATASET_PATH = 'seeders/data/nuanscent_perfumes_clean_batch_04.json';
 
     private const EXPECTED_CATEGORY_SLUG = 'clean';
+
+    private const DUPLICATE_PERFUME_SLUGS = [
+        'mykonos-rrq-empire' => 'empire',
+        'kahf-mineralwave' => 'mineralwave',
+    ];
 
     /**
      * @var array<string, mixed>
@@ -25,10 +30,11 @@ class NuanscentPerfumeCleanBatch04Seeder extends Seeder
     private array $payload;
 
     /**
-     * @var array{perfumes: int, notes: int, variants: int}
+     * @var array{perfumes: int, duplicates_skipped: int, notes: int, variants: int}
      */
     private array $counts = [
         'perfumes' => 0,
+        'duplicates_skipped' => 0,
         'notes' => 0,
         'variants' => 0,
     ];
@@ -44,6 +50,7 @@ class NuanscentPerfumeCleanBatch04Seeder extends Seeder
         $this->validateCleanCategoryReferences();
         $this->validateMasterReferences();
         $this->validateBrandReferences();
+        $this->validateCanonicalPerfumesExist();
 
         DB::transaction(function (): void {
             $brands = $this->existingBrands();
@@ -52,6 +59,12 @@ class NuanscentPerfumeCleanBatch04Seeder extends Seeder
             $occasions = Occasion::query()->get()->keyBy('slug');
 
             foreach ($this->payload['perfumes'] as $perfumeData) {
+                if (isset(self::DUPLICATE_PERFUME_SLUGS[$perfumeData['slug']])) {
+                    $this->counts['duplicates_skipped']++;
+
+                    continue;
+                }
+
                 $perfume = Perfume::updateOrCreate(
                     ['slug' => $perfumeData['slug']],
                     [
@@ -106,7 +119,7 @@ class NuanscentPerfumeCleanBatch04Seeder extends Seeder
         });
 
         $this->command?->info(
-            "Clean Batch 04 import selesai: {$this->counts['perfumes']} parfum, {$this->counts['notes']} note unik, {$this->counts['variants']} varian disinkronkan.",
+            "Clean Batch 04 import selesai: {$this->counts['perfumes']} parfum, {$this->counts['duplicates_skipped']} duplikat kanonis dilewati, {$this->counts['notes']} note unik, {$this->counts['variants']} varian disinkronkan.",
         );
     }
 
@@ -115,7 +128,7 @@ class NuanscentPerfumeCleanBatch04Seeder extends Seeder
      */
     private function readPayload(): array
     {
-        $path = base_path(self::DATASET_PATH);
+        $path = database_path(self::DATASET_PATH);
 
         if (! file_exists($path)) {
             throw new RuntimeException("Dataset Clean Batch 04 tidak ditemukan di {$path}.");
@@ -186,6 +199,22 @@ class NuanscentPerfumeCleanBatch04Seeder extends Seeder
 
         if ($missingBrands !== []) {
             throw new RuntimeException('Brand slug belum tersedia di database: '.implode(', ', $missingBrands));
+        }
+    }
+
+    private function validateCanonicalPerfumesExist(): void
+    {
+        $missingCanonicalSlugs = $this->missingSlugs(
+            array_values(self::DUPLICATE_PERFUME_SLUGS),
+            Perfume::query()->pluck('slug')->all(),
+        );
+
+        if ($missingCanonicalSlugs !== []) {
+            throw new RuntimeException(
+                'Perfume kanonis untuk deduplikasi Clean Batch 04 belum tersedia: '
+                .implode(', ', $missingCanonicalSlugs)
+                .'. Jalankan Batch 01 dan Batch 02 terlebih dahulu.',
+            );
         }
     }
 

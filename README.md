@@ -142,14 +142,13 @@ DB_USERNAME=postgres
 DB_PASSWORD=
 ```
 
-Jalankan migration dan seeder utama:
+Untuk database lokal baru yang boleh dikosongkan, jalankan migration dan seluruh seed katalog:
 
 ```bash
-php artisan migrate
-php artisan db:seed
+php artisan migrate:fresh --seed
 ```
 
-Beberapa batch data parfum dan patch kurasi tersedia sebagai seeder terpisah di `backend/database/seeders`. Jalankan hanya seeder dataset yang memang diperlukan untuk environment tersebut.
+Seluruh file JSON aktif berada di `backend/database/seeders/data/`; folder root `data/` tidak diperlukan. Gunakan `php artisan migrate` tanpa `fresh` untuk database yang sudah berisi data. Detail dan peringatan deployment tersedia di [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 Mulai backend:
 
@@ -313,6 +312,10 @@ DB_PASSWORD=
 
 Jangan menyimpan `.env`, password, token, atau kredensial deployment ke Git.
 
+### Panduan Deployment
+
+Panduan persiapan dan deployment manual tersedia di [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Isinya mencakup environment, CORS, PostgreSQL, alur seeding, panel admin, dan smoke test tanpa mengunci project ke satu penyedia hosting.
+
 ## Catatan Gambar Eksternal
 
 Gambar produk menggunakan URL publik dari sumber brand resmi, retailer, atau CDN produk yang telah dikurasi. File gambar produk tidak disimpan dan dinormalisasi secara lokal oleh aplikasi.
@@ -334,7 +337,6 @@ Konsekuensinya:
 ## Roadmap
 
 - Deployment frontend dan backend publik.
-- Dokumentasi deployment yang lebih rinci.
 - Peningkatan kelengkapan dan akurasi harga serta varian.
 - Optimasi pengiriman dan fallback gambar.
 - Fitur parfum favorit untuk pengguna.

@@ -16,7 +16,7 @@ use RuntimeException;
 
 class NuanscentPerfumeBatch03Seeder extends Seeder
 {
-    private const DATASET_PATH = '/database/seeders/data/nuanscent_perfumes_batch_03.json';
+    private const DATASET_PATH = 'seeders/data/nuanscent_perfumes_batch_03.json';
 
     /**
      * @var array<string, mixed>
@@ -115,7 +115,7 @@ class NuanscentPerfumeBatch03Seeder extends Seeder
      */
     private function readPayload(): array
     {
-        $path = base_path(self::DATASET_PATH);
+        $path = database_path(self::DATASET_PATH);
 
         if (! file_exists($path)) {
             throw new RuntimeException("Dataset Batch 03 tidak ditemukan di {$path}.");

@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "dataset_name": "Nuanscent Fresh Install Catalog State Patch",
+    "version": "1.0.0",
+    "purpose": "Mempertahankan delta katalog audited yang belum terwakili oleh batch dan patch terdahulu saat fresh install.",
+    "source": "Database lokal hasil audit Phase 21 sebelum fresh-install readiness."
+  },
+  "patches": [
+    {
+      "slug": "addict",
+      "image_url": "https://madeforhmns.com/cdn/shop/files/Addict-100ml-1_4734d2f2-8511-456e-a959-d2d1968f3e6c.png?v=1741672596",
+      "price_min": 369000,
+      "price_max": 369000,
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 369000
+        }
+      ]
+    },
+    {
+      "slug": "alpha-hyper-green",
+      "image_url": "https://madeforhmns.com/cdn/shop/files/HyperGreen1.jpg?v=1771993940",
+      "price_min": 525000,
+      "price_max": 525000,
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 525000
+        }
+      ]
+    },
+    {
+      "slug": "aphrodite",
+      "price_min": 299000,
+      "price_max": 499000,
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 499000
+        }
+      ]
+    },
+    {
+      "slug": "black-opera",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/black_opera_100ml_sku.jpg?v=1778043196&width=1946",
+      "price_min": 499000,
+      "price_max": 499000,
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 499000
+        }
+      ]
+    },
+    {
+      "slug": "california-blue",
+      "price_min": 299000,
+      "price_max": 499000,
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 499000
+        }
+      ]
+    },
+    {
+      "slug": "california-club",
+      "price_min": 299000,
+      "price_max": 299000,
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        }
+      ]
+    },
+    {
+      "slug": "conquer",
+      "price_min": 299000,
+      "price_max": 499000,
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 499000
+        }
+      ]
+    },
+    {
+      "slug": "empire",
+      "price_min": 299000,
+      "price_max": 499000,
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        },
+        {
+          "label": "100 ml ",
+          "volume_ml": 100,
+          "price": 499000
+        }
+      ]
+    },
+    {
+      "slug": "glitch",
+      "price_min": 299000,
+      "price_max": 499000,
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 499000
+        }
+      ]
+    },
+    {
+      "slug": "inception",
+      "main_aroma_category_slug": "fresh"
+    },
+    {
+      "slug": "mayfair",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/mayfair_100ml_sku.jpg?v=1778043195&width=1946"
+    },
+    {
+      "slug": "penthouse",
+      "main_aroma_category_slug": "clean"
+    },
+    {
+      "slug": "reflection-elixir",
+      "image_url": "https://officialmykonos.com/cdn/shop/files/reflection_elixir_50ml_sku_1.jpg?v=1778043195&width=1946",
+      "price_min": 299000,
+      "price_max": 299000,
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        }
+      ]
+    },
+    {
+      "slug": "royal-ispahan",
+      "price_min": 299000,
+      "price_max": 499000,
+      "variants": [
+        {
+          "label": "50 ml",
+          "volume_ml": 50,
+          "price": 299000
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 499000
+        }
+      ]
+    },
+    {
+      "slug": "the-perfection",
+      "image_url": "https://madeforhmns.com/cdn/shop/files/Perfection-1_d940fb62-a1aa-4dbd-85fe-163d5a9775ca.png?v=1739520190"
+    },
+    {
+      "slug": "the-prestige",
+      "image_url": "https://madeforhmns.com/cdn/shop/files/Prestige-1_69e5b189-f576-4f78-b865-08f7ca0fe872.png?v=1739516997"
+    },
+    {
+      "slug": "unpatched",
+      "image_url": "https://madeforhmns.com/cdn/shop/files/Unpatched-1_ba38ec1b-533a-422f-b586-2737a1e61e89.png?v=1739517784"
+    },
+    {
+      "slug": "unrosed",
+      "image_url": "https://madeforhmns.com/cdn/shop/files/Unrosed-1_d2252e46-2d76-44b5-a026-3c4c3fa82b8b.png?v=1739515148"
+    },
+    {
+      "slug": "untitled-humans-aroma-01",
+      "image_url": "https://madeforhmns.com/cdn/shop/files/Aroma-1-A.jpg?v=1759742680",
+      "price_min": 395000,
+      "price_max": 395000,
+      "variants": [
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 395000
+        }
+      ]
+    },
+    {
+      "slug": "untitled-humans-aroma-02",
+      "image_url": "https://madeforhmns.com/cdn/shop/files/Aroma-2-A_f61b6c0e-4d51-495b-8cc7-31946cc44480.png?v=1741589736"
+    },
+    {
+      "slug": "velixir-adonis",
+      "price_min": 225000,
+      "price_max": 445000,
+      "variants": [
+        {
+          "label": "35 ml",
+          "volume_ml": 35,
+          "price": 225000
+        },
+        {
+          "label": "100 ml",
+          "volume_ml": 100,
+          "price": 445000
+        }
+      ]
+    },
+    {
+      "slug": "velixir-poseidon",
+      "image_url": "https://velixirparfums.com/cdn/shop/files/CATALOGLV-24.jpg?v=1773368095&width=460"
+    }
+  ]
+}

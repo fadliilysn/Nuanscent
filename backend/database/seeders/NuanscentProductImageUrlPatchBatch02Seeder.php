@@ -9,7 +9,7 @@ use RuntimeException;
 
 class NuanscentProductImageUrlPatchBatch02Seeder extends Seeder
 {
-    private const PATCH_PATH = '/database/seeders/data/nuanscent_product_image_url_patch_batch_02.json';
+    private const PATCH_PATH = 'seeders/data/nuanscent_product_image_url_patch_batch_02.json';
 
     /**
      * @var array<string, mixed>
@@ -87,7 +87,7 @@ class NuanscentProductImageUrlPatchBatch02Seeder extends Seeder
      */
     private function readPayload(): array
     {
-        $path = base_path(self::PATCH_PATH);
+        $path = database_path(self::PATCH_PATH);
 
         if (! file_exists($path)) {
             throw new RuntimeException("Patch image URL Batch 02 tidak ditemukan di {$path}.");

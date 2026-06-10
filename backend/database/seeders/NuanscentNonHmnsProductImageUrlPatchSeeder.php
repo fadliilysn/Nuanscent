@@ -9,7 +9,12 @@ use RuntimeException;
 
 class NuanscentNonHmnsProductImageUrlPatchSeeder extends Seeder
 {
-    private const PATCH_PATH = '/database/seeders/data/nuanscent_non_hmns_product_image_url_patch.json';
+    private const PATCH_PATH = 'seeders/data/nuanscent_non_hmns_product_image_url_patch.json';
+
+    private const SLUG_ALIASES = [
+        'kahf-mineralwave' => 'mineralwave',
+        'mykonos-rrq-empire' => 'empire',
+    ];
 
     /**
      * @var array<string, mixed>
@@ -26,20 +31,21 @@ class NuanscentNonHmnsProductImageUrlPatchSeeder extends Seeder
 
         DB::transaction(function () use (&$patchedPerfumes, &$unchangedPerfumes, &$missingSlugs): void {
             foreach ($this->payload['patches'] as $patchData) {
-                $slug = (string) ($patchData['slug'] ?? '');
+                $sourceSlug = (string) ($patchData['slug'] ?? '');
 
-                if ($slug === '') {
+                if ($sourceSlug === '') {
                     $missingSlugs[] = '(slug kosong)';
 
                     continue;
                 }
 
+                $slug = self::SLUG_ALIASES[$sourceSlug] ?? $sourceSlug;
                 $perfume = Perfume::query()
                     ->where('slug', $slug)
                     ->first();
 
                 if (! $perfume) {
-                    $missingSlugs[] = $slug;
+                    $missingSlugs[] = $sourceSlug;
 
                     continue;
                 }
@@ -74,7 +80,7 @@ class NuanscentNonHmnsProductImageUrlPatchSeeder extends Seeder
      */
     private function readPayload(): array
     {
-        $path = base_path(self::PATCH_PATH);
+        $path = database_path(self::PATCH_PATH);
 
         if (! file_exists($path)) {
             throw new RuntimeException("Patch image URL non-HMNS tidak ditemukan di {$path}.");

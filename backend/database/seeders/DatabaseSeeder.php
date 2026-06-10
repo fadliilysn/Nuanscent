@@ -19,7 +19,20 @@ class DatabaseSeeder extends Seeder
             OccasionSeeder::class,
             AromaTagSeeder::class,
             NoteSeeder::class,
+            NuanscentPerfumeBatch01Seeder::class,
+            NuanscentPerfumeBatch01VariantsPatchSeeder::class,
+            NuanscentPerfumeBatch02Seeder::class,
+            NuanscentPerfumeBatch03Seeder::class,
+            NuanscentPerfumeCleanBatch04Seeder::class,
+            NuanscentUnderrepresentedAromaBatch01Seeder::class,
             RemapPerfumeAromaCategoriesSeeder::class,
+            InitialGuideSeeder::class,
+            NuanscentNoteEnrichmentSeeder::class,
+            NuanscentProductImageUrlPatchSeeder::class,
+            NuanscentNonHmnsProductImageUrlPatchSeeder::class,
+            NuanscentProductImageUrlPatchBatch02Seeder::class,
+            NuanscentPerfumePriceVariantPatch01Seeder::class,
+            NuanscentFreshInstallCatalogStatePatchSeeder::class,
         ]);
     }
 }

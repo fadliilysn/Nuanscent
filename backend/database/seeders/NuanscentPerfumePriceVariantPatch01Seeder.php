@@ -10,7 +10,7 @@ use RuntimeException;
 
 class NuanscentPerfumePriceVariantPatch01Seeder extends Seeder
 {
-    private const PATCH_PATH = '/database/seeders/data/nuanscent_perfume_price_variant_patch_01.json';
+    private const PATCH_PATH = 'seeders/data/nuanscent_perfume_price_variant_patch_01.json';
 
     /**
      * @var array<string, mixed>
@@ -180,7 +180,7 @@ class NuanscentPerfumePriceVariantPatch01Seeder extends Seeder
      */
     private function readPayload(): array
     {
-        $path = base_path(self::PATCH_PATH);
+        $path = database_path(self::PATCH_PATH);
 
         if (! file_exists($path)) {
             throw new RuntimeException("Patch price & variant tidak ditemukan di {$path}.");

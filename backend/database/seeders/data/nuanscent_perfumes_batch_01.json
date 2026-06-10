@@ -1,0 +1,1510 @@
+{
+  "meta": {
+    "dataset_name": "Nuanscent Perfume Batch 01",
+    "version": "1.0.0",
+    "generated_at": "2026-05-19",
+    "purpose": "Seed awal data parfum lokal untuk pengembangan katalog, detail parfum, dan recommendation engine Nuanscent.",
+    "notes": [
+      "Data harga, notes, volume, dan konsentrasi diambil dari sumber resmi brand ketika tersedia.",
+      "Kategori aroma, tag aroma, occasion, short_description, dan beberapa pengelompokan bersifat kurasi awal agar sistem dapat langsung dipakai untuk demo/rekomendasi.",
+      "image_url sengaja dibiarkan null agar tidak bergantung pada hotlink gambar pihak ketiga. Tambahkan kemudian melalui admin atau proses asset terpisah.",
+      "Dataset ini cocok untuk seed development/portfolio. Untuk publikasi final, lakukan review admin bila ingin kontrol editorial lebih ketat."
+    ]
+  },
+  "brands": [
+    {
+      "name": "HMNS",
+      "slug": "hmns",
+      "description": "Brand parfum lokal Indonesia dengan berbagai lini eau de parfum dan extrait yang menonjolkan storytelling aroma.",
+      "official_website": "https://madeforhmns.com",
+      "logo_url": null
+    },
+    {
+      "name": "SAFF & Co.",
+      "slug": "saff-co",
+      "description": "Brand parfum lokal Indonesia yang dikenal dengan extrait de parfum berkarakter dan storytelling tiap varian.",
+      "official_website": "https://saffnco.com",
+      "logo_url": null
+    },
+    {
+      "name": "Mykonos",
+      "slug": "mykonos",
+      "description": "Brand parfum lokal Indonesia dengan banyak extrait de parfum bertema modern, clean, aquatic, dan sensual.",
+      "official_website": "https://officialmykonos.com",
+      "logo_url": null
+    },
+    {
+      "name": "Kahf",
+      "slug": "kahf",
+      "description": "Brand personal care pria Indonesia yang memiliki lini parfum dengan karakter fresh, woody, spicy, dan oud.",
+      "official_website": "https://www.kahfeveryday.com",
+      "logo_url": null
+    }
+  ],
+  "perfumes": [
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "brand_slug": "hmns",
+      "name": "Farhampton",
+      "slug": "farhampton",
+      "short_description": "Aroma fresh floral yang berangkat dari bergamot cerah, lavender, dan orange blossom, lalu menghangat dengan amber, cedar, dan tonka.",
+      "official_description": "Farhampton diposisikan HMNS sebagai parfum dengan karakter bahagia dan menyenangkan, dibuka bergamot, berlanjut floral lembut, lalu mengering hangat lewat amber, cedar, dan tonka bean.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 100,
+      "price_min": 369000,
+      "price_max": 369000,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh-clean",
+      "aroma_tag_slugs": [
+        "citrus",
+        "white-floral",
+        "cedar",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Lavender",
+          "position": "middle"
+        },
+        {
+          "name": "Orange Blossom",
+          "position": "middle"
+        },
+        {
+          "name": "Labdanum",
+          "position": "base"
+        },
+        {
+          "name": "Cedar",
+          "position": "base"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "base"
+        }
+      ],
+      "source_name": "HMNS Official",
+      "source_url": "https://madeforhmns.com/products/farhampton-100ml-extrait-de-parfum"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "brand_slug": "hmns",
+      "name": "Alpha",
+      "slug": "alpha",
+      "short_description": "Fresh green woody dengan pembukaan citrus dan nuansa rumput, masuk ke green tea, lalu turun ke cedar dan vetiver.",
+      "official_description": "Alpha digambarkan HMNS sebagai aroma maskulin fresh-woody dengan pembukaan citrus dan green grass, heart green tea, lalu dry down cedar dan vetiver.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": 320000,
+      "price_max": 320000,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh-clean",
+      "aroma_tag_slugs": [
+        "citrus",
+        "tea",
+        "cedar",
+        "vetiver",
+        "smoky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "office"
+      ],
+      "notes": [
+        {
+          "name": "Citrus",
+          "position": "top"
+        },
+        {
+          "name": "Green Grass",
+          "position": "top"
+        },
+        {
+          "name": "Green Tea",
+          "position": "middle"
+        },
+        {
+          "name": "Woody Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Cedar",
+          "position": "base"
+        },
+        {
+          "name": "Vetiver",
+          "position": "base"
+        }
+      ],
+      "source_name": "HMNS Official",
+      "source_url": "https://madeforhmns.com/products/alpha-100ml"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "brand_slug": "hmns",
+      "name": "ORGSM",
+      "slug": "orgsm",
+      "short_description": "Fruity floral manis dengan apel merah, mawar, jasmine, dan peony yang mengering ke amber serta vanilla beans.",
+      "official_description": "ORGSM memiliki struktur red apple di top, rose-jasmine-peony di tengah, dan amber serta vanilla beans pada dry down.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": 323000,
+      "price_max": 323000,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "sweet-gourmand",
+      "aroma_tag_slugs": [
+        "fruity",
+        "rose",
+        "jasmine",
+        "amber",
+        "vanilla"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "date",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Red Apple",
+          "position": "top"
+        },
+        {
+          "name": "Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Peony",
+          "position": "middle"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Vanilla Beans",
+          "position": "base"
+        }
+      ],
+      "source_name": "HMNS Official",
+      "source_url": "https://madeforhmns.com/products/orgsm"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "brand_slug": "hmns",
+      "name": "Essence of The Sun",
+      "slug": "essence-of-the-sun",
+      "short_description": "Floral solar yang cerah: bergamot dan spices ringan di awal, buket bunga tropis di tengah, lalu creamy-warm dari vanilla, tonka, ambrette, dan cedar.",
+      "official_description": "EoS dibuka oleh bergamot, coriander seed, dan pink pepper; heart-nya berisi jasmine sambac, Turkish rose, tiare, dan solar accord; dry down membawa vanilla, tonka bean, ambrette, dan cedar.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": 369000,
+      "price_max": 369000,
+      "marketed_gender": "feminine",
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "citrus",
+        "jasmine",
+        "rose",
+        "vanilla",
+        "creamy",
+        "cedar"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "date",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Coriander Seed",
+          "position": "top"
+        },
+        {
+          "name": "Pink Pepper",
+          "position": "top"
+        },
+        {
+          "name": "Jasmine Sambac",
+          "position": "middle"
+        },
+        {
+          "name": "Turkish Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Tiare Flower",
+          "position": "middle"
+        },
+        {
+          "name": "Solar Accord",
+          "position": "middle"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "base"
+        },
+        {
+          "name": "Ambrette",
+          "position": "base"
+        },
+        {
+          "name": "Cedar",
+          "position": "base"
+        }
+      ],
+      "source_name": "HMNS Official",
+      "source_url": "https://madeforhmns.com/products/essence-of-the-sun-eos-100ml-edp"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "brand_slug": "hmns",
+      "name": "Darker Shade of ORGSM",
+      "slug": "darker-shade-of-orgsm",
+      "short_description": "Woody warm sensual dengan orange blossom dan apel di awal, caramel-patchouli di tengah, lalu vanilla, cedar, amber, dan vetiver.",
+      "official_description": "Versi lebih gelap dari ORGSM ini membawa orange blossom, apple, dan pepper; middle earthy creamy dari cypriol, caramel, patchouli; dry down vanilla beans, cedar, amber, dan vetiver.",
+      "concentration": "Eau de Parfum",
+      "volume_ml": 100,
+      "price_min": 380000,
+      "price_max": 380000,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "warm-amber-spicy",
+      "aroma_tag_slugs": [
+        "fruity",
+        "caramel",
+        "patchouli",
+        "vanilla",
+        "cedar",
+        "amber",
+        "vetiver"
+      ],
+      "occasion_slugs": [
+        "date",
+        "formal",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Orange Blossom",
+          "position": "top"
+        },
+        {
+          "name": "Apple",
+          "position": "top"
+        },
+        {
+          "name": "Pepper",
+          "position": "top"
+        },
+        {
+          "name": "Cypriol",
+          "position": "middle"
+        },
+        {
+          "name": "Caramel",
+          "position": "middle"
+        },
+        {
+          "name": "Patchouli",
+          "position": "middle"
+        },
+        {
+          "name": "Vanilla Beans",
+          "position": "base"
+        },
+        {
+          "name": "Cedar",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Vetiver",
+          "position": "base"
+        }
+      ],
+      "source_name": "HMNS Official",
+      "source_url": "https://madeforhmns.com/products/hmns-perfume-darker-shades-of-orgasm-eau-de-parfum"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "SAFF",
+      "slug": "saff",
+      "short_description": "Gelap, smoky, leathery, dan musky dengan pembukaan bergamot-mandarin-saffron serta dry down amber, leather, musk.",
+      "official_description": "SAFF dibuka oleh bergamot, mandarin orange, dan saffron; heart ylang-ylang, muguet, jasmine; base dry amber, leather, dan musk.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 258100,
+      "price_max": 359000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "warm-amber-spicy",
+      "aroma_tag_slugs": [
+        "citrus",
+        "saffron",
+        "jasmine",
+        "amber",
+        "leathery",
+        "musky",
+        "smoky"
+      ],
+      "occasion_slugs": [
+        "formal",
+        "evening-night",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Mandarin Orange",
+          "position": "top"
+        },
+        {
+          "name": "Saffron",
+          "position": "top"
+        },
+        {
+          "name": "Ylang-Ylang",
+          "position": "middle"
+        },
+        {
+          "name": "Muguet",
+          "position": "middle"
+        },
+        {
+          "name": "Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Dry Amber",
+          "position": "base"
+        },
+        {
+          "name": "Leather",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        }
+      ],
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-saff",
+      "brand_slug": "saff-co",
+      "source_name": "SAFF & Co. Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "S.O.T.B",
+      "slug": "sotb",
+      "short_description": "Tropical floral manis dengan mandarin dan ylang, white floral di tengah, lalu vanilla-tonka-musk yang lembut.",
+      "official_description": "S.O.T.B menampilkan mandarin, galbanum, ylang pada top; tuberose, jasmine, orange flower di middle; vanilla, tonka bean, dan musk di base.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 259300,
+      "price_max": 359000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "citrus",
+        "jasmine",
+        "white-floral",
+        "vanilla",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "casual-hangout",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Mandarin",
+          "position": "top"
+        },
+        {
+          "name": "Galbanum",
+          "position": "top"
+        },
+        {
+          "name": "Ylang",
+          "position": "top"
+        },
+        {
+          "name": "Tuberose",
+          "position": "middle"
+        },
+        {
+          "name": "Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Orange Flower",
+          "position": "middle"
+        },
+        {
+          "name": "Vanilla",
+          "position": "base"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        }
+      ],
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-sotb",
+      "brand_slug": "saff-co",
+      "source_name": "SAFF & Co. Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "MORFOSIA",
+      "slug": "morfosia",
+      "short_description": "Citrusy floral woody dengan rhubarb-yuzu yang cerah, heart floral unik, lalu amber, cedar, dan vetiver.",
+      "official_description": "MORFOSIA mencantumkan top rhubarb, yuzu, elletaria; middle shogayu, narcissus, cape jasmine; base amber, red cedar, Haiti vetiver.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 248000,
+      "price_max": 349000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "fresh-clean",
+      "aroma_tag_slugs": [
+        "citrus",
+        "white-floral",
+        "amber",
+        "cedar",
+        "vetiver"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Rhubarb",
+          "position": "top"
+        },
+        {
+          "name": "Yuzu",
+          "position": "top"
+        },
+        {
+          "name": "Elletaria",
+          "position": "top"
+        },
+        {
+          "name": "Shogayu",
+          "position": "middle"
+        },
+        {
+          "name": "Narcissus",
+          "position": "middle"
+        },
+        {
+          "name": "Cape Jasmine",
+          "position": "middle"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Red Cedar",
+          "position": "base"
+        },
+        {
+          "name": "Haiti Vetiver",
+          "position": "base"
+        }
+      ],
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-morfosia",
+      "brand_slug": "saff-co",
+      "source_name": "SAFF & Co. Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "OSTARA",
+      "slug": "ostara",
+      "short_description": "Fruity floral dengan raspberry, passionfruit, dan pear; lalu lily of the valley; mengering ke amber, patchouli, heliotrope.",
+      "official_description": "OSTARA mencantumkan raspberry, passionfruit, pear; cassis buds dan lily of the valley; serta amber, patchouli, heliotrope.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 221600,
+      "price_max": 299000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "fruity",
+        "amber",
+        "patchouli"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "casual-hangout",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Raspberry",
+          "position": "top"
+        },
+        {
+          "name": "Passionfruit",
+          "position": "top"
+        },
+        {
+          "name": "Pear",
+          "position": "top"
+        },
+        {
+          "name": "Cassis Buds",
+          "position": "middle"
+        },
+        {
+          "name": "Lily of the Valley",
+          "position": "middle"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        },
+        {
+          "name": "Heliotrope",
+          "position": "base"
+        }
+      ],
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-ostara",
+      "brand_slug": "saff-co",
+      "source_name": "SAFF & Co. Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "TROUPE",
+      "slug": "troupe",
+      "short_description": "Fruity floral ambery dengan mandarin-orange dan pear, diikuti rose-neroli-freesia, lalu patchouli, musk, dan amber.",
+      "official_description": "TROUPE memiliki mandarin orange dan pear di top; rose, neroli, freesia di middle; patchouli, musk, amber di base.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 129900,
+      "price_max": 199000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "floral",
+      "aroma_tag_slugs": [
+        "fruity",
+        "rose",
+        "patchouli",
+        "musky",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Mandarin Orange",
+          "position": "top"
+        },
+        {
+          "name": "Pear",
+          "position": "top"
+        },
+        {
+          "name": "Rose",
+          "position": "middle"
+        },
+        {
+          "name": "Neroli",
+          "position": "middle"
+        },
+        {
+          "name": "Freesia",
+          "position": "middle"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        }
+      ],
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-troupe",
+      "brand_slug": "saff-co",
+      "source_name": "SAFF & Co. Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "SOLARIS",
+      "slug": "solaris",
+      "short_description": "Green floral woody dengan bergamot-mandarin, violet leaves, heart orris-freesia-cedarwood, dan base vetiver-amber-tonka.",
+      "official_description": "SOLARIS membawa top bergamot, mandarin, violet leaves; middle orris, freesia, cedarwood; base vetiver, amber, tonka bean.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": null,
+      "price_min": 229500,
+      "price_max": 299000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "woody-earthy",
+      "aroma_tag_slugs": [
+        "citrus",
+        "cedar",
+        "vetiver",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "office",
+        "formal",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Mandarin",
+          "position": "top"
+        },
+        {
+          "name": "Violet Leaves",
+          "position": "top"
+        },
+        {
+          "name": "Orris",
+          "position": "middle"
+        },
+        {
+          "name": "Freesia",
+          "position": "middle"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "middle"
+        },
+        {
+          "name": "Vetiver",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "base"
+        }
+      ],
+      "source_url": "https://saffnco.com/products/extrait-de-parfum-solaris",
+      "brand_slug": "saff-co",
+      "source_name": "SAFF & Co. Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "Inception",
+      "slug": "inception",
+      "short_description": "Citrus-spicy woody dengan bergamot, ginger, orange, lemon, lalu black tea dan cinnamon, mengering ke guaiac, musk, cedarwood.",
+      "official_description": "Inception dimulai dengan bergamot, ginger, orange, lemon; di tengah ada neroli, cinnamon, black tea, biga flower; di base guaiac, musk, cedarwood, dan Lorenox.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 50,
+      "price_min": 299000,
+      "price_max": 299000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "warm-amber-spicy",
+      "aroma_tag_slugs": [
+        "citrus",
+        "spicy",
+        "tea",
+        "musky",
+        "cedar"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Ginger",
+          "position": "top"
+        },
+        {
+          "name": "Orange",
+          "position": "top"
+        },
+        {
+          "name": "Lemon",
+          "position": "top"
+        },
+        {
+          "name": "Neroli",
+          "position": "middle"
+        },
+        {
+          "name": "Cinnamon",
+          "position": "middle"
+        },
+        {
+          "name": "Black Tea",
+          "position": "middle"
+        },
+        {
+          "name": "Biga Flower",
+          "position": "middle"
+        },
+        {
+          "name": "Guaiac",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "base"
+        },
+        {
+          "name": "Lorenox",
+          "position": "base"
+        }
+      ],
+      "source_url": "https://officialmykonos.com/products/mykonos-inception-extrait-de-parfum-50ml",
+      "brand_slug": "mykonos",
+      "source_name": "Mykonos Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "California",
+      "slug": "california",
+      "short_description": "Fresh citrus aquatic dengan mandarin dan lemon, heart lychee-herbal-lavender-aquatic, lalu tonka, teak wood, dan vetiver.",
+      "official_description": "California memakai top mandarin orange dan lemon; middle lychee, rosemary, cardamom, lavender, geranium, aquatic notes; base tonka bean, teak wood, vetiver.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 50,
+      "price_min": 299000,
+      "price_max": 299000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "fresh-clean",
+      "aroma_tag_slugs": [
+        "citrus",
+        "aquatic",
+        "fruity",
+        "vetiver"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "campus",
+        "casual-hangout"
+      ],
+      "notes": [
+        {
+          "name": "Mandarin Orange",
+          "position": "top"
+        },
+        {
+          "name": "Lemon",
+          "position": "top"
+        },
+        {
+          "name": "Lychee",
+          "position": "middle"
+        },
+        {
+          "name": "Rosemary",
+          "position": "middle"
+        },
+        {
+          "name": "Cardamom",
+          "position": "middle"
+        },
+        {
+          "name": "Lavender",
+          "position": "middle"
+        },
+        {
+          "name": "Geranium",
+          "position": "middle"
+        },
+        {
+          "name": "Aquatic Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "base"
+        },
+        {
+          "name": "Teak Wood",
+          "position": "base"
+        },
+        {
+          "name": "Vetiver",
+          "position": "base"
+        }
+      ],
+      "source_url": "https://officialmykonos.com/products/mykonos-california-signature-50ml",
+      "brand_slug": "mykonos",
+      "source_name": "Mykonos Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "Reflection",
+      "slug": "reflection",
+      "short_description": "Fresh luminous dengan grapefruit-ginger-bergamot, lapisan marine-cardamom, lalu musk, patchouli, amber, dan ambroxan.",
+      "official_description": "Reflection memuat top grapefruit, ginger, bergamot; middle marine notes, cardamom, lily of the valley; base musk, patchouli, amber, ambroxan.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 50,
+      "price_min": 299000,
+      "price_max": 299000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "fresh-clean",
+      "aroma_tag_slugs": [
+        "citrus",
+        "aquatic",
+        "musky",
+        "patchouli",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Grapefruit",
+          "position": "top"
+        },
+        {
+          "name": "Ginger",
+          "position": "top"
+        },
+        {
+          "name": "Bergamot",
+          "position": "top"
+        },
+        {
+          "name": "Marine Notes",
+          "position": "middle"
+        },
+        {
+          "name": "Cardamom",
+          "position": "middle"
+        },
+        {
+          "name": "Lily of the Valley",
+          "position": "middle"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        },
+        {
+          "name": "Patchouli",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Ambroxan",
+          "position": "base"
+        }
+      ],
+      "source_url": "https://officialmykonos.com/products/mykonos-reflection-extrait-de-parfum-50ml-100ml",
+      "brand_slug": "mykonos",
+      "source_name": "Mykonos Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "Monaco Royale",
+      "slug": "monaco-royale",
+      "short_description": "Fruity fresh sensual dengan pear dan melon, woods di tengah, lalu moss, caramel, dan musk pada dry down.",
+      "official_description": "Monaco Royale memiliki top pear, melon, green notes; middle soft wood dan cedarwood; base moss, caramel, musk.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 50,
+      "price_min": 299000,
+      "price_max": 299000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "sweet-gourmand",
+      "aroma_tag_slugs": [
+        "fruity",
+        "cedar",
+        "caramel",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "date",
+        "formal",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Pear",
+          "position": "top"
+        },
+        {
+          "name": "Melon",
+          "position": "top"
+        },
+        {
+          "name": "Green Notes",
+          "position": "top"
+        },
+        {
+          "name": "Soft Wood",
+          "position": "middle"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "middle"
+        },
+        {
+          "name": "Moss",
+          "position": "base"
+        },
+        {
+          "name": "Caramel",
+          "position": "base"
+        },
+        {
+          "name": "Musk",
+          "position": "base"
+        }
+      ],
+      "source_url": "https://officialmykonos.com/products/mykonos-monaco-royale-extrait-de-parfum-50ml-100ml",
+      "brand_slug": "mykonos",
+      "source_name": "Mykonos Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "Penthouse",
+      "slug": "penthouse",
+      "short_description": "Clean-soapy luminous dengan blackcurrant dan aldehydes, white tea dan soap accord, lalu tonka, amber, clean musk, dan cashmeran.",
+      "official_description": "Penthouse dibuka sparkling blackcurrant, aldehydes, mandarin zest, rose mist; heart white floral, white tea vapor, white soap accord, cashmere wood, cedarwood; base tonka foam, Iso E Super, amber, clean musks, cashmeran.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 50,
+      "price_min": 299000,
+      "price_max": 299000,
+      "marketed_gender": null,
+      "main_aroma_category_slug": "musky-powdery-soft",
+      "aroma_tag_slugs": [
+        "clean",
+        "soapy",
+        "tea",
+        "cedar",
+        "amber",
+        "musky"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "campus"
+      ],
+      "notes": [
+        {
+          "name": "Sparkling Blackcurrant",
+          "position": "top"
+        },
+        {
+          "name": "Aldehydes",
+          "position": "top"
+        },
+        {
+          "name": "Mandarin Zest",
+          "position": "top"
+        },
+        {
+          "name": "Rose Mist",
+          "position": "top"
+        },
+        {
+          "name": "Velvety White Floral",
+          "position": "middle"
+        },
+        {
+          "name": "White Tea Vapor",
+          "position": "middle"
+        },
+        {
+          "name": "White Soap Accord",
+          "position": "middle"
+        },
+        {
+          "name": "Cashmere Wood",
+          "position": "middle"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "middle"
+        },
+        {
+          "name": "Tonka Foam",
+          "position": "base"
+        },
+        {
+          "name": "Iso E Super",
+          "position": "base"
+        },
+        {
+          "name": "Amber",
+          "position": "base"
+        },
+        {
+          "name": "Clean Musks",
+          "position": "base"
+        },
+        {
+          "name": "Cashmeran",
+          "position": "base"
+        }
+      ],
+      "source_url": "https://officialmykonos.com/products/mykonos-penthouse-extrait-de-parfum-100ml",
+      "brand_slug": "mykonos",
+      "source_name": "Mykonos Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "Mineralwave",
+      "slug": "mineralwave",
+      "short_description": "Fresh mineral woody dengan white bergamot, ozonic-green nuances, green tea, akigalawood, cedar, sandalwood, dan musk.",
+      "official_description": "Mineralwave menampilkan ingredients bergamot, ozonic, green leaves, cardamom, green tea, Akigalawood, ambergris, cedarwood, dry amber, sandalwood, dan musk.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 50,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh-clean",
+      "aroma_tag_slugs": [
+        "citrus",
+        "tea",
+        "cedar",
+        "sandalwood",
+        "musky",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "campus"
+      ],
+      "notes": [
+        {
+          "name": "Bergamot",
+          "position": "unspecified"
+        },
+        {
+          "name": "Ozonic",
+          "position": "unspecified"
+        },
+        {
+          "name": "Green Leaves",
+          "position": "unspecified"
+        },
+        {
+          "name": "Cardamom",
+          "position": "unspecified"
+        },
+        {
+          "name": "Green Tea",
+          "position": "unspecified"
+        },
+        {
+          "name": "Akigalawood",
+          "position": "unspecified"
+        },
+        {
+          "name": "Ambergris",
+          "position": "unspecified"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "unspecified"
+        },
+        {
+          "name": "Dry Amber",
+          "position": "unspecified"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "unspecified"
+        },
+        {
+          "name": "Musk",
+          "position": "unspecified"
+        }
+      ],
+      "source_url": "https://www.kahfeveryday.com/product/kahf-mineralwave-extrait-de-parfum/",
+      "brand_slug": "kahf",
+      "source_name": "Kahf Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "Leatherfield",
+      "slug": "leatherfield",
+      "short_description": "Amber woody bold dengan black pepper, clary sage, lemon, cinnamon, saffiano, cashmeran, dan tonka bean.",
+      "official_description": "Leatherfield memuat black pepper, clary sage, lemon, cypress oil, violet green, cinnamon, muguet, saffiano, ambertonic, cashmeran, dan tonka bean.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 50,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "warm-amber-spicy",
+      "aroma_tag_slugs": [
+        "citrus",
+        "spicy",
+        "leathery"
+      ],
+      "occasion_slugs": [
+        "formal",
+        "evening-night",
+        "date"
+      ],
+      "notes": [
+        {
+          "name": "Black Pepper",
+          "position": "unspecified"
+        },
+        {
+          "name": "Clary Sage",
+          "position": "unspecified"
+        },
+        {
+          "name": "Lemon",
+          "position": "unspecified"
+        },
+        {
+          "name": "Cypress Oil",
+          "position": "unspecified"
+        },
+        {
+          "name": "Violet Green",
+          "position": "unspecified"
+        },
+        {
+          "name": "Cinnamon",
+          "position": "unspecified"
+        },
+        {
+          "name": "Muguet",
+          "position": "unspecified"
+        },
+        {
+          "name": "Saffiano",
+          "position": "unspecified"
+        },
+        {
+          "name": "Ambertonic",
+          "position": "unspecified"
+        },
+        {
+          "name": "Cashmeran",
+          "position": "unspecified"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "unspecified"
+        }
+      ],
+      "source_url": "https://www.kahfeveryday.com/product/kahf-leatherfield-extrait-de-parfum/",
+      "brand_slug": "kahf",
+      "source_name": "Kahf Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "Spicestone",
+      "slug": "spicestone",
+      "short_description": "Spicy sweet woody dengan cinnamon, citrus, tonka, vanilla, lavender, patchouli, oud, dan gaiac wood.",
+      "official_description": "Spicestone mencantumkan cinnamon, citrus, tonka bean, Symrose, Madagascar vanilla, lavender, patchouli, oud, dan gaiac wood.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 50,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "warm-amber-spicy",
+      "aroma_tag_slugs": [
+        "citrus",
+        "spicy",
+        "vanilla",
+        "patchouli",
+        "oud"
+      ],
+      "occasion_slugs": [
+        "formal",
+        "date",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Cinnamon",
+          "position": "unspecified"
+        },
+        {
+          "name": "Citrus",
+          "position": "unspecified"
+        },
+        {
+          "name": "Tonka Bean",
+          "position": "unspecified"
+        },
+        {
+          "name": "Symrose",
+          "position": "unspecified"
+        },
+        {
+          "name": "Madagascar Vanilla",
+          "position": "unspecified"
+        },
+        {
+          "name": "Lavender",
+          "position": "unspecified"
+        },
+        {
+          "name": "Patchouli",
+          "position": "unspecified"
+        },
+        {
+          "name": "Oud",
+          "position": "unspecified"
+        },
+        {
+          "name": "Gaiac Wood",
+          "position": "unspecified"
+        }
+      ],
+      "source_url": "https://www.kahfeveryday.com/product/kahf-spicestone-extrait-de-parfum/",
+      "brand_slug": "kahf",
+      "source_name": "Kahf Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "Silverwood",
+      "slug": "silverwood",
+      "short_description": "Fresh floral woody dengan Aquaflora, timur pepper, muguet, violet, cashmere woods, dan vetiver oil.",
+      "official_description": "Silverwood mencantumkan Aquaflora, Timur Pepper, Muguet, Violet, Cypriol Oil, Cashmere Woods, dan Vetiver Oil.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 50,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "fresh-clean",
+      "aroma_tag_slugs": [
+        "white-floral",
+        "vetiver"
+      ],
+      "occasion_slugs": [
+        "daily",
+        "office",
+        "formal"
+      ],
+      "notes": [
+        {
+          "name": "Aquaflora",
+          "position": "unspecified"
+        },
+        {
+          "name": "Timur Pepper",
+          "position": "unspecified"
+        },
+        {
+          "name": "Muguet",
+          "position": "unspecified"
+        },
+        {
+          "name": "Violet",
+          "position": "unspecified"
+        },
+        {
+          "name": "Cypriol Oil",
+          "position": "unspecified"
+        },
+        {
+          "name": "Cashmere Woods",
+          "position": "unspecified"
+        },
+        {
+          "name": "Vetiver Oil",
+          "position": "unspecified"
+        }
+      ],
+      "source_url": "https://www.kahfeveryday.com/product/kahf-silverwood-extrait-de-parfum/",
+      "brand_slug": "kahf",
+      "source_name": "Kahf Official"
+    },
+    {
+      "image_url": null,
+      "intensity": null,
+      "last_verified_at": "2026-05-19",
+      "data_status": "published",
+      "name": "Santalscape",
+      "slug": "santalscape",
+      "short_description": "Woody leathery dengan violet-cardamom di awal, fig-iris, sandalwood, leather, dan cedarwood.",
+      "official_description": "Santalscape mencantumkan violet, cardamom, ambertonic, papyrus, iris, fig, sandalwood, leather, cedarwood, dan operanide.",
+      "concentration": "Extrait de Parfum",
+      "volume_ml": 50,
+      "price_min": null,
+      "price_max": null,
+      "marketed_gender": "masculine",
+      "main_aroma_category_slug": "woody-earthy",
+      "aroma_tag_slugs": [
+        "sandalwood",
+        "leathery",
+        "cedar",
+        "amber"
+      ],
+      "occasion_slugs": [
+        "formal",
+        "date",
+        "evening-night"
+      ],
+      "notes": [
+        {
+          "name": "Violet",
+          "position": "unspecified"
+        },
+        {
+          "name": "Cardamom",
+          "position": "unspecified"
+        },
+        {
+          "name": "Ambertonic",
+          "position": "unspecified"
+        },
+        {
+          "name": "Papyrus",
+          "position": "unspecified"
+        },
+        {
+          "name": "Iris",
+          "position": "unspecified"
+        },
+        {
+          "name": "Fig",
+          "position": "unspecified"
+        },
+        {
+          "name": "Sandalwood",
+          "position": "unspecified"
+        },
+        {
+          "name": "Leather",
+          "position": "unspecified"
+        },
+        {
+          "name": "Cedarwood",
+          "position": "unspecified"
+        },
+        {
+          "name": "Operanide",
+          "position": "unspecified"
+        }
+      ],
+      "source_url": "https://www.kahfeveryday.com/product/kahf-santalscape-extrait-de-parfum/",
+      "brand_slug": "kahf",
+      "source_name": "Kahf Official"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ use RuntimeException;
 
 class NuanscentNoteEnrichmentSeeder extends Seeder
 {
-    private const DATASET_PATH = '/database/seeders/data/nuanscent_note_enrichment.json';
+    private const DATASET_PATH = 'seeders/data/nuanscent_note_enrichment.json';
 
     private const OVERWRITE_EXISTING = false;
 
@@ -77,7 +77,7 @@ class NuanscentNoteEnrichmentSeeder extends Seeder
      */
     private function readNotes(): array
     {
-        $path = base_path(self::DATASET_PATH);
+        $path = database_path(self::DATASET_PATH);
 
         if (! file_exists($path)) {
             throw new RuntimeException("Dataset note enrichment tidak ditemukan di {$path}.");
