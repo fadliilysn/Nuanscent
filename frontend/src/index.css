@@ -624,6 +624,13 @@ img {
   min-width: 0;
 }
 
+.home-brand-carousel {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  position: relative;
+}
+
 .home-brand-grid {
   display: flex;
   gap: 10px;
@@ -633,6 +640,40 @@ img {
   scroll-padding-inline: 2px;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
+}
+
+.home-brand-carousel__controls {
+  display: none;
+}
+
+.home-brand-carousel__button {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1rem;
+  font-weight: 900;
+  height: 42px;
+  justify-content: center;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+  width: 42px;
+}
+
+.home-brand-carousel__button:hover {
+  background: var(--amber-soft);
+  border-color: rgba(33, 28, 24, 0.28);
+  transform: translateY(-1px);
+}
+
+.home-brand-carousel__button:focus-visible {
+  outline: 3px solid rgba(205, 142, 46, 0.35);
+  outline-offset: 2px;
 }
 
 .home-aroma-grid {
@@ -711,6 +752,63 @@ img {
   height: 100%;
   justify-content: center;
   width: 100%;
+}
+
+@media (min-width: 981px) {
+  .home-brand-grid {
+    display: grid;
+    grid-auto-columns: calc((100% - 30px) / 4);
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, 82px);
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .home-brand-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-brand-card {
+    height: 82px;
+    width: 100%;
+  }
+
+  .home-brand-carousel__controls {
+    display: block;
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .home-brand-carousel__button {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 253, 248, 0.86);
+    border-color: rgba(33, 28, 24, 0.2);
+    border-radius: 999px;
+    box-shadow: 0 6px 16px rgba(72, 53, 34, 0.14);
+    height: 46px;
+    opacity: 0.88;
+    pointer-events: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+  }
+
+  .home-brand-carousel__button:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.04);
+  }
+
+  .home-brand-carousel__button--left {
+    left: 6px;
+  }
+
+  .home-brand-carousel__button--right {
+    right: 6px;
+  }
 }
 
 .home-aroma-card {

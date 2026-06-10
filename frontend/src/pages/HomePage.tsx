@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { PerfumeCard } from "../components/PerfumeCard";
 import { api } from "../lib/api";
 import type { AromaCategory, Brand, Perfume } from "../types/api";
@@ -18,8 +18,6 @@ const initialHomeData: HomeData = {
   aromaCategories: [],
   perfumes: [],
 };
-
-const HOME_BRAND_LIMIT = 8;
 
 const readCachedHomeData = (): HomeData => ({
   brands: api.getCachedBrands()?.data ?? [],
@@ -107,7 +105,11 @@ export function HomePage({ onNavigate }: HomePageProps) {
   const [homeData, setHomeData] = useState<HomeData>(hasCompleteHomeCache(cachedHomeData) ? cachedHomeData : initialHomeData);
   const [isLoading, setIsLoading] = useState(!hasCompleteHomeCache(cachedHomeData));
   const [hasLoadError, setHasLoadError] = useState(false);
-  const featuredBrands = homeData.brands.slice(0, HOME_BRAND_LIMIT);
+  const brandGridRef = useRef<HTMLDivElement>(null);
+  const [brandScrollState, setBrandScrollState] = useState({
+    canScrollLeft: false,
+    canScrollRight: false,
+  });
 
   useEffect(() => {
     let isMounted = true;
@@ -137,6 +139,50 @@ export function HomePage({ onNavigate }: HomePageProps) {
       isMounted = false;
     };
   }, []);
+
+  useEffect(() => {
+    const brandGrid = brandGridRef.current;
+
+    if (!brandGrid) {
+      return;
+    }
+
+    const updateScrollState = () => {
+      const maxScrollLeft = brandGrid.scrollWidth - brandGrid.clientWidth;
+      const nextState = {
+        canScrollLeft: brandGrid.scrollLeft > 2,
+        canScrollRight: brandGrid.scrollLeft < maxScrollLeft - 2,
+      };
+
+      setBrandScrollState((currentState) =>
+        currentState.canScrollLeft === nextState.canScrollLeft && currentState.canScrollRight === nextState.canScrollRight
+          ? currentState
+          : nextState,
+      );
+    };
+
+    updateScrollState();
+    brandGrid.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+
+    return () => {
+      brandGrid.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, [homeData.brands.length]);
+
+  const scrollBrands = (direction: -1 | 1) => {
+    const brandGrid = brandGridRef.current;
+
+    if (!brandGrid) {
+      return;
+    }
+
+    brandGrid.scrollBy({
+      behavior: "smooth",
+      left: direction * brandGrid.clientWidth,
+    });
+  };
 
   return (
     <main className="page home-page">
@@ -193,20 +239,46 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <SectionHeader eyebrow="Brand lokal" title="Mulai dari brand yang sudah ada di katalog" actionLabel="Lihat semua brands" actionHref="/brands" onNavigate={onNavigate} />
         {isLoading ? (
           <InlineState message="Sedang memuat brand lokal." />
-        ) : featuredBrands.length > 0 ? (
-          <div className="home-brand-grid">
-            {featuredBrands.map((brand) => {
-              const brandPath = `/brands/${encodeURIComponent(brand.slug)}`;
+        ) : homeData.brands.length > 0 ? (
+          <div className="home-brand-carousel">
+            <div className="home-brand-grid" ref={brandGridRef}>
+              {homeData.brands.map((brand) => {
+                const brandPath = `/brands/${encodeURIComponent(brand.slug)}`;
 
-              return (
-                <a className="home-brand-card" href={brandPath} key={brand.slug} onClick={(event) => preventAndNavigate(event, brandPath, onNavigate)}>
-                  <BrandLogo brand={brand} />
-                  <div>
-                    <h3>{brand.name}</h3>
-                  </div>
-                </a>
-              );
-            })}
+                return (
+                  <a className="home-brand-card" href={brandPath} key={brand.slug} onClick={(event) => preventAndNavigate(event, brandPath, onNavigate)}>
+                    <BrandLogo brand={brand} />
+                    <div>
+                      <h3>{brand.name}</h3>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+            {brandScrollState.canScrollLeft || brandScrollState.canScrollRight ? (
+              <div className="home-brand-carousel__controls" aria-label="Navigasi brand lokal">
+                {brandScrollState.canScrollLeft ? (
+                  <button
+                    aria-label="Geser brand ke kiri"
+                    className="home-brand-carousel__button home-brand-carousel__button--left"
+                    type="button"
+                    onClick={() => scrollBrands(-1)}
+                  >
+                    <span aria-hidden="true">{"<"}</span>
+                  </button>
+                ) : null}
+                {brandScrollState.canScrollRight ? (
+                  <button
+                    aria-label="Geser brand ke kanan"
+                    className="home-brand-carousel__button home-brand-carousel__button--right"
+                    type="button"
+                    onClick={() => scrollBrands(1)}
+                  >
+                    <span aria-hidden="true">{">"}</span>
+                  </button>
+                ) : null}
+              </div>
+            ) : null}
           </div>
         ) : (
           <InlineState message="Brand belum bisa ditampilkan saat ini. Coba lagi sebentar." />
