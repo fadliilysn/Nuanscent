@@ -10,14 +10,14 @@ Proyek ini dibuat sebagai sarana belajar dan portfolio pengembangan aplikasi ful
 
 Path yang disiapkan:
 
-- `docs/screenshots/homepage.png`
-- `docs/screenshots/catalog.png`
-- `docs/screenshots/quiz.png`
-- `docs/screenshots/detailparfume.png`
-- `docs/screenshots/listbrands.png`
-- `docs/screenshots/panduan.png`
-- `docs/screenshots/comparison.png`
-- `docs/screenshots/recomendation.png`
+- [docs/screenshots/homepage.png](docs/screenshots/homepage.png)
+- [docs/screenshots/catalog.png](docs/screenshots/catalog.png)
+- [docs/screenshots/quiz.png](docs/screenshots/quiz.png)
+- [docs/screenshots/detailparfume.png](docs/screenshots/detailparfume.png)
+- [docs/screenshots/listbrands.png](docs/screenshots/listbrands.png)
+- [docs/screenshots/panduan.png](docs/screenshots/panduan.png)
+- [docs/screenshots/comparison.png](docs/screenshots/comparison.png)
+- [docs/screenshots/recomendation.png](docs/screenshots/recomendation.png)
 
 ## Fitur
 
